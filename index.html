@@ -5,32 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Game Vault Private</title>
+    <title>Game Vault Nebula</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background: #020617; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .glass { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .btn-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); transition: 0.3s; }
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff00e5;
+            --neon-purple: #9d00ff;
+        }
+        body { 
+            background: radial-gradient(circle at top right, #1e1b4b, #020617); 
+            font-family: 'Inter', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+        }
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .btn-rainbow {
+            background: linear-gradient(45deg, #ff00e5, #9d00ff, #00f2ff, #00ff88);
+            background-size: 300% 300%;
+            animation: gradientMove 5s ease infinite;
+            color: white;
+            border: none;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         .hidden { display: none; }
         .safe-top { padding-top: env(safe-area-inset-top); }
-        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
-        input:focus { outline: none; border-color: #3b82f6; background: rgba(15, 23, 42, 0.9) !important; }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .modal-up { animation: slideUp 0.3s ease-out; }
+        .tab-active { 
+            background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.1));
+            border-bottom: 3px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+        input { background: rgba(0, 0, 0, 0.4) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white; }
+        input:focus { border-color: var(--neon-blue) !important; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+        .card-glow-blue { border-left: 4px solid var(--neon-blue); box-shadow: -5px 0 15px rgba(0, 242, 255, 0.1); }
+        .card-glow-pink { border-left: 4px solid var(--neon-pink); box-shadow: -5px 0 15px rgba(255, 0, 229, 0.1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.4s ease-out forwards; }
     </style>
 </head>
-<body class="text-slate-100 min-h-screen">
+<body class="text-slate-100">
 
     <!-- LOGIN PAGE -->
     <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
-        <div class="w-full max-w-sm glass p-8 rounded-[3rem] shadow-2xl border-t-blue-500/30 border-t-2 text-center">
-            <i class="fa-solid fa-vault text-5xl text-blue-500 mb-6 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"></i>
-            <h1 class="text-3xl font-black tracking-tighter uppercase mb-8 italic">GAME<span class="text-blue-500 font-sans">VAULT</span></h1>
-            <div class="space-y-4">
-                <input type="text" id="user" placeholder="Username" class="w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-700">
-                <input type="password" id="pass" placeholder="Password" class="w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-700">
-                <button onclick="login()" class="w-full btn-blue py-4 rounded-2xl font-black text-lg shadow-blue-900/40 shadow-xl active:scale-95">ĐĂNG NHẬP</button>
+        <div class="w-full max-w-sm glass p-10 rounded-[3.5rem] text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/20 blur-[50px]"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-500/20 blur-[50px]"></div>
+            
+            <div class="relative">
+                <div class="w-20 h-20 mx-auto bg-gradient-to-tr from-blue-500 to-pink-500 rounded-3xl flex items-center justify-center mb-6 shadow-lg rotate-12">
+                    <i class="fa-solid fa-ghost text-4xl text-white -rotate-12"></i>
+                </div>
+                <h1 class="text-4xl font-black tracking-tighter uppercase mb-2">NEBULA<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">VAULT</span></h1>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-slate-500 mb-10">Premium Game Manager</p>
+                
+                <div class="space-y-4">
+                    <input type="text" id="user" placeholder="Tài khoản" class="w-full p-4 rounded-2xl outline-none transition-all">
+                    <input type="password" id="pass" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl outline-none transition-all">
+                    <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl font-black text-lg shadow-xl active:scale-95 transition-all">KHÁM PHÁ NGAY</button>
+                </div>
             </div>
         </div>
     </div>
@@ -39,49 +81,51 @@
     <div id="admin-page" class="hidden safe-top p-4">
         <div class="max-w-4xl mx-auto">
             <header class="flex justify-between items-center py-6 px-4">
-                <h2 class="text-2xl font-black italic text-blue-500 leading-none">ROOT <span class="text-white block text-xs not-italic font-bold tracking-widest mt-1 opacity-50 uppercase" id="ad-name-display">Gbao Master</span></h2>
-                <div class="flex gap-2">
-                    <button onclick="openSettings()" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-400"><i class="fa-solid fa-gear"></i></button>
-                    <button onclick="logout()" class="w-10 h-10 glass rounded-full flex items-center justify-center text-red-500/70"><i class="fa-solid fa-power-off"></i></button>
+                <div>
+                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 italic">ADMIN CONTROL</h2>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Master: <span id="ad-name-display" class="text-white">GBAO</span></p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="openSettings()" class="w-11 h-11 glass rounded-2xl flex items-center justify-center text-blue-400 shadow-inner"><i class="fa-solid fa-sliders"></i></button>
+                    <button onclick="logout()" class="w-11 h-11 glass rounded-2xl flex items-center justify-center text-red-500 shadow-inner"><i class="fa-solid fa-power-off"></i></button>
                 </div>
             </header>
 
-            <div class="flex border-b border-slate-800 mb-6 font-bold text-[10px] tracking-[0.2em]">
-                <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-4 tab-active uppercase">Tổng Kho Tài Khoản</button>
-                <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-4 uppercase">Danh Sách User</button>
+            <div class="flex gap-2 mb-8 p-1 glass rounded-2xl font-bold text-[11px] tracking-wider uppercase">
+                <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-4 rounded-xl transition-all tab-active">Tài Khoản Toàn Cầu</button>
+                <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-4 rounded-xl transition-all">Thành Viên System</button>
             </div>
 
-            <!-- TAB TỔNG KHO (ADMIN) -->
-            <div id="admin-tab-acc">
-                <div class="glass p-6 rounded-3xl mb-6 border-l-4 border-l-blue-600 shadow-xl">
-                    <h3 class="text-[10px] font-black text-blue-500 uppercase mb-4 tracking-widest">Admin Up Tài Khoản</h3>
-                    <div class="grid grid-cols-2 gap-3 mb-3">
-                        <input type="text" id="ad-acc-tk" placeholder="TK Game" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-sm">
-                        <input type="text" id="ad-acc-mk" placeholder="MK Game" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-sm">
+            <!-- TAB TỔNG KHO -->
+            <div id="admin-tab-acc" class="animate-fade">
+                <div class="glass p-6 rounded-[2.5rem] mb-8 border-t-2 border-blue-500/30">
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input type="text" id="ad-acc-tk" placeholder="Tên đăng nhập" class="p-4 rounded-2xl text-sm">
+                        <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="p-4 rounded-2xl text-sm">
                     </div>
-                    <div class="flex gap-3">
-                        <input type="number" id="ad-acc-lv" placeholder="Level" class="flex-1 bg-slate-950 p-3 rounded-xl border border-slate-800 text-sm">
-                        <button onclick="adminPostAcc()" class="btn-blue px-8 rounded-xl font-black text-[10px] uppercase">Upload</button>
+                    <div class="flex gap-4">
+                        <input type="number" id="ad-acc-lv" placeholder="Level" class="w-32 p-4 rounded-2xl text-sm text-center">
+                        <button onclick="adminPostAcc()" class="flex-1 btn-rainbow rounded-2xl font-black text-xs uppercase shadow-lg shadow-purple-500/20">ĐĂNG ACC ADMIN</button>
                     </div>
                 </div>
+                
                 <div class="relative mb-6">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-4 text-slate-600"></i>
-                    <input type="text" id="admin-search" oninput="renderAdminAccs()" placeholder="Tìm kiếm theo acc hoặc người đăng..." class="w-full pl-12 pr-4 py-4 rounded-2xl glass border-none text-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-5 text-slate-500"></i>
+                    <input type="text" id="admin-search" oninput="renderAdminAccs()" placeholder="Tìm acc, tìm người up..." class="w-full pl-14 pr-6 py-5 rounded-[2rem] glass border-none">
                 </div>
                 <div id="admin-list-accs" class="space-y-4 pb-24"></div>
             </div>
 
-            <!-- TAB QUẢN LÝ USER -->
-            <div id="admin-tab-user" class="hidden">
-                <div class="glass p-6 rounded-3xl mb-6 border-l-4 border-l-yellow-600">
-                    <h3 class="text-[10px] font-black text-yellow-600 uppercase mb-4 tracking-widest">Cấp Tài Khoản Mới</h3>
+            <!-- TAB USER -->
+            <div id="admin-tab-user" class="hidden animate-fade">
+                <div class="glass p-6 rounded-[2.5rem] mb-8 border-t-2 border-pink-500/30">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <input type="text" id="new-u" placeholder="Username" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-sm">
-                        <input type="text" id="new-p" placeholder="Password" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-sm">
-                        <button onclick="addUser()" class="btn-blue p-3 rounded-xl font-bold text-[10px] uppercase">Xác Nhận</button>
+                        <input type="text" id="new-u" placeholder="Tên User" class="p-4 rounded-2xl text-sm">
+                        <input type="text" id="new-p" placeholder="Mật khẩu" class="p-4 rounded-2xl text-sm">
+                        <button onclick="addUser()" class="btn-rainbow p-4 rounded-2xl font-black text-xs uppercase shadow-lg">TẠO USER</button>
                     </div>
                 </div>
-                <div id="admin-list-users" class="space-y-3 pb-24"></div>
+                <div id="admin-list-users" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-24"></div>
             </div>
         </div>
     </div>
@@ -89,98 +133,100 @@
     <!-- USER PAGE -->
     <div id="user-page" class="hidden safe-top p-4">
         <div class="max-w-2xl mx-auto">
-            <header class="flex justify-between items-center py-6 px-4">
-                <h2 class="text-2xl font-black">USER: <span id="user-name" class="text-blue-500 uppercase"></span></h2>
+            <header class="flex justify-between items-center py-8 px-4">
+                <div>
+                    <h2 class="text-3xl font-black uppercase tracking-tighter">Chào, <span id="user-name" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400"></span></h2>
+                    <p class="text-[10px] font-bold text-slate-500 tracking-[0.3em] uppercase">User Dashboard</p>
+                </div>
                 <div class="flex gap-2">
-                    <button onclick="openSettings()" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-400"><i class="fa-solid fa-user-shield"></i></button>
-                    <button onclick="logout()" class="text-slate-500 text-xs font-bold uppercase underline">Thoát</button>
+                    <button onclick="openSettings()" class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-pink-400 shadow-lg"><i class="fa-solid fa-user-gear"></i></button>
+                    <button onclick="logout()" class="text-slate-500 text-[10px] font-black uppercase border-b-2 border-red-500/50">Thoát</button>
                 </div>
             </header>
 
-            <div class="glass p-6 rounded-[2.5rem] mb-10 shadow-2xl border-t-2 border-t-blue-500">
-                <h3 class="text-center font-bold text-xs uppercase tracking-widest mb-6 text-slate-400">Đăng tài khoản lên hệ thống</h3>
-                <div class="space-y-3">
-                    <div class="grid grid-cols-2 gap-3">
-                        <input type="text" id="acc-tk" placeholder="TK Game" class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-sm">
-                        <input type="text" id="acc-mk" placeholder="MK Game" class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-sm">
+            <div class="glass p-8 rounded-[3rem] mb-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl rotate-12"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div class="relative space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="acc-tk" placeholder="TK Game" class="p-4 rounded-2xl text-sm">
+                        <input type="text" id="acc-mk" placeholder="MK Game" class="p-4 rounded-2xl text-sm">
                     </div>
-                    <input type="number" id="acc-lv" placeholder="Level tài khoản" class="w-full bg-slate-950 p-4 rounded-2xl border border-slate-800 text-sm">
-                    <button onclick="postAcc()" class="w-full btn-blue py-4 rounded-2xl font-black text-lg active:scale-95 transition shadow-lg">GỬI DỮ LIỆU</button>
+                    <input type="number" id="acc-lv" placeholder="Level tài khoản" class="w-full p-4 rounded-2xl text-sm">
+                    <button onclick="postAcc()" class="w-full btn-rainbow py-5 rounded-2xl font-black text-lg shadow-2xl active:scale-95 transition-all">UP DỮ LIỆU LÊN MÂY</button>
                 </div>
             </div>
             
-            <h3 class="font-bold text-[10px] text-slate-500 uppercase px-4 mb-4 tracking-widest italic border-l-2 border-blue-500 ml-2">Dữ liệu riêng của bạn:</h3>
-            <div id="user-list" class="space-y-3 pb-24"></div>
+            <div class="flex items-center gap-3 mb-6 px-4">
+                <div class="h-[2px] flex-1 bg-gradient-to-r from-transparent to-slate-800"></div>
+                <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest italic">Kho của riêng bạn</span>
+                <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-slate-800"></div>
+            </div>
+            <div id="user-list" class="space-y-4 pb-24"></div>
         </div>
     </div>
 
-    <!-- SETTINGS MODAL -->
-    <div id="settings-modal" class="hidden fixed inset-0 z-50 flex items-end justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="w-full max-w-md glass rounded-[2.5rem] p-8 modal-up mb-4">
-            <h3 class="text-xl font-black mb-6 flex items-center gap-3"><i class="fa-solid fa-key text-blue-500"></i> ĐỔI MẬT KHẨU</h3>
-            <div class="space-y-4">
-                <input type="password" id="old-p" placeholder="Mật khẩu hiện tại" class="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-sm">
-                <input type="password" id="new-p-change" placeholder="Mật khẩu mới" class="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-sm">
-                <div class="flex gap-3 mt-4">
-                    <button onclick="closeSettings()" class="flex-1 py-4 rounded-2xl font-bold text-slate-500 glass">ĐÓNG</button>
-                    <button onclick="confirmChangePass()" class="flex-1 py-4 btn-blue rounded-2xl font-black">XÁC NHẬN</button>
+    <!-- MODAL SETTINGS -->
+    <div id="settings-modal" class="hidden fixed inset-0 z-50 flex items-end justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="w-full max-w-md glass rounded-[3rem] p-10 modal-up border-t-2 border-cyan-500/50">
+            <div class="w-16 h-1.5 bg-slate-800 mx-auto rounded-full mb-8"></div>
+            <h3 class="text-2xl font-black mb-8 flex items-center gap-4 text-cyan-400"><i class="fa-solid fa-shield-halved"></i> ĐỔI MẬT KHẨU</h3>
+            <div class="space-y-5">
+                <input type="password" id="old-p" placeholder="Mật khẩu hiện tại" class="w-full p-5 rounded-2xl">
+                <input type="password" id="new-p-change" placeholder="Mật khẩu mới" class="w-full p-5 rounded-2xl">
+                <div class="flex gap-4 pt-4">
+                    <button onclick="closeSettings()" class="flex-1 py-5 rounded-2xl font-bold text-slate-400 glass uppercase text-xs">Hủy bỏ</button>
+                    <button onclick="confirmChangePass()" class="flex-1 py-5 btn-rainbow rounded-2xl font-black uppercase text-xs shadow-lg shadow-cyan-500/20">Lưu mới</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        let db = JSON.parse(localStorage.getItem('game_v3_db')) || { 
-            admin: { u: 'gbao', p: '031008' },
-            users: [], 
-            accounts: [] 
-        };
+        // --- HỆ THỐNG MIGRATION (CHỐNG MẤT DATA) ---
+        const OLD_KEYS = ['game_ultra_db', 'game_supreme_db', 'game_final_db', 'game_v3_db', 'game_supreme_db_new'];
+        const NEW_KEY = 'GAME_MASTER_DATA';
+
+        let db = { admin: { u: 'gbao', p: '031008' }, users: [], accounts: [] };
+
+        function migrateData() {
+            let migrated = false;
+            OLD_KEYS.forEach(key => {
+                const oldData = localStorage.getItem(key);
+                if (oldData) {
+                    try {
+                        const parsed = JSON.parse(oldData);
+                        // Gộp dữ liệu cũ vào db hiện tại
+                        if (parsed.users) db.users = [...new Set([...db.users, ...parsed.users])];
+                        if (parsed.accounts) db.accounts = [...new Set([...db.accounts, ...parsed.accounts])];
+                        if (parsed.admin) db.admin = parsed.admin;
+                        migrated = true;
+                        // Xóa key cũ sau khi chuyển để sạch máy (tùy chọn)
+                        // localStorage.removeItem(key); 
+                    } catch(e) { console.error("Lỗi migrate:", key); }
+                }
+            });
+            const existingNew = localStorage.getItem(NEW_KEY);
+            if(existingNew) db = JSON.parse(existingNew);
+            else if(migrated) saveDB();
+        }
+
+        const saveDB = () => localStorage.setItem(NEW_KEY, JSON.stringify(db));
+        migrateData(); // Chạy ngay khi mở web
+
         let currentMode = '';
         let currentUser = null;
-
-        const saveDB = () => localStorage.setItem('game_v3_db', JSON.stringify(db));
 
         function login() {
             const u = document.getElementById('user').value.trim();
             const p = document.getElementById('pass').value.trim();
-            
-            if (u === db.admin.u && p === db.admin.p) {
-                currentMode = 'admin';
-                showPage('admin-page');
-                switchAdminTab('acc');
-            } else {
+            if (u === db.admin.u && p === db.admin.p) { currentMode = 'admin'; showPage('admin-page'); switchAdminTab('acc'); }
+            else {
                 const user = db.users.find(x => x.u === u && x.p === p);
-                if (user) {
-                    currentMode = 'user';
-                    currentUser = user;
-                    document.getElementById('user-name').innerText = u;
-                    showPage('user-page');
-                    renderUserAccs();
-                } else alert('Thông tin đăng nhập không chính xác!');
+                if (user) { currentMode = 'user'; currentUser = user; document.getElementById('user-name').innerText = u; showPage('user-page'); renderUserAccs(); }
+                else alert('Sai tài khoản hoặc mật khẩu!');
             }
         }
 
-        // --- PASSWORD ---
-        function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
-        function closeSettings() { document.getElementById('settings-modal').classList.add('hidden'); }
-        function confirmChangePass() {
-            const oldP = document.getElementById('old-p').value;
-            const newP = document.getElementById('new-p-change').value;
-            if(!newP) return;
-
-            if(currentMode === 'admin') {
-                if(oldP !== db.admin.p) return alert('Sai mật khẩu cũ!');
-                db.admin.p = newP;
-            } else {
-                if(oldP !== currentUser.p) return alert('Sai mật khẩu cũ!');
-                const idx = db.users.findIndex(x => x.u === currentUser.u);
-                db.users[idx].p = newP;
-                currentUser.p = newP;
-            }
-            saveDB(); closeSettings(); alert('Đã cập nhật mật khẩu mới!');
-        }
-
-        // --- ADMIN ---
         function switchAdminTab(type) {
             document.getElementById('admin-tab-acc').classList.toggle('hidden', type !== 'acc');
             document.getElementById('admin-tab-user').classList.toggle('hidden', type !== 'user');
@@ -193,13 +239,13 @@
             const u = document.getElementById('new-u').value.trim();
             const p = document.getElementById('new-p').value.trim();
             if (!u || !p) return;
-            if (db.users.find(x => x.u === u)) return alert('Tên đã tồn tại!');
+            if (db.users.find(x => x.u === u)) return alert('User đã tồn tại!');
             db.users.push({ u, p }); saveDB(); renderAdminUsers();
             document.getElementById('new-u').value = ''; document.getElementById('new-p').value = '';
         }
 
         function deleteUser(uName) {
-            if(confirm(`Xóa User [${uName}] và toàn bộ data của họ?`)) {
+            if(confirm(`Xóa User [${uName}] sẽ mất sạch acc của họ?`)) {
                 db.users = db.users.filter(x => x.u !== uName);
                 db.accounts = db.accounts.filter(x => x.uploader !== uName);
                 saveDB(); renderAdminUsers();
@@ -217,62 +263,64 @@
         }
 
         function renderAdminAccs() {
-            const search = document.getElementById('admin-search').value.toLowerCase();
+            const s = document.getElementById('admin-search').value.toLowerCase();
             const container = document.getElementById('admin-list-accs');
-            const filtered = db.accounts.filter(a => a.tk.toLowerCase().includes(search) || a.uploader.toLowerCase().includes(search));
+            const filtered = db.accounts.filter(a => a.tk.toLowerCase().includes(s) || a.uploader.toLowerCase().includes(s));
             container.innerHTML = filtered.map(acc => `
-                <div class="glass p-5 rounded-3xl flex justify-between items-center border-l-4 border-blue-500">
-                    <div class="flex-1">
-                        <div class="text-[9px] font-black uppercase mb-1 ${acc.uploader === 'ADMIN' ? 'text-yellow-500' : 'text-slate-500'} italic">By: ${acc.uploader}</div>
-                        <div class="font-bold text-slate-100 flex items-center gap-2">${acc.tk} <i onclick="copyText('${acc.tk}')" class="fa-solid fa-copy text-slate-600 text-[10px]"></i></div>
-                        <div class="text-[11px] text-slate-500 font-mono flex items-center gap-2">MK: ${acc.mk} <i onclick="copyText('${acc.mk}')" class="fa-solid fa-copy text-[10px]"></i></div>
+                <div class="glass p-6 rounded-[2rem] flex justify-between items-center card-glow-blue animate-fade">
+                    <div>
+                        <div class="text-[9px] font-black uppercase mb-2 ${acc.uploader === 'ADMIN' ? 'text-yellow-400' : 'text-cyan-400'}">Upload: ${acc.uploader}</div>
+                        <div class="font-bold text-white text-lg flex items-center gap-3">${acc.tk} <i onclick="copyText('${acc.tk}')" class="fa-solid fa-copy text-slate-600 text-xs active:text-cyan-400"></i></div>
+                        <div class="text-xs text-slate-400 font-mono flex items-center gap-3">PASS: ${acc.mk} <i onclick="copyText('${acc.mk}')" class="fa-solid fa-copy text-slate-700 text-[10px] active:text-cyan-400"></i></div>
                     </div>
                     <div class="text-right">
-                        <div class="text-xl font-black text-blue-400 mb-2">LV.${acc.lv}</div>
-                        <button onclick="deleteAcc(${acc.id})" class="text-red-500/20 hover:text-red-500"><i class="fa-solid fa-trash-can"></i></button>
+                        <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500 mb-3">LV.${acc.lv}</div>
+                        <button onclick="deleteAcc(${acc.id})" class="text-red-500/30 hover:text-red-500 transition-all"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
             `).reverse().join('');
         }
 
-        function deleteAcc(id) { if(confirm('Xóa?')) { db.accounts = db.accounts.filter(a => a.id !== id); saveDB(); renderAdminAccs(); } }
+        function deleteAcc(id) { if(confirm('Xóa vĩnh viễn?')) { db.accounts = db.accounts.filter(a => a.id !== id); saveDB(); renderAdminAccs(); } }
 
         function renderAdminUsers() {
             const container = document.getElementById('admin-list-users');
             container.innerHTML = db.users.map(user => `
-                <div class="glass p-4 rounded-2xl flex justify-between items-center border border-slate-800">
-                    <div><div class="font-bold uppercase text-sm">${user.u}</div><div class="text-[10px] text-slate-600">PASS: ${user.p}</div></div>
-                    <button onclick="deleteUser('${user.u}')" class="text-red-500 font-bold text-[10px] glass px-4 py-2 rounded-xl">XÓA</button>
+                <div class="glass p-5 rounded-[2rem] flex justify-between items-center card-glow-pink animate-fade">
+                    <div>
+                        <div class="font-black text-white uppercase text-sm tracking-widest">${user.u}</div>
+                        <div class="text-[10px] text-slate-500 font-mono mt-1">Pass: ${user.p}</div>
+                    </div>
+                    <button onclick="deleteUser('${user.u}')" class="bg-red-500/10 text-red-500 p-3 rounded-xl text-[10px] font-bold hover:bg-red-500 hover:text-white transition-all">XÓA USER</button>
                 </div>
             `).reverse().join('');
         }
 
-        // --- USER ---
         function postAcc() {
             const tk = document.getElementById('acc-tk').value.trim();
             const mk = document.getElementById('acc-mk').value.trim();
             const lv = document.getElementById('acc-lv').value.trim();
-            if (!tk || !mk || !lv) return alert('Vui lòng nhập đủ!');
+            if (!tk || !mk || !lv) return alert('Hãy nhập đủ 3 thông tin!');
             db.accounts.push({ id: Date.now(), uploader: currentUser.u, tk, mk, lv });
             saveDB(); renderUserAccs();
-            alert('Đã đăng tài khoản thành công!');
+            alert('Đã tải lên thành công!');
             document.querySelectorAll('#user-page input').forEach(i => i.value = '');
         }
 
         function renderUserAccs() {
             const container = document.getElementById('user-list');
-            // CHỈ LẤY ACC CỦA USER ĐANG ĐĂNG NHẬP
             const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
-            
             if(myAccs.length === 0) {
-                container.innerHTML = `<div class="text-center py-10 text-slate-600 text-xs italic">Bạn chưa đăng tài khoản nào.</div>`;
+                container.innerHTML = `<div class="text-center py-20 text-slate-600 text-xs italic">Chưa có dữ liệu nào...</div>`;
                 return;
             }
-
             container.innerHTML = myAccs.map(acc => `
-                <div class="glass p-5 rounded-3xl flex justify-between items-center border-l-2 border-blue-600 shadow-md">
-                    <div><div class="font-bold text-blue-400 text-base">${acc.tk}</div><div class="text-xs text-slate-500 font-mono">Pass: ${acc.mk}</div></div>
-                    <div class="text-xl font-black text-white italic">LV.${acc.lv}</div>
+                <div class="glass p-6 rounded-[2rem] flex justify-between items-center border-l-2 border-pink-500 shadow-lg animate-fade">
+                    <div>
+                        <div class="font-bold text-pink-400 text-lg">${acc.tk}</div>
+                        <div class="text-xs text-slate-500 font-mono">Pass: ${acc.mk}</div>
+                    </div>
+                    <div class="text-2xl font-black text-white italic">LV.${acc.lv}</div>
                 </div>
             `).reverse().join('');
         }
@@ -280,16 +328,32 @@
         function copyText(text) {
             navigator.clipboard.writeText(text);
             const n = document.createElement('div');
-            n.className = 'fixed bottom-10 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-bold z-[100]';
-            n.innerText = 'COPIED'; document.body.appendChild(n);
-            setTimeout(() => n.remove(), 800);
+            n.className = 'fixed top-10 left-1/2 -translate-x-1/2 bg-cyan-500 text-black px-8 py-3 rounded-full text-xs font-black z-[100] shadow-[0_0_20px_rgba(0,242,255,0.5)]';
+            n.innerText = 'ĐÃ SAO CHÉP!'; document.body.appendChild(n);
+            setTimeout(() => n.remove(), 1000);
+        }
+
+        function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
+        function closeSettings() { document.getElementById('settings-modal').classList.add('hidden'); }
+        function confirmChangePass() {
+            const op = document.getElementById('old-p').value;
+            const np = document.getElementById('new-p-change').value;
+            if(!np) return;
+            if(currentMode === 'admin') {
+                if(op !== db.admin.p) return alert('Sai mật khẩu cũ!');
+                db.admin.p = np;
+            } else {
+                if(op !== currentUser.p) return alert('Sai mật khẩu cũ!');
+                const idx = db.users.findIndex(x => x.u === currentUser.u);
+                db.users[idx].p = np; currentUser.p = np;
+            }
+            saveDB(); closeSettings(); alert('Đã đổi mật khẩu!');
         }
 
         function showPage(id) {
             ['login-page', 'admin-page', 'user-page'].forEach(p => document.getElementById(p).classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
         }
-
         function logout() { location.reload(); }
     </script>
 </body>
