@@ -5,137 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Game Manager Pro</title>
+    <title>Game Manager Ultra</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background: #0f172a; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-primary { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); transition: all 0.3s ease; }
-        .btn-primary:active { transform: scale(0.96); }
+        body { background: #020617; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .btn-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
         .hidden { display: none; }
-        input { transition: all 0.2s ease; }
-        input:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); }
-        /* Tối ưu cho tai thỏ điện thoại */
+        input { transition: 0.2s; }
+        input:focus { border-color: #3b82f6; background: rgba(15, 23, 42, 0.8); }
         .safe-top { padding-top: env(safe-area-inset-top); }
+        ::-webkit-scrollbar { width: 0px; } /* Ẩn cuộn cho đẹp */
     </style>
 </head>
 <body class="text-slate-100 min-h-screen">
 
-    <!-- MÀN HÌNH ĐĂNG NHẬP -->
+    <!-- LOGIN -->
     <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
-        <div class="w-full max-w-sm glass p-8 rounded-[2rem] shadow-2xl">
+        <div class="w-full max-w-sm glass p-8 rounded-[2.5rem] shadow-2xl border-t-blue-500/30 border-t-2">
             <div class="text-center mb-10">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600/20 rounded-2xl mb-4">
-                    <i class="fa-solid fa-shield-halved text-4xl text-blue-500"></i>
-                </div>
-                <h1 class="text-3xl font-black tracking-tighter">GAME<span class="text-blue-500">HUB</span></h1>
-                <p class="text-slate-400 text-sm mt-2 font-medium">Hệ thống quản lý tài khoản</p>
+                <i class="fa-solid fa-bolt-lightning text-5xl text-blue-500 mb-4"></i>
+                <h1 class="text-3xl font-black tracking-tighter uppercase">Game<span class="text-blue-500">Vault</span></h1>
+                <p class="text-slate-400 text-xs mt-2 font-bold tracking-widest uppercase">Manager System</p>
             </div>
             <div class="space-y-4">
-                <div class="relative">
-                    <i class="fa-solid fa-user absolute left-4 top-4 text-slate-500"></i>
-                    <input type="text" id="user" placeholder="Tên đăng nhập" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-900/50 border border-slate-700 text-white placeholder:text-slate-500">
-                </div>
-                <div class="relative">
-                    <i class="fa-solid fa-lock absolute left-4 top-4 text-slate-500"></i>
-                    <input type="password" id="pass" placeholder="Mật khẩu" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-900/50 border border-slate-700 text-white placeholder:text-slate-500">
-                </div>
-                <button onclick="login()" class="w-full btn-primary py-4 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20">Xác nhận</button>
+                <input type="text" id="user" placeholder="Tài khoản hệ thống" class="w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-700 text-white">
+                <input type="password" id="pass" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl bg-slate-900/50 border border-slate-700 text-white">
+                <button onclick="login()" class="w-full btn-blue py-4 rounded-2xl font-black text-lg shadow-lg active:scale-95 transition">VÀO APP</button>
             </div>
         </div>
     </div>
 
-    <!-- MÀN HÌNH ADMIN -->
+    <!-- ADMIN PAGE -->
     <div id="admin-page" class="hidden safe-top p-4">
         <div class="max-w-4xl mx-auto">
-            <header class="flex justify-between items-center py-6 px-4 mb-6">
-                <div>
-                    <h2 class="text-2xl font-black italic">ADMIN PANEL</h2>
-                    <p class="text-blue-400 text-sm font-bold uppercase tracking-widest">Master: gbao</p>
-                </div>
-                <button onclick="logout()" class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-red-400">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </button>
+            <header class="flex justify-between items-center py-6 px-4">
+                <h2 class="text-2xl font-black italic text-blue-500">ADMIN <span class="text-white">GBAO</span></h2>
+                <button onclick="logout()" class="w-10 h-10 glass rounded-full flex items-center justify-center text-red-400"><i class="fa-solid fa-power-off"></i></button>
             </header>
 
-            <!-- Card Tạo User -->
-            <div class="glass p-6 rounded-3xl mb-8 border-yellow-500/20 shadow-lg">
-                <div class="flex items-center gap-3 mb-6">
-                    <i class="fa-solid fa-user-plus text-yellow-500"></i>
-                    <h3 class="font-bold uppercase text-sm tracking-wider">Cấp tài khoản mới</h3>
-                </div>
-                <div class="flex flex-col md:flex-row gap-3">
-                    <input type="text" id="new-u" placeholder="Username" class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 flex-1">
-                    <input type="text" id="new-p" placeholder="Password" class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 flex-1">
-                    <button onclick="addUser()" class="bg-yellow-600 hover:bg-yellow-500 px-8 py-4 rounded-xl font-bold">TẠO</button>
+            <!-- TẠO USER -->
+            <div class="glass p-6 rounded-3xl mb-6 shadow-xl border-l-4 border-l-blue-500">
+                <h3 class="font-bold text-xs uppercase text-slate-400 mb-4 tracking-widest">Cấp quyền User mới</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <input type="text" id="new-u" placeholder="Tên User" class="bg-slate-900/50 p-3 rounded-xl border border-slate-700 text-sm">
+                    <input type="text" id="new-p" placeholder="Mật khẩu" class="bg-slate-900/50 p-3 rounded-xl border border-slate-700 text-sm">
+                    <button onclick="addUser()" class="btn-blue p-3 rounded-xl font-bold text-sm">TẠO NGAY</button>
                 </div>
             </div>
 
-            <!-- List Acc -->
-            <h3 class="font-bold px-4 mb-4 text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-database text-xs"></i> TỔNG DỮ LIỆU ACC
-            </h3>
-            <div id="admin-list" class="space-y-4">
-                <!-- Data đổ vào đây -->
+            <!-- LỌC VÀ TÌM KIẾM -->
+            <div class="mb-6 px-2">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-4 text-slate-500"></i>
+                    <input type="text" id="admin-search" oninput="renderAdmin()" placeholder="Tìm theo tên acc hoặc người up..." class="w-full pl-12 pr-4 py-4 rounded-2xl glass border-none focus:ring-2 focus:ring-blue-500 shadow-lg text-sm">
+                </div>
             </div>
+
+            <h3 class="font-bold text-xs text-slate-500 uppercase px-4 mb-4 tracking-tighter italic">Cơ sở dữ liệu toàn bộ:</h3>
+            <div id="admin-list" class="space-y-4 pb-20 text-sm"></div>
         </div>
     </div>
 
-    <!-- MÀN HÌNH USER -->
+    <!-- USER PAGE -->
     <div id="user-page" class="hidden safe-top p-4">
         <div class="max-w-2xl mx-auto">
-            <header class="flex justify-between items-center py-6 px-4 mb-8">
-                <div>
-                    <h2 class="text-2xl font-black">Chào, <span id="user-name" class="text-blue-500 uppercase"></span></h2>
-                    <p class="text-slate-400 text-sm">Cập nhật tài khoản của bạn</p>
-                </div>
-                <button onclick="logout()" class="text-slate-400">Đăng xuất</button>
+            <header class="flex justify-between items-center py-6 px-4">
+                <h2 class="text-2xl font-black uppercase tracking-tight">User: <span id="user-name" class="text-blue-500"></span></h2>
+                <button onclick="logout()" class="text-slate-500 text-sm">Rời khỏi</button>
             </header>
 
-            <!-- Form Up Acc -->
-            <div class="glass p-8 rounded-[2.5rem] shadow-2xl border-blue-500/20 mb-10">
-                <h3 class="font-bold text-center mb-8 text-lg">UP ACC MỚI</h3>
-                <div class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="acc-tk" placeholder="Tên Game" class="bg-slate-900/40 p-4 rounded-2xl border border-slate-700">
-                        <input type="text" id="acc-mk" placeholder="Mật Khẩu" class="bg-slate-900/40 p-4 rounded-2xl border border-slate-700">
+            <div class="glass p-6 rounded-[2rem] mb-10 border-t-2 border-t-blue-500 shadow-2xl">
+                <h3 class="font-bold text-center mb-6 text-sm tracking-widest text-blue-400">UP TÀI KHOẢN MỚI</h3>
+                <div class="space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="acc-tk" placeholder="TK Game" class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-sm">
+                        <input type="text" id="acc-mk" placeholder="MK Game" class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-sm">
                     </div>
-                    <input type="number" id="acc-lv" placeholder="Level hiện tại" class="bg-slate-900/40 p-4 rounded-2xl w-full border border-slate-700">
-                    <button onclick="postAcc()" class="w-full btn-primary py-5 rounded-2xl font-black text-lg tracking-wide shadow-lg shadow-blue-600/30">GỬI DỮ LIỆU</button>
+                    <input type="number" id="acc-lv" placeholder="Level tài khoản" class="w-full bg-slate-900 p-4 rounded-2xl border border-slate-800 text-sm">
+                    <button onclick="postAcc()" class="w-full btn-blue py-4 rounded-2xl font-black text-lg shadow-blue-900/20 shadow-xl">GỬI DỮ LIỆU</button>
                 </div>
             </div>
 
-            <h3 class="font-bold px-4 mb-4 text-slate-400 italic">Acc bạn đã sở hữu:</h3>
-            <div id="user-list" class="space-y-4 pb-20">
-                <!-- Acc user hiện ở đây -->
-            </div>
+            <h3 class="font-bold text-xs text-slate-500 uppercase px-4 mb-4">Kho acc của riêng bạn:</h3>
+            <div id="user-list" class="space-y-3 pb-20"></div>
         </div>
     </div>
 
     <script>
-        let db = JSON.parse(localStorage.getItem('game_pro_db')) || { users: [], accounts: [] };
+        let db = JSON.parse(localStorage.getItem('game_ultra_db')) || { users: [], accounts: [] };
         let currentUser = null;
 
-        const saveDB = () => localStorage.setItem('game_pro_db', JSON.stringify(db));
+        const saveDB = () => localStorage.setItem('game_ultra_db', JSON.stringify(db));
 
         function login() {
             const u = document.getElementById('user').value.trim();
             const p = document.getElementById('pass').value.trim();
-
-            if (u === 'gbao' && p === '031008') {
-                showPage('admin-page');
-                renderAdmin();
-            } else {
-                const found = db.users.find(x => x.u === u && x.p === p);
-                if (found) {
-                    currentUser = u;
-                    document.getElementById('user-name').innerText = u;
-                    showPage('user-page');
-                    renderUser();
-                } else {
-                    alert('Sai thông tin!');
-                }
+            if (u === 'gbao' && p === '031008') { showPage('admin-page'); renderAdmin(); }
+            else {
+                const user = db.users.find(x => x.u === u && x.p === p);
+                if (user) { currentUser = u; document.getElementById('user-name').innerText = u; showPage('user-page'); renderUser(); }
+                else alert('Sai tài khoản!');
             }
         }
 
@@ -143,38 +114,57 @@
             const u = document.getElementById('new-u').value.trim();
             const p = document.getElementById('new-p').value.trim();
             if (!u || !p) return;
-            db.users.push({ u, p });
-            saveDB();
-            alert('Đã thêm user!');
-            document.getElementById('new-u').value = '';
-            document.getElementById('new-p').value = '';
+            db.users.push({ u, p }); saveDB();
+            alert('Đã tạo user ' + u);
+            document.getElementById('new-u').value = ''; document.getElementById('new-p').value = '';
         }
 
         function postAcc() {
-            const tk = document.getElementById('acc-tk').value;
-            const mk = document.getElementById('acc-mk').value;
-            const lv = document.getElementById('acc-lv').value;
+            const tk = document.getElementById('acc-tk').value.trim();
+            const mk = document.getElementById('acc-mk').value.trim();
+            const lv = document.getElementById('acc-lv').value.trim();
             if (!tk || !mk || !lv) return alert('Nhập đủ thông tin!');
-
-            db.accounts.push({ uploader: currentUser, tk, mk, lv, time: new Date().toLocaleDateString() });
-            saveDB();
-            renderUser();
-            alert('Thành công!');
+            db.accounts.push({ id: Date.now(), uploader: currentUser, tk, mk, lv });
+            saveDB(); renderUser();
+            alert('Đã up xong!');
             document.querySelectorAll('#user-page input').forEach(i => i.value = '');
         }
 
+        // COPY FUNCTION
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('Đã copy: ' + text);
+        }
+
+        // ADMIN DELETE ACC
+        function deleteAcc(id) {
+            if(confirm('Xóa acc này khỏi hệ thống?')) {
+                db.accounts = db.accounts.filter(a => a.id !== id);
+                saveDB(); renderAdmin();
+            }
+        }
+
         function renderAdmin() {
+            const search = document.getElementById('admin-search').value.toLowerCase();
             const container = document.getElementById('admin-list');
-            container.innerHTML = db.accounts.map(acc => `
-                <div class="glass p-5 rounded-2xl flex justify-between items-center border-l-4 border-yellow-500">
-                    <div>
-                        <div class="text-[10px] text-slate-500 font-black uppercase mb-1">Uploader: ${acc.uploader}</div>
-                        <div class="font-bold text-blue-400">${acc.tk}</div>
-                        <div class="text-xs text-slate-400 font-mono">Pass: ${acc.mk}</div>
+            const filtered = db.accounts.filter(a => a.tk.toLowerCase().includes(search) || a.uploader.toLowerCase().includes(search));
+            
+            container.innerHTML = filtered.map(acc => `
+                <div class="glass p-5 rounded-3xl flex justify-between items-center border-l-4 border-l-blue-500 shadow-md">
+                    <div class="flex-1">
+                        <div class="text-[10px] text-blue-500 font-black uppercase mb-1">Up bởi: ${acc.uploader}</div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="font-bold text-white text-base">${acc.tk}</span>
+                            <button onclick="copyText('${acc.tk}')" class="text-slate-500 hover:text-white"><i class="fa-solid fa-copy text-xs"></i></button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-slate-400 font-mono italic">MK: ${acc.mk}</span>
+                            <button onclick="copyText('${acc.mk}')" class="text-slate-500 hover:text-white"><i class="fa-solid fa-copy text-[10px]"></i></button>
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <div class="text-2xl font-black text-white">LV.${acc.lv}</div>
-                        <div class="text-[10px] text-slate-600">${acc.time || ''}</div>
+                    <div class="flex flex-col items-end gap-2">
+                        <div class="text-xl font-black text-blue-400">LV.${acc.lv}</div>
+                        <button onclick="deleteAcc(${acc.id})" class="text-red-500/50 hover:text-red-500 text-xs px-2 py-1 glass rounded-lg border-none"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
             `).reverse().join('');
@@ -184,14 +174,13 @@
             const container = document.getElementById('user-list');
             const myAccs = db.accounts.filter(a => a.uploader === currentUser);
             container.innerHTML = myAccs.map(acc => `
-                <div class="glass p-5 rounded-3xl flex justify-between items-center border-l-4 border-blue-500 shadow-md">
+                <div class="glass p-5 rounded-2xl flex justify-between items-center border-l-2 border-l-slate-700">
                     <div>
-                        <div class="font-bold text-lg">${acc.tk}</div>
-                        <div class="text-sm text-slate-400 font-mono italic">MK: ${acc.mk}</div>
+                        <div class="font-bold text-blue-400">${acc.tk}</div>
+                        <div class="text-xs text-slate-500 font-mono">Pass: ${acc.mk}</div>
                     </div>
                     <div class="text-right">
-                        <div class="text-2xl font-black text-blue-500">${acc.lv}</div>
-                        <div class="text-[10px] text-slate-600 uppercase font-bold">Level</div>
+                        <div class="text-lg font-black text-white">LV.${acc.lv}</div>
                     </div>
                 </div>
             `).reverse().join('');
