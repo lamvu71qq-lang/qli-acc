@@ -1,506 +1,195 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Nebula Vault v5</title>
-    <!-- Tailwind v2 from cdnjs — no CDN warning, works on GitHub Pages -->
+    <title>Nebula Vault v5 - Edit Mode</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
-```
 <style>
-    :root {
-        --neon-blue: #00f2ff;
-        --neon-pink: #ff00e5;
-        --neon-yellow: #facc15;
-        --neon-green: #00ff88;
-    }
-
+    :root { --neon-blue: #00f2ff; --neon-pink: #ff00e5; --neon-yellow: #facc15; }
     * { box-sizing: border-box; }
-
     body {
         background: radial-gradient(ellipse at top right, #1e1b4b 0%, #0a0a1a 60%, #020617 100%);
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-family: 'Segoe UI', system-ui, sans-serif;
         -webkit-tap-highlight-color: transparent;
-        min-height: 100vh;
-        min-height: 100dvh;
-        color: white;
-        overflow-x: hidden;
+        min-height: 100vh; color: white; overflow-x: hidden;
     }
-
-    
-    /* Tailwind v2 missing utilities */
-    .min-h-dvh { min-height: 100dvh; }
-    .min-h-screen { min-height: 100vh; }
-
-    /* Subtle animated background grid */
-    body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(0,242,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,242,255,0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    body > div { position: relative; z-index: 1; }
-
     .glass {
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+        background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.6);
     }
-
     .glass-strong {
-        background: rgba(255, 255, 255, 0.07);
-        backdrop-filter: blur(40px);
-        -webkit-backdrop-filter: blur(40px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
-
     .btn-rainbow {
         background: linear-gradient(135deg, #ff00e5, #9d00ff, #00f2ff, #00ff88);
-        background-size: 300% 300%;
-        animation: gradientMove 4s ease infinite;
-        color: white;
-        border: none;
-        font-weight: 900;
-        letter-spacing: 0.05em;
-        transition: transform 0.1s, box-shadow 0.2s;
-        box-shadow: 0 4px 24px rgba(0,242,255,0.25);
+        background-size: 300% 300%; animation: gradientMove 4s ease infinite;
+        font-weight: 900; transition: transform 0.1s; box-shadow: 0 4px 24px rgba(0,242,255,0.25);
     }
-    .btn-rainbow:active { transform: scale(0.97); box-shadow: 0 2px 10px rgba(0,242,255,0.15); }
-
-    @keyframes gradientMove {
-        0%   { background-position: 0% 50%; }
-        50%  { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
+    .btn-rainbow:active { transform: scale(0.97); }
+    @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     .hidden { display: none !important; }
-
-    .tab-active {
-        border-bottom: 3px solid var(--neon-blue);
-        color: var(--neon-blue);
-        background: linear-gradient(to bottom, transparent, rgba(0,242,255,0.12));
-    }
-
-    input, textarea {
-        background: rgba(0, 0, 0, 0.5) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
-        outline: none !important;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    input:focus, textarea:focus {
-        border-color: rgba(0,242,255,0.5) !important;
-        box-shadow: 0 0 0 3px rgba(0,242,255,0.08) !important;
-    }
-    input::placeholder { color: rgba(255,255,255,0.25) !important; }
-
-    .stat-card {
-        background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.08));
-        border: 1px solid rgba(255,255,255,0.06);
-        flex-shrink: 0;
-    }
-
-    /* Page transitions */
-    .page { transition: opacity 0.3s ease; }
-    .page.fade-in { animation: fadeUp 0.4s ease forwards; }
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-
+    .tab-active { border-bottom: 3px solid var(--neon-blue); color: var(--neon-blue); background: linear-gradient(to bottom, transparent, rgba(0,242,255,0.12)); }
+    input { background: rgba(0, 0, 0, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none !important; }
+    .stat-card { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.08)); border: 1px solid rgba(255, 255, 255, 0.06); flex-shrink: 0; }
     .animate-fade { animation: fadeUp 0.35s ease forwards; }
-
-    /* Account cards */
-    .acc-card {
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .acc-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-
-    /* Login page glow orbs */
-    .orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.15;
-        pointer-events: none;
-        animation: float 8s ease-in-out infinite;
-    }
-    .orb-1 { width: 400px; height: 400px; background: #9d00ff; top: -100px; right: -100px; }
-    .orb-2 { width: 300px; height: 300px; background: #00f2ff; bottom: -50px; left: -80px; animation-delay: -4s; }
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-20px) scale(1.05); }
-    }
-
-    /* Copy toast */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     .toast {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%) translateY(100px);
-        background: rgba(0,242,255,0.15);
-        border: 1px solid rgba(0,242,255,0.4);
-        color: #00f2ff;
-        padding: 12px 24px;
-        border-radius: 100px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        z-index: 9999;
-        white-space: nowrap;
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+        background: rgba(0,242,255,0.15); border: 1px solid rgba(0,242,255,0.4); color: #00f2ff;
+        padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 9999;
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; height: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(0,242,255,0.2); border-radius: 4px; }
-
-    /* User card pill */
-    .user-pill {
-        background: linear-gradient(135deg, rgba(250,204,21,0.1), rgba(234,88,12,0.08));
-        border: 1px solid rgba(250,204,21,0.15);
-    }
-
-    /* Neon text glow */
-    .text-glow-cyan { text-shadow: 0 0 20px rgba(0,242,255,0.6); }
-    .text-glow-pink { text-shadow: 0 0 20px rgba(255,0,229,0.6); }
-
-    /* Delete button */
-    .btn-delete {
-        background: rgba(239,68,68,0.12);
-        border: 1px solid rgba(239,68,68,0.25);
-        color: #f87171;
-        transition: background 0.2s;
-    }
-    .btn-delete:active { background: rgba(239,68,68,0.25); }
-
-    /* Level badge */
-    .lv-badge {
-        background: linear-gradient(135deg, #facc15, #f97316);
-        color: #1a0a00;
-        font-weight: 900;
-        font-size: 10px;
-        padding: 2px 8px;
-        border-radius: 100px;
-        letter-spacing: 0.05em;
-    }
+    .lv-badge { background: linear-gradient(135deg, #facc15, #f97316); color: #1a0a00; font-weight: 900; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
+    .btn-delete { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #f87171; }
+    .btn-edit { background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; }
 </style>
-```
-
 </head>
 <body>
 
-```
-<!-- Background Orbs -->
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-
-<!-- Toast Notification -->
 <div id="toast" class="toast"></div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--              LOGIN PAGE                      -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="login-page" class="page flex items-center justify-center min-h-screen min-h-dvh p-6">
+<!-- LOGIN PAGE -->
+<div id="login-page" class="flex items-center justify-center min-h-screen p-6">
     <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center">
-        <div class="relative w-20 h-20 mx-auto mb-8">
-            <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-purple-600 rounded-[1.5rem] rotate-12 opacity-70 blur-sm"></div>
-            <div class="relative w-full h-full bg-gradient-to-tr from-cyan-500 to-purple-600 rounded-[1.5rem] rotate-12 flex items-center justify-center shadow-2xl">
-                <i class="fa-solid fa-cloud text-3xl text-white -rotate-12"></i>
-            </div>
-        </div>
-
-        <h1 class="text-5xl font-black tracking-tighter uppercase italic mb-1 text-glow-cyan">
-            NEBULA<span class="text-cyan-400">V5</span>
-        </h1>
-        <p class="text-[9px] text-slate-500 tracking-[0.35em] uppercase mb-10">REALTIME DATABASE ACTIVE</p>
-
+        <h1 class="text-5xl font-black italic mb-2 tracking-tighter">NEBULA<span class="text-cyan-400">V5</span></h1>
+        <p class="text-[9px] text-slate-500 tracking-[0.35em] mb-10 uppercase">Cloud Database System</p>
         <div class="space-y-3">
-            <input
-                type="text"
-                id="user"
-                placeholder="Username"
-                class="w-full p-4 rounded-2xl text-sm"
-                onkeydown="if(event.key==='Enter') login()"
-            >
-            <input
-                type="password"
-                id="pass"
-                placeholder="Password"
-                class="w-full p-4 rounded-2xl text-sm"
-                onkeydown="if(event.key==='Enter') login()"
-            >
-            <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl text-base mt-2 uppercase tracking-wide">
-                VÀO HỆ THỐNG
-            </button>
+            <input type="text" id="user" placeholder="Username" class="w-full p-4 rounded-2xl text-sm">
+            <input type="password" id="pass" placeholder="Password" class="w-full p-4 rounded-2xl text-sm">
+            <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl text-base mt-2 uppercase">VÀO HỆ THỐNG</button>
         </div>
-
-        <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold tracking-wide">
-            ✕ Sai tài khoản hoặc mật khẩu
-        </p>
-
-        <p class="mt-8 text-[9px] text-slate-600 tracking-widest">NEBULA VAULT • CLOUD EDITION</p>
+        <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold">✕ Sai thông tin đăng nhập</p>
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--              ADMIN PAGE                      -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="admin-page" class="hidden page p-4 pt-10 pb-20">
+<!-- ADMIN PAGE -->
+<div id="admin-page" class="hidden p-4 pt-10 pb-20">
     <div class="max-w-2xl mx-auto">
-
-        <!-- Header -->
         <header class="flex justify-between items-center mb-8 px-2">
-            <div>
-                <p class="text-[9px] text-slate-500 tracking-[0.3em] uppercase mb-1">Logged in as</p>
-                <h2 class="text-2xl font-black italic text-glow-cyan">
-                    MASTER <span class="text-cyan-400">ADMIN</span>
-                </h2>
-            </div>
-            <button onclick="logout()" class="w-11 h-11 glass rounded-xl flex items-center justify-center text-red-400 hover:bg-red-500/10 transition-colors">
-                <i class="fa-solid fa-power-off"></i>
-            </button>
+            <h2 class="text-2xl font-black italic">MASTER <span class="text-cyan-400">ADMIN</span></h2>
+            <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400"><i class="fa-solid fa-power-off"></i></button>
         </header>
-
-        <!-- Global Stats -->
-        <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8 scrollbar-hide"></div>
-
-        <!-- Tabs -->
-        <div class="flex gap-1 mb-8 p-1 glass rounded-2xl text-[10px] font-black tracking-widest uppercase">
-            <button id="tab-acc-btn"  onclick="switchAdminTab('acc')"  class="flex-1 py-3.5 rounded-xl tab-active transition-all">
-                <i class="fa-solid fa-list mr-1.5"></i>Tất cả Acc
-            </button>
-            <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3.5 rounded-xl transition-all">
-                <i class="fa-solid fa-users mr-1.5"></i>Quản lý User
-            </button>
+        <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
+        <div class="flex gap-1 mb-8 p-1 glass rounded-2xl text-[10px] font-black uppercase">
+            <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3.5 rounded-xl tab-active">Tất cả Acc</button>
+            <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3.5 rounded-xl">Quản lý User</button>
         </div>
-
-        <!-- Tab: Accounts -->
         <div id="admin-tab-acc" class="animate-fade">
-            <div class="glass p-6 rounded-[2rem] mb-6 border-t-2 border-cyan-500/20">
-                <p class="text-[9px] font-black text-cyan-400/70 tracking-widest uppercase mb-4">UP ACC MỚI (ROOT)</p>
+            <div class="glass p-6 rounded-[2rem] mb-6">
                 <div class="space-y-3">
-                    <input type="text"   id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
-                    <input type="text"   id="ad-acc-mk" placeholder="Mật khẩu game"  class="w-full p-3.5 rounded-xl text-sm">
-                    <input type="number" id="ad-acc-lv" placeholder="Level"           class="w-full p-3.5 rounded-xl text-sm">
-                    <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase tracking-widest">
-                        <i class="fa-solid fa-upload mr-2"></i>Up Acc Root
-                    </button>
+                    <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
+                    <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
+                    <input type="number" id="ad-acc-lv" placeholder="Level" class="w-full p-3.5 rounded-xl text-sm">
+                    <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Up Acc Root</button>
                 </div>
             </div>
-
-            <!-- Filter bar -->
-            <div class="flex gap-2 items-center mb-4">
-                <input type="text" id="admin-search" placeholder="🔍  Tìm kiếm acc..." class="flex-1 p-3 rounded-xl text-xs" oninput="renderUI()">
-            </div>
-
             <div id="admin-list-accs" class="space-y-3"></div>
         </div>
-
-        <!-- Tab: Users -->
         <div id="admin-tab-user" class="hidden animate-fade">
-            <div class="glass p-6 rounded-[2rem] mb-6 border-t-2 border-yellow-500/20">
-                <p class="text-[9px] font-black text-yellow-400/70 tracking-widest uppercase mb-4">CẤP TÀI KHOẢN MỚI</p>
+            <div class="glass p-6 rounded-[2rem] mb-6">
                 <div class="space-y-3">
-                    <input type="text" id="new-u" placeholder="Tên User"   class="w-full p-3.5 rounded-xl text-sm">
-                    <input type="text" id="new-p" placeholder="Mật khẩu"  class="w-full p-3.5 rounded-xl text-sm">
-                    <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase tracking-widest">
-                        <i class="fa-solid fa-user-plus mr-2"></i>Cấp Tài Khoản
-                    </button>
+                    <input type="text" id="new-u" placeholder="Tên User" class="w-full p-3.5 rounded-xl text-sm">
+                    <input type="text" id="new-p" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
+                    <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Cấp Tài Khoản</button>
                 </div>
             </div>
             <div id="admin-list-users" class="space-y-3"></div>
         </div>
-
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--              USER PAGE                       -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="user-page" class="hidden page p-4 pt-10 pb-20">
+<!-- USER PAGE -->
+<div id="user-page" class="hidden p-4 pt-10 pb-20">
     <div class="max-w-2xl mx-auto">
-
-        <!-- Header -->
         <header class="flex justify-between items-center mb-8 px-2">
-            <div>
-                <p class="text-[9px] text-slate-500 tracking-[0.3em] uppercase mb-1">Welcome back</p>
-                <h2 class="text-2xl font-black uppercase italic text-glow-pink">
-                    <span id="user-name" class="text-pink-400"></span>
-                </h2>
-            </div>
-            <button onclick="logout()" class="glass px-4 py-2 rounded-xl text-[9px] font-black tracking-widest text-slate-400 hover:text-red-400 transition-colors">
-                THOÁT
-            </button>
+            <h2 class="text-2xl font-black italic uppercase"><span id="user-name" class="text-pink-400"></span></h2>
+            <button onclick="logout()" class="text-[9px] font-black tracking-widest text-slate-400 underline">THOÁT</button>
         </header>
-
-        <!-- User Stats -->
         <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
-
-        <!-- Post form -->
-        <div class="glass-strong p-7 rounded-[2.5rem] mb-8 border-t-2 border-pink-500/20">
-            <p class="text-[9px] font-black text-pink-400/70 tracking-widest uppercase mb-5">ĐĂNG ACC MỚI</p>
+        <div class="glass-strong p-7 rounded-[2.5rem] mb-8">
             <div class="space-y-3">
-                <input type="text"   id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
-                <input type="text"   id="acc-mk" placeholder="Mật khẩu"  class="w-full p-4 rounded-2xl text-sm">
-                <input type="number" id="acc-lv" placeholder="Level"     class="w-full p-4 rounded-2xl text-sm">
-                <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase tracking-wide active:scale-95">
-                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i>ĐĂNG ACC MỚI
-                </button>
+                <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
+                <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
+                <input type="number" id="acc-lv" placeholder="Level" class="w-full p-4 rounded-2xl text-sm">
+                <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase">ĐĂNG ACC MỚI</button>
             </div>
-        </div>
-
-        <!-- User's own accounts -->
-        <div class="flex justify-between items-center mb-4 px-1">
-            <p class="text-[9px] font-black text-slate-500 tracking-widest uppercase">Acc của bạn</p>
-            <span id="user-acc-count" class="text-[9px] font-black text-cyan-400/60"></span>
         </div>
         <div id="user-list" class="space-y-3"></div>
-
     </div>
 </div>
 
-
 <script>
-// ─────────────────────────────────────────────────────────────────
-//  STEP 1: Dynamically load Firebase SDKs, then boot the app
-//  This prevents "Can't find variable: firebase" on iOS Safari
-// ─────────────────────────────────────────────────────────────────
 function loadScript(src) {
     return new Promise((resolve, reject) => {
         const s = document.createElement('script');
-        s.src = src;
-        s.onload  = resolve;
-        s.onerror = () => reject(new Error('Failed to load: ' + src));
+        s.src = src; s.onload = resolve; s.onerror = reject;
         document.head.appendChild(s);
     });
 }
 
-function showFatalError(msg) {
-    document.body.innerHTML = `
-        <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;background:#020617;">
-            <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.35);border-radius:20px;padding:32px;max-width:420px;text-align:center;color:white;font-family:monospace;">
-                <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
-                <h2 style="font-size:18px;font-weight:900;color:#f87171;margin-bottom:12px;letter-spacing:.05em;">FIREBASE LOAD FAILED</h2>
-                <p style="font-size:12px;color:#94a3b8;line-height:1.8;">${msg}</p>
-                <p style="font-size:11px;color:#64748b;margin-top:16px;border-top:1px solid rgba(255,255,255,0.05);padding-top:12px;">
-                    Kiểm tra kết nối mạng và thử lại.<br>
-                    Nếu dùng GitHub Pages, đảm bảo deploy đúng cách.
-                </p>
-                <button onclick="location.reload()" style="margin-top:20px;background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:#00f2ff;padding:10px 24px;border-radius:100px;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:.08em;">
-                    THỬ LẠI
-                </button>
-            </div>
-        </div>`;
-}
-
-// Load SEQUENTIALLY: database-compat requires app-compat to exist first
-// Use jsDelivr — it reliably hosts all Firebase 9.x individual module files
 loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
     .then(() => loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
-    .then(bootApp)
-    .catch(err => showFatalError(err.message));
+    .then(bootApp);
 
-// ─────────────────────────────────────────────────────────────────
-//  STEP 2: Everything inside bootApp() runs AFTER SDKs are loaded
-// ─────────────────────────────────────────────────────────────────
 function bootApp() {
     const firebaseConfig = {
-        apiKey:            "AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",
-        authDomain:        "cccc-1e4fe.firebaseapp.com",
-        databaseURL:       "https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId:         "cccc-1e4fe",
-        storageBucket:     "cccc-1e4fe.firebasestorage.app",
+        apiKey: "AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",
+        authDomain: "cccc-1e4fe.firebaseapp.com",
+        databaseURL: "https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "cccc-1e4fe",
+        storageBucket: "cccc-1e4fe.firebasestorage.app",
         messagingSenderId: "23606175445",
-        appId:             "1:23606175445:web:9cb963552b352cf308e45c"
+        appId: "1:23606175445:web:9cb963552b352cf308e45c"
     };
 
-    let dbRef;
-    try {
-        firebase.initializeApp(firebaseConfig);
-        dbRef = firebase.database().ref('NEBULA_DATA_V5');
-    } catch(e) {
-        showFatalError(e.message); return;
-    }
+    firebase.initializeApp(firebaseConfig);
+    const dbRef = firebase.database().ref('NEBULA_DATA_V5');
 
-    // ── STATE ──────────────────────────────────────────────────
-    const ADMIN     = { u: 'gbao', p: '031008' };
-    let db          = { users: [], accounts: [] };
+    const ADMIN = { u: 'gbao', p: '031008' };
+    let db = { users: [], accounts: [] };
     let currentMode = '';
     let currentUser = null;
 
-    // ── REALTIME SYNC ──────────────────────────────────────────
     dbRef.on('value', (snapshot) => {
         const data = snapshot.val();
-        // Firebase stores arrays as objects {0:{}, 1:{}} — convert back to real arrays
         const toArr = v => v ? (Array.isArray(v) ? v : Object.values(v)) : [];
-        db.users    = toArr(data && data.users);
+        db.users = toArr(data && data.users);
         db.accounts = toArr(data && data.accounts);
         if (currentMode) renderUI();
-    }, (err) => {
-        showFatalError('Database error: ' + err.message +
-            '<br><br>Vào Firebase Console → Realtime Database → Rules và set <b style="color:#fbbf24">.read / .write = true</b>');
     });
 
-    function sync() {
-        return dbRef.set({ users: db.users, accounts: db.accounts });
-    }
+    function sync() { return dbRef.set({ users: db.users, accounts: db.accounts }); }
 
-    // ── AUTH ───────────────────────────────────────────────────
     window.login = function() {
         const u = document.getElementById('user').value.trim();
         const p = document.getElementById('pass').value.trim();
-        if (!u || !p) { showError('Vui lòng nhập đầy đủ thông tin'); return; }
-
         if (u === ADMIN.u && p === ADMIN.p) {
-            currentMode = 'admin';
-            showPage('admin-page');
-            renderUI();
-            return;
-        }
-        const user = db.users.find(x => x.u === u && x.p === p);
-        if (user) {
-            currentMode = 'user';
-            currentUser = user;
-            document.getElementById('user-name').innerText = u.toUpperCase();
-            showPage('user-page');
-            renderUI();
+            currentMode = 'admin'; showPage('admin-page'); renderUI();
         } else {
-            const e = document.getElementById('login-error');
-            e.classList.remove('hidden');
-            setTimeout(() => e.classList.add('hidden'), 3000);
+            const user = db.users.find(x => x.u === u && x.p === p);
+            if (user) {
+                currentMode = 'user'; currentUser = user;
+                document.getElementById('user-name').innerText = u;
+                showPage('user-page'); renderUI();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
         }
     };
 
-    window.logout = function() {
-        currentMode = ''; currentUser = null;
-        showPage('login-page');
-        document.getElementById('user').value = '';
-        document.getElementById('pass').value = '';
-    };
+    window.logout = function() { location.reload(); };
 
-    // ── ACCOUNT OPERATIONS ─────────────────────────────────────
     window.postAcc = function() {
         const tk = document.getElementById('acc-tk').value.trim();
         const mk = document.getElementById('acc-mk').value.trim();
         const lv = document.getElementById('acc-lv').value.trim();
-        if (!tk || !mk || !lv) { showToast('Điền đầy đủ thông tin!'); return; }
+        if (!tk || !mk || !lv) return;
         db.accounts.push({ id: Date.now(), uploader: currentUser.u, tk, mk, lv: Number(lv) });
-        sync().then(() => showToast('✓ Đăng acc thành công'));
+        sync().then(() => { showToast('✓ Đã đăng acc'); renderUI(); });
         ['acc-tk','acc-mk','acc-lv'].forEach(id => document.getElementById(id).value = '');
     };
 
@@ -508,129 +197,113 @@ function bootApp() {
         const tk = document.getElementById('ad-acc-tk').value.trim();
         const mk = document.getElementById('ad-acc-mk').value.trim();
         const lv = document.getElementById('ad-acc-lv').value.trim();
-        if (!tk || !mk || !lv) { showToast('Điền đầy đủ thông tin!'); return; }
+        if (!tk || !mk || !lv) return;
         db.accounts.push({ id: Date.now(), uploader: 'ADMIN', tk, mk, lv: Number(lv) });
-        sync().then(() => showToast('✓ Up acc thành công'));
+        sync().then(() => showToast('✓ Up acc Root thành công'));
         ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(id => document.getElementById(id).value = '');
     };
 
+    // --- TÍNH NĂNG MỚI: CHỈNH SỬA LEVEL ---
+    window.editLv = function(id) {
+        const acc = db.accounts.find(a => a.id === id);
+        if (!acc) return;
+        const newLv = prompt(`Nhập Level mới cho [${acc.tk}]:`, acc.lv);
+        if (newLv === null || newLv === "" || isNaN(newLv)) return;
+        acc.lv = Number(newLv);
+        sync().then(() => showToast('✓ Đã cập nhật LV: ' + newLv));
+    };
+
     window.deleteAcc = function(id) {
+        if(!confirm('Xác nhận xóa acc này?')) return;
         db.accounts = db.accounts.filter(a => a.id !== id);
         sync().then(() => showToast('✕ Đã xoá acc'));
     };
 
-    // ── USER MANAGEMENT ────────────────────────────────────────
     window.addUser = function() {
         const u = document.getElementById('new-u').value.trim();
         const p = document.getElementById('new-p').value.trim();
-        if (!u || !p) { showToast('Nhập đủ tên và mật khẩu!'); return; }
-        if (db.users.find(x => x.u === u)) { showToast('Tên user đã tồn tại!'); return; }
-        db.users.push({ u, p, createdAt: Date.now() });
-        sync().then(() => showToast('✓ Đã cấp tài khoản: ' + u));
-        ['new-u','new-p'].forEach(id => document.getElementById(id).value = '');
+        if (!u || !p) return;
+        db.users.push({ u, p });
+        sync().then(() => showToast('✓ Đã cấp tài khoản'));
+        document.getElementById('new-u').value = ''; document.getElementById('new-p').value = '';
     };
 
     window.deleteUser = function(u) {
+        if(!confirm('Xóa user này?')) return;
         db.users = db.users.filter(x => x.u !== u);
-        sync().then(() => showToast('✕ Đã xoá user: ' + u));
+        db.accounts = db.accounts.filter(x => x.uploader !== u);
+        sync().then(() => showToast('✕ Đã xoá user'));
     };
 
-    // ── RENDER ─────────────────────────────────────────────────
     function renderUI() {
-        if (currentMode === 'admin') renderAdmin();
-        if (currentMode === 'user')  renderUser();
-    }
-
-    function renderAdmin() {
-        document.getElementById('admin-global-stats').innerHTML =
-            statCard('fa-database',     db.accounts.length,                                   'Tổng Acc',   '#00f2ff') +
-            statCard('fa-users',        db.users.length,                                      'Tổng User',  '#a855f7') +
-            statCard('fa-crown',        db.accounts.filter(a=>a.lv>=100).length,              'LV 100+',    '#facc15') +
-            statCard('fa-shield-halved',db.accounts.filter(a=>a.uploader==='ADMIN').length,   'Acc Root',   '#f97316');
-
-        const search   = (document.getElementById('admin-search') ? document.getElementById('admin-search').value : '').toLowerCase();
-        const filtered = db.accounts.filter(a =>
-            !search || a.tk.toLowerCase().includes(search) || a.uploader.toLowerCase().includes(search)
-        );
-        document.getElementById('admin-list-accs').innerHTML =
-            filtered.length === 0 ? emptyState('Không có acc nào') : filtered.slice().reverse().map(a => accCard(a, true)).join('');
-
-        document.getElementById('admin-list-users').innerHTML =
-            db.users.length === 0 ? emptyState('Chưa có user nào') : db.users.slice().reverse().map(userCard).join('');
-    }
-
-    function renderUser() {
-        const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
-        document.getElementById('user-global-stats').innerHTML =
-            statCard('fa-database',       db.accounts.length,                    'Tổng Acc',    '#00f2ff') +
-            statCard('fa-cloud-arrow-up', myAccs.length,                         'Acc của tôi', '#ff00e5') +
-            statCard('fa-crown',          myAccs.filter(a=>a.lv>=100).length,    'LV 100+',     '#facc15');
-
-        const countEl = document.getElementById('user-acc-count');
-        countEl.innerText = myAccs.length > 0 ? myAccs.length + ' acc' : '';
-
-        document.getElementById('user-list').innerHTML =
-            myAccs.length === 0 ? emptyState('Bạn chưa đăng acc nào') : myAccs.slice().reverse().map(a => accCard(a, false)).join('');
-    }
-
-    // ── CARD TEMPLATES ─────────────────────────────────────────
-    function statCard(icon, value, label, color) {
-        return '<div class="stat-card rounded-2xl p-4 text-center flex-shrink-0" style="min-width:110px">' +
-            '<i class="fa-solid ' + icon + ' text-lg mb-2" style="color:' + color + '"></i>' +
-            '<div class="text-2xl font-black" style="color:' + color + '">' + value + '</div>' +
-            '<div class="text-xs text-gray-500 font-bold uppercase mt-1" style="font-size:9px;letter-spacing:.1em">' + label + '</div>' +
-            '</div>';
+        if (currentMode === 'admin') {
+            renderAdminStats();
+            document.getElementById('admin-list-accs').innerHTML = db.accounts.slice().reverse().map(a => accCard(a, true)).join('');
+            document.getElementById('admin-list-users').innerHTML = db.users.slice().reverse().map(userCard).join('');
+        } else {
+            renderUserStats();
+            const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
+            document.getElementById('user-list').innerHTML = myAccs.slice().reverse().map(a => accCard(a, false)).join('');
+        }
     }
 
     function accCard(a, isAdmin) {
-        const canDelete = isAdmin || (currentUser && a.uploader === currentUser.u);
         const col = a.uploader === 'ADMIN' ? '#f97316' : '#a855f7';
-        return '<div class="acc-card glass p-5 rounded-2xl" style="border-left:3px solid ' + col + '40">' +
-            '<div class="flex justify-between items-start mb-3">' +
-                '<div style="display:flex;align-items:center;gap:8px">' +
-                    '<span class="lv-badge">LV ' + a.lv + '</span>' +
-                    '<span style="font-size:9px;font-weight:700;color:' + col + '">@' + a.uploader + '</span>' +
-                '</div>' +
-                (canDelete ? '<button onclick="deleteAcc(' + a.id + ')" class="btn-delete" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px"><i class="fa-solid fa-trash"></i></button>' : '') +
-            '</div>' +
-            '<div>' +
-                '<div class="flex justify-between items-center" style="margin-bottom:8px">' +
-                    '<div><p style="font-size:9px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Tài khoản</p>' +
-                    '<p style="font-size:14px;font-weight:700;font-family:monospace">' + a.tk + '</p></div>' +
-                    '<button onclick="copyText(\'' + escHtml(a.tk) + '\')" style="color:#64748b;padding:0 8px"><i class="fa-solid fa-copy"></i></button>' +
-                '</div>' +
-                '<div style="height:1px;background:rgba(255,255,255,0.04);margin-bottom:8px"></div>' +
-                '<div class="flex justify-between items-center">' +
-                    '<div><p style="font-size:9px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Mật khẩu</p>' +
-                    '<p style="font-size:14px;font-weight:700;font-family:monospace">' + a.mk + '</p></div>' +
-                    '<button onclick="copyText(\'' + escHtml(a.mk) + '\')" style="color:#64748b;padding:0 8px"><i class="fa-solid fa-copy"></i></button>' +
-                '</div>' +
-            '</div>' +
-            '</div>';
+        const canManage = isAdmin || (currentUser && a.uploader === currentUser.u);
+        return `
+            <div class="glass p-5 rounded-2xl animate-fade" style="border-left:3px solid ${col}40">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="lv-badge">LV ${a.lv}</span>
+                        <span class="text-[9px] font-bold" style="color:${col}">@${a.uploader}</span>
+                    </div>
+                    <div class="flex gap-2">
+                        ${canManage ? `<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>` : ''}
+                        ${canManage ? `<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>` : ''}
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span class="text-[10px] text-gray-500 uppercase">Tài khoản: <b>${a.tk}</b></span>
+                        <button onclick="copyText('${a.tk}')" class="text-gray-500 text-xs"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-[10px] text-gray-500 uppercase">Mật khẩu: <b>${a.mk}</b></span>
+                        <button onclick="copyText('${a.mk}')" class="text-gray-500 text-xs"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>`;
     }
 
     function userCard(u) {
-        const n = db.accounts.filter(a => a.uploader === u.u).length;
-        return '<div class="user-pill p-4 rounded-2xl flex justify-between items-center">' +
-            '<div style="display:flex;align-items:center;gap:12px">' +
-                '<div style="width:36px;height:36px;border-radius:10px;background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#facc15">' +
-                    u.u[0].toUpperCase() +
-                '</div>' +
-                '<div><p style="font-weight:700;font-size:14px">' + u.u + '</p>' +
-                '<p style="font-size:9px;color:#64748b">' + n + ' acc · pass: ' + u.p + '</p></div>' +
-            '</div>' +
-            '<button onclick="deleteUser(\'' + escHtml(u.u) + '\')" class="btn-delete" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px"><i class="fa-solid fa-user-xmark"></i></button>' +
-            '</div>';
+        return `
+            <div class="glass p-4 rounded-xl flex justify-between items-center">
+                <div><p class="font-bold text-sm">${u.u}</p><p class="text-[10px] text-gray-500">Pass: ${u.p}</p></div>
+                <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1 rounded-lg text-[10px] font-bold">XÓA</button>
+            </div>`;
     }
 
-    function emptyState(msg) {
-        return '<div style="text-align:center;padding:64px 0;color:#475569">' +
-            '<i class="fa-solid fa-inbox" style="font-size:40px;margin-bottom:16px;display:block;opacity:.3"></i>' +
-            '<p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">' + msg + '</p>' +
-            '</div>';
+    function renderAdminStats() {
+        document.getElementById('admin-global-stats').innerHTML = 
+            statBox('Acc', db.accounts.length, '#00f2ff') + statBox('Users', db.users.length, '#a855f7');
+    }
+    function renderUserStats() {
+        const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
+        document.getElementById('user-global-stats').innerHTML = 
+            statBox('Tổng Kho', db.accounts.length, '#00f2ff') + statBox('Của tôi', myAccs.length, '#ff00e5');
+    }
+    function statBox(lbl, val, col) {
+        return `<div class="stat-card p-4 rounded-2xl text-center min-w-[100px]"><p class="text-[9px] font-bold uppercase" style="color:${col}">${lbl}</p><p class="text-2xl font-black">${val}</p></div>`;
     }
 
-    // ── TABS ───────────────────────────────────────────────────
+    window.copyText = function(t) { navigator.clipboard.writeText(t).then(() => showToast('✓ Đã copy!')); };
+    function showPage(id) {
+        ['login-page','admin-page','user-page'].forEach(p => document.getElementById(p).classList.toggle('hidden', p !== id));
+    }
+    function showToast(m) {
+        const t = document.getElementById('toast'); t.innerText = m; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2000);
+    }
     window.switchAdminTab = function(tab) {
         const isAcc = tab === 'acc';
         document.getElementById('admin-tab-acc').classList.toggle('hidden', !isAcc);
@@ -638,55 +311,7 @@ function bootApp() {
         document.getElementById('tab-acc-btn').classList.toggle('tab-active', isAcc);
         document.getElementById('tab-user-btn').classList.toggle('tab-active', !isAcc);
     };
-
-    // ── UTILS ──────────────────────────────────────────────────
-    function showPage(pageId) {
-        ['login-page','admin-page','user-page'].forEach(id => {
-            document.getElementById(id).classList.toggle('hidden', id !== pageId);
-        });
-    }
-
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        t.innerText = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2200);
-    }
-
-    function showError(msg) {
-        const e = document.getElementById('login-error');
-        e.innerText = '✕ ' + msg;
-        e.classList.remove('hidden');
-        setTimeout(() => e.classList.add('hidden'), 3000);
-    }
-
-    window.copyText = function(text) {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(() => showToast('✓ Đã copy!'));
-        } else {
-            const ta = document.createElement('textarea');
-            ta.value = text; document.body.appendChild(ta);
-            ta.select(); document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToast('✓ Đã copy!');
-        }
-    };
-
-    function escHtml(str) {
-        return String(str).replace(/'/g, "\\'").replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-
-    // ── KEYBOARD SUPPORT ───────────────────────────────────────
-    document.getElementById('pass').addEventListener('keydown', e => {
-        if (e.key === 'Enter') window.login();
-    });
-    document.getElementById('user').addEventListener('keydown', e => {
-        if (e.key === 'Enter') window.login();
-    });
-
-} // end bootApp()
+}
 </script>
-```
-
 </body>
 </html>
