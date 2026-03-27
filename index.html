@@ -408,12 +408,12 @@ function showFatalError(msg) {
         </div>`;
 }
 
-Promise.all([
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/firebase/9.17.1/firebase-app-compat.min.js'),
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/firebase/9.17.1/firebase-database-compat.min.js')
-])
-.then(bootApp)
-.catch(err => showFatalError(err.message));
+// Load SEQUENTIALLY: database-compat requires app-compat to exist first
+// Use jsDelivr — it reliably hosts all Firebase 9.x individual module files
+loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
+    .then(() => loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
+    .then(bootApp)
+    .catch(err => showFatalError(err.message));
 
 // ─────────────────────────────────────────────────────────────────
 //  STEP 2: Everything inside bootApp() runs AFTER SDKs are loaded
