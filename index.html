@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Nebula Vault v5 - Edit Mode</title>
+    <title>Nebula Vault v5</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
@@ -17,12 +17,12 @@
         min-height: 100vh; color: white; overflow-x: hidden;
     }
     .glass {
-        background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-        border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        background: rgba(255,255,255,0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.6);
     }
     .glass-strong {
-        background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-        border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        background: rgba(255,255,255,0.07); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
     .btn-rainbow {
         background: linear-gradient(135deg, #ff00e5, #9d00ff, #00f2ff, #00ff88);
@@ -30,22 +30,45 @@
         font-weight: 900; transition: transform 0.1s; box-shadow: 0 4px 24px rgba(0,242,255,0.25);
     }
     .btn-rainbow:active { transform: scale(0.97); }
-    @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     .hidden { display: none !important; }
     .tab-active { border-bottom: 3px solid var(--neon-blue); color: var(--neon-blue); background: linear-gradient(to bottom, transparent, rgba(0,242,255,0.12)); }
-    input { background: rgba(0, 0, 0, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none !important; }
-    .stat-card { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.08)); border: 1px solid rgba(255, 255, 255, 0.06); flex-shrink: 0; }
+    input, textarea { background: rgba(0,0,0,0.5) !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; outline: none !important; }
+    textarea::placeholder, input::placeholder { color: rgba(255,255,255,0.3) !important; }
+    textarea { resize: vertical; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.6; }
+    .stat-card { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(147,51,234,0.08)); border: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
     .animate-fade { animation: fadeUp 0.35s ease forwards; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
     .toast {
         position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
         background: rgba(0,242,255,0.15); border: 1px solid rgba(0,242,255,0.4); color: #00f2ff;
-        padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 9999;
+        padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700;
+        transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 9999;
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
     .lv-badge { background: linear-gradient(135deg, #facc15, #f97316); color: #1a0a00; font-weight: 900; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
     .btn-delete { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #f87171; }
-    .btn-edit { background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; }
+    .btn-edit { background: rgba(0,242,255,0.1); border: 1px solid rgba(0,242,255,0.3); color: #00f2ff; }
+
+    /* BULK UPLOAD TOGGLE */
+    .mode-toggle { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; display: flex; padding: 4px; gap: 4px; }
+    .mode-btn { flex: 1; padding: 8px; border-radius: 10px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.2s; color: rgba(255,255,255,0.4); }
+    .mode-btn.active { background: rgba(0,242,255,0.15); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); }
+
+    /* BULK PREVIEW */
+    .bulk-preview-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px; font-size: 11px; }
+    .bulk-preview-item.ok { background: rgba(0,255,136,0.07); border: 1px solid rgba(0,255,136,0.15); }
+    .bulk-preview-item.err { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.15); color: #f87171; }
+
+    /* USER STATS IN ADMIN */
+    .user-acc-bar { height: 4px; border-radius: 100px; background: linear-gradient(90deg, #00f2ff, #a855f7); transition: width 0.6s ease; }
+    .user-card-expanded { border-color: rgba(0,242,255,0.25) !important; }
+    .acc-mini-tag { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.07); padding: 3px 8px; border-radius: 8px; font-size: 10px; font-family: 'Courier New', monospace; }
+
+    /* PROGRESS RING */
+    .progress-circle { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+    .progress-circle svg { transform: rotate(-90deg); }
+    .progress-circle .val { position: absolute; font-size: 13px; font-weight: 900; }
 </style>
 </head>
 <body>
@@ -78,17 +101,37 @@
             <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3.5 rounded-xl tab-active">Tất cả Acc</button>
             <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3.5 rounded-xl">Quản lý User</button>
         </div>
+
+        <!-- TAB: TẤT CẢ ACC -->
         <div id="admin-tab-acc" class="animate-fade">
             <div class="glass p-6 rounded-[2rem] mb-6">
-                <div class="space-y-3">
+                <!-- MODE TOGGLE ADMIN -->
+                <div class="mode-toggle mb-4">
+                    <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
+                    <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+                </div>
+                <!-- SINGLE MODE ADMIN -->
+                <div id="admin-single-mode" class="space-y-3">
                     <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
                     <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
                     <input type="number" id="ad-acc-lv" placeholder="Level" class="w-full p-3.5 rounded-xl text-sm">
                     <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Up Acc Root</button>
                 </div>
+                <!-- BULK MODE ADMIN -->
+                <div id="admin-bulk-mode" class="hidden space-y-3">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i>
+                        <span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></span>
+                    </div>
+                    <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|80&#10;player002|abc456|75&#10;player003|xyz789|90" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
+                    <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
+                    <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
+                </div>
             </div>
             <div id="admin-list-accs" class="space-y-3"></div>
         </div>
+
+        <!-- TAB: QUẢN LÝ USER -->
         <div id="admin-tab-user" class="hidden animate-fade">
             <div class="glass p-6 rounded-[2rem] mb-6">
                 <div class="space-y-3">
@@ -111,11 +154,27 @@
         </header>
         <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
         <div class="glass-strong p-7 rounded-[2.5rem] mb-8">
-            <div class="space-y-3">
+            <!-- MODE TOGGLE USER -->
+            <div class="mode-toggle mb-5">
+                <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
+                <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+            </div>
+            <!-- SINGLE MODE USER -->
+            <div id="user-single-mode" class="space-y-3">
                 <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
                 <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
                 <input type="number" id="acc-lv" placeholder="Level" class="w-full p-4 rounded-2xl text-sm">
                 <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase">ĐĂNG ACC MỚI</button>
+            </div>
+            <!-- BULK MODE USER -->
+            <div id="user-bulk-mode" class="hidden space-y-3">
+                <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-circle-info text-pink-400 text-xs"></i>
+                    <span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></span>
+                </div>
+                <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|80&#10;player002|abc456|75&#10;player003|xyz789|90" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
+                <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
+                <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
             </div>
         </div>
         <div id="user-list" class="space-y-3"></div>
@@ -124,9 +183,9 @@
 
 <script>
 function loadScript(src) {
-    return new Promise((resolve, reject) => {
+    return new Promise((res, rej) => {
         const s = document.createElement('script');
-        s.src = src; s.onload = resolve; s.onerror = reject;
+        s.src = src; s.onload = res; s.onerror = rej;
         document.head.appendChild(s);
     });
 }
@@ -164,15 +223,16 @@ function bootApp() {
 
     function sync() { return dbRef.set({ users: db.users, accounts: db.accounts }); }
 
+    // ─── AUTH ─────────────────────────────────────────────
     window.login = function() {
         const u = document.getElementById('user').value.trim();
         const p = document.getElementById('pass').value.trim();
         if (u === ADMIN.u && p === ADMIN.p) {
             currentMode = 'admin'; showPage('admin-page'); renderUI();
         } else {
-            const user = db.users.find(x => x.u === u && x.p === p);
-            if (user) {
-                currentMode = 'user'; currentUser = user;
+            const found = db.users.find(x => x.u === u && x.p === p);
+            if (found) {
+                currentMode = 'user'; currentUser = found;
                 document.getElementById('user-name').innerText = u;
                 showPage('user-page'); renderUI();
             } else {
@@ -180,9 +240,9 @@ function bootApp() {
             }
         }
     };
-
     window.logout = function() { location.reload(); };
 
+    // ─── SINGLE POST ──────────────────────────────────────
     window.postAcc = function() {
         const tk = document.getElementById('acc-tk').value.trim();
         const mk = document.getElementById('acc-mk').value.trim();
@@ -203,7 +263,72 @@ function bootApp() {
         ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(id => document.getElementById(id).value = '');
     };
 
-    // --- TÍNH NĂNG MỚI: CHỈNH SỬA LEVEL ---
+    // ─── BULK PARSE ───────────────────────────────────────
+    function parseBulkLines(raw) {
+        return raw.split('\n').map((line, i) => {
+            const trimmed = line.trim();
+            if (!trimmed) return null;
+            const parts = trimmed.split('|');
+            if (parts.length < 3 || !parts[0] || !parts[1] || isNaN(parts[2]) || parts[2] === '') {
+                return { ok: false, line: trimmed, index: i + 1 };
+            }
+            return { ok: true, tk: parts[0].trim(), mk: parts[1].trim(), lv: Number(parts[2].trim()), index: i + 1 };
+        }).filter(Boolean);
+    }
+
+    window.previewBulk = function(who) {
+        const inputId = who === 'admin' ? 'admin-bulk-input' : 'user-bulk-input';
+        const previewId = who === 'admin' ? 'admin-bulk-preview' : 'user-bulk-preview';
+        const raw = document.getElementById(inputId).value;
+        const items = parseBulkLines(raw);
+        const okCount = items.filter(i => i.ok).length;
+        const errCount = items.filter(i => !i.ok).length;
+        const col = who === 'admin' ? 'text-cyan-400' : 'text-pink-400';
+        document.getElementById(previewId).innerHTML = items.length === 0 ? '' :
+            `<div class="text-[10px] mb-2 font-bold">
+                <span class="${col}">${okCount} acc hợp lệ</span>
+                ${errCount > 0 ? `<span class="text-red-400 ml-3">${errCount} lỗi định dạng</span>` : ''}
+            </div>` +
+            items.slice(0, 10).map(item => item.ok
+                ? `<div class="bulk-preview-item ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono">${item.tk}</span><span class="text-slate-500">|</span><span class="font-mono">${item.mk}</span><span class="lv-badge ml-auto">LV ${item.lv}</span></div>`
+                : `<div class="bulk-preview-item err"><i class="fa-solid fa-xmark text-[9px]"></i><span>Dòng ${item.index}: Sai định dạng → <code>${item.line.substring(0,30)}</code></span></div>`
+            ).join('') +
+            (items.length > 10 ? `<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length - 10} dòng khác</p>` : '');
+    };
+
+    // ─── BULK POST ────────────────────────────────────────
+    window.userBulkPost = function() {
+        const raw = document.getElementById('user-bulk-input').value;
+        const items = parseBulkLines(raw).filter(i => i.ok);
+        if (!items.length) { showToast('✕ Không có acc hợp lệ'); return; }
+        const ts = Date.now();
+        items.forEach((item, i) => {
+            db.accounts.push({ id: ts + i, uploader: currentUser.u, tk: item.tk, mk: item.mk, lv: item.lv });
+        });
+        sync().then(() => {
+            showToast(`✓ Đã đăng ${items.length} acc`);
+            document.getElementById('user-bulk-input').value = '';
+            document.getElementById('user-bulk-preview').innerHTML = '';
+            renderUI();
+        });
+    };
+
+    window.adminBulkPost = function() {
+        const raw = document.getElementById('admin-bulk-input').value;
+        const items = parseBulkLines(raw).filter(i => i.ok);
+        if (!items.length) { showToast('✕ Không có acc hợp lệ'); return; }
+        const ts = Date.now();
+        items.forEach((item, i) => {
+            db.accounts.push({ id: ts + i, uploader: 'ADMIN', tk: item.tk, mk: item.mk, lv: item.lv });
+        });
+        sync().then(() => {
+            showToast(`✓ Up ${items.length} acc Root thành công`);
+            document.getElementById('admin-bulk-input').value = '';
+            document.getElementById('admin-bulk-preview').innerHTML = '';
+        });
+    };
+
+    // ─── EDIT / DELETE ────────────────────────────────────
     window.editLv = function(id) {
         const acc = db.accounts.find(a => a.id === id);
         if (!acc) return;
@@ -214,7 +339,7 @@ function bootApp() {
     };
 
     window.deleteAcc = function(id) {
-        if(!confirm('Xác nhận xóa acc này?')) return;
+        if (!confirm('Xác nhận xóa acc này?')) return;
         db.accounts = db.accounts.filter(a => a.id !== id);
         sync().then(() => showToast('✕ Đã xoá acc'));
     };
@@ -229,17 +354,24 @@ function bootApp() {
     };
 
     window.deleteUser = function(u) {
-        if(!confirm('Xóa user này?')) return;
+        if (!confirm('Xóa user này?')) return;
         db.users = db.users.filter(x => x.u !== u);
         db.accounts = db.accounts.filter(x => x.uploader !== u);
         sync().then(() => showToast('✕ Đã xoá user'));
     };
 
+    // ─── TOGGLE USER ACC DETAILS ──────────────────────────
+    window.toggleUserAccs = function(u) {
+        const el = document.getElementById('user-accs-' + u);
+        if (el) el.classList.toggle('hidden');
+    };
+
+    // ─── RENDER ───────────────────────────────────────────
     function renderUI() {
         if (currentMode === 'admin') {
             renderAdminStats();
             document.getElementById('admin-list-accs').innerHTML = db.accounts.slice().reverse().map(a => accCard(a, true)).join('');
-            document.getElementById('admin-list-users').innerHTML = db.users.slice().reverse().map(userCard).join('');
+            document.getElementById('admin-list-users').innerHTML = renderAdminUsers();
         } else {
             renderUserStats();
             const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
@@ -275,41 +407,145 @@ function bootApp() {
             </div>`;
     }
 
-    function userCard(u) {
-        return `
-            <div class="glass p-4 rounded-xl flex justify-between items-center">
-                <div><p class="font-bold text-sm">${u.u}</p><p class="text-[10px] text-gray-500">Pass: ${u.p}</p></div>
-                <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1 rounded-lg text-[10px] font-bold">XÓA</button>
+    // ─── ADMIN USER LIST WITH ACC STATS ──────────────────
+    function renderAdminUsers() {
+        if (db.users.length === 0) return '<p class="text-center text-xs text-slate-600 py-8">Chưa có user nào</p>';
+        const maxAccs = Math.max(1, ...db.users.map(u => db.accounts.filter(a => a.uploader === u.u).length));
+        return db.users.slice().reverse().map(u => {
+            const userAccs = db.accounts.filter(a => a.uploader === u.u);
+            const count = userAccs.length;
+            const pct = Math.round((count / maxAccs) * 100);
+            const lvAvg = count > 0 ? Math.round(userAccs.reduce((s, a) => s + a.lv, 0) / count) : 0;
+            const lvMax = count > 0 ? Math.max(...userAccs.map(a => a.lv)) : 0;
+            const recentAccs = userAccs.slice().reverse().slice(0, 3);
+
+            return `
+            <div class="glass rounded-2xl overflow-hidden animate-fade" id="usercard-${u.u}">
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(0,242,255,0.1));border:1px solid rgba(168,85,247,0.3)">
+                                ${u.u.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm">${u.u}</p>
+                                <p class="text-[9px] text-slate-500">Pass: ${u.p}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[10px] font-bold">
+                                <i class="fa-solid fa-list mr-1"></i>${count} acc
+                            </button>
+                            <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[10px] font-bold">XÓA</button>
+                        </div>
+                    </div>
+
+                    <!-- STATS ROW -->
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1 text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)">
+                            <p class="text-[9px] text-cyan-400 font-bold uppercase">Tổng Acc</p>
+                            <p class="text-xl font-black text-cyan-300">${count}</p>
+                        </div>
+                        <div class="flex-1 text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)">
+                            <p class="text-[9px] text-yellow-400 font-bold uppercase">LV TB</p>
+                            <p class="text-xl font-black text-yellow-300">${lvAvg || '—'}</p>
+                        </div>
+                        <div class="flex-1 text-center p-2 rounded-xl" style="background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.1)">
+                            <p class="text-[9px] text-orange-400 font-bold uppercase">LV Max</p>
+                            <p class="text-xl font-black text-orange-300">${lvMax || '—'}</p>
+                        </div>
+                    </div>
+
+                    <!-- PROGRESS BAR -->
+                    <div class="flex items-center gap-2">
+                        <div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.05)">
+                            <div class="user-acc-bar" style="width:${pct}%"></div>
+                        </div>
+                        <span class="text-[9px] text-slate-500 font-bold">${pct}%</span>
+                    </div>
+                </div>
+
+                <!-- EXPANDABLE ACC LIST -->
+                <div id="user-accs-${u.u}" class="hidden px-4 pb-4">
+                    <div class="border-t border-white/5 pt-3 space-y-1.5">
+                        <p class="text-[9px] font-black uppercase text-slate-500 mb-2 tracking-widest">Acc gần nhất</p>
+                        ${recentAccs.length > 0 ? recentAccs.map(a => `
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="lv-badge text-[9px]">LV${a.lv}</span>
+                                    <span class="acc-mini-tag">${a.tk}</span>
+                                </div>
+                                <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-50 hover:opacity-100"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        `).join('') : '<p class="text-[10px] text-slate-600">Chưa có acc nào</p>'}
+                        ${count > 3 ? `<p class="text-[9px] text-slate-600 text-center pt-1">...và ${count - 3} acc khác</p>` : ''}
+                    </div>
+                </div>
             </div>`;
+        }).join('');
     }
 
+    // ─── STATS ────────────────────────────────────────────
     function renderAdminStats() {
-        document.getElementById('admin-global-stats').innerHTML = 
-            statBox('Acc', db.accounts.length, '#00f2ff') + statBox('Users', db.users.length, '#a855f7');
+        const adminAccs = db.accounts.filter(a => a.uploader === 'ADMIN').length;
+        const userAccs = db.accounts.filter(a => a.uploader !== 'ADMIN').length;
+        document.getElementById('admin-global-stats').innerHTML =
+            statBox('Tổng Acc', db.accounts.length, '#00f2ff') +
+            statBox('Users', db.users.length, '#a855f7') +
+            statBox('Root', adminAccs, '#f97316') +
+            statBox('By User', userAccs, '#00ff88');
     }
+
     function renderUserStats() {
         const myAccs = db.accounts.filter(a => a.uploader === currentUser.u);
-        document.getElementById('user-global-stats').innerHTML = 
-            statBox('Tổng Kho', db.accounts.length, '#00f2ff') + statBox('Của tôi', myAccs.length, '#ff00e5');
-    }
-    function statBox(lbl, val, col) {
-        return `<div class="stat-card p-4 rounded-2xl text-center min-w-[100px]"><p class="text-[9px] font-bold uppercase" style="color:${col}">${lbl}</p><p class="text-2xl font-black">${val}</p></div>`;
+        const myLvMax = myAccs.length > 0 ? Math.max(...myAccs.map(a => a.lv)) : 0;
+        document.getElementById('user-global-stats').innerHTML =
+            statBox('Tổng Kho', db.accounts.length, '#00f2ff') +
+            statBox('Của tôi', myAccs.length, '#ff00e5') +
+            statBox('LV Max', myLvMax || '—', '#facc15');
     }
 
+    function statBox(lbl, val, col) {
+        return `<div class="stat-card p-4 rounded-2xl text-center min-w-[90px]">
+            <p class="text-[9px] font-bold uppercase" style="color:${col}">${lbl}</p>
+            <p class="text-2xl font-black">${val}</p>
+        </div>`;
+    }
+
+    // ─── UI HELPERS ───────────────────────────────────────
     window.copyText = function(t) { navigator.clipboard.writeText(t).then(() => showToast('✓ Đã copy!')); };
+
     function showPage(id) {
         ['login-page','admin-page','user-page'].forEach(p => document.getElementById(p).classList.toggle('hidden', p !== id));
     }
+
     function showToast(m) {
         const t = document.getElementById('toast'); t.innerText = m; t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2000);
+        setTimeout(() => t.classList.remove('show'), 2500);
     }
+
     window.switchAdminTab = function(tab) {
         const isAcc = tab === 'acc';
         document.getElementById('admin-tab-acc').classList.toggle('hidden', !isAcc);
         document.getElementById('admin-tab-user').classList.toggle('hidden', isAcc);
         document.getElementById('tab-acc-btn').classList.toggle('tab-active', isAcc);
         document.getElementById('tab-user-btn').classList.toggle('tab-active', !isAcc);
+    };
+
+    window.switchAdminMode = function(mode) {
+        const isSingle = mode === 'single';
+        document.getElementById('admin-single-mode').classList.toggle('hidden', !isSingle);
+        document.getElementById('admin-bulk-mode').classList.toggle('hidden', isSingle);
+        document.getElementById('admin-mode-single-btn').classList.toggle('active', isSingle);
+        document.getElementById('admin-mode-bulk-btn').classList.toggle('active', !isSingle);
+    };
+
+    window.switchUserMode = function(mode) {
+        const isSingle = mode === 'single';
+        document.getElementById('user-single-mode').classList.toggle('hidden', !isSingle);
+        document.getElementById('user-bulk-mode').classList.toggle('hidden', isSingle);
+        document.getElementById('user-mode-single-btn').classList.toggle('active', isSingle);
+        document.getElementById('user-mode-bulk-btn').classList.toggle('active', !isSingle);
     };
 }
 </script>
