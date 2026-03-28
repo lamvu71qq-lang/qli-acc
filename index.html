@@ -1,64 +1,102 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Nebula Vault v5</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Nebula Vault v5</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <style>
-    :root{--neon-blue:#00f2ff;--neon-pink:#ff00e5;--neon-yellow:#facc15;--neon-green:#00ff88}
-    *{box-sizing:border-box}
-    body{background:radial-gradient(ellipse at top right,#1e1b4b 0%,#0a0a1a 60%,#020617 100%);font-family:'Segoe UI',system-ui,sans-serif;-webkit-tap-highlight-color:transparent;min-height:100vh;color:white;overflow-x:hidden}
-    .glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.6)}
-    .glass-strong{background:rgba(255,255,255,0.07);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.8)}
-    .btn-rainbow{background:linear-gradient(135deg,#ff00e5,#9d00ff,#00f2ff,#00ff88);background-size:300% 300%;animation:gradientMove 4s ease infinite;font-weight:900;transition:transform 0.1s;box-shadow:0 4px 24px rgba(0,242,255,0.25)}
-    .btn-rainbow:active{transform:scale(0.97)}
-    @keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .hidden{display:none!important}
-    .tab-active{border-bottom:3px solid var(--neon-blue);color:var(--neon-blue);background:linear-gradient(to bottom,transparent,rgba(0,242,255,0.12))}
-    input,textarea{background:rgba(0,0,0,0.5)!important;border:1px solid rgba(255,255,255,0.1)!important;color:white!important;outline:none!important}
-    textarea{resize:vertical;font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
-    textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
-    .stat-card{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(147,51,234,0.08));border:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-    .animate-fade{animation:fadeUp 0.35s ease forwards}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(0,242,255,0.15);border:1px solid rgba(0,242,255,0.4);color:#00f2ff;padding:12px 24px;border-radius:100px;font-size:13px;font-weight:700;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:9999}
-    .toast.show{transform:translateX(-50%) translateY(0)}
-    .lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:10px;padding:2px 8px;border-radius:100px}
-    .btn-delete{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);color:#f87171}
-    .btn-edit{background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:#00f2ff}
-    .mode-toggle{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;display:flex;padding:4px;gap:4px}
-    .mode-btn{flex:1;padding:8px;border-radius:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.2s;color:rgba(255,255,255,0.4)}
-    .mode-btn.active{background:rgba(0,242,255,0.15);color:#00f2ff;border:1px solid rgba(0,242,255,0.3)}
-    .bulk-ok{background:rgba(0,255,136,0.07);border:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-    .bulk-err{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-    .user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7);transition:width 0.6s ease}
-    .acc-mini-tag{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
-    /* STATUS */
-    .s-chua{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5}
-    .s-dang{background:rgba(250,204,21,0.12);border:1px solid rgba(250,204,21,0.3);color:#fde68a}
-    .s-xong{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);color:#86efac}
-    .dot-chua{width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
-    .dot-dang{width:7px;height:7px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
-    .dot-xong{width:7px;height:7px;border-radius:50%;background:#00ff88;display:inline-block}
-    @keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.5)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
-    @keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.5)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
-    /* BEE */
-    .bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.2);border-radius:24px;overflow:hidden;position:relative}
-    .bee-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#facc15,#f97316,transparent)}
-    .bee-avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 20px rgba(250,204,21,0.35)}
-    .bee-bubble{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:12px 14px;font-size:12px;line-height:1.75;color:#e2e8f0}
-    .bee-typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#facc15;animation:blink 1.2s infinite;margin-right:3px}
-    .bee-typing span:nth-child(2){animation-delay:0.2s}
-    .bee-typing span:nth-child(3){animation-delay:0.4s}
-    @keyframes blink{0%,80%,100%{opacity:0.2}40%{opacity:1}}
-    .bee-urgent-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
-    .bee-tip-box{background:rgba(0,242,255,0.06);border:1px solid rgba(0,242,255,0.15);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
-    /* PRIORITY CARD */
-    .card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.5),0 6px 24px rgba(239,68,68,0.15)!important}
-    .priority-ribbon{position:absolute;top:-10px;left:10px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:9px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.08em;z-index:5}
-    .acc-wrap{position:relative;padding-top:6px}
+:root{--neon-blue:#00f2ff;--neon-pink:#ff00e5;--neon-yellow:#facc15;--neon-green:#00ff88}
+*{box-sizing:border-box}
+body{background:radial-gradient(ellipse at top right,#1e1b4b 0%,#0a0a1a 60%,#020617 100%);font-family:'Segoe UI',system-ui,sans-serif;-webkit-tap-highlight-color:transparent;min-height:100vh;color:white;overflow-x:hidden}
+.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.6)}
+.glass-strong{background:rgba(255,255,255,0.07);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.8)}
+.btn-rainbow{background:linear-gradient(135deg,#ff00e5,#9d00ff,#00f2ff,#00ff88);background-size:300% 300%;animation:gradientMove 4s ease infinite;font-weight:900;transition:transform 0.1s;box-shadow:0 4px 24px rgba(0,242,255,0.25)}
+.btn-rainbow:active{transform:scale(0.97)}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hidden{display:none!important}
+.tab-active{border-bottom:3px solid var(--neon-blue);color:var(--neon-blue);background:linear-gradient(to bottom,transparent,rgba(0,242,255,0.12))}
+input,textarea{background:rgba(0,0,0,0.5)!important;border:1px solid rgba(255,255,255,0.1)!important;color:white!important;outline:none!important}
+textarea{resize:vertical;font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
+textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
+.stat-card{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(147,51,234,0.08));border:1px solid rgba(255,255,255,0.06);flex-shrink:0}
+.animate-fade{animation:fadeUp 0.35s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(0,242,255,0.15);border:1px solid rgba(0,242,255,0.4);color:#00f2ff;padding:12px 24px;border-radius:100px;font-size:13px;font-weight:700;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:9999}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:10px;padding:2px 8px;border-radius:100px}
+.btn-delete{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);color:#f87171}
+.btn-edit{background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:#00f2ff}
+.mode-toggle{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;display:flex;padding:4px;gap:4px}
+.mode-btn{flex:1;padding:8px;border-radius:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.2s;color:rgba(255,255,255,0.4)}
+.mode-btn.active{background:rgba(0,242,255,0.15);color:#00f2ff;border:1px solid rgba(0,242,255,0.3)}
+.bulk-ok{background:rgba(0,255,136,0.07);border:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
+.bulk-err{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
+.user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7);transition:width 0.6s ease}
+.acc-mini-tag{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
+.s-chua{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5}
+.s-dang{background:rgba(250,204,21,0.12);border:1px solid rgba(250,204,21,0.3);color:#fde68a}
+.s-xong{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);color:#86efac}
+.dot-chua{width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
+.dot-dang{width:7px;height:7px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
+.dot-xong{width:7px;height:7px;border-radius:50%;background:#00ff88;display:inline-block}
+@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.5)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
+@keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.5)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
+/* BEE */
+.bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.2);border-radius:24px;overflow:hidden;position:relative}
+.bee-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#facc15,#f97316,transparent)}
+.bee-avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 20px rgba(250,204,21,0.35)}
+.bee-bubble{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:12px 14px;font-size:12px;line-height:1.75;color:#e2e8f0;min-height:52px}
+.bee-typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#facc15;animation:blink 1.2s infinite;margin-right:3px}
+.bee-typing span:nth-child(2){animation-delay:0.2s}
+.bee-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,80%,100%{opacity:0.2}40%{opacity:1}}
+.bee-urgent-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
+.bee-tip-box{background:rgba(0,242,255,0.06);border:1px solid rgba(0,242,255,0.15);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
+.bee-chat-wrap{margin-top:12px;display:flex;gap:8px}
+.bee-chat-input{flex:1;padding:10px 14px;border-radius:100px;font-size:12px;background:rgba(0,0,0,0.4)!important;border:1px solid rgba(250,204,21,0.2)!important;color:white!important}
+.bee-chat-input:focus{border-color:rgba(250,204,21,0.5)!important}
+.bee-send-btn{width:38px;height:38px;border-radius:100%;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;color:#1a0a00;flex-shrink:0;font-weight:900;cursor:pointer;transition:transform 0.15s;border:none}
+.bee-send-btn:active{transform:scale(0.9)}
+.bee-send-btn.loading{background:rgba(250,204,21,0.2)!important;color:#facc15!important;pointer-events:none}
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:16px}
+.search-icon-abs{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);font-size:13px;pointer-events:none}
+.search-inp{width:100%;padding:12px 38px 12px 40px;border-radius:16px;font-size:13px}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);font-size:12px;cursor:pointer;padding:4px}
+.lv-tag{font-size:10px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.search-empty{text-align:center;padding:32px 0;color:rgba(255,255,255,0.3);font-size:13px}
+.search-count{font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:12px;padding-left:2px}
+/* VIEW TOGGLE */
+.view-toggle{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;display:flex;padding:4px;gap:4px;margin-bottom:16px}
+.view-btn{flex:1;padding:8px;border-radius:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.2s;color:rgba(255,255,255,0.4)}
+.view-btn.active{background:rgba(255,0,229,0.15);color:#ff00e5;border:1px solid rgba(255,0,229,0.3)}
+/* LEVEL GROUPS */
+.lv-group{border-radius:20px;overflow:hidden;margin-bottom:14px}
+.lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;user-select:none;gap:10px}
+.lv-group-hd:active{opacity:0.85}
+.lv-chev{transition:transform 0.3s cubic-bezier(0.34,1.2,0.64,1);font-size:12px;flex-shrink:0}
+.lv-chev.open{transform:rotate(180deg)}
+.lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.18)}
+.lv-group-body.collapsed{display:none}
+.grp-1{background:linear-gradient(135deg,rgba(100,116,139,0.18),rgba(71,85,105,0.1));border:1px solid rgba(100,116,139,0.25)}.grp-1 .grp-label{color:#94a3b8}
+.grp-2{background:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(37,99,235,0.08));border:1px solid rgba(59,130,246,0.28)}.grp-2 .grp-label{color:#60a5fa}
+.grp-3{background:linear-gradient(135deg,rgba(0,242,255,0.12),rgba(6,182,212,0.06));border:1px solid rgba(0,242,255,0.25)}.grp-3 .grp-label{color:#00f2ff}
+.grp-4{background:linear-gradient(135deg,rgba(168,85,247,0.16),rgba(139,92,246,0.08));border:1px solid rgba(168,85,247,0.3)}.grp-4 .grp-label{color:#c084fc}
+.grp-5{background:linear-gradient(135deg,rgba(250,204,21,0.13),rgba(234,179,8,0.06));border:1px solid rgba(250,204,21,0.28)}.grp-5 .grp-label{color:#fde047}
+.grp-label{font-weight:900;font-size:13px;letter-spacing:0.04em}
+.grp-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px}
+.gp{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px}
+.gp-t{background:rgba(255,255,255,0.08);color:#94a3b8;border:1px solid rgba(255,255,255,0.06)}
+.gp-c{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
+.gp-d{background:rgba(250,204,21,0.12);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
+.gp-x{background:rgba(0,255,136,0.1);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
+.grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.06);margin-top:8px;overflow:hidden}
+.grp-prog-fill{height:100%;border-radius:100px;transition:width 0.6s ease}
+.acc-wrap{position:relative;padding-top:6px}
+.card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.5),0 6px 24px rgba(239,68,68,0.15)!important}
+.prio-ribbon{position:absolute;top:-10px;left:10px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:9px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.08em;z-index:5}
 </style>
 </head>
 <body>
@@ -66,413 +104,598 @@
 
 <!-- LOGIN -->
 <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
-    <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center">
-        <h1 class="text-5xl font-black italic mb-2 tracking-tighter">NEBULA<span class="text-cyan-400">V5</span></h1>
-        <p class="text-[9px] text-slate-500 tracking-[0.35em] mb-10 uppercase">Cloud Database System</p>
-        <div class="space-y-3">
-            <input type="text" id="user" placeholder="Username" class="w-full p-4 rounded-2xl text-sm">
-            <input type="password" id="pass" placeholder="Password" class="w-full p-4 rounded-2xl text-sm">
-            <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl text-base mt-2 uppercase">VÀO HỆ THỐNG</button>
-        </div>
-        <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold">✕ Sai thông tin đăng nhập</p>
+  <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center">
+    <h1 class="text-5xl font-black italic mb-2 tracking-tighter">NEBULA<span class="text-cyan-400">V5</span></h1>
+    <p class="text-[9px] text-slate-500 tracking-[0.35em] mb-10 uppercase">Cloud Database System</p>
+    <div class="space-y-3">
+      <input type="text" id="user" placeholder="Username" class="w-full p-4 rounded-2xl text-sm">
+      <input type="password" id="pass" placeholder="Password" class="w-full p-4 rounded-2xl text-sm">
+      <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl text-base mt-2 uppercase">VÀO HỆ THỐNG</button>
     </div>
+    <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold">✕ Sai thông tin đăng nhập</p>
+  </div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin-page" class="hidden p-4 pt-10 pb-20">
-    <div class="max-w-2xl mx-auto">
-        <header class="flex justify-between items-center mb-8 px-2">
-            <h2 class="text-2xl font-black italic">MASTER <span class="text-cyan-400">ADMIN</span></h2>
-            <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400"><i class="fa-solid fa-power-off"></i></button>
-        </header>
-        <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
-        <div class="flex gap-1 mb-8 p-1 glass rounded-2xl text-[10px] font-black uppercase">
-            <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3.5 rounded-xl tab-active">Tất cả Acc</button>
-            <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3.5 rounded-xl">Quản lý User</button>
-        </div>
-        <div id="admin-tab-acc" class="animate-fade">
-            <div class="glass p-6 rounded-[2rem] mb-6">
-                <div class="mode-toggle mb-4">
-                    <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-                    <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
-                </div>
-                <div id="admin-single-mode" class="space-y-3">
-                    <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
-                    <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
-                    <input type="number" id="ad-acc-lv" placeholder="Level" class="w-full p-3.5 rounded-xl text-sm">
-                    <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Up Acc Root</button>
-                </div>
-                <div id="admin-bulk-mode" class="hidden space-y-3">
-                    <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></span></div>
-                    <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|80&#10;player002|abc456|75" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
-                    <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-                    <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
-                </div>
-            </div>
-            <div id="admin-list-accs" class="space-y-3"></div>
-        </div>
-        <div id="admin-tab-user" class="hidden animate-fade">
-            <div class="glass p-6 rounded-[2rem] mb-6 space-y-3">
-                <input type="text" id="new-u" placeholder="Tên User" class="w-full p-3.5 rounded-xl text-sm">
-                <input type="text" id="new-p" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
-                <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Cấp Tài Khoản</button>
-            </div>
-            <div id="admin-list-users" class="space-y-3"></div>
-        </div>
+  <div class="max-w-2xl mx-auto">
+    <header class="flex justify-between items-center mb-8 px-2">
+      <h2 class="text-2xl font-black italic">MASTER <span class="text-cyan-400">ADMIN</span></h2>
+      <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400"><i class="fa-solid fa-power-off"></i></button>
+    </header>
+    <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
+    <div class="flex gap-1 mb-8 p-1 glass rounded-2xl text-[10px] font-black uppercase">
+      <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3 rounded-xl tab-active">📦 Acc</button>
+      <button id="tab-search-btn" onclick="switchAdminTab('search')" class="flex-1 py-3 rounded-xl">🔍 Tìm</button>
+      <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3 rounded-xl">👥 Users</button>
     </div>
+
+    <div id="admin-tab-acc" class="animate-fade">
+      <div class="glass p-6 rounded-[2rem] mb-6">
+        <div class="mode-toggle mb-4">
+          <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
+          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+        </div>
+        <div id="admin-single-mode" class="space-y-3">
+          <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
+          <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
+          <input type="number" id="ad-acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-3.5 rounded-xl text-sm">
+          <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Up Acc Root</button>
+        </div>
+        <div id="admin-bulk-mode" class="hidden space-y-3">
+          <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></span></div>
+          <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|30&#10;player002|abc456|45" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
+          <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
+          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
+        </div>
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="admin-view-all-btn" onclick="switchAdminView('all')"><i class="fa-solid fa-list mr-1"></i>Tất cả</button>
+        <button class="view-btn" id="admin-view-group-btn" onclick="switchAdminView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Phân loại LV</button>
+      </div>
+      <div id="admin-list-accs"></div>
+    </div>
+
+    <div id="admin-tab-search" class="hidden animate-fade">
+      <div class="glass p-5 rounded-[2rem] mb-5">
+        <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"><i class="fa-solid fa-magnifying-glass mr-2 text-cyan-400"></i>Tìm kiếm Acc</p>
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
+          <input type="text" id="admin-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runAdminSearch()">
+          <span class="search-clear" onclick="clearSearch('admin')"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <p class="text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-wider">Lọc theo Level</p>
+        <div class="flex gap-2 flex-wrap" id="admin-lv-tags"></div>
+      </div>
+      <div id="admin-search-count" class="search-count"></div>
+      <div id="admin-search-results" class="space-y-3"></div>
+    </div>
+
+    <div id="admin-tab-user" class="hidden animate-fade">
+      <div class="glass p-6 rounded-[2rem] mb-6 space-y-3">
+        <input type="text" id="new-u" placeholder="Tên User" class="w-full p-3.5 rounded-xl text-sm">
+        <input type="text" id="new-p" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
+        <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Cấp Tài Khoản</button>
+      </div>
+      <div id="admin-list-users" class="space-y-3"></div>
+    </div>
+  </div>
 </div>
 
 <!-- USER -->
 <div id="user-page" class="hidden p-4 pt-10 pb-20">
-    <div class="max-w-2xl mx-auto">
-        <header class="flex justify-between items-center mb-8 px-2">
-            <h2 class="text-2xl font-black italic uppercase"><span id="user-name" class="text-pink-400"></span></h2>
-            <button onclick="logout()" class="text-[9px] font-black tracking-widest text-slate-400 underline">THOÁT</button>
-        </header>
-        <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-6"></div>
+  <div class="max-w-2xl mx-auto">
+    <header class="flex justify-between items-center mb-8 px-2">
+      <h2 class="text-2xl font-black italic uppercase"><span id="user-name" class="text-pink-400"></span></h2>
+      <button onclick="logout()" class="text-[9px] font-black tracking-widest text-slate-400 underline">THOÁT</button>
+    </header>
+    <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-6"></div>
 
-        <!-- BEE AI PANEL -->
-        <div class="bee-panel p-5 mb-8">
-            <div class="flex gap-3 items-start">
-                <div class="bee-avatar">🐝</div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-2 mb-2 flex-wrap">
-                        <span class="text-xs font-black text-yellow-300">BEE AI</span>
-                        <span class="text-[9px] text-yellow-600 bg-yellow-400/10 px-2 py-0.5 rounded-full border border-yellow-400/20 font-bold">Trợ lý cày acc</span>
-                    </div>
-                    <div class="bee-bubble" id="bee-message">
-                        <div class="bee-typing"><span></span><span></span><span></span></div>
-                    </div>
-                </div>
-            </div>
-            <div id="bee-actions" class="hidden mt-4 flex gap-2 flex-wrap">
-                <button onclick="beeSortUrgent()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên chưa cày</button>
-                <button onclick="beeSortDefault()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
-            </div>
+    <!-- BEE AI -->
+    <div class="bee-panel p-5 mb-8">
+      <div class="flex gap-3 items-start">
+        <div class="bee-avatar">🐝</div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-black text-yellow-300">BEE AI</span>
+            <span class="text-[9px] text-yellow-600 bg-yellow-400/10 px-2 py-0.5 rounded-full border border-yellow-400/20 font-bold">Claude-Powered</span>
+            <span id="bee-dot" class="hidden text-[8px] text-green-400 font-bold"><i class="fa-solid fa-circle text-[6px] mr-1 animate-pulse"></i>Online</span>
+          </div>
+          <div class="bee-bubble" id="bee-message"><div class="bee-typing"><span></span><span></span><span></span></div></div>
         </div>
-
-        <div class="glass-strong p-7 rounded-[2.5rem] mb-8">
-            <div class="mode-toggle mb-5">
-                <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-                <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
-            </div>
-            <div id="user-single-mode" class="space-y-3">
-                <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
-                <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
-                <input type="number" id="acc-lv" placeholder="Level" class="w-full p-4 rounded-2xl text-sm">
-                <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase">ĐĂNG ACC MỚI</button>
-            </div>
-            <div id="user-bulk-mode" class="hidden space-y-3">
-                <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></span></div>
-                <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|80&#10;player002|abc456|75" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
-                <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-                <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
-            </div>
-        </div>
-        <div id="user-list" class="space-y-4"></div>
+      </div>
+      <div id="bee-actions" class="hidden mt-3 flex gap-2 flex-wrap">
+        <button onclick="beeSortUrgent()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên chưa cày</button>
+        <button onclick="beeSortDefault()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
+        <button onclick="beeAnalyze()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(250,204,21,0.12);border:1px solid rgba(250,204,21,0.25);color:#fde68a"><i class="fa-solid fa-brain mr-1"></i>Phân tích kho</button>
+      </div>
+      <div class="bee-chat-wrap">
+        <input type="text" id="bee-chat-input" class="bee-chat-input" placeholder="Hỏi BEE bất cứ điều gì..." onkeydown="if(event.key==='Enter')sendBeeChat()">
+        <button class="bee-send-btn" id="bee-send-btn" onclick="sendBeeChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
     </div>
+
+    <!-- TABS -->
+    <div class="flex gap-1 mb-6 p-1 glass rounded-2xl text-[10px] font-black uppercase">
+      <button id="utab-list-btn" onclick="switchUserTab('list')" class="flex-1 py-3.5 rounded-xl tab-active">📦 Kho Acc</button>
+      <button id="utab-search-btn" onclick="switchUserTab('search')" class="flex-1 py-3.5 rounded-xl">🔍 Tìm kiếm</button>
+    </div>
+
+    <div id="utab-list">
+      <div class="glass-strong p-7 rounded-[2.5rem] mb-8">
+        <div class="mode-toggle mb-5">
+          <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
+          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+        </div>
+        <div id="user-single-mode" class="space-y-3">
+          <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
+          <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
+          <input type="number" id="acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-4 rounded-2xl text-sm">
+          <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase">ĐĂNG ACC MỚI</button>
+        </div>
+        <div id="user-bulk-mode" class="hidden space-y-3">
+          <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></span></div>
+          <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|30&#10;player002|abc456|45" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
+          <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
+          <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
+        </div>
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="user-view-all-btn" onclick="switchUserView('all')"><i class="fa-solid fa-list mr-1"></i>Tất cả</button>
+        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Phân loại LV</button>
+      </div>
+      <div id="user-list"></div>
+    </div>
+
+    <div id="utab-search" class="hidden animate-fade">
+      <div class="glass p-5 rounded-[2rem] mb-5">
+        <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"><i class="fa-solid fa-magnifying-glass mr-2 text-pink-400"></i>Tìm kiếm Acc của tôi</p>
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
+          <input type="text" id="user-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runUserSearch()">
+          <span class="search-clear" onclick="clearSearch('user')"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <p class="text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-wider">Lọc theo Level</p>
+        <div class="flex gap-2 flex-wrap" id="user-lv-tags"></div>
+      </div>
+      <div id="user-search-count" class="search-count"></div>
+      <div id="user-search-results" class="space-y-3"></div>
+    </div>
+  </div>
 </div>
 
 <script>
+const LV_GROUPS=[
+  {key:'g1',label:'LV 1–9',min:1,max:9,cls:'grp-1',icon:'🌱',fill:'rgba(100,116,139,0.7)'},
+  {key:'g2',label:'LV 10–19',min:10,max:19,cls:'grp-2',icon:'💧',fill:'rgba(59,130,246,0.7)'},
+  {key:'g3',label:'LV 20–29',min:20,max:29,cls:'grp-3',icon:'⚡',fill:'rgba(0,242,255,0.7)'},
+  {key:'g4',label:'LV 30–39',min:30,max:39,cls:'grp-4',icon:'🔮',fill:'rgba(168,85,247,0.7)'},
+  {key:'g5',label:'LV 40–50',min:40,max:50,cls:'grp-5',icon:'👑',fill:'rgba(250,204,21,0.8)'},
+];
+const LV_TAGS=[
+  {label:'Tất cả',min:0,max:50,bg:'rgba(255,255,255,0.07)',abg:'rgba(255,255,255,0.18)',bd:'rgba(255,255,255,0.12)'},
+  {label:'LV 1–9',min:1,max:9,bg:'rgba(100,116,139,0.1)',abg:'rgba(100,116,139,0.3)',bd:'rgba(100,116,139,0.3)'},
+  {label:'LV 10–19',min:10,max:19,bg:'rgba(59,130,246,0.1)',abg:'rgba(59,130,246,0.3)',bd:'rgba(59,130,246,0.3)'},
+  {label:'LV 20–29',min:20,max:29,bg:'rgba(0,242,255,0.1)',abg:'rgba(0,242,255,0.25)',bd:'rgba(0,242,255,0.3)'},
+  {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.1)',abg:'rgba(168,85,247,0.3)',bd:'rgba(168,85,247,0.3)'},
+  {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.1)',abg:'rgba(250,204,21,0.25)',bd:'rgba(250,204,21,0.3)'},
+];
+
 function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
 loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
-    .then(()=>loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
-    .then(bootApp);
+  .then(()=>loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
+  .then(bootApp);
 
 function bootApp(){
-    const cfg={apiKey:"AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",authDomain:"cccc-1e4fe.firebaseapp.com",databaseURL:"https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cccc-1e4fe",storageBucket:"cccc-1e4fe.firebasestorage.app",messagingSenderId:"23606175445",appId:"1:23606175445:web:9cb963552b352cf308e45c"};
-    firebase.initializeApp(cfg);
-    const dbRef=firebase.database().ref('NEBULA_DATA_V5');
-    const ADMIN={u:'gbao',p:'031008'};
-    let db={users:[],accounts:[]};
-    let currentMode='',currentUser=null,sortMode='default';
+  const cfg={apiKey:"AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",authDomain:"cccc-1e4fe.firebaseapp.com",databaseURL:"https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cccc-1e4fe",storageBucket:"cccc-1e4fe.firebasestorage.app",messagingSenderId:"23606175445",appId:"1:23606175445:web:9cb963552b352cf308e45c"};
+  firebase.initializeApp(cfg);
+  const dbRef=firebase.database().ref('NEBULA_DATA_V5');
+  const ADMIN={u:'gbao',p:'031008'};
+  let db={users:[],accounts:[]};
+  let currentMode='',currentUser=null,sortMode='default';
+  let userViewMode='all',adminViewMode='all';
+  let uLvFilter={min:0,max:50},aLvFilter={min:0,max:50};
+  const openGrps={user:{},admin:{}};
 
-    dbRef.on('value',snap=>{
-        const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
-        db.users=toArr(d&&d.users);db.accounts=toArr(d&&d.accounts);
-        if(currentMode) renderUI();
-    });
-    function sync(){return dbRef.set({users:db.users,accounts:db.accounts})}
+  dbRef.on('value',snap=>{
+    const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
+    db.users=toArr(d&&d.users);db.accounts=toArr(d&&d.accounts);
+    if(currentMode)renderUI();
+  });
+  function sync(){return dbRef.set({users:db.users,accounts:db.accounts})}
 
-    /* ── AUTH ── */
-    window.login=function(){
-        const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();
-        if(u===ADMIN.u&&p===ADMIN.p){currentMode='admin';showPage('admin-page');renderUI();}
-        else{
-            const f=db.users.find(x=>x.u===u&&x.p===p);
-            if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(runBee,700);}
-            else document.getElementById('login-error').classList.remove('hidden');
-        }
-    };
-    window.logout=function(){location.reload()};
-
-    /* ── BEE AI ── */
-    function runBee(){
-        const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-        const chua=my.filter(a=>!a.status||a.status==='chua');
-        const dang=my.filter(a=>a.status==='dang');
-        const xong=my.filter(a=>a.status==='xong');
-        let msg='';
-        if(my.length===0){
-            msg=`Xin chào <b>${currentUser.u}</b>! 👋 Kho của bạn đang trống. Hãy đăng acc mới để bắt đầu cày nhé!`;
-        } else if(chua.length===0){
-            msg=`<i class="fa-solid fa-star text-yellow-300 mr-1"></i> Ngon lắm <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đều đã có trạng thái. ${xong.length?`<span class="text-green-300">✓ ${xong.length} acc hoàn thành!</span>`:''}`;
-        } else {
-            msg=`Chào <b>${currentUser.u}</b>! Bạn có <b class="text-red-300">${chua.length} acc chưa cày</b> trên tổng ${my.length} acc.<br>`;
-            if(dang.length) msg+=`<span class="text-yellow-300">⚡ ${dang.length} đang cày.</span> `;
-            if(xong.length) msg+=`<span class="text-green-300">✓ ${xong.length} đã xong.</span><br>`;
-            const top=chua.slice(0,3);
-            msg+=`<div class="bee-urgent-box"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay những acc này:</b><br>`;
-            top.forEach((a,i)=>{msg+=`<span class="text-slate-300">${i+1}. <code class="text-pink-300">${a.tk}</code> <span class="text-slate-500">—</span> LV ${a.lv}</span><br>`});
-            if(chua.length>3) msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
-            msg+=`</div><div class="bee-tip-box"><i class="fa-solid fa-lightbulb text-cyan-400 mr-1"></i>Nhấn <b class="text-cyan-300">"Ưu tiên chưa cày"</b> để đẩy acc đó lên đầu!</div>`;
-        }
-        const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions');
-        setTimeout(()=>{el.innerHTML=msg;if(chua.length>0){act.classList.remove('hidden');act.style.display='flex'}},1300);
+  /* ── AUTH ── */
+  window.login=function(){
+    const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();
+    if(u===ADMIN.u&&p===ADMIN.p){currentMode='admin';showPage('admin-page');renderUI();}
+    else{
+      const f=db.users.find(x=>x.u===u&&x.p===p);
+      if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(beeInit,700);}
+      else document.getElementById('login-error').classList.remove('hidden');
     }
+  };
+  window.logout=function(){location.reload()};
 
-    window.beeSortUrgent=function(){
-        sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày lên đầu!');
-        document.getElementById('bee-message').innerHTML=`<i class="fa-solid fa-sort-up text-yellow-300 mr-1"></i> Đã sắp xếp! <b class="text-red-300">Acc chưa cày</b> hiện ở đầu danh sách. Cày thôi! 💪`;
-    };
-    window.beeSortDefault=function(){
-        sortMode='default';renderUserList();showToast('Về thứ tự mặc định');
-        document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> (mới nhất lên đầu).`;
-    };
+  /* ── BEE AI (Claude API) ── */
+  function beeCtx(){
+    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
+    const chua=my.filter(a=>!a.status||a.status==='chua');
+    const dang=my.filter(a=>a.status==='dang');
+    const xong=my.filter(a=>a.status==='xong');
+    const byLv=LV_GROUPS.map(g=>({group:g.label,count:my.filter(a=>a.lv>=g.min&&a.lv<=g.max).length})).filter(g=>g.count>0);
+    return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
+  }
 
-    /* ── STATUS ── */
-    window.updateStatus=function(id,val){
-        const a=db.accounts.find(x=>x.id===id);if(!a)return;
-        a.status=val;sync().then(()=>{showToast('✓ '+stLabel(val));if(currentMode==='user'){renderUserStats();renderUserList();runBee()}});
-    };
-    function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':'🔴 Chưa cày'}
-    function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':'s-chua'}
-    function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':'dot-chua'}
-    function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':'🔴 Chưa cày'}
+  async function askClaude(question,ctx){
+    const sys=`Bạn là BEE AI - trợ lý cày acc game thông minh, thân thiện, nói tiếng Việt ngắn gọn.
+Dữ liệu kho acc của user: ${JSON.stringify(ctx)}
+Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào số liệu thực tế, giọng vui vẻ như bạn gaming.`;
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:[{role:'user',content:question}]})});
+    const d=await r.json();
+    return d.content&&d.content[0]?d.content[0].text:'BEE AI đang bận, thử lại sau!';
+  }
 
-    /* ── POST ── */
-    window.postAcc=function(){
-        const tk=document.getElementById('acc-tk').value.trim(),mk=document.getElementById('acc-mk').value.trim(),lv=document.getElementById('acc-lv').value.trim();
-        if(!tk||!mk||!lv)return;
-        db.accounts.push({id:Date.now(),uploader:currentUser.u,tk,mk,lv:Number(lv),status:'chua'});
-        sync().then(()=>{showToast('✓ Đã đăng acc');renderUI();runBee()});
-        ['acc-tk','acc-mk','acc-lv'].forEach(i=>document.getElementById(i).value='');
-    };
-    window.adminPostAcc=function(){
-        const tk=document.getElementById('ad-acc-tk').value.trim(),mk=document.getElementById('ad-acc-mk').value.trim(),lv=document.getElementById('ad-acc-lv').value.trim();
-        if(!tk||!mk||!lv)return;
-        db.accounts.push({id:Date.now(),uploader:'ADMIN',tk,mk,lv:Number(lv),status:'chua'});
-        sync().then(()=>showToast('✓ Up acc Root'));
-        ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(i=>document.getElementById(i).value='');
-    };
-
-    /* ── BULK ── */
-    function parseBulk(raw){
-        return raw.split('\n').map((line,i)=>{
-            const t=line.trim();if(!t)return null;
-            const p=t.split('|');
-            if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,line:t,index:i+1};
-            return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:Number(p[2].trim()),index:i+1};
-        }).filter(Boolean);
+  function beeInit(){
+    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
+    const chua=my.filter(a=>!a.status||a.status==='chua');
+    const dang=my.filter(a=>a.status==='dang');
+    const xong=my.filter(a=>a.status==='xong');
+    let msg='';
+    if(!my.length){msg=`👋 Chào <b>${currentUser.u}</b>! Kho trống rỗng. Đăng acc mới để bắt đầu nhé!`;}
+    else if(!chua.length){msg=`🎉 <b>${currentUser.u}</b> ngon lắm! Tất cả <b>${my.length} acc</b> đã có trạng thái.${xong.length?' <span class="text-green-300">✓ '+xong.length+' xong!</span>':''}`;}
+    else{
+      msg=`👋 Chào <b>${currentUser.u}</b>! <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} tổng.`;
+      if(dang.length)msg+=` <span class="text-yellow-300">⚡${dang.length} đang cày.</span>`;
+      if(xong.length)msg+=` <span class="text-green-300">✓${xong.length} xong.</span>`;
+      msg+=`<div class="bee-urgent-box mt-2"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay:</b><br>`;
+      chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}<br>`});
+      if(chua.length>3)msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
+      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-lightbulb text-cyan-400 mr-1"></i>Hỏi tôi bất cứ gì hoặc nhấn <b class="text-yellow-300">Phân tích kho</b> để có gợi ý AI!</div>`;
     }
-    window.previewBulk=function(who){
-        const iid=who==='admin'?'admin-bulk-input':'user-bulk-input',pid=who==='admin'?'admin-bulk-preview':'user-bulk-preview';
-        const items=parseBulk(document.getElementById(iid).value);
-        const ok=items.filter(i=>i.ok).length,err=items.filter(i=>!i.ok).length;
-        const col=who==='admin'?'text-cyan-400':'text-pink-400';
-        document.getElementById(pid).innerHTML=items.length===0?'':
-            `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} acc hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
-            items.slice(0,10).map(x=>x.ok
-                ?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`
-                :`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`
-            ).join('')+(items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
-    };
-    window.userBulkPost=function(){
-        const items=parseBulk(document.getElementById('user-bulk-input').value).filter(i=>i.ok);
-        if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-        const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:currentUser.u,tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-        sync().then(()=>{showToast(`✓ Đã đăng ${items.length} acc`);document.getElementById('user-bulk-input').value='';document.getElementById('user-bulk-preview').innerHTML='';renderUI();runBee()});
-    };
-    window.adminBulkPost=function(){
-        const items=parseBulk(document.getElementById('admin-bulk-input').value).filter(i=>i.ok);
-        if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-        const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:'ADMIN',tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-        sync().then(()=>{showToast(`✓ Up ${items.length} acc Root`);document.getElementById('admin-bulk-input').value='';document.getElementById('admin-bulk-preview').innerHTML=''});
-    };
+    const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions'),dot=document.getElementById('bee-dot');
+    setTimeout(()=>{el.innerHTML=msg;act.classList.remove('hidden');act.style.display='flex';dot.classList.remove('hidden');},1000);
+  }
 
-    /* ── EDIT/DEL ── */
-    window.editLv=function(id){
-        const a=db.accounts.find(x=>x.id===id);if(!a)return;
-        const v=prompt(`Level mới cho [${a.tk}]:`,a.lv);
-        if(v===null||v===''||isNaN(v))return;
-        a.lv=Number(v);sync().then(()=>showToast('✓ Đã cập nhật LV: '+v));
-    };
-    window.deleteAcc=function(id){
-        if(!confirm('Xác nhận xóa acc?'))return;
-        db.accounts=db.accounts.filter(a=>a.id!==id);
-        sync().then(()=>{showToast('✕ Đã xoá acc');if(currentMode==='user')runBee()});
-    };
-    window.addUser=function(){
-        const u=document.getElementById('new-u').value.trim(),p=document.getElementById('new-p').value.trim();
-        if(!u||!p)return;db.users.push({u,p});sync().then(()=>showToast('✓ Đã cấp tài khoản'));
-        document.getElementById('new-u').value='';document.getElementById('new-p').value='';
-    };
-    window.deleteUser=function(u){
-        if(!confirm('Xóa user này?'))return;
-        db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);
-        sync().then(()=>showToast('✕ Đã xoá user'));
-    };
-    window.toggleUserAccs=function(u){const el=document.getElementById('ua-'+u);if(el)el.classList.toggle('hidden')};
+  window.sendBeeChat=async function(){
+    const inp=document.getElementById('bee-chat-input'),btn=document.getElementById('bee-send-btn');
+    const msg=inp.value.trim();if(!msg)return;
+    inp.value='';
+    const el=document.getElementById('bee-message');
+    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
+    btn.classList.add('loading');btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
+    try{el.innerHTML=(await askClaude(msg,beeCtx())).replace(/\n/g,'<br>');}
+    catch{el.innerHTML='⚠️ Không kết nối được BEE AI. Thử lại sau!';}
+    btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
+  };
 
-    /* ── RENDER ── */
-    function renderUI(){
-        if(currentMode==='admin'){
-            renderAdminStats();
-            document.getElementById('admin-list-accs').innerHTML=db.accounts.slice().reverse().map(a=>accCard(a,true)).join('');
-            document.getElementById('admin-list-users').innerHTML=renderAdminUsers();
-        } else {
-            renderUserStats();renderUserList();
-        }
-    }
-    function renderUserList(){
-        let list=db.accounts.filter(a=>a.uploader===currentUser.u);
-        if(sortMode==='urgent'){
-            const ord={chua:0,dang:1,xong:2};
-            list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));
-        } else list=list.slice().reverse();
-        document.getElementById('user-list').innerHTML=list.map(a=>accCard(a,false)).join('');
-    }
+  window.beeAnalyze=async function(){
+    const el=document.getElementById('bee-message');
+    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
+    try{el.innerHTML=(await askClaude('Phân tích kho acc của tôi và đưa ra gợi ý cụ thể để cày hiệu quả nhất. Nên ưu tiên nhóm level nào? Acc nào cần cày trước?',beeCtx())).replace(/\n/g,'<br>');}
+    catch{el.innerHTML='⚠️ Không kết nối được BEE AI!';}
+  };
 
-    function accCard(a,isAdmin){
-        const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
-        const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
-        const st=a.status||'chua';
-        const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent';
-        return `
-        <div class="acc-wrap">
-            ${urgent?`<span class="priority-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
-            <div class="glass p-5 rounded-2xl animate-fade ${urgent?'card-urgent':''}" style="border-left:3px solid ${col}40">
-                <div class="flex justify-between items-start mb-3">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="lv-badge">LV ${a.lv}</span>
-                        <span class="text-[9px] font-bold" style="color:${col}">@${a.uploader}</span>
-                        <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
-                            <span class="${stDot(st)}"></span>${stTxt(st)}
-                        </span>
-                    </div>
-                    <div class="flex gap-2 flex-shrink-0 ml-2">
-                        ${canManage?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
-                        ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
-                    </div>
-                </div>
-                <div class="space-y-2 mb-3">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[10px] text-gray-500 uppercase">Tài khoản: <b class="text-white">${a.tk}</b></span>
-                        <button onclick="copyText('${a.tk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-[10px] text-gray-500 uppercase">Mật khẩu: <b class="text-white">${a.mk}</b></span>
-                        <button onclick="copyText('${a.mk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button>
-                    </div>
-                </div>
-                ${canManage?`
-                <div class="flex gap-1.5 pt-2 border-t border-white/5">
-                    <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg transition-all ${st==='chua'?'s-chua':'opacity-25 hover:opacity-60'}" style="${st!=='chua'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">🔴 Chưa</button>
-                    <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg transition-all ${st==='dang'?'s-dang':'opacity-25 hover:opacity-60'}" style="${st!=='dang'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">⚡ Đang</button>
-                    <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg transition-all ${st==='xong'?'s-xong':'opacity-25 hover:opacity-60'}" style="${st!=='xong'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">✅ Xong</button>
-                </div>`:''}
+  window.beeSortUrgent=function(){sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');document.getElementById('bee-message').innerHTML=`<i class="fa-solid fa-sort-up text-yellow-300 mr-1"></i> Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu!`;};
+  window.beeSortDefault=function(){sortMode='default';renderUserList();showToast('Về thứ tự mặc định');document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b>.`;};
+
+  /* ── SEARCH ── */
+  function buildTags(ctx){
+    const id=ctx==='admin'?'admin-lv-tags':'user-lv-tags';
+    const cur=ctx==='admin'?aLvFilter:uLvFilter;
+    document.getElementById(id).innerHTML=LV_TAGS.map(r=>{
+      const active=cur.min===r.min&&cur.max===r.max;
+      return `<span class="lv-tag" onclick="setLvTag('${ctx}',${r.min},${r.max})" style="background:${active?r.abg:r.bg};border:1px solid ${r.bd};color:${active?'white':'rgba(255,255,255,0.5)'}">${r.label}</span>`;
+    }).join('');
+  }
+  window.setLvTag=function(ctx,min,max){
+    if(ctx==='admin')aLvFilter={min,max};else uLvFilter={min,max};
+    buildTags(ctx);
+    if(ctx==='admin')runAdminSearch();else runUserSearch();
+  };
+  window.clearSearch=function(ctx){
+    document.getElementById(ctx==='admin'?'admin-search-input':'user-search-input').value='';
+    if(ctx==='admin')runAdminSearch();else runUserSearch();
+  };
+  window.runAdminSearch=function(){
+    const q=document.getElementById('admin-search-input').value.trim().toLowerCase();
+    const {min,max}=aLvFilter;
+    const list=db.accounts.filter(a=>{
+      const lvOk=min===0||( a.lv>=min&&a.lv<=max);
+      return lvOk&&(!q||a.tk.toLowerCase().includes(q));
+    }).slice().reverse();
+    document.getElementById('admin-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
+    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-2xl mb-2 block opacity-30"></i>Không tìm thấy acc nào</div>`;
+  };
+  window.runUserSearch=function(){
+    const q=document.getElementById('user-search-input').value.trim().toLowerCase();
+    const {min,max}=uLvFilter;
+    const list=db.accounts.filter(a=>{
+      if(a.uploader!==currentUser.u)return false;
+      const lvOk=min===0||(a.lv>=min&&a.lv<=max);
+      return lvOk&&(!q||a.tk.toLowerCase().includes(q));
+    }).slice().reverse();
+    document.getElementById('user-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
+    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-2xl mb-2 block opacity-30"></i>Không tìm thấy acc nào</div>`;
+  };
+
+  /* ── STATUS ── */
+  window.updateStatus=function(id,val){
+    const a=db.accounts.find(x=>x.id===id);if(!a)return;
+    a.status=val;sync().then(()=>{showToast('✓ '+stLabel(val));if(currentMode==='user'){renderUserStats();renderUserList();runUserSearch();}});
+  };
+  function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':'🔴 Chưa cày'}
+  function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':'s-chua'}
+  function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':'dot-chua'}
+  function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':'🔴 Chưa cày'}
+
+  /* ── POST ── */
+  function clampLv(v){return Math.min(50,Math.max(1,Number(v)))}
+  window.postAcc=function(){
+    const tk=document.getElementById('acc-tk').value.trim(),mk=document.getElementById('acc-mk').value.trim(),lv=document.getElementById('acc-lv').value;
+    if(!tk||!mk||!lv)return;
+    db.accounts.push({id:Date.now(),uploader:currentUser.u,tk,mk,lv:clampLv(lv),status:'chua'});
+    sync().then(()=>{showToast('✓ Đã đăng acc');renderUI();});
+    ['acc-tk','acc-mk','acc-lv'].forEach(i=>document.getElementById(i).value='');
+  };
+  window.adminPostAcc=function(){
+    const tk=document.getElementById('ad-acc-tk').value.trim(),mk=document.getElementById('ad-acc-mk').value.trim(),lv=document.getElementById('ad-acc-lv').value;
+    if(!tk||!mk||!lv)return;
+    db.accounts.push({id:Date.now(),uploader:'ADMIN',tk,mk,lv:clampLv(lv),status:'chua'});
+    sync().then(()=>showToast('✓ Up acc Root'));
+    ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(i=>document.getElementById(i).value='');
+  };
+
+  /* ── BULK ── */
+  function parseBulk(raw){
+    return raw.split('\n').map((line,i)=>{
+      const t=line.trim();if(!t)return null;
+      const p=t.split('|');
+      if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,index:i+1};
+      return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:clampLv(p[2]),index:i+1};
+    }).filter(Boolean);
+  }
+  window.previewBulk=function(who){
+    const iid=who==='admin'?'admin-bulk-input':'user-bulk-input',pid=who==='admin'?'admin-bulk-preview':'user-bulk-preview';
+    const items=parseBulk(document.getElementById(iid).value);
+    const ok=items.filter(i=>i.ok).length,err=items.filter(i=>!i.ok).length;
+    const col=who==='admin'?'text-cyan-400':'text-pink-400';
+    document.getElementById(pid).innerHTML=!items.length?'':
+      `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
+      items.slice(0,10).map(x=>x.ok
+        ?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`
+        :`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`
+      ).join('')+(items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
+  };
+  window.userBulkPost=function(){
+    const items=parseBulk(document.getElementById('user-bulk-input').value).filter(i=>i.ok);
+    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
+    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:currentUser.u,tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
+    sync().then(()=>{showToast(`✓ Đã đăng ${items.length} acc`);document.getElementById('user-bulk-input').value='';document.getElementById('user-bulk-preview').innerHTML='';renderUI();});
+  };
+  window.adminBulkPost=function(){
+    const items=parseBulk(document.getElementById('admin-bulk-input').value).filter(i=>i.ok);
+    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
+    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:'ADMIN',tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
+    sync().then(()=>{showToast(`✓ Up ${items.length} acc Root`);document.getElementById('admin-bulk-input').value='';document.getElementById('admin-bulk-preview').innerHTML='';});
+  };
+
+  /* ── EDIT/DEL ── */
+  window.editLv=function(id){
+    const a=db.accounts.find(x=>x.id===id);if(!a)return;
+    const v=prompt(`Level mới cho [${a.tk}] (1-50):`,a.lv);
+    if(v===null||v===''||isNaN(v))return;
+    a.lv=clampLv(v);sync().then(()=>showToast('✓ Đã cập nhật LV: '+a.lv));
+  };
+  window.deleteAcc=function(id){
+    if(!confirm('Xác nhận xóa acc?'))return;
+    db.accounts=db.accounts.filter(a=>a.id!==id);
+    sync().then(()=>showToast('✕ Đã xoá acc'));
+  };
+  window.addUser=function(){
+    const u=document.getElementById('new-u').value.trim(),p=document.getElementById('new-p').value.trim();
+    if(!u||!p)return;db.users.push({u,p});sync().then(()=>showToast('✓ Đã cấp tài khoản'));
+    document.getElementById('new-u').value='';document.getElementById('new-p').value='';
+  };
+  window.deleteUser=function(u){
+    if(!confirm('Xóa user này?'))return;
+    db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);
+    sync().then(()=>showToast('✕ Đã xoá user'));
+  };
+  window.toggleUserAccs=function(u){document.getElementById('ua-'+u)?.classList.toggle('hidden')};
+  window.toggleGrp=function(ctx,key){
+    openGrps[ctx][key]=!openGrps[ctx][key];
+    document.getElementById('gb-'+ctx+'-'+key)?.classList.toggle('collapsed',!openGrps[ctx][key]);
+    document.getElementById('gc-'+ctx+'-'+key)?.classList.toggle('open',openGrps[ctx][key]);
+  };
+
+  /* ── VIEW ── */
+  window.switchUserView=function(v){
+    userViewMode=v;
+    ['all','group'].forEach(m=>document.getElementById('user-view-'+m+'-btn').classList.toggle('active',m===v));
+    renderUserList();
+  };
+  window.switchAdminView=function(v){
+    adminViewMode=v;
+    ['all','group'].forEach(m=>document.getElementById('admin-view-'+m+'-btn').classList.toggle('active',m===v));
+    renderAdminAccList();
+  };
+  window.switchUserTab=function(tab){
+    const isList=tab==='list';
+    document.getElementById('utab-list').classList.toggle('hidden',!isList);
+    document.getElementById('utab-search').classList.toggle('hidden',isList);
+    document.getElementById('utab-list-btn').classList.toggle('tab-active',isList);
+    document.getElementById('utab-search-btn').classList.toggle('tab-active',!isList);
+    if(!isList){buildTags('user');runUserSearch();}
+  };
+
+  /* ── GROUPED LIST ── */
+  function renderGrouped(accs,ctx,isAdmin){
+    const grps=LV_GROUPS.filter(g=>accs.some(a=>a.lv>=g.min&&a.lv<=g.max));
+    if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-8">Chưa có acc nào</p>';
+    return grps.map(g=>{
+      let list=accs.filter(a=>a.lv>=g.min&&a.lv<=g.max);
+      if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
+      else list=list.slice().reverse();
+      const tot=list.length,chua=list.filter(a=>!a.status||a.status==='chua').length;
+      const dang=list.filter(a=>a.status==='dang').length,xong=list.filter(a=>a.status==='xong').length;
+      if(openGrps[ctx][g.key]===undefined)openGrps[ctx][g.key]=true;
+      const open=openGrps[ctx][g.key];
+      return `<div class="lv-group ${g.cls} animate-fade">
+        <div class="lv-group-hd" onclick="toggleGrp('${ctx}','${g.key}')">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2"><span class="text-base">${g.icon}</span><span class="grp-label">${g.label}</span></div>
+            <div class="grp-meta">
+              <span class="gp gp-t">${tot} acc</span>
+              ${chua?`<span class="gp gp-c">🔴 ${chua}</span>`:''}
+              ${dang?`<span class="gp gp-d">⚡ ${dang}</span>`:''}
+              ${xong?`<span class="gp gp-x">✅ ${xong}</span>`:''}
             </div>
-        </div>`;
-    }
+            <div class="grp-prog"><div class="grp-prog-fill" style="width:${tot?Math.round(xong/tot*100):0}%;background:${g.fill}"></div></div>
+          </div>
+          <i class="fa-solid fa-chevron-down lv-chev ${open?'open':''}" id="gc-${ctx}-${g.key}"></i>
+        </div>
+        <div class="lv-group-body ${open?'':'collapsed'}" id="gb-${ctx}-${g.key}">
+          ${list.map(a=>accCard(a,isAdmin)).join('')}
+        </div>
+      </div>`;
+    }).join('');
+  }
 
-    function renderAdminUsers(){
-        if(!db.users.length) return '<p class="text-center text-xs text-slate-600 py-8">Chưa có user nào</p>';
-        const maxA=Math.max(1,...db.users.map(u=>db.accounts.filter(a=>a.uploader===u.u).length));
-        return db.users.slice().reverse().map(u=>{
-            const acs=db.accounts.filter(a=>a.uploader===u.u);
-            const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
-            const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length;
-            const pct=Math.round((cnt/maxA)*100);
-            const lvAvg=cnt?Math.round(acs.reduce((s,a)=>s+a.lv,0)/cnt):0,lvMax=cnt?Math.max(...acs.map(a=>a.lv)):0;
-            const recent=acs.slice().reverse().slice(0,3);
-            return `
-            <div class="glass rounded-2xl overflow-hidden animate-fade">
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(0,242,255,0.1));border:1px solid rgba(168,85,247,0.3)">${u.u.charAt(0).toUpperCase()}</div>
-                            <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500">Pass: ${u.p}</p></div>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
-                            <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[10px] font-bold">XÓA</button>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-4 gap-1.5 mb-3">
-                        <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[8px] text-cyan-400 font-bold">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
-                        <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)"><p class="text-[8px] text-red-400 font-bold">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
-                        <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[8px] text-yellow-400 font-bold">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
-                        <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15)"><p class="text-[8px] text-green-400 font-bold">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
-                    </div>
-                    <div class="flex items-center gap-2"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.05)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[9px] text-slate-500">${pct}%</span></div>
-                </div>
-                <div id="ua-${u.u}" class="hidden px-4 pb-4 border-t border-white/5 pt-3 space-y-1.5">
-                    <p class="text-[9px] font-black uppercase text-slate-500 mb-2 tracking-widest">Acc gần nhất</p>
-                    ${recent.length?recent.map(a=>`
-                        <div class="flex items-center justify-between gap-2">
-                            <div class="flex items-center gap-2 min-w-0 flex-wrap">
-                                <span class="lv-badge">LV${a.lv}</span>
-                                <span class="acc-mini-tag">${a.tk}</span>
-                                <span class="${stCls(a.status||'chua')} text-[9px] px-1.5 py-0.5 rounded-full whitespace-nowrap">${stTxt(a.status||'chua')}</span>
-                            </div>
-                            <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-40 hover:opacity-100 flex-shrink-0"><i class="fa-solid fa-trash"></i></button>
-                        </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
-                    ${cnt>3?`<p class="text-[9px] text-slate-600 text-center">...và ${cnt-3} acc khác</p>`:''}
-                </div>
-            </div>`;
-        }).join('');
+  /* ── RENDER ── */
+  function renderUI(){
+    if(currentMode==='admin'){
+      renderAdminStats();renderAdminAccList();
+      document.getElementById('admin-list-users').innerHTML=renderAdminUsers();
+      buildTags('admin');runAdminSearch();
+    } else {
+      renderUserStats();renderUserList();
     }
+  }
+  function renderAdminAccList(){
+    const all=db.accounts.slice().reverse();
+    document.getElementById('admin-list-accs').innerHTML=adminViewMode==='group'?renderGrouped(all,'admin',true):`<div class="space-y-3">${all.map(a=>accCard(a,true)).join('')}</div>`;
+  }
+  function renderUserList(){
+    let list=db.accounts.filter(a=>a.uploader===currentUser.u);
+    if(userViewMode==='group'){document.getElementById('user-list').innerHTML=renderGrouped(list,'user',false);}
+    else{
+      if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
+      else list=list.slice().reverse();
+      document.getElementById('user-list').innerHTML=`<div class="space-y-4">${list.map(a=>accCard(a,false)).join('')}</div>`;
+    }
+  }
 
-    /* ── STATS ── */
-    function renderAdminStats(){
-        const chua=db.accounts.filter(a=>!a.status||a.status==='chua').length;
-        document.getElementById('admin-global-stats').innerHTML=
-            sBox('Tổng Acc',db.accounts.length,'#00f2ff')+sBox('Users',db.users.length,'#a855f7')+
-            sBox('Chưa cày',chua,'#ef4444')+sBox('Root',db.accounts.filter(a=>a.uploader==='ADMIN').length,'#f97316');
-    }
-    function renderUserStats(){
-        const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-        document.getElementById('user-global-stats').innerHTML=
-            sBox('Tổng Kho',db.accounts.length,'#00f2ff')+sBox('Của tôi',my.length,'#ff00e5')+
-            sBox('Chưa cày',my.filter(a=>!a.status||a.status==='chua').length,'#ef4444')+
-            sBox('Đã xong',my.filter(a=>a.status==='xong').length,'#00ff88');
-    }
-    function sBox(l,v,c){return`<div class="stat-card p-4 rounded-2xl text-center min-w-[80px]"><p class="text-[9px] font-bold uppercase" style="color:${c}">${l}</p><p class="text-2xl font-black">${v}</p></div>`}
+  function accCard(a,isAdmin){
+    const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
+    const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
+    const st=a.status||'chua';
+    const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
+    return `<div class="acc-wrap">
+      ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
+      <div class="glass p-5 rounded-2xl animate-fade ${urgent?'card-urgent':''}" style="border-left:3px solid ${col}40">
+        <div class="flex justify-between items-start mb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="lv-badge">LV ${a.lv}</span>
+            <span class="text-[9px] font-bold" style="color:${col}">@${a.uploader}</span>
+            <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
+              <span class="${stDot(st)}"></span>${stTxt(st)}
+            </span>
+          </div>
+          <div class="flex gap-2 flex-shrink-0 ml-2">
+            ${canManage?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
+            ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
+          </div>
+        </div>
+        <div class="space-y-2 mb-3">
+          <div class="flex justify-between items-center"><span class="text-[10px] text-gray-500 uppercase">Tài khoản: <b class="text-white">${a.tk}</b></span><button onclick="copyText('${a.tk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button></div>
+          <div class="flex justify-between items-center"><span class="text-[10px] text-gray-500 uppercase">Mật khẩu: <b class="text-white">${a.mk}</b></span><button onclick="copyText('${a.mk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button></div>
+        </div>
+        ${canManage?`<div class="flex gap-1.5 pt-2 border-t border-white/5">
+          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='chua'?'s-chua':'opacity-25'}" style="${st!=='chua'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">🔴 Chưa</button>
+          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='dang'?'s-dang':'opacity-25'}" style="${st!=='dang'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">⚡ Đang</button>
+          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='xong'?'s-xong':'opacity-25'}" style="${st!=='xong'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">✅ Xong</button>
+        </div>`:''}
+      </div>
+    </div>`;
+  }
 
-    /* ── HELPERS ── */
-    window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ Đã copy!'))};
-    function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
-    function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-    window.switchAdminTab=function(tab){
-        const ia=tab==='acc';
-        ['admin-tab-acc','admin-tab-user'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',ia?(i!==0):(i===0)));
-        document.getElementById('tab-acc-btn').classList.toggle('tab-active',ia);
-        document.getElementById('tab-user-btn').classList.toggle('tab-active',!ia);
-    };
-    window.switchAdminMode=function(m){
-        const is=m==='single';
-        document.getElementById('admin-single-mode').classList.toggle('hidden',!is);
-        document.getElementById('admin-bulk-mode').classList.toggle('hidden',is);
-        document.getElementById('admin-mode-single-btn').classList.toggle('active',is);
-        document.getElementById('admin-mode-bulk-btn').classList.toggle('active',!is);
-    };
-    window.switchUserMode=function(m){
-        const is=m==='single';
-        document.getElementById('user-single-mode').classList.toggle('hidden',!is);
-        document.getElementById('user-bulk-mode').classList.toggle('hidden',is);
-        document.getElementById('user-mode-single-btn').classList.toggle('active',is);
-        document.getElementById('user-mode-bulk-btn').classList.toggle('active',!is);
-    };
+  function renderAdminUsers(){
+    if(!db.users.length)return '<p class="text-center text-xs text-slate-600 py-8">Chưa có user nào</p>';
+    const maxA=Math.max(1,...db.users.map(u=>db.accounts.filter(a=>a.uploader===u.u).length));
+    return db.users.slice().reverse().map(u=>{
+      const acs=db.accounts.filter(a=>a.uploader===u.u);
+      const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
+      const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length;
+      const pct=Math.round((cnt/maxA)*100),recent=acs.slice().reverse().slice(0,3);
+      return `<div class="glass rounded-2xl overflow-hidden animate-fade">
+        <div class="p-4">
+          <div class="flex justify-between items-start mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(0,242,255,0.1));border:1px solid rgba(168,85,247,0.3)">${u.u.charAt(0).toUpperCase()}</div>
+              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500">Pass: ${u.p}</p></div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
+              <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[10px] font-bold">XÓA</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-4 gap-1.5 mb-3">
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[8px] text-cyan-400 font-bold">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)"><p class="text-[8px] text-red-400 font-bold">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[8px] text-yellow-400 font-bold">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15)"><p class="text-[8px] text-green-400 font-bold">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
+          </div>
+          <div class="flex items-center gap-2"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.05)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[9px] text-slate-500">${pct}%</span></div>
+        </div>
+        <div id="ua-${u.u}" class="hidden px-4 pb-4 border-t border-white/5 pt-3 space-y-1.5">
+          <p class="text-[9px] font-black uppercase text-slate-500 mb-2 tracking-widest">Acc gần nhất</p>
+          ${recent.length?recent.map(a=>`<div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 flex-wrap"><span class="lv-badge">LV${a.lv}</span><span class="acc-mini-tag">${a.tk}</span><span class="${stCls(a.status||'chua')} text-[9px] px-1.5 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span></div>
+            <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-40 hover:opacity-100 flex-shrink-0"><i class="fa-solid fa-trash"></i></button>
+          </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
+          ${cnt>3?`<p class="text-[9px] text-slate-600 text-center">...và ${cnt-3} acc khác</p>`:''}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  /* ── STATS ── */
+  function renderAdminStats(){
+    const chua=db.accounts.filter(a=>!a.status||a.status==='chua').length;
+    document.getElementById('admin-global-stats').innerHTML=
+      sBox('Tổng Acc',db.accounts.length,'#00f2ff')+sBox('Users',db.users.length,'#a855f7')+
+      sBox('Chưa cày',chua,'#ef4444')+sBox('Root',db.accounts.filter(a=>a.uploader==='ADMIN').length,'#f97316');
+  }
+  function renderUserStats(){
+    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
+    document.getElementById('user-global-stats').innerHTML=
+      sBox('Tổng Kho',db.accounts.length,'#00f2ff')+sBox('Của tôi',my.length,'#ff00e5')+
+      sBox('Chưa cày',my.filter(a=>!a.status||a.status==='chua').length,'#ef4444')+
+      sBox('Đã xong',my.filter(a=>a.status==='xong').length,'#00ff88');
+  }
+  function sBox(l,v,c){return`<div class="stat-card p-4 rounded-2xl text-center min-w-[80px]"><p class="text-[9px] font-bold uppercase" style="color:${c}">${l}</p><p class="text-2xl font-black">${v}</p></div>`}
+
+  /* ── HELPERS ── */
+  window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ Đã copy!'))};
+  function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
+  function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+  window.switchAdminTab=function(tab){
+    ['acc','search','user'].forEach(t=>{
+      document.getElementById('admin-tab-'+t).classList.toggle('hidden',t!==tab);
+      document.getElementById('tab-'+t+'-btn').classList.toggle('tab-active',t===tab);
+    });
+    if(tab==='search'){buildTags('admin');runAdminSearch();}
+  };
+  window.switchAdminMode=function(m){
+    const is=m==='single';
+    ['admin-single-mode','admin-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
+    ['admin-mode-single-btn','admin-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
+  };
+  window.switchUserMode=function(m){
+    const is=m==='single';
+    ['user-single-mode','user-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
+    ['user-mode-single-btn','user-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
+  };
 }
 </script>
 </body>
