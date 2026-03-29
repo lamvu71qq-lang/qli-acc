@@ -3,100 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Nebula Vault v5</title>
+<title>⚡ NEBULA VAULT v5</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--neon-blue:#00f2ff;--neon-pink:#ff00e5;--neon-yellow:#facc15;--neon-green:#00ff88}
-*{box-sizing:border-box}
-body{background:radial-gradient(ellipse at top right,#1e1b4b 0%,#0a0a1a 60%,#020617 100%);font-family:'Segoe UI',system-ui,sans-serif;-webkit-tap-highlight-color:transparent;min-height:100vh;color:white;overflow-x:hidden}
-.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.6)}
-.glass-strong{background:rgba(255,255,255,0.07);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.8)}
-.btn-rainbow{background:linear-gradient(135deg,#ff00e5,#9d00ff,#00f2ff,#00ff88);background-size:300% 300%;animation:gradientMove 4s ease infinite;font-weight:900;transition:transform 0.1s;box-shadow:0 4px 24px rgba(0,242,255,0.25)}
+:root{--nb:#00f2ff;--np:#ff00e5;--ny:#facc15;--ng:#00ff88;--npu:#a855f7}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Rajdhani',system-ui,sans-serif;min-height:100vh;color:white;overflow-x:hidden;
+  background:#060614;
+  background-image:
+    radial-gradient(ellipse at 15% 0%,rgba(168,85,247,0.18) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 100%,rgba(0,242,255,0.12) 0%,transparent 55%),
+    radial-gradient(ellipse at 50% 50%,rgba(255,0,229,0.04) 0%,transparent 70%);
+}
+.glass{background:rgba(255,255,255,0.035);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.07);box-shadow:0 8px 32px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05)}
+.glass-strong{background:rgba(255,255,255,0.055);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.07)}
+.btn-rainbow{background:linear-gradient(135deg,#ff00e5,#9d00ff,#00f2ff,#00ff88);background-size:300% 300%;animation:gradMove 4s ease infinite;font-weight:900;letter-spacing:0.08em;transition:all 0.2s;box-shadow:0 4px 24px rgba(0,242,255,0.25),0 0 40px rgba(168,85,247,0.15)}
 .btn-rainbow:active{transform:scale(0.97)}
-@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.orb{font-family:'Orbitron',sans-serif}
 .hidden{display:none!important}
-.tab-active{border-bottom:3px solid var(--neon-blue);color:var(--neon-blue);background:linear-gradient(to bottom,transparent,rgba(0,242,255,0.12))}
-input,textarea{background:rgba(0,0,0,0.5)!important;border:1px solid rgba(255,255,255,0.1)!important;color:white!important;outline:none!important}
+.tab-active{border-bottom:2px solid var(--nb);color:var(--nb);background:linear-gradient(to bottom,transparent,rgba(0,242,255,0.1));text-shadow:0 0 12px rgba(0,242,255,0.6)}
+input,textarea{background:rgba(0,0,0,0.55)!important;border:1px solid rgba(255,255,255,0.08)!important;color:white!important;outline:none!important;font-family:'Rajdhani',sans-serif;font-weight:600;transition:border-color 0.2s,box-shadow 0.2s}
+input:focus,textarea:focus{border-color:rgba(0,242,255,0.35)!important;box-shadow:0 0 0 3px rgba(0,242,255,0.07),0 0 20px rgba(0,242,255,0.08)!important}
 textarea{resize:vertical;font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
-textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
-.stat-card{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(147,51,234,0.08));border:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.animate-fade{animation:fadeUp 0.35s ease forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(0,242,255,0.15);border:1px solid rgba(0,242,255,0.4);color:#00f2ff;padding:12px 24px;border-radius:100px;font-size:13px;font-weight:700;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:9999}
+textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
+.stat-card{background:linear-gradient(135deg,rgba(0,0,0,0.45),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.055);flex-shrink:0;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)}
+.animate-fade{animation:fadeUp 0.4s cubic-bezier(0.34,1.2,0.64,1) forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(110px);background:rgba(4,4,20,0.95);border:1px solid rgba(0,242,255,0.35);color:#00f2ff;padding:11px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;box-shadow:0 4px 30px rgba(0,242,255,0.25);font-family:'Orbitron',sans-serif}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:10px;padding:2px 8px;border-radius:100px}
-.btn-delete{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);color:#f87171}
-.btn-edit{background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.3);color:#00f2ff}
-.mode-toggle{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;display:flex;padding:4px;gap:4px}
-.mode-btn{flex:1;padding:8px;border-radius:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.2s;color:rgba(255,255,255,0.4)}
-.mode-btn.active{background:rgba(0,242,255,0.15);color:#00f2ff;border:1px solid rgba(0,242,255,0.3)}
-.bulk-ok{background:rgba(0,255,136,0.07);border:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-.bulk-err{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-.user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7);transition:width 0.6s ease}
-.acc-mini-tag{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
-.s-chua{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5}
-.s-dang{background:rgba(250,204,21,0.12);border:1px solid rgba(250,204,21,0.3);color:#fde68a}
-.s-xong{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);color:#86efac}
-.dot-chua{width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
-.dot-dang{width:7px;height:7px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
-.dot-xong{width:7px;height:7px;border-radius:50%;background:#00ff88;display:inline-block}
-@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.5)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
-@keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.5)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
-/* BEE */
-.bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.2);border-radius:24px;overflow:hidden;position:relative}
-.bee-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#facc15,#f97316,transparent)}
-.bee-avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 20px rgba(250,204,21,0.35)}
-.bee-bubble{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:12px 14px;font-size:12px;line-height:1.75;color:#e2e8f0;min-height:52px}
-.bee-typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#facc15;animation:blink 1.2s infinite;margin-right:3px}
+.lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:9px;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 8px rgba(249,115,22,0.35)}
+.btn-delete{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;transition:all 0.2s}
+.btn-edit{background:rgba(0,242,255,0.07);border:1px solid rgba(0,242,255,0.22);color:#00f2ff;transition:all 0.2s}
+.mode-toggle{background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px}
+.mode-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
+.mode-btn.active{background:rgba(0,242,255,0.1);color:#00f2ff;border:1px solid rgba(0,242,255,0.22);text-shadow:0 0 10px rgba(0,242,255,0.5)}
+.bulk-ok{background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
+.bulk-err{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
+.s-chua{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.32);color:#fca5a5}
+.s-dang{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.32);color:#fde68a}
+.s-xong{background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.28);color:#86efac}
+.dot-chua{width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
+.dot-dang{width:6px;height:6px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
+.dot-xong{width:6px;height:6px;border-radius:50%;background:#00ff88;display:inline-block}
+@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
+@keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
+
+/* ── BEE PANEL ── */
+.bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.055),rgba(249,115,22,0.03));border:1px solid rgba(250,204,21,0.2);border-radius:26px;overflow:hidden;position:relative}
+.bee-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#facc15,#f97316,#a855f7,transparent);opacity:0.8}
+.bee-avatar{width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;box-shadow:0 4px 24px rgba(250,204,21,0.4);animation:beeFloat 3s ease-in-out infinite}
+@keyframes beeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.bee-bubble{background:rgba(0,0,0,0.42);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:13px 15px;font-size:13px;line-height:1.75;color:#e2e8f0;min-height:54px;font-weight:600}
+.bee-typing span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#facc15;animation:blink 1.2s infinite;margin-right:3px}
 .bee-typing span:nth-child(2){animation-delay:0.2s}
 .bee-typing span:nth-child(3){animation-delay:0.4s}
-@keyframes blink{0%,80%,100%{opacity:0.2}40%{opacity:1}}
-.bee-urgent-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
-.bee-tip-box{background:rgba(0,242,255,0.06);border:1px solid rgba(0,242,255,0.15);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:11px}
-.bee-chat-wrap{margin-top:12px;display:flex;gap:8px}
-.bee-chat-input{flex:1;padding:10px 14px;border-radius:100px;font-size:12px;background:rgba(0,0,0,0.4)!important;border:1px solid rgba(250,204,21,0.2)!important;color:white!important}
-.bee-chat-input:focus{border-color:rgba(250,204,21,0.5)!important}
-.bee-send-btn{width:38px;height:38px;border-radius:100%;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;color:#1a0a00;flex-shrink:0;font-weight:900;cursor:pointer;transition:transform 0.15s;border:none}
+@keyframes blink{0%,80%,100%{opacity:0.15;transform:scale(0.8)}40%{opacity:1;transform:scale(1.2)}}
+.bee-urgent-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
+.bee-tip-box{background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.14);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
+.bee-meme-box{background:rgba(168,85,247,0.07);border:1px solid rgba(168,85,247,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-style:italic;color:#c4b5fd;font-weight:600}
+.bee-analyze-box{background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:12px;font-weight:600;line-height:1.8}
+.bee-chat-wrap{margin-top:12px;display:flex;gap:8px;align-items:center}
+.bee-chat-input{flex:1;padding:10px 15px;border-radius:100px;font-size:13px;font-weight:600;background:rgba(0,0,0,0.5)!important;border:1px solid rgba(250,204,21,0.18)!important;color:white!important;font-family:'Rajdhani',sans-serif}
+.bee-chat-input:focus{border-color:rgba(250,204,21,0.45)!important;box-shadow:0 0 20px rgba(250,204,21,0.08)!important}
+.bee-send-btn{width:40px;height:40px;border-radius:100%;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:14px;color:#1a0a00;flex-shrink:0;font-weight:900;cursor:pointer;transition:all 0.2s;border:none;box-shadow:0 4px 16px rgba(249,115,22,0.35)}
 .bee-send-btn:active{transform:scale(0.9)}
-.bee-send-btn.loading{background:rgba(250,204,21,0.2)!important;color:#facc15!important;pointer-events:none}
-/* SEARCH */
-.search-wrap{position:relative;margin-bottom:16px}
-.search-icon-abs{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);font-size:13px;pointer-events:none}
+.bee-send-btn.loading{background:rgba(250,204,21,0.15)!important;color:#facc15!important;pointer-events:none;box-shadow:none}
+
+/* ── RESET TIMER ── */
+.reset-bar-wrap{background:rgba(0,0,0,0.35);border:1px solid rgba(0,242,255,0.12);border-radius:16px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.reset-bar-inner{flex:1;height:4px;border-radius:100px;background:rgba(255,255,255,0.05);overflow:hidden}
+.reset-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 1s linear;box-shadow:0 0 8px rgba(0,242,255,0.3)}
+
+/* ── SEARCH ── */
+.search-wrap{position:relative;margin-bottom:14px}
+.search-icon-abs{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:13px;pointer-events:none}
 .search-inp{width:100%;padding:12px 38px 12px 40px;border-radius:16px;font-size:13px}
-.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);font-size:12px;cursor:pointer;padding:4px}
-.lv-tag{font-size:10px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.15s;white-space:nowrap}
-.search-empty{text-align:center;padding:32px 0;color:rgba(255,255,255,0.3);font-size:13px}
-.search-count{font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:12px;padding-left:2px}
-/* VIEW TOGGLE */
-.view-toggle{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;display:flex;padding:4px;gap:4px;margin-bottom:16px}
-.view-btn{flex:1;padding:8px;border-radius:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.2s;color:rgba(255,255,255,0.4)}
-.view-btn.active{background:rgba(255,0,229,0.15);color:#ff00e5;border:1px solid rgba(255,0,229,0.3)}
-/* LEVEL GROUPS */
-.lv-group{border-radius:20px;overflow:hidden;margin-bottom:14px}
-.lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;user-select:none;gap:10px}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:12px;cursor:pointer;padding:4px}
+.lv-tag{font-size:9px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.18s;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:0.04em}
+.search-empty{text-align:center;padding:40px 0;color:rgba(255,255,255,0.22);font-size:13px}
+.search-count{font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);margin-bottom:12px;padding-left:2px;font-family:'Orbitron',sans-serif;letter-spacing:0.05em}
+
+/* ── VIEW TOGGLE ── */
+.view-toggle{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px;margin-bottom:16px}
+.view-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
+.view-btn.active{background:rgba(255,0,229,0.1);color:#ff00e5;border:1px solid rgba(255,0,229,0.22);text-shadow:0 0 10px rgba(255,0,229,0.5)}
+
+/* ── LEVEL GROUPS ── */
+.lv-group{border-radius:22px;overflow:hidden;margin-bottom:14px}
+.lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;gap:10px}
 .lv-group-hd:active{opacity:0.85}
-.lv-chev{transition:transform 0.3s cubic-bezier(0.34,1.2,0.64,1);font-size:12px;flex-shrink:0}
+.lv-chev{transition:transform 0.32s cubic-bezier(0.34,1.2,0.64,1);font-size:11px;flex-shrink:0;color:rgba(255,255,255,0.35)}
 .lv-chev.open{transform:rotate(180deg)}
-.lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.18)}
+.lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.25)}
 .lv-group-body.collapsed{display:none}
-.grp-1{background:linear-gradient(135deg,rgba(100,116,139,0.18),rgba(71,85,105,0.1));border:1px solid rgba(100,116,139,0.25)}.grp-1 .grp-label{color:#94a3b8}
-.grp-2{background:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(37,99,235,0.08));border:1px solid rgba(59,130,246,0.28)}.grp-2 .grp-label{color:#60a5fa}
-.grp-3{background:linear-gradient(135deg,rgba(0,242,255,0.12),rgba(6,182,212,0.06));border:1px solid rgba(0,242,255,0.25)}.grp-3 .grp-label{color:#00f2ff}
-.grp-4{background:linear-gradient(135deg,rgba(168,85,247,0.16),rgba(139,92,246,0.08));border:1px solid rgba(168,85,247,0.3)}.grp-4 .grp-label{color:#c084fc}
-.grp-5{background:linear-gradient(135deg,rgba(250,204,21,0.13),rgba(234,179,8,0.06));border:1px solid rgba(250,204,21,0.28)}.grp-5 .grp-label{color:#fde047}
-.grp-label{font-weight:900;font-size:13px;letter-spacing:0.04em}
-.grp-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px}
-.gp{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px}
-.gp-t{background:rgba(255,255,255,0.08);color:#94a3b8;border:1px solid rgba(255,255,255,0.06)}
-.gp-c{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
-.gp-d{background:rgba(250,204,21,0.12);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
-.gp-x{background:rgba(0,255,136,0.1);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
-.grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.06);margin-top:8px;overflow:hidden}
-.grp-prog-fill{height:100%;border-radius:100px;transition:width 0.6s ease}
-.acc-wrap{position:relative;padding-top:6px}
-.card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.5),0 6px 24px rgba(239,68,68,0.15)!important}
-.prio-ribbon{position:absolute;top:-10px;left:10px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:9px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.08em;z-index:5}
+.grp-1{background:linear-gradient(135deg,rgba(100,116,139,0.14),rgba(71,85,105,0.07));border:1px solid rgba(100,116,139,0.2)}.grp-1 .grp-label{color:#94a3b8}
+.grp-2{background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(37,99,235,0.06));border:1px solid rgba(59,130,246,0.22)}.grp-2 .grp-label{color:#60a5fa}
+.grp-3{background:linear-gradient(135deg,rgba(0,242,255,0.1),rgba(6,182,212,0.05));border:1px solid rgba(0,242,255,0.2)}.grp-3 .grp-label{color:#00f2ff;text-shadow:0 0 10px rgba(0,242,255,0.4)}
+.grp-4{background:linear-gradient(135deg,rgba(168,85,247,0.13),rgba(139,92,246,0.06));border:1px solid rgba(168,85,247,0.22)}.grp-4 .grp-label{color:#c084fc;text-shadow:0 0 10px rgba(168,85,247,0.4)}
+.grp-5{background:linear-gradient(135deg,rgba(250,204,21,0.1),rgba(234,179,8,0.05));border:1px solid rgba(250,204,21,0.22)}.grp-5 .grp-label{color:#fde047;text-shadow:0 0 10px rgba(250,204,21,0.4)}
+.grp-label{font-weight:900;font-size:13px;letter-spacing:0.06em;font-family:'Orbitron',sans-serif}
+.grp-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:5px}
+.gp{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.03em}
+.gp-t{background:rgba(255,255,255,0.06);color:#94a3b8;border:1px solid rgba(255,255,255,0.05)}
+.gp-c{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
+.gp-d{background:rgba(250,204,21,0.1);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
+.gp-x{background:rgba(0,255,136,0.08);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
+.grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.05);margin-top:9px;overflow:hidden}
+.grp-prog-fill{height:100%;border-radius:100px;transition:width 0.7s ease}
+
+/* ── ACC CARD ── */
+.acc-wrap{position:relative;padding-top:7px}
+.card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.55),0 8px 30px rgba(239,68,68,0.18)!important}
+.prio-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(239,68,68,0.4)}
+.acc-card{background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:16px 16px 13px;position:relative;overflow:hidden;transition:border-color 0.2s}
+.acc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent)}
+.user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 0.7s ease;box-shadow:0 0 8px rgba(0,242,255,0.25)}
+.acc-mini-tag{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
+
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
+::-webkit-scrollbar-thumb{background:rgba(0,242,255,0.25);border-radius:100px}
 </style>
 </head>
 <body>
@@ -104,49 +135,73 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
 
 <!-- LOGIN -->
 <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
-  <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center">
-    <h1 class="text-5xl font-black italic mb-2 tracking-tighter">NEBULA<span class="text-cyan-400">V5</span></h1>
-    <p class="text-[9px] text-slate-500 tracking-[0.35em] mb-10 uppercase">Cloud Database System</p>
-    <div class="space-y-3">
-      <input type="text" id="user" placeholder="Username" class="w-full p-4 rounded-2xl text-sm">
-      <input type="password" id="pass" placeholder="Password" class="w-full p-4 rounded-2xl text-sm">
-      <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl text-base mt-2 uppercase">VÀO HỆ THỐNG</button>
+  <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center" style="border:1px solid rgba(168,85,247,0.18);box-shadow:0 0 80px rgba(168,85,247,0.08),0 0 40px rgba(0,242,255,0.04)">
+    <div class="mb-2" style="font-family:'Orbitron',sans-serif">
+      <div class="text-5xl font-black mb-1" style="text-shadow:0 0 30px rgba(0,242,255,0.6)">
+        NEBULA<span style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.7)">V5</span>
+      </div>
+      <div class="flex items-center justify-center gap-2 mb-1">
+        <div style="height:1px;width:36px;background:linear-gradient(90deg,transparent,rgba(0,242,255,0.4))"></div>
+        <span class="text-[8px] tracking-[0.4em] text-slate-500 uppercase" style="font-family:'Rajdhani',sans-serif">Cloud Database System</span>
+        <div style="height:1px;width:36px;background:linear-gradient(90deg,rgba(0,242,255,0.4),transparent)"></div>
+      </div>
     </div>
-    <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold">✕ Sai thông tin đăng nhập</p>
+    <p class="text-[8px] text-slate-700 mb-10 tracking-[0.25em] orb">⚡ AUTO RESET 22:00 DAILY ⚡</p>
+    <div class="space-y-3">
+      <input type="text" id="user" placeholder="USERNAME" class="w-full p-4 rounded-2xl text-sm tracking-widest">
+      <input type="password" id="pass" placeholder="PASSWORD" class="w-full p-4 rounded-2xl text-sm" onkeydown="if(event.key==='Enter')login()">
+      <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl mt-2 uppercase text-sm orb">
+        <i class="fa-solid fa-bolt mr-2"></i>VÀO HỆ THỐNG
+      </button>
+    </div>
+    <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold orb">✕ SAI THÔNG TIN</p>
   </div>
 </div>
 
 <!-- ADMIN -->
-<div id="admin-page" class="hidden p-4 pt-10 pb-20">
+<div id="admin-page" class="hidden p-4 pt-10 pb-24">
   <div class="max-w-2xl mx-auto">
-    <header class="flex justify-between items-center mb-8 px-2">
-      <h2 class="text-2xl font-black italic">MASTER <span class="text-cyan-400">ADMIN</span></h2>
-      <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400"><i class="fa-solid fa-power-off"></i></button>
+    <header class="flex justify-between items-center mb-7 px-1">
+      <div>
+        <h2 class="text-2xl font-black orb" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.5)">MASTER <span style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.5)">ADMIN</span></h2>
+        <p class="text-[8px] text-slate-600 tracking-widest">Full Access · All Systems</p>
+      </div>
+      <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400" style="border:1px solid rgba(239,68,68,0.18)"><i class="fa-solid fa-power-off"></i></button>
     </header>
-    <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-8"></div>
-    <div class="flex gap-1 mb-8 p-1 glass rounded-2xl text-[10px] font-black uppercase">
+    <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-7"></div>
+    <div id="admin-reset-wrap" class="reset-bar-wrap">
+      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
+      <div class="flex-1">
+        <div class="flex justify-between mb-1">
+          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối</span>
+          <span id="admin-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
+        </div>
+        <div class="reset-bar-inner"><div id="admin-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="flex gap-1 mb-7 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
       <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3 rounded-xl tab-active">📦 Acc</button>
       <button id="tab-search-btn" onclick="switchAdminTab('search')" class="flex-1 py-3 rounded-xl">🔍 Tìm</button>
       <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3 rounded-xl">👥 Users</button>
     </div>
 
     <div id="admin-tab-acc" class="animate-fade">
-      <div class="glass p-6 rounded-[2rem] mb-6">
+      <div class="glass p-6 rounded-[2rem] mb-6" style="border:1px solid rgba(0,242,255,0.09)">
         <div class="mode-toggle mb-4">
           <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
         </div>
         <div id="admin-single-mode" class="space-y-3">
           <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
           <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
           <input type="number" id="ad-acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-3.5 rounded-xl text-sm">
-          <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Up Acc Root</button>
+          <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Up Acc Root</button>
         </div>
         <div id="admin-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></span></div>
-          <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|30&#10;player002|abc456|45" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
+          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i>Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></div>
+          <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
           <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
+          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
         </div>
       </div>
       <div class="view-toggle">
@@ -157,14 +212,14 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
     </div>
 
     <div id="admin-tab-search" class="hidden animate-fade">
-      <div class="glass p-5 rounded-[2rem] mb-5">
-        <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"><i class="fa-solid fa-magnifying-glass mr-2 text-cyan-400"></i>Tìm kiếm Acc</p>
+      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(0,242,255,0.09)">
+        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 orb"><i class="fa-solid fa-magnifying-glass mr-2 text-cyan-400"></i>Tìm kiếm Acc</p>
         <div class="search-wrap">
           <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
           <input type="text" id="admin-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runAdminSearch()">
           <span class="search-clear" onclick="clearSearch('admin')"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <p class="text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-wider">Lọc theo Level</p>
+        <p class="text-[8px] text-slate-500 font-bold mb-2 uppercase tracking-widest orb">Lọc theo Level</p>
         <div class="flex gap-2 flex-wrap" id="admin-lv-tags"></div>
       </div>
       <div id="admin-search-count" class="search-count"></div>
@@ -172,10 +227,10 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
     </div>
 
     <div id="admin-tab-user" class="hidden animate-fade">
-      <div class="glass p-6 rounded-[2rem] mb-6 space-y-3">
+      <div class="glass p-6 rounded-[2rem] mb-6 space-y-3" style="border:1px solid rgba(168,85,247,0.12)">
         <input type="text" id="new-u" placeholder="Tên User" class="w-full p-3.5 rounded-xl text-sm">
         <input type="text" id="new-p" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
-        <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase">Cấp Tài Khoản</button>
+        <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">👤 Cấp Tài Khoản</button>
       </div>
       <div id="admin-list-users" class="space-y-3"></div>
     </div>
@@ -183,61 +238,76 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
 </div>
 
 <!-- USER -->
-<div id="user-page" class="hidden p-4 pt-10 pb-20">
+<div id="user-page" class="hidden p-4 pt-10 pb-24">
   <div class="max-w-2xl mx-auto">
-    <header class="flex justify-between items-center mb-8 px-2">
-      <h2 class="text-2xl font-black italic uppercase"><span id="user-name" class="text-pink-400"></span></h2>
-      <button onclick="logout()" class="text-[9px] font-black tracking-widest text-slate-400 underline">THOÁT</button>
+    <header class="flex justify-between items-center mb-6 px-1">
+      <div>
+        <h2 class="text-2xl font-black orb" style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.5)"><span id="user-name"></span></h2>
+        <p class="text-[8px] text-slate-600 tracking-widest">Member · Game Farmer 🎮</p>
+      </div>
+      <button onclick="logout()" class="glass px-3 py-2 rounded-xl text-[8px] font-black text-slate-400 orb tracking-widest">THOÁT</button>
     </header>
-    <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-6"></div>
+    <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-5"></div>
+
+    <div class="reset-bar-wrap">
+      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
+      <div class="flex-1">
+        <div class="flex justify-between mb-1">
+          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối nay</span>
+          <span id="user-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
+        </div>
+        <div class="reset-bar-inner"><div id="user-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
+      </div>
+    </div>
 
     <!-- BEE AI -->
-    <div class="bee-panel p-5 mb-8">
+    <div class="bee-panel p-5 mb-7">
       <div class="flex gap-3 items-start">
         <div class="bee-avatar">🐝</div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-2 flex-wrap">
-            <span class="text-xs font-black text-yellow-300">BEE AI</span>
-            <span class="text-[9px] text-yellow-600 bg-yellow-400/10 px-2 py-0.5 rounded-full border border-yellow-400/20 font-bold">Claude-Powered</span>
-            <span id="bee-dot" class="hidden text-[8px] text-green-400 font-bold"><i class="fa-solid fa-circle text-[6px] mr-1 animate-pulse"></i>Online</span>
+            <span class="text-sm font-black orb" style="color:#facc15;text-shadow:0 0 12px rgba(250,204,21,0.6)">BEE AI</span>
+            <span class="text-[8px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);color:#fbbf24">Smart Local</span>
+            <span id="bee-dot" class="hidden text-[8px] text-green-400 font-bold orb"><i class="fa-solid fa-circle text-[6px] mr-1"></i>ONLINE</span>
           </div>
           <div class="bee-bubble" id="bee-message"><div class="bee-typing"><span></span><span></span><span></span></div></div>
         </div>
       </div>
       <div id="bee-actions" class="hidden mt-3 flex gap-2 flex-wrap">
-        <button onclick="beeSortUrgent()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên chưa cày</button>
-        <button onclick="beeSortDefault()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
-        <button onclick="beeAnalyze()" class="text-[10px] font-black px-3 py-2 rounded-xl" style="background:rgba(250,204,21,0.12);border:1px solid rgba(250,204,21,0.25);color:#fde68a"><i class="fa-solid fa-brain mr-1"></i>Phân tích kho</button>
+        <button onclick="beeSortUrgent()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.28);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên</button>
+        <button onclick="beeSortDefault()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
+        <button onclick="beeAnalyze()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#86efac"><i class="fa-solid fa-chart-bar mr-1"></i>Phân tích</button>
+        <button onclick="beeMeme()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:#c084fc"><i class="fa-solid fa-face-laugh-squint mr-1"></i>Meme</button>
       </div>
       <div class="bee-chat-wrap">
-        <input type="text" id="bee-chat-input" class="bee-chat-input" placeholder="Hỏi BEE bất cứ điều gì..." onkeydown="if(event.key==='Enter')sendBeeChat()">
+        <input type="text" id="bee-chat-input" class="bee-chat-input" placeholder="Hỏi BEE bất cứ gì... 🐝" onkeydown="if(event.key==='Enter')sendBeeChat()">
         <button class="bee-send-btn" id="bee-send-btn" onclick="sendBeeChat()"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
 
     <!-- TABS -->
-    <div class="flex gap-1 mb-6 p-1 glass rounded-2xl text-[10px] font-black uppercase">
+    <div class="flex gap-1 mb-6 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
       <button id="utab-list-btn" onclick="switchUserTab('list')" class="flex-1 py-3.5 rounded-xl tab-active">📦 Kho Acc</button>
       <button id="utab-search-btn" onclick="switchUserTab('search')" class="flex-1 py-3.5 rounded-xl">🔍 Tìm kiếm</button>
     </div>
 
     <div id="utab-list">
-      <div class="glass-strong p-7 rounded-[2.5rem] mb-8">
+      <div class="glass-strong p-6 rounded-[2.5rem] mb-7" style="border:1px solid rgba(255,0,229,0.08)">
         <div class="mode-toggle mb-5">
           <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Hàng loạt</button>
+          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
         </div>
         <div id="user-single-mode" class="space-y-3">
           <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
           <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
           <input type="number" id="acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-4 rounded-2xl text-sm">
-          <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase">ĐĂNG ACC MỚI</button>
+          <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb">🎮 ĐĂNG ACC MỚI</button>
         </div>
         <div id="user-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i><span class="text-[10px] text-slate-400">Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></span></div>
-          <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|30&#10;player002|abc456|45" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
+          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i>Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></div>
+          <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
           <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-base uppercase"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
+          <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
         </div>
       </div>
       <div class="view-toggle">
@@ -248,14 +318,14 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
     </div>
 
     <div id="utab-search" class="hidden animate-fade">
-      <div class="glass p-5 rounded-[2rem] mb-5">
-        <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"><i class="fa-solid fa-magnifying-glass mr-2 text-pink-400"></i>Tìm kiếm Acc của tôi</p>
+      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(255,0,229,0.1)">
+        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 orb"><i class="fa-solid fa-magnifying-glass mr-2 text-pink-400"></i>Tìm kiếm Acc của tôi</p>
         <div class="search-wrap">
           <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
           <input type="text" id="user-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runUserSearch()">
           <span class="search-clear" onclick="clearSearch('user')"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <p class="text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-wider">Lọc theo Level</p>
+        <p class="text-[8px] text-slate-500 font-bold mb-2 uppercase tracking-widest orb">Lọc theo Level</p>
         <div class="flex gap-2 flex-wrap" id="user-lv-tags"></div>
       </div>
       <div id="user-search-count" class="search-count"></div>
@@ -265,6 +335,8 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.3)!important}
 </div>
 
 <script>
+/* ══════════ CONFIG ══════════ */
+const RESET_HOUR=22; // 22:00 tối
 const LV_GROUPS=[
   {key:'g1',label:'LV 1–9',min:1,max:9,cls:'grp-1',icon:'🌱',fill:'rgba(100,116,139,0.7)'},
   {key:'g2',label:'LV 10–19',min:10,max:19,cls:'grp-2',icon:'💧',fill:'rgba(59,130,246,0.7)'},
@@ -273,14 +345,132 @@ const LV_GROUPS=[
   {key:'g5',label:'LV 40–50',min:40,max:50,cls:'grp-5',icon:'👑',fill:'rgba(250,204,21,0.8)'},
 ];
 const LV_TAGS=[
-  {label:'Tất cả',min:0,max:50,bg:'rgba(255,255,255,0.07)',abg:'rgba(255,255,255,0.18)',bd:'rgba(255,255,255,0.12)'},
-  {label:'LV 1–9',min:1,max:9,bg:'rgba(100,116,139,0.1)',abg:'rgba(100,116,139,0.3)',bd:'rgba(100,116,139,0.3)'},
-  {label:'LV 10–19',min:10,max:19,bg:'rgba(59,130,246,0.1)',abg:'rgba(59,130,246,0.3)',bd:'rgba(59,130,246,0.3)'},
-  {label:'LV 20–29',min:20,max:29,bg:'rgba(0,242,255,0.1)',abg:'rgba(0,242,255,0.25)',bd:'rgba(0,242,255,0.3)'},
-  {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.1)',abg:'rgba(168,85,247,0.3)',bd:'rgba(168,85,247,0.3)'},
-  {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.1)',abg:'rgba(250,204,21,0.25)',bd:'rgba(250,204,21,0.3)'},
+  {label:'Tất cả',min:0,max:50,bg:'rgba(255,255,255,0.06)',abg:'rgba(255,255,255,0.15)',bd:'rgba(255,255,255,0.1)'},
+  {label:'LV 1–9',min:1,max:9,bg:'rgba(100,116,139,0.08)',abg:'rgba(100,116,139,0.28)',bd:'rgba(100,116,139,0.28)'},
+  {label:'LV 10–19',min:10,max:19,bg:'rgba(59,130,246,0.08)',abg:'rgba(59,130,246,0.28)',bd:'rgba(59,130,246,0.28)'},
+  {label:'LV 20–29',min:20,max:29,bg:'rgba(0,242,255,0.07)',abg:'rgba(0,242,255,0.22)',bd:'rgba(0,242,255,0.28)'},
+  {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.07)',abg:'rgba(168,85,247,0.25)',bd:'rgba(168,85,247,0.28)'},
+  {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.07)',abg:'rgba(250,204,21,0.22)',bd:'rgba(250,204,21,0.28)'},
 ];
 
+/* BEE MEMES */
+const BEE_MEMES=[
+  '😂 Cày acc mà ngủ quên = bị người ta cướp trước lol',
+  '💀 Acc LV50 mà chưa cày = đang để gà kén chủ...',
+  '🤡 "Mai cày cũng được" — ngày hôm sau acc vẫn đó, ý chí thì không',
+  '😭 Reset 22h rồi mà chưa xong? Skill issue bro',
+  '👀 BEE thấy bạn có acc chưa cày kìa... BEE không nói đâu nhé 🙊',
+  '🔥 Cày acc như ăn cơm: phải đều đặn, không thì đói 💀',
+  '😤 "Chỉ còn 1 acc nữa thôi" — 3 tiếng sau vẫn đang cày 🐢',
+  '🧠 Big brain move: đăng acc → cày ngay → xong trước 22h 😎',
+  '😂 Acc LV1 nhìn acc LV50 mà thở dài: "Bao giờ đến lượt tao..."',
+  '💅 BEE làm việc không biết mệt. Còn bạn thì... 🤔',
+  '🏃 Thấy đồng hồ 21:59 mà chưa xong? CHẠY ĐI CON ƠI',
+  '🐝 BEE ở đây 24/7. Bạn thì ngủ 8 tiếng. Ai cần ai? 😏',
+];
+
+/* BEE RESPONSES cho chat (local, không cần API) */
+function beeLocalReply(msg,ctx){
+  msg=msg.toLowerCase();
+  const {total,chua,dang,xong,byLv,topChua,user}=ctx;
+  // Phân tích intent
+  if(/bao.*(lv|level|nhóm)|nhóm.*(nào|mấy)|level.*(nhiều|ít)/.test(msg)){
+    if(!byLv.length)return '😅 Kho trống rỗng bro, chưa có gì để phân tích đâu!';
+    const top=byLv.sort((a,b)=>b.count-a.count)[0];
+    return `📊 Nhóm nhiều acc nhất của bạn là <b>${top.group}</b> với <b>${top.count} acc</b>!${chua?` Còn <b class="text-red-300">${chua} acc chưa cày</b> nữa kìa, cày mau lên!`:''}`;
+  }
+  if(/còn.*(bao nhiêu|mấy).*(acc|chưa)|chưa.*(cày|làm)/.test(msg)){
+    if(!chua)return '🎉 Ngon! Hết acc chưa cày rồi, bạn là huyền thoại! 👑';
+    return `🔴 Còn <b class="text-red-300">${chua} acc chưa cày</b>! ${topChua.slice(0,2).map(a=>`<code class="text-pink-300">${a.tk}</code>`).join(', ')} ${chua>2?`và ${chua-2} acc nữa`:''} — cày thôi nào!`;
+  }
+  if(/đang.*(cày|làm)|cày.*(rồi|đó)/.test(msg)){
+    if(!dang)return '😴 Không có acc nào đang cày đâu bro. Idle game nhưng không idle 😂';
+    return `⚡ Đang cày <b class="text-yellow-300">${dang} acc</b>! Giữ đà đó, gần xong rồi! 💪`;
+  }
+  if(/xong|hoàn.*(thành|tất)|done/.test(msg)){
+    if(!xong)return '😬 Chưa có acc nào xong cả... BEE không phán xét đâu nhé 🙈';
+    return `✅ Đã xong <b class="text-green-300">${xong} acc</b>! ${xong>=5?'Quá gánh luôn! 🏆':'Tiếp tục nào!'} Còn ${chua} acc chưa cày.`;
+  }
+  if(/reset|22h|tối|mấy.*(giờ)|còn.*(bao lâu|thời gian)/.test(msg)){
+    const now=new Date(),reset=new Date();
+    reset.setHours(RESET_HOUR,0,0,0);
+    if(now>=reset)reset.setDate(reset.getDate()+1);
+    const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
+    return `⏰ Còn <b class="text-cyan-300">${h}h ${m}m</b> đến khi reset 22:00! ${h<2?'⚠️ Ít thời gian lắm, CHẠY ĐI!':h<5?'🏃 Vừa đủ nếu cày nghiêm túc!':'😎 Còn thoải mái, nhưng đừng lề mề!'}`;
+  }
+  if(/tổng|kho|bao nhiêu.*(acc|tất cả)|có.*(gì|bao)/.test(msg)){
+    if(!total)return '😅 Kho trống rỗng! Đăng acc mới đi bro~';
+    return `📦 Kho của bạn: <b>${total} acc</b> tổng — 🔴 ${chua} chưa cày · ⚡ ${dang} đang · ✅ ${xong} xong!${byLv.length?` Nhiều nhất ở ${byLv.sort((a,b)=>b.count-a.count)[0].group}.`:''}`;
+  }
+  if(/meme|hài|vui|buồn cười|cười/.test(msg)){
+    return `<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
+  }
+  if(/xin chào|hello|hi|chào|hey/.test(msg)){
+    return `👋 Chào <b>${user}</b>! BEE đây! Bạn có ${total} acc trong kho${chua?`, còn <b class="text-red-300">${chua} chưa cày</b> nhé!`:' và tất cả đang ổn! 🎉'}`;
+  }
+  if(/giỏi|ngon|pro|chuyên|hay/.test(msg)){
+    return '😎 BEE biết mình giỏi, nhưng bạn khen thì BEE vẫn thích! 🐝✨ Tiếp tục cày thôi nào!';
+  }
+  if(/acc.*(tốt|nên|ưu tiên|trước)|cày.*(gì|nào|trước)/.test(msg)){
+    if(!chua)return '🏆 Hết acc chưa cày rồi! Bạn đã hoàn thành tất cả, nghỉ ngơi xứng đáng!';
+    const top=topChua[0];
+    if(!top)return '✅ Không còn acc nào cần cày!';
+    const grp=LV_GROUPS.find(g=>top.lv>=g.min&&top.lv<=g.max);
+    return `🎯 BEE gợi ý cày <b class="text-pink-300">${top.tk}</b> (${grp?grp.icon:''} LV ${top.lv}) trước! ${top.lv>=40?'High level xong nhanh hơn 🚀':'Level thấp cày lẹ xong luôn! ⚡'}`;
+  }
+  // Default random tip
+  const tips=[
+    `💡 Tip của BEE: Bạn có <b>${chua} acc chưa cày</b>. Nhấn "Ưu tiên" để sắp xếp nhé!`,
+    `🐝 BEE thấy kho bạn có <b>${total} acc</b>. ${chua?`Còn ${chua} acc cần cày!`:'Tất cả đã ổn!'}`,
+    `⏰ Reset lúc 22:00 tối nhé! ${chua>0?`Còn ${chua} acc chưa cày kìa!`:'Bạn đang đi đúng hướng! ✅'}`,
+    `🎮 Hỏi BEE: "còn bao nhiêu acc?", "cày gì trước?", "reset lúc mấy giờ?"... BEE biết hết!`,
+  ];
+  return tips[Math.floor(Math.random()*tips.length)];
+}
+
+function beeAnalyzeLocal(ctx){
+  const {total,chua,dang,xong,byLv,topChua}=ctx;
+  if(!total)return '😅 Kho trống! Đăng acc mới trước rồi BEE mới phân tích được nhé~';
+  
+  const now=new Date(),reset=new Date();
+  reset.setHours(RESET_HOUR,0,0,0);
+  if(now>=reset)reset.setDate(reset.getDate()+1);
+  const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
+  const rate=total?Math.round(xong/total*100):0;
+  
+  let html=`<div class="bee-analyze-box">`;
+  html+=`<b class="text-green-300">📊 Báo cáo kho của bạn:</b><br>`;
+  html+=`• Tổng: <b>${total} acc</b> | Xong: <b class="text-green-300">${xong}</b> | Đang: <b class="text-yellow-300">${dang}</b> | Chưa: <b class="text-red-300">${chua}</b><br>`;
+  html+=`• Tiến độ: <b>${rate}%</b> hoàn thành<br>`;
+  html+=`• Reset sau: <b class="text-cyan-300">${h}h ${m}m</b><br><br>`;
+  
+  if(chua===0){
+    html+=`<b class="text-green-300">🏆 XUẤT SẮC!</b> Tất cả acc đã xong trước 22:00!`;
+  } else {
+    // Gợi ý ưu tiên
+    const highLv=topChua.filter(a=>a.lv>=40);
+    const lowLv=topChua.filter(a=>a.lv<10);
+    html+=`<b class="text-yellow-300">🎯 Gợi ý BEE:</b><br>`;
+    if(h<2){
+      html+=`⚠️ <b class="text-red-300">GẤP!</b> Còn ${h}h ${m}m mà ${chua} acc chưa xong. Ưu tiên acc level thấp cày nhanh hơn!<br>`;
+      if(lowLv.length)html+=`→ Cày LV thấp trước: <code class="text-pink-300">${lowLv.slice(0,2).map(a=>a.tk).join(', ')}</code>`;
+    } else if(highLv.length){
+      html+=`→ Cày acc high LV trước để lấy điểm cao: <code class="text-yellow-300">${highLv.slice(0,2).map(a=>a.tk).join(', ')}</code><br>`;
+      html+=`→ Còn ${h}h ${m}m, đủ thời gian nếu tập trung! 💪`;
+    } else {
+      html+=`→ Cày lần lượt từ trên xuống, nhấn "Ưu tiên chưa cày" để sắp xếp!<br>`;
+      html+=`→ Pace: ${Math.ceil(chua/Math.max(h,1))} acc/giờ là xong! `;
+    }
+    if(byLv.length){
+      const topGrp=byLv.sort((a,b)=>b.count-a.count)[0];
+      html+=`<br>📦 Nhiều acc nhất: <b>${topGrp.group}</b> (${topGrp.count} acc)`;
+    }
+  }
+  html+=`</div>`;
+  return html;
+}
+
+/* ══════════ FIREBASE BOOT ══════════ */
 function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
 loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
   .then(()=>loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
@@ -296,6 +486,7 @@ function bootApp(){
   let userViewMode='all',adminViewMode='all';
   let uLvFilter={min:0,max:50},aLvFilter={min:0,max:50};
   const openGrps={user:{},admin:{}};
+  let resetDone=false; // tránh reset nhiều lần
 
   dbRef.on('value',snap=>{
     const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
@@ -304,19 +495,63 @@ function bootApp(){
   });
   function sync(){return dbRef.set({users:db.users,accounts:db.accounts})}
 
+  /* ── AUTO RESET 22:00 ── */
+  function checkAutoReset(){
+    const now=new Date();
+    const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
+    // Reset đúng 22:00:00 đến 22:00:59
+    if(h===RESET_HOUR&&m===0&&s<30&&!resetDone){
+      resetDone=true;
+      let changed=false;
+      db.accounts.forEach(a=>{
+        if(a.status==='dang'||a.status==='xong'){a.status='chua';changed=true;}
+      });
+      if(changed){
+        sync().then(()=>{
+          showToast('🔄 RESET 22:00 — Tất cả về chưa cày!');
+          if(currentMode==='user')beeInit();
+        });
+      }
+    }
+    // Sau 22:00:30 reset flag
+    if(h===RESET_HOUR&&m===1)resetDone=false;
+    // Update timer UI
+    updateResetTimer();
+  }
+
+  function updateResetTimer(){
+    const now=new Date();
+    const reset=new Date();
+    reset.setHours(RESET_HOUR,0,0,0);
+    if(now>=reset)reset.setDate(reset.getDate()+1);
+    const total=24*3600*1000;
+    const diff=reset-now;
+    const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    const txt=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const pct=Math.round((1-diff/total)*100);
+    ['admin','user'].forEach(p=>{
+      const t=document.getElementById(p+'-reset-txt');
+      const b=document.getElementById(p+'-reset-fill');
+      if(t)t.textContent=txt;
+      if(b)b.style.width=pct+'%';
+    });
+  }
+  setInterval(checkAutoReset,1000);
+  updateResetTimer();
+
   /* ── AUTH ── */
   window.login=function(){
     const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();
     if(u===ADMIN.u&&p===ADMIN.p){currentMode='admin';showPage('admin-page');renderUI();}
     else{
       const f=db.users.find(x=>x.u===u&&x.p===p);
-      if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(beeInit,700);}
+      if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(beeInit,800);}
       else document.getElementById('login-error').classList.remove('hidden');
     }
   };
   window.logout=function(){location.reload()};
 
-  /* ── BEE AI (Claude API) ── */
+  /* ── BEE AI (Smart Local) ── */
   function beeCtx(){
     const my=db.accounts.filter(a=>a.uploader===currentUser.u);
     const chua=my.filter(a=>!a.status||a.status==='chua');
@@ -326,65 +561,81 @@ function bootApp(){
     return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
   }
 
-  async function askClaude(question,ctx){
-    const sys=`Bạn là BEE AI - trợ lý cày acc game thông minh, thân thiện, nói tiếng Việt ngắn gọn.
-Dữ liệu kho acc của user: ${JSON.stringify(ctx)}
-Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào số liệu thực tế, giọng vui vẻ như bạn gaming.`;
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:[{role:'user',content:question}]})});
-    const d=await r.json();
-    return d.content&&d.content[0]?d.content[0].text:'BEE AI đang bận, thử lại sau!';
-  }
-
   function beeInit(){
     const my=db.accounts.filter(a=>a.uploader===currentUser.u);
     const chua=my.filter(a=>!a.status||a.status==='chua');
     const dang=my.filter(a=>a.status==='dang');
     const xong=my.filter(a=>a.status==='xong');
+    const el=document.getElementById('bee-message');
+    const act=document.getElementById('bee-actions');
+    const dot=document.getElementById('bee-dot');
     let msg='';
-    if(!my.length){msg=`👋 Chào <b>${currentUser.u}</b>! Kho trống rỗng. Đăng acc mới để bắt đầu nhé!`;}
-    else if(!chua.length){msg=`🎉 <b>${currentUser.u}</b> ngon lắm! Tất cả <b>${my.length} acc</b> đã có trạng thái.${xong.length?' <span class="text-green-300">✓ '+xong.length+' xong!</span>':''}`;}
-    else{
-      msg=`👋 Chào <b>${currentUser.u}</b>! <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} tổng.`;
-      if(dang.length)msg+=` <span class="text-yellow-300">⚡${dang.length} đang cày.</span>`;
-      if(xong.length)msg+=` <span class="text-green-300">✓${xong.length} xong.</span>`;
+    if(!my.length){
+      msg=`👋 Xin chào <b>${currentUser.u}</b>! Kho của bạn đang trống. Đăng acc mới để bắt đầu nhé! 🎮`;
+    } else if(!chua.length){
+      msg=`🎉 Tuyệt vời <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đã có trạng thái.${xong.length?` <span class="text-green-300">✓ ${xong.length} xong!</span>`:''}`;
+      msg+=`<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
+    } else {
+      msg=`👋 Chào <b>${currentUser.u}</b>! Bạn có <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} acc.`;
+      if(dang.length)msg+=` <span class="text-yellow-300">⚡ ${dang.length} đang cày.</span>`;
+      if(xong.length)msg+=` <span class="text-green-300">✓ ${xong.length} xong.</span>`;
       msg+=`<div class="bee-urgent-box mt-2"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay:</b><br>`;
       chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}<br>`});
       if(chua.length>3)msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
-      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-lightbulb text-cyan-400 mr-1"></i>Hỏi tôi bất cứ gì hoặc nhấn <b class="text-yellow-300">Phân tích kho</b> để có gợi ý AI!</div>`;
+      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-lightbulb text-cyan-400 mr-1"></i>Nhấn <b class="text-green-300">Phân tích</b> để xem gợi ý chi tiết, hoặc hỏi BEE bất cứ gì!</div>`;
     }
-    const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions'),dot=document.getElementById('bee-dot');
-    setTimeout(()=>{el.innerHTML=msg;act.classList.remove('hidden');act.style.display='flex';dot.classList.remove('hidden');},1000);
+    setTimeout(()=>{
+      el.innerHTML=msg;
+      act.classList.remove('hidden');act.style.display='flex';
+      dot.classList.remove('hidden');
+    },1000);
   }
 
-  window.sendBeeChat=async function(){
+  window.sendBeeChat=function(){
     const inp=document.getElementById('bee-chat-input'),btn=document.getElementById('bee-send-btn');
     const msg=inp.value.trim();if(!msg)return;
     inp.value='';
     const el=document.getElementById('bee-message');
     el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
     btn.classList.add('loading');btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
-    try{el.innerHTML=(await askClaude(msg,beeCtx())).replace(/\n/g,'<br>');}
-    catch{el.innerHTML='⚠️ Không kết nối được BEE AI. Thử lại sau!';}
-    btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
+    setTimeout(()=>{
+      const ctx=beeCtx();
+      el.innerHTML=beeLocalReply(msg,ctx);
+      btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
+    },600+Math.random()*400);
   };
 
-  window.beeAnalyze=async function(){
+  window.beeAnalyze=function(){
     const el=document.getElementById('bee-message');
     el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    try{el.innerHTML=(await askClaude('Phân tích kho acc của tôi và đưa ra gợi ý cụ thể để cày hiệu quả nhất. Nên ưu tiên nhóm level nào? Acc nào cần cày trước?',beeCtx())).replace(/\n/g,'<br>');}
-    catch{el.innerHTML='⚠️ Không kết nối được BEE AI!';}
+    setTimeout(()=>{el.innerHTML=beeAnalyzeLocal(beeCtx());},700);
   };
 
-  window.beeSortUrgent=function(){sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');document.getElementById('bee-message').innerHTML=`<i class="fa-solid fa-sort-up text-yellow-300 mr-1"></i> Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu!`;};
-  window.beeSortDefault=function(){sortMode='default';renderUserList();showToast('Về thứ tự mặc định');document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b>.`;};
+  window.beeMeme=function(){
+    const el=document.getElementById('bee-message');
+    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
+    setTimeout(()=>{
+      const meme=BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)];
+      el.innerHTML=`<div class="bee-meme-box">${meme}</div>Haha, BEE rất vui được chia sẻ điều này! 😂 Còn <b class="text-red-300">${beeCtx().chua} acc chưa cày</b> đó nha~`;
+    },500);
+  };
+
+  window.beeSortUrgent=function(){
+    sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');
+    document.getElementById('bee-message').innerHTML=`<i class="fa-solid fa-sort-up text-yellow-300 mr-1"></i> Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu! Cày thôi nào 💪`;
+  };
+  window.beeSortDefault=function(){
+    sortMode='default';renderUserList();showToast('Về thứ tự mặc định');
+    document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> rồi nhé!`;
+  };
 
   /* ── SEARCH ── */
   function buildTags(ctx){
-    const id=ctx==='admin'?'admin-lv-tags':'user-lv-tags';
+    const id=ctx+'--lv-tags'.replace('--','-');// admin-lv-tags / user-lv-tags
     const cur=ctx==='admin'?aLvFilter:uLvFilter;
-    document.getElementById(id).innerHTML=LV_TAGS.map(r=>{
+    document.getElementById(ctx==='admin'?'admin-lv-tags':'user-lv-tags').innerHTML=LV_TAGS.map(r=>{
       const active=cur.min===r.min&&cur.max===r.max;
-      return `<span class="lv-tag" onclick="setLvTag('${ctx}',${r.min},${r.max})" style="background:${active?r.abg:r.bg};border:1px solid ${r.bd};color:${active?'white':'rgba(255,255,255,0.5)'}">${r.label}</span>`;
+      return `<span class="lv-tag" onclick="setLvTag('${ctx}',${r.min},${r.max})" style="background:${active?r.abg:r.bg};border:1px solid ${r.bd};color:${active?'white':'rgba(255,255,255,0.4)'}">${r.label}</span>`;
     }).join('');
   }
   window.setLvTag=function(ctx,min,max){
@@ -400,11 +651,11 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
     const q=document.getElementById('admin-search-input').value.trim().toLowerCase();
     const {min,max}=aLvFilter;
     const list=db.accounts.filter(a=>{
-      const lvOk=min===0||( a.lv>=min&&a.lv<=max);
+      const lvOk=min===0||(a.lv>=min&&a.lv<=max);
       return lvOk&&(!q||a.tk.toLowerCase().includes(q));
     }).slice().reverse();
     document.getElementById('admin-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-2xl mb-2 block opacity-30"></i>Không tìm thấy acc nào</div>`;
+    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy acc nào</div>`;
   };
   window.runUserSearch=function(){
     const q=document.getElementById('user-search-input').value.trim().toLowerCase();
@@ -415,7 +666,7 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
       return lvOk&&(!q||a.tk.toLowerCase().includes(q));
     }).slice().reverse();
     document.getElementById('user-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-2xl mb-2 block opacity-30"></i>Không tìm thấy acc nào</div>`;
+    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy acc nào</div>`;
   };
 
   /* ── STATUS ── */
@@ -462,7 +713,7 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
     document.getElementById(pid).innerHTML=!items.length?'':
       `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
       items.slice(0,10).map(x=>x.ok
-        ?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`
+        ?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono text-xs">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`
         :`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`
       ).join('')+(items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
   };
@@ -479,12 +730,12 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
     sync().then(()=>{showToast(`✓ Up ${items.length} acc Root`);document.getElementById('admin-bulk-input').value='';document.getElementById('admin-bulk-preview').innerHTML='';});
   };
 
-  /* ── EDIT/DEL ── */
+  /* ── EDIT / DEL ── */
   window.editLv=function(id){
     const a=db.accounts.find(x=>x.id===id);if(!a)return;
     const v=prompt(`Level mới cho [${a.tk}] (1-50):`,a.lv);
     if(v===null||v===''||isNaN(v))return;
-    a.lv=clampLv(v);sync().then(()=>showToast('✓ Đã cập nhật LV: '+a.lv));
+    a.lv=clampLv(v);sync().then(()=>showToast('✓ LV → '+a.lv));
   };
   window.deleteAcc=function(id){
     if(!confirm('Xác nhận xóa acc?'))return;
@@ -531,7 +782,7 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
   /* ── GROUPED LIST ── */
   function renderGrouped(accs,ctx,isAdmin){
     const grps=LV_GROUPS.filter(g=>accs.some(a=>a.lv>=g.min&&a.lv<=g.max));
-    if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-8">Chưa có acc nào</p>';
+    if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có acc nào</p>';
     return grps.map(g=>{
       let list=accs.filter(a=>a.lv>=g.min&&a.lv<=g.max);
       if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
@@ -543,7 +794,7 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
       return `<div class="lv-group ${g.cls} animate-fade">
         <div class="lv-group-hd" onclick="toggleGrp('${ctx}','${g.key}')">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2"><span class="text-base">${g.icon}</span><span class="grp-label">${g.label}</span></div>
+            <div class="flex items-center gap-2"><span class="text-lg">${g.icon}</span><span class="grp-label">${g.label}</span></div>
             <div class="grp-meta">
               <span class="gp gp-t">${tot} acc</span>
               ${chua?`<span class="gp gp-c">🔴 ${chua}</span>`:''}
@@ -581,7 +832,7 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
     else{
       if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
       else list=list.slice().reverse();
-      document.getElementById('user-list').innerHTML=`<div class="space-y-4">${list.map(a=>accCard(a,false)).join('')}</div>`;
+      document.getElementById('user-list').innerHTML=`<div class="space-y-3">${list.map(a=>accCard(a,false)).join('')}</div>`;
     }
   }
 
@@ -592,68 +843,78 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
     const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
     return `<div class="acc-wrap">
       ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
-      <div class="glass p-5 rounded-2xl animate-fade ${urgent?'card-urgent':''}" style="border-left:3px solid ${col}40">
+      <div class="acc-card ${urgent?'card-urgent':''}" style="border-left:3px solid ${col}35">
         <div class="flex justify-between items-start mb-3">
           <div class="flex items-center gap-2 flex-wrap">
             <span class="lv-badge">LV ${a.lv}</span>
-            <span class="text-[9px] font-bold" style="color:${col}">@${a.uploader}</span>
+            <span class="text-[9px] font-bold orb" style="color:${col}">@${a.uploader}</span>
             <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
               <span class="${stDot(st)}"></span>${stTxt(st)}
             </span>
           </div>
-          <div class="flex gap-2 flex-shrink-0 ml-2">
+          <div class="flex gap-1.5 flex-shrink-0 ml-2">
             ${canManage?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
             ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
           </div>
         </div>
         <div class="space-y-2 mb-3">
-          <div class="flex justify-between items-center"><span class="text-[10px] text-gray-500 uppercase">Tài khoản: <b class="text-white">${a.tk}</b></span><button onclick="copyText('${a.tk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button></div>
-          <div class="flex justify-between items-center"><span class="text-[10px] text-gray-500 uppercase">Mật khẩu: <b class="text-white">${a.mk}</b></span><button onclick="copyText('${a.mk}')" class="text-gray-500 text-xs ml-2"><i class="fa-solid fa-copy"></i></button></div>
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Tài khoản: <b class="text-white font-bold">${a.tk}</b></span>
+            <button onclick="copyText('${a.tk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400 transition-colors"><i class="fa-solid fa-copy"></i></button>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Mật khẩu: <b class="text-white font-bold">${a.mk}</b></span>
+            <button onclick="copyText('${a.mk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400 transition-colors"><i class="fa-solid fa-copy"></i></button>
+          </div>
         </div>
-        ${canManage?`<div class="flex gap-1.5 pt-2 border-t border-white/5">
-          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='chua'?'s-chua':'opacity-25'}" style="${st!=='chua'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">🔴 Chưa</button>
-          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='dang'?'s-dang':'opacity-25'}" style="${st!=='dang'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">⚡ Đang</button>
-          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg ${st==='xong'?'s-xong':'opacity-25'}" style="${st!=='xong'?'background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.05)':''}">✅ Xong</button>
+        ${canManage?`<div class="flex gap-1.5 pt-2" style="border-top:1px solid rgba(255,255,255,0.05)">
+          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='chua'?'s-chua':'opacity-20'}" style="${st!=='chua'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">🔴 Chưa</button>
+          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='dang'?'s-dang':'opacity-20'}" style="${st!=='dang'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">⚡ Đang</button>
+          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='xong'?'s-xong':'opacity-20'}" style="${st!=='xong'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">✅ Xong</button>
         </div>`:''}
       </div>
     </div>`;
   }
 
   function renderAdminUsers(){
-    if(!db.users.length)return '<p class="text-center text-xs text-slate-600 py-8">Chưa có user nào</p>';
+    if(!db.users.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có user nào</p>';
     const maxA=Math.max(1,...db.users.map(u=>db.accounts.filter(a=>a.uploader===u.u).length));
     return db.users.slice().reverse().map(u=>{
       const acs=db.accounts.filter(a=>a.uploader===u.u);
       const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
       const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length;
       const pct=Math.round((cnt/maxA)*100),recent=acs.slice().reverse().slice(0,3);
-      return `<div class="glass rounded-2xl overflow-hidden animate-fade">
+      return `<div class="glass rounded-2xl overflow-hidden animate-fade" style="border:1px solid rgba(168,85,247,0.1)">
         <div class="p-4">
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(0,242,255,0.1));border:1px solid rgba(168,85,247,0.3)">${u.u.charAt(0).toUpperCase()}</div>
-              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500">Pass: ${u.p}</p></div>
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm orb" style="background:linear-gradient(135deg,rgba(168,85,247,0.25),rgba(0,242,255,0.12));border:1px solid rgba(168,85,247,0.25)">${u.u.charAt(0).toUpperCase()}</div>
+              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500 orb tracking-wider">Pass: ${u.p}</p></div>
             </div>
             <div class="flex gap-2">
-              <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
-              <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[10px] font-bold">XÓA</button>
+              <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[9px] font-bold orb"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
+              <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[9px] font-bold orb">XÓA</button>
             </div>
           </div>
           <div class="grid grid-cols-4 gap-1.5 mb-3">
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[8px] text-cyan-400 font-bold">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)"><p class="text-[8px] text-red-400 font-bold">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[8px] text-yellow-400 font-bold">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15)"><p class="text-[8px] text-green-400 font-bold">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[7px] text-cyan-400 font-bold orb">TỔNG</p><p class="text-xl font-black text-cyan-300">${cnt}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)"><p class="text-[7px] text-red-400 font-bold orb">CHƯA</p><p class="text-xl font-black text-red-300">${chua}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[7px] text-yellow-400 font-bold orb">ĐANG</p><p class="text-xl font-black text-yellow-300">${dang}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.12)"><p class="text-[7px] text-green-400 font-bold orb">XONG</p><p class="text-xl font-black text-green-300">${xong}</p></div>
           </div>
-          <div class="flex items-center gap-2"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.05)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[9px] text-slate-500">${pct}%</span></div>
+          <div class="flex items-center gap-2"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.04)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[8px] text-slate-600 orb">${pct}%</span></div>
         </div>
-        <div id="ua-${u.u}" class="hidden px-4 pb-4 border-t border-white/5 pt-3 space-y-1.5">
-          <p class="text-[9px] font-black uppercase text-slate-500 mb-2 tracking-widest">Acc gần nhất</p>
+        <div id="ua-${u.u}" class="hidden px-4 pb-4 pt-3 space-y-2" style="border-top:1px solid rgba(255,255,255,0.04)">
+          <p class="text-[8px] font-black uppercase text-slate-600 mb-2 tracking-widest orb">Acc gần nhất</p>
           ${recent.length?recent.map(a=>`<div class="flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2 flex-wrap"><span class="lv-badge">LV${a.lv}</span><span class="acc-mini-tag">${a.tk}</span><span class="${stCls(a.status||'chua')} text-[9px] px-1.5 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span></div>
-            <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-40 hover:opacity-100 flex-shrink-0"><i class="fa-solid fa-trash"></i></button>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="lv-badge">LV${a.lv}</span>
+              <span class="acc-mini-tag text-[10px]">${a.tk}</span>
+              <span class="${stCls(a.status||'chua')} text-[9px] px-2 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span>
+            </div>
+            <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-30 hover:opacity-80 flex-shrink-0"><i class="fa-solid fa-trash"></i></button>
           </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
-          ${cnt>3?`<p class="text-[9px] text-slate-600 text-center">...và ${cnt-3} acc khác</p>`:''}
+          ${cnt>3?`<p class="text-[8px] text-slate-600 text-center orb">...và ${cnt-3} acc khác</p>`:''}
         </div>
       </div>`;
     }).join('');
@@ -673,12 +934,17 @@ Quy tắc: trả lời tối đa 3-4 câu, dùng emoji vừa phải, dựa vào 
       sBox('Chưa cày',my.filter(a=>!a.status||a.status==='chua').length,'#ef4444')+
       sBox('Đã xong',my.filter(a=>a.status==='xong').length,'#00ff88');
   }
-  function sBox(l,v,c){return`<div class="stat-card p-4 rounded-2xl text-center min-w-[80px]"><p class="text-[9px] font-bold uppercase" style="color:${c}">${l}</p><p class="text-2xl font-black">${v}</p></div>`}
+  function sBox(l,v,c){
+    return `<div class="stat-card p-4 rounded-2xl text-center min-w-[78px]">
+      <p class="text-[8px] font-bold uppercase mb-1 orb tracking-wider" style="color:${c};text-shadow:0 0 10px ${c}55">${l}</p>
+      <p class="text-2xl font-black" style="font-family:'Orbitron',sans-serif">${v}</p>
+    </div>`;
+  }
 
   /* ── HELPERS ── */
-  window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ Đã copy!'))};
+  window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ COPIED!'))};
   function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
-  function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+  function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
   window.switchAdminTab=function(tab){
     ['acc','search','user'].forEach(t=>{
       document.getElementById('admin-tab-'+t).classList.toggle('hidden',t!==tab);
