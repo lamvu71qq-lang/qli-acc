@@ -34,11 +34,31 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)}
 .animate-fade{animation:fadeUp 0.4s cubic-bezier(0.34,1.2,0.64,1) forwards}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TOAST ── */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(110px);background:rgba(4,4,20,0.95);border:1px solid rgba(0,242,255,0.35);color:#00f2ff;padding:11px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;box-shadow:0 4px 30px rgba(0,242,255,0.25);font-family:'Orbitron',sans-serif}
 .toast.show{transform:translateX(-50%) translateY(0)}
+.toast-money{border-color:rgba(0,255,136,0.5)!important;color:#00ff88!important;box-shadow:0 4px 30px rgba(0,255,136,0.3)!important}
+
+/* ── REVENUE NOTIFY POPUP ── */
+.rev-popup{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:10000;backdrop-filter:blur(8px)}
+.rev-popup-box{background:linear-gradient(135deg,rgba(0,30,15,0.98),rgba(0,10,5,0.98));border:2px solid rgba(0,255,136,0.45);border-radius:32px;padding:36px 32px;text-align:center;max-width:320px;width:90%;box-shadow:0 0 80px rgba(0,255,136,0.25),0 0 40px rgba(0,255,136,0.1);animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes popIn{from{opacity:0;transform:scale(0.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.rev-amount{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#00ff88;text-shadow:0 0 30px rgba(0,255,136,0.8),0 0 60px rgba(0,255,136,0.4);letter-spacing:0.04em}
+.rev-coins{font-size:48px;animation:coinSpin 0.6s ease}
+@keyframes coinSpin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+.rev-close-btn{background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-weight:900;font-family:'Orbitron',sans-serif;font-size:11px;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;letter-spacing:0.08em;margin-top:20px;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,255,136,0.35)}
+.rev-close-btn:active{transform:scale(0.96)}
+
 .lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:9px;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 8px rgba(249,115,22,0.35)}
+.lv-badge-gold{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0800;font-weight:900;font-size:9px;padding:2px 10px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 10px rgba(255,170,0,0.5)}
 .btn-delete{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;transition:all 0.2s}
 .btn-edit{background:rgba(0,242,255,0.07);border:1px solid rgba(0,242,255,0.22);color:#00f2ff;transition:all 0.2s}
+.btn-sell{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(0,200,100,0.08));border:1px solid rgba(0,255,136,0.4);color:#00ff88;transition:all 0.2s;font-weight:900;letter-spacing:0.05em}
+.btn-sell:hover{background:linear-gradient(135deg,rgba(0,255,136,0.25),rgba(0,200,100,0.15));box-shadow:0 0 16px rgba(0,255,136,0.25)}
+.btn-sell:active{transform:scale(0.95)}
+.btn-sell-disabled{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.15);cursor:not-allowed}
+
 .mode-toggle{background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px}
 .mode-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
 .mode-btn.active{background:rgba(0,242,255,0.1);color:#00f2ff;border:1px solid rgba(0,242,255,0.22);text-shadow:0 0 10px rgba(0,242,255,0.5)}
@@ -47,11 +67,28 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .s-chua{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.32);color:#fca5a5}
 .s-dang{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.32);color:#fde68a}
 .s-xong{background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.28);color:#86efac}
+.s-ban{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(255,215,0,0.08));border:1px solid rgba(0,255,136,0.5);color:#00ff88;box-shadow:0 0 12px rgba(0,255,136,0.15)}
 .dot-chua{width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
 .dot-dang{width:6px;height:6px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
 .dot-xong{width:6px;height:6px;border-radius:50%;background:#00ff88;display:inline-block}
+.dot-ban{width:6px;height:6px;border-radius:50%;background:#ffd700;display:inline-block;animation:pg 2s infinite}
 @keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
 @keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
+@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.6)}50%{box-shadow:0 0 0 5px rgba(0,255,136,0)}}
+
+/* ── REVENUE PANEL ── */
+.rev-panel{background:linear-gradient(135deg,rgba(0,255,136,0.07),rgba(0,200,100,0.03));border:1px solid rgba(0,255,136,0.22);border-radius:22px;padding:16px;position:relative;overflow:hidden;margin-bottom:14px}
+.rev-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,#ffd700,transparent);opacity:0.7}
+.rev-mini{background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;flex:1;text-align:center}
+.rev-big-num{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,0.6);line-height:1}
+
+/* ── PRICE TAG ── */
+.price-tag{background:linear-gradient(135deg,rgba(0,255,136,0.12),rgba(255,215,0,0.06));border:1px solid rgba(0,255,136,0.28);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:#00ff88;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
+.price-tag-locked{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:rgba(255,255,255,0.2);font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
+
+/* ── SOLD RIBBON ── */
+.sold-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(0,255,136,0.4)}
+.card-sold{box-shadow:0 0 0 1.5px rgba(0,255,136,0.4),0 8px 30px rgba(0,255,136,0.1)!important;opacity:0.75}
 
 /* ── BEE PANEL ── */
 .bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.055),rgba(249,115,22,0.03));border:1px solid rgba(250,204,21,0.2);border-radius:26px;overflow:hidden;position:relative}
@@ -113,6 +150,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .gp-c{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
 .gp-d{background:rgba(250,204,21,0.1);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
 .gp-x{background:rgba(0,255,136,0.08);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
+.gp-b{background:rgba(0,255,136,0.15);color:#00ff88;border:1px solid rgba(0,255,136,0.35)}
 .grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.05);margin-top:9px;overflow:hidden}
 .grp-prog-fill{height:100%;border-radius:100px;transition:width 0.7s ease}
 
@@ -125,6 +163,10 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 0.7s ease;box-shadow:0 0 8px rgba(0,242,255,0.25)}
 .acc-mini-tag{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
 
+/* ── REVENUE HISTORY ── */
+.rev-hist-item{background:rgba(0,0,0,0.3);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.rev-hist-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;flex-shrink:0;box-shadow:0 0 8px rgba(0,255,136,0.6)}
+
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
 ::-webkit-scrollbar-thumb{background:rgba(0,242,255,0.25);border-radius:100px}
@@ -132,6 +174,18 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 </head>
 <body>
 <div id="toast" class="toast"></div>
+
+<!-- REVENUE NOTIFICATION POPUP -->
+<div id="rev-popup" class="rev-popup hidden">
+  <div class="rev-popup-box">
+    <div class="rev-coins">💰</div>
+    <p class="text-[10px] font-bold tracking-widest text-green-400 mt-3 mb-1 orb">DOANH THU ĐÃ VỀ!</p>
+    <div class="rev-amount" id="rev-popup-amount">+8.000đ</div>
+    <p class="text-xs text-slate-400 mt-2 font-bold" id="rev-popup-acc">Acc: <span class="text-white"></span></p>
+    <p class="text-[10px] text-slate-500 mt-1" id="rev-popup-msg"></p>
+    <button class="rev-close-btn" onclick="closeRevPopup()">✓ ĐÃ NHẬN</button>
+  </div>
+</div>
 
 <!-- LOGIN -->
 <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
@@ -169,6 +223,31 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
       <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400" style="border:1px solid rgba(239,68,68,0.18)"><i class="fa-solid fa-power-off"></i></button>
     </header>
     <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-7"></div>
+
+    <!-- Admin Revenue Panel -->
+    <div class="rev-panel mb-6">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-lg">💰</span>
+        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU HỆ THỐNG</span>
+        <span class="text-[8px] text-slate-500 font-bold ml-auto">Giá: LV30+ = 8,000đ/acc</span>
+      </div>
+      <div class="flex gap-2 mb-3">
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG DT</p>
+          <div class="rev-big-num" id="admin-total-rev">0đ</div>
+        </div>
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ĐÃ BÁN</p>
+          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="admin-sold-count">0</div>
+        </div>
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN SÀNG</p>
+          <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="admin-ready-sell">0</div>
+        </div>
+      </div>
+      <div id="admin-rev-history" class="space-y-2 max-h-40 overflow-y-auto"></div>
+    </div>
+
     <div id="admin-reset-wrap" class="reset-bar-wrap">
       <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
       <div class="flex-1">
@@ -248,6 +327,29 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
       <button onclick="logout()" class="glass px-3 py-2 rounded-xl text-[8px] font-black text-slate-400 orb tracking-widest">THOÁT</button>
     </header>
     <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-5"></div>
+
+    <!-- User Revenue Panel -->
+    <div class="rev-panel mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-lg">💵</span>
+        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU CỦA TÔI</span>
+        <span class="text-[8px] text-slate-500 font-bold ml-auto">LV30+ = 8k/acc</span>
+      </div>
+      <div class="flex gap-2">
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG NHẬN</p>
+          <div class="rev-big-num" id="user-total-rev">0đ</div>
+        </div>
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ACC BÁN</p>
+          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="user-sold-count">0</div>
+        </div>
+        <div class="rev-mini">
+          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN LV30+</p>
+          <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="user-ready-sell">0</div>
+        </div>
+      </div>
+    </div>
 
     <div class="reset-bar-wrap">
       <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
@@ -336,7 +438,9 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 
 <script>
 /* ══════════ CONFIG ══════════ */
-const RESET_HOUR=22; // 22:00 tối
+const RESET_HOUR=22;
+const SELL_PRICE=8000;   // giá bán mỗi acc LV30+
+const SELL_MIN_LV=30;    // level tối thiểu để bán
 const LV_GROUPS=[
   {key:'g1',label:'LV 1–9',min:1,max:9,cls:'grp-1',icon:'🌱',fill:'rgba(100,116,139,0.7)'},
   {key:'g2',label:'LV 10–19',min:10,max:19,cls:'grp-2',icon:'💧',fill:'rgba(59,130,246,0.7)'},
@@ -352,8 +456,6 @@ const LV_TAGS=[
   {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.07)',abg:'rgba(168,85,247,0.25)',bd:'rgba(168,85,247,0.28)'},
   {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.07)',abg:'rgba(250,204,21,0.22)',bd:'rgba(250,204,21,0.28)'},
 ];
-
-/* BEE MEMES */
 const BEE_MEMES=[
   '😂 Cày acc mà ngủ quên = bị người ta cướp trước lol',
   '💀 Acc LV50 mà chưa cày = đang để gà kén chủ...',
@@ -362,109 +464,85 @@ const BEE_MEMES=[
   '👀 BEE thấy bạn có acc chưa cày kìa... BEE không nói đâu nhé 🙊',
   '🔥 Cày acc như ăn cơm: phải đều đặn, không thì đói 💀',
   '😤 "Chỉ còn 1 acc nữa thôi" — 3 tiếng sau vẫn đang cày 🐢',
-  '🧠 Big brain move: đăng acc → cày ngay → xong trước 22h 😎',
+  '🧠 Big brain move: đăng acc → cày ngay → chờ Admin bán → tiền về 😎',
   '😂 Acc LV1 nhìn acc LV50 mà thở dài: "Bao giờ đến lượt tao..."',
   '💅 BEE làm việc không biết mệt. Còn bạn thì... 🤔',
   '🏃 Thấy đồng hồ 21:59 mà chưa xong? CHẠY ĐI CON ƠI',
-  '🐝 BEE ở đây 24/7. Bạn thì ngủ 8 tiếng. Ai cần ai? 😏',
+  '💰 Acc LV30+ được Admin bán = 8k về tay! Cày đi mà giàu! 🤑',
 ];
 
-/* BEE RESPONSES cho chat (local, không cần API) */
+function fmtMoney(n){
+  if(n>=1000000)return (n/1000000).toFixed(1).replace('.0','')+'M';
+  if(n>=1000)return (n/1000).toFixed(0)+'k';
+  return n+'';
+}
+function fmtMoneyFull(n){return n.toLocaleString('vi-VN')+'đ'}
+
+/* BEE LOCAL REPLY */
 function beeLocalReply(msg,ctx){
   msg=msg.toLowerCase();
-  const {total,chua,dang,xong,byLv,topChua,user}=ctx;
-  // Phân tích intent
-  if(/bao.*(lv|level|nhóm)|nhóm.*(nào|mấy)|level.*(nhiều|ít)/.test(msg)){
-    if(!byLv.length)return '😅 Kho trống rỗng bro, chưa có gì để phân tích đâu!';
-    const top=byLv.sort((a,b)=>b.count-a.count)[0];
-    return `📊 Nhóm nhiều acc nhất của bạn là <b>${top.group}</b> với <b>${top.count} acc</b>!${chua?` Còn <b class="text-red-300">${chua} acc chưa cày</b> nữa kìa, cày mau lên!`:''}`;
+  const {total,chua,dang,xong,ban,revTotal,byLv,topChua,user}=ctx;
+  if(/doanh.*(thu|tiền)|tiền|bán|kiếm/.test(msg)){
+    const readySell=byLv.filter(g=>g.minLv>=SELL_MIN_LV).reduce((s,g)=>s+g.count,0);
+    if(!revTotal&&!ban)return `💰 Chưa có doanh thu nào nhé! Cày acc LV${SELL_MIN_LV}+ rồi đợi Admin bán là có tiền ngay!`;
+    return `💰 Bạn đã kiếm được <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban} acc</b> đã bán! ${readySell?`Còn <b class="text-cyan-300">${readySell} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán nữa!`:''}`;
   }
   if(/còn.*(bao nhiêu|mấy).*(acc|chưa)|chưa.*(cày|làm)/.test(msg)){
     if(!chua)return '🎉 Ngon! Hết acc chưa cày rồi, bạn là huyền thoại! 👑';
     return `🔴 Còn <b class="text-red-300">${chua} acc chưa cày</b>! ${topChua.slice(0,2).map(a=>`<code class="text-pink-300">${a.tk}</code>`).join(', ')} ${chua>2?`và ${chua-2} acc nữa`:''} — cày thôi nào!`;
   }
-  if(/đang.*(cày|làm)|cày.*(rồi|đó)/.test(msg)){
-    if(!dang)return '😴 Không có acc nào đang cày đâu bro. Idle game nhưng không idle 😂';
-    return `⚡ Đang cày <b class="text-yellow-300">${dang} acc</b>! Giữ đà đó, gần xong rồi! 💪`;
+  if(/đang.*(cày|làm)/.test(msg)){
+    if(!dang)return '😴 Không có acc nào đang cày đâu bro!';
+    return `⚡ Đang cày <b class="text-yellow-300">${dang} acc</b>! Giữ đà đó! 💪`;
   }
   if(/xong|hoàn.*(thành|tất)|done/.test(msg)){
-    if(!xong)return '😬 Chưa có acc nào xong cả... BEE không phán xét đâu nhé 🙈';
-    return `✅ Đã xong <b class="text-green-300">${xong} acc</b>! ${xong>=5?'Quá gánh luôn! 🏆':'Tiếp tục nào!'} Còn ${chua} acc chưa cày.`;
+    if(!xong)return '😬 Chưa có acc nào xong cả...';
+    return `✅ Đã xong <b class="text-green-300">${xong} acc</b>! Còn ${chua} acc chưa cày.`;
   }
   if(/reset|22h|tối|mấy.*(giờ)|còn.*(bao lâu|thời gian)/.test(msg)){
     const now=new Date(),reset=new Date();
     reset.setHours(RESET_HOUR,0,0,0);
     if(now>=reset)reset.setDate(reset.getDate()+1);
     const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-    return `⏰ Còn <b class="text-cyan-300">${h}h ${m}m</b> đến khi reset 22:00! ${h<2?'⚠️ Ít thời gian lắm, CHẠY ĐI!':h<5?'🏃 Vừa đủ nếu cày nghiêm túc!':'😎 Còn thoải mái, nhưng đừng lề mề!'}`;
+    return `⏰ Còn <b class="text-cyan-300">${h}h ${m}m</b> đến khi reset 22:00! ${h<2?'⚠️ Ít thời gian, CHẠY ĐI!':h<5?'🏃 Vừa đủ nếu nghiêm túc!':'😎 Còn thoải mái!'}`;
   }
-  if(/tổng|kho|bao nhiêu.*(acc|tất cả)|có.*(gì|bao)/.test(msg)){
+  if(/tổng|kho|bao nhiêu.*(acc|tất cả)/.test(msg)){
     if(!total)return '😅 Kho trống rỗng! Đăng acc mới đi bro~';
-    return `📦 Kho của bạn: <b>${total} acc</b> tổng — 🔴 ${chua} chưa cày · ⚡ ${dang} đang · ✅ ${xong} xong!${byLv.length?` Nhiều nhất ở ${byLv.sort((a,b)=>b.count-a.count)[0].group}.`:''}`;
+    return `📦 Kho: <b>${total} acc</b> — 🔴 ${chua} chưa · ⚡ ${dang} đang · ✅ ${xong} xong · 💰 ${ban} đã bán`;
   }
-  if(/meme|hài|vui|buồn cười|cười/.test(msg)){
-    return `<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
-  }
-  if(/xin chào|hello|hi|chào|hey/.test(msg)){
-    return `👋 Chào <b>${user}</b>! BEE đây! Bạn có ${total} acc trong kho${chua?`, còn <b class="text-red-300">${chua} chưa cày</b> nhé!`:' và tất cả đang ổn! 🎉'}`;
-  }
-  if(/giỏi|ngon|pro|chuyên|hay/.test(msg)){
-    return '😎 BEE biết mình giỏi, nhưng bạn khen thì BEE vẫn thích! 🐝✨ Tiếp tục cày thôi nào!';
-  }
-  if(/acc.*(tốt|nên|ưu tiên|trước)|cày.*(gì|nào|trước)/.test(msg)){
-    if(!chua)return '🏆 Hết acc chưa cày rồi! Bạn đã hoàn thành tất cả, nghỉ ngơi xứng đáng!';
-    const top=topChua[0];
-    if(!top)return '✅ Không còn acc nào cần cày!';
-    const grp=LV_GROUPS.find(g=>top.lv>=g.min&&top.lv<=g.max);
-    return `🎯 BEE gợi ý cày <b class="text-pink-300">${top.tk}</b> (${grp?grp.icon:''} LV ${top.lv}) trước! ${top.lv>=40?'High level xong nhanh hơn 🚀':'Level thấp cày lẹ xong luôn! ⚡'}`;
-  }
-  // Default random tip
+  if(/meme|hài|vui/.test(msg))return `<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
+  if(/xin chào|hello|hi|chào/.test(msg))return `👋 Chào <b>${user}</b>! Kho: ${total} acc, doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b>!`;
   const tips=[
-    `💡 Tip của BEE: Bạn có <b>${chua} acc chưa cày</b>. Nhấn "Ưu tiên" để sắp xếp nhé!`,
-    `🐝 BEE thấy kho bạn có <b>${total} acc</b>. ${chua?`Còn ${chua} acc cần cày!`:'Tất cả đã ổn!'}`,
-    `⏰ Reset lúc 22:00 tối nhé! ${chua>0?`Còn ${chua} acc chưa cày kìa!`:'Bạn đang đi đúng hướng! ✅'}`,
-    `🎮 Hỏi BEE: "còn bao nhiêu acc?", "cày gì trước?", "reset lúc mấy giờ?"... BEE biết hết!`,
+    `💡 Bạn có <b>${chua} acc chưa cày</b>. Acc LV30+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ</b>!`,
+    `💰 Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ ${ban} acc bán. Cày thêm để tăng doanh thu!`,
+    `🐝 Cày đến LV${SELL_MIN_LV}+ rồi báo Admin bán, tiền sẽ về ngay! 🤑`,
   ];
   return tips[Math.floor(Math.random()*tips.length)];
 }
 
 function beeAnalyzeLocal(ctx){
-  const {total,chua,dang,xong,byLv,topChua}=ctx;
+  const {total,chua,dang,xong,ban,revTotal,byLv,topChua}=ctx;
   if(!total)return '😅 Kho trống! Đăng acc mới trước rồi BEE mới phân tích được nhé~';
-  
   const now=new Date(),reset=new Date();
   reset.setHours(RESET_HOUR,0,0,0);
   if(now>=reset)reset.setDate(reset.getDate()+1);
   const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-  const rate=total?Math.round(xong/total*100):0;
-  
+  const rate=total?Math.round((xong+ban)/total*100):0;
+  const highLvChua=topChua.filter(a=>a.lv>=SELL_MIN_LV);
   let html=`<div class="bee-analyze-box">`;
   html+=`<b class="text-green-300">📊 Báo cáo kho của bạn:</b><br>`;
-  html+=`• Tổng: <b>${total} acc</b> | Xong: <b class="text-green-300">${xong}</b> | Đang: <b class="text-yellow-300">${dang}</b> | Chưa: <b class="text-red-300">${chua}</b><br>`;
-  html+=`• Tiến độ: <b>${rate}%</b> hoàn thành<br>`;
+  html+=`• Tổng: <b>${total}</b> | Xong: <b class="text-green-300">${xong}</b> | Đang: <b class="text-yellow-300">${dang}</b> | Chưa: <b class="text-red-300">${chua}</b> | Đã bán: <b class="text-green-400">${ban}</b><br>`;
+  html+=`• Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> | Tiến độ: <b>${rate}%</b><br>`;
   html+=`• Reset sau: <b class="text-cyan-300">${h}h ${m}m</b><br><br>`;
-  
-  if(chua===0){
-    html+=`<b class="text-green-300">🏆 XUẤT SẮC!</b> Tất cả acc đã xong trước 22:00!`;
+  if(highLvChua.length){
+    html+=`<b class="text-yellow-300">💰 Acc LV${SELL_MIN_LV}+ chưa bán:</b><br>`;
+    highLvChua.slice(0,3).forEach(a=>html+=`→ <code class="text-pink-300">${a.tk}</code> LV ${a.lv} = <b class="text-green-300">${fmtMoneyFull(SELL_PRICE)}</b><br>`);
+    html+=`<br>`;
+  }
+  if(chua===0&&!highLvChua.length){
+    html+=`<b class="text-green-300">🏆 XUẤT SẮC!</b> Tất cả đã hoàn thành!`;
   } else {
-    // Gợi ý ưu tiên
-    const highLv=topChua.filter(a=>a.lv>=40);
-    const lowLv=topChua.filter(a=>a.lv<10);
-    html+=`<b class="text-yellow-300">🎯 Gợi ý BEE:</b><br>`;
-    if(h<2){
-      html+=`⚠️ <b class="text-red-300">GẤP!</b> Còn ${h}h ${m}m mà ${chua} acc chưa xong. Ưu tiên acc level thấp cày nhanh hơn!<br>`;
-      if(lowLv.length)html+=`→ Cày LV thấp trước: <code class="text-pink-300">${lowLv.slice(0,2).map(a=>a.tk).join(', ')}</code>`;
-    } else if(highLv.length){
-      html+=`→ Cày acc high LV trước để lấy điểm cao: <code class="text-yellow-300">${highLv.slice(0,2).map(a=>a.tk).join(', ')}</code><br>`;
-      html+=`→ Còn ${h}h ${m}m, đủ thời gian nếu tập trung! 💪`;
-    } else {
-      html+=`→ Cày lần lượt từ trên xuống, nhấn "Ưu tiên chưa cày" để sắp xếp!<br>`;
-      html+=`→ Pace: ${Math.ceil(chua/Math.max(h,1))} acc/giờ là xong! `;
-    }
-    if(byLv.length){
-      const topGrp=byLv.sort((a,b)=>b.count-a.count)[0];
-      html+=`<br>📦 Nhiều acc nhất: <b>${topGrp.group}</b> (${topGrp.count} acc)`;
-    }
+    html+=`<b class="text-yellow-300">🎯 Gợi ý:</b> ${highLvChua.length?`Có <b class="text-green-300">${highLvChua.length} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán, báo Admin để nhận tiền!`:`Cày acc lên LV${SELL_MIN_LV}+ để bán với giá <b class="text-green-300">8,000đ/acc</b>!`}`;
   }
   html+=`</div>`;
   return html;
@@ -481,63 +559,93 @@ function bootApp(){
   firebase.initializeApp(cfg);
   const dbRef=firebase.database().ref('NEBULA_DATA_V5');
   const ADMIN={u:'gbao',p:'031008'};
-  let db={users:[],accounts:[]};
+  let db={users:[],accounts:[],revenue:[]};  // revenue: [{id, accId, uploader, tk, lv, amount, time, seen}]
   let currentMode='',currentUser=null,sortMode='default';
   let userViewMode='all',adminViewMode='all';
   let uLvFilter={min:0,max:50},aLvFilter={min:0,max:50};
   const openGrps={user:{},admin:{}};
-  let resetDone=false; // tránh reset nhiều lần
+  let resetDone=false;
 
   dbRef.on('value',snap=>{
     const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
-    db.users=toArr(d&&d.users);db.accounts=toArr(d&&d.accounts);
+    db.users=toArr(d&&d.users);
+    db.accounts=toArr(d&&d.accounts);
+    db.revenue=toArr(d&&d.revenue);
     if(currentMode)renderUI();
+    // Check unseen revenue for current user
+    if(currentMode==='user'&&currentUser){checkUnseenRevenue();}
   });
-  function sync(){return dbRef.set({users:db.users,accounts:db.accounts})}
+  function sync(){return dbRef.set({users:db.users,accounts:db.accounts,revenue:db.revenue})}
+
+  /* ── SELL ACC (Admin only) ── */
+  window.sellAcc=function(id){
+    const a=db.accounts.find(x=>x.id===id);
+    if(!a)return;
+    if(a.lv<SELL_MIN_LV){showToast('✕ Chỉ bán được acc LV'+SELL_MIN_LV+'+');return;}
+    if(a.status==='ban'){showToast('✕ Acc này đã bán rồi!');return;}
+    if(!confirm(`Bán acc [${a.tk}] LV${a.lv} với giá ${fmtMoneyFull(SELL_PRICE)}?`))return;
+    a.status='ban';
+    a.soldAt=Date.now();
+    a.soldPrice=SELL_PRICE;
+    // Ghi vào revenue
+    const rev={id:Date.now(),accId:a.id,uploader:a.uploader,tk:a.tk,lv:a.lv,amount:SELL_PRICE,time:Date.now(),seen:false};
+    db.revenue.push(rev);
+    sync().then(()=>{
+      showToast('💰 ĐÃ BÁN! +'+fmtMoneyFull(SELL_PRICE)+' → @'+a.uploader,'money');
+      renderUI();
+    });
+  };
+
+  /* ── CHECK UNSEEN REVENUE (for logged-in user) ── */
+  function checkUnseenRevenue(){
+    if(!currentUser)return;
+    const unseen=db.revenue.filter(r=>r.uploader===currentUser.u&&!r.seen);
+    if(!unseen.length)return;
+    // Mark all as seen
+    unseen.forEach(r=>r.seen=true);
+    sync();
+    // Show popup for first unseen (most recent)
+    const r=unseen[unseen.length-1];
+    showRevPopup(r);
+  }
+
+  function showRevPopup(r){
+    document.getElementById('rev-popup-amount').textContent='+'+fmtMoneyFull(r.amount);
+    document.getElementById('rev-popup-acc').innerHTML=`Acc: <b class="text-white">${r.tk}</b> <span class="lv-badge-gold ml-1">LV ${r.lv}</span>`;
+    document.getElementById('rev-popup-msg').textContent='Admin đã bán acc của bạn! 🎉';
+    document.getElementById('rev-popup').classList.remove('hidden');
+  }
+  window.closeRevPopup=function(){document.getElementById('rev-popup').classList.add('hidden');};
 
   /* ── AUTO RESET 22:00 ── */
   function checkAutoReset(){
     const now=new Date();
     const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
-    // Reset đúng 22:00:00 đến 22:00:59
     if(h===RESET_HOUR&&m===0&&s<30&&!resetDone){
       resetDone=true;
       let changed=false;
       db.accounts.forEach(a=>{
-        if(a.status==='dang'||a.status==='xong'){a.status='chua';changed=true;}
+        if((a.status==='dang'||a.status==='xong')&&a.status!=='ban'){a.status='chua';changed=true;}
       });
-      if(changed){
-        sync().then(()=>{
-          showToast('🔄 RESET 22:00 — Tất cả về chưa cày!');
-          if(currentMode==='user')beeInit();
-        });
-      }
+      if(changed){sync().then(()=>{showToast('🔄 RESET 22:00 — Tất cả về chưa cày!');if(currentMode==='user')beeInit();});}
     }
-    // Sau 22:00:30 reset flag
     if(h===RESET_HOUR&&m===1)resetDone=false;
-    // Update timer UI
     updateResetTimer();
   }
-
   function updateResetTimer(){
-    const now=new Date();
-    const reset=new Date();
+    const now=new Date(),reset=new Date();
     reset.setHours(RESET_HOUR,0,0,0);
     if(now>=reset)reset.setDate(reset.getDate()+1);
-    const total=24*3600*1000;
-    const diff=reset-now;
+    const total=24*3600*1000,diff=reset-now;
     const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
     const txt=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     const pct=Math.round((1-diff/total)*100);
     ['admin','user'].forEach(p=>{
-      const t=document.getElementById(p+'-reset-txt');
-      const b=document.getElementById(p+'-reset-fill');
-      if(t)t.textContent=txt;
-      if(b)b.style.width=pct+'%';
+      const t=document.getElementById(p+'-reset-txt'),b=document.getElementById(p+'-reset-fill');
+      if(t)t.textContent=txt;if(b)b.style.width=pct+'%';
     });
   }
-  setInterval(checkAutoReset,1000);
-  updateResetTimer();
+  setInterval(checkAutoReset,1000);updateResetTimer();
 
   /* ── AUTH ── */
   window.login=function(){
@@ -551,44 +659,47 @@ function bootApp(){
   };
   window.logout=function(){location.reload()};
 
-  /* ── BEE AI (Smart Local) ── */
+  /* ── BEE ── */
   function beeCtx(){
     const my=db.accounts.filter(a=>a.uploader===currentUser.u);
     const chua=my.filter(a=>!a.status||a.status==='chua');
     const dang=my.filter(a=>a.status==='dang');
     const xong=my.filter(a=>a.status==='xong');
-    const byLv=LV_GROUPS.map(g=>({group:g.label,count:my.filter(a=>a.lv>=g.min&&a.lv<=g.max).length})).filter(g=>g.count>0);
-    return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
+    const ban=my.filter(a=>a.status==='ban');
+    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
+    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
+    const byLv=LV_GROUPS.map(g=>({group:g.label,minLv:g.min,count:my.filter(a=>a.lv>=g.min&&a.lv<=g.max).length})).filter(g=>g.count>0);
+    return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,ban:ban.length,revTotal,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
   }
-
   function beeInit(){
     const my=db.accounts.filter(a=>a.uploader===currentUser.u);
     const chua=my.filter(a=>!a.status||a.status==='chua');
     const dang=my.filter(a=>a.status==='dang');
     const xong=my.filter(a=>a.status==='xong');
-    const el=document.getElementById('bee-message');
-    const act=document.getElementById('bee-actions');
-    const dot=document.getElementById('bee-dot');
+    const ban=my.filter(a=>a.status==='ban');
+    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
+    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
+    const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions'),dot=document.getElementById('bee-dot');
     let msg='';
     if(!my.length){
-      msg=`👋 Xin chào <b>${currentUser.u}</b>! Kho của bạn đang trống. Đăng acc mới để bắt đầu nhé! 🎮`;
+      msg=`👋 Xin chào <b>${currentUser.u}</b>! Kho trống. Đăng acc mới để bắt đầu! 🎮`;
+    } else if(ban.length&&revTotal){
+      msg=`💰 Xin chào <b>${currentUser.u}</b>! Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban.length} acc</b> đã bán!`;
+      if(chua.length)msg+=` Còn <b class="text-red-300">${chua.length} acc chưa cày</b>.`;
+      msg+=`<div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Cày acc LV${SELL_MIN_LV}+ để Admin bán thêm, mỗi acc = <b class="text-green-300">8,000đ</b>! 🤑</div>`;
     } else if(!chua.length){
-      msg=`🎉 Tuyệt vời <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đã có trạng thái.${xong.length?` <span class="text-green-300">✓ ${xong.length} xong!</span>`:''}`;
+      msg=`🎉 Tuyệt vời <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đã có trạng thái.`;
       msg+=`<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
     } else {
-      msg=`👋 Chào <b>${currentUser.u}</b>! Bạn có <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} acc.`;
-      if(dang.length)msg+=` <span class="text-yellow-300">⚡ ${dang.length} đang cày.</span>`;
+      msg=`👋 Chào <b>${currentUser.u}</b>! <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} acc.`;
+      if(dang.length)msg+=` <span class="text-yellow-300">⚡ ${dang.length} đang.</span>`;
       if(xong.length)msg+=` <span class="text-green-300">✓ ${xong.length} xong.</span>`;
       msg+=`<div class="bee-urgent-box mt-2"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay:</b><br>`;
-      chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}<br>`});
+      chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}${a.lv>=SELL_MIN_LV?` <span class="text-green-400 text-[9px]">💰 +8k</span>`:''}<br>`});
       if(chua.length>3)msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
-      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-lightbulb text-cyan-400 mr-1"></i>Nhấn <b class="text-green-300">Phân tích</b> để xem gợi ý chi tiết, hoặc hỏi BEE bất cứ gì!</div>`;
+      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Acc LV${SELL_MIN_LV}+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ/acc</b>!</div>`;
     }
-    setTimeout(()=>{
-      el.innerHTML=msg;
-      act.classList.remove('hidden');act.style.display='flex';
-      dot.classList.remove('hidden');
-    },1000);
+    setTimeout(()=>{el.innerHTML=msg;act.classList.remove('hidden');act.style.display='flex';dot.classList.remove('hidden');},1000);
   }
 
   window.sendBeeChat=function(){
@@ -598,40 +709,23 @@ function bootApp(){
     const el=document.getElementById('bee-message');
     el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
     btn.classList.add('loading');btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
-    setTimeout(()=>{
-      const ctx=beeCtx();
-      el.innerHTML=beeLocalReply(msg,ctx);
-      btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';
-    },600+Math.random()*400);
+    setTimeout(()=>{const ctx=beeCtx();el.innerHTML=beeLocalReply(msg,ctx);btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';},600+Math.random()*400);
   };
-
   window.beeAnalyze=function(){
     const el=document.getElementById('bee-message');
     el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
     setTimeout(()=>{el.innerHTML=beeAnalyzeLocal(beeCtx());},700);
   };
-
   window.beeMeme=function(){
     const el=document.getElementById('bee-message');
     el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    setTimeout(()=>{
-      const meme=BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)];
-      el.innerHTML=`<div class="bee-meme-box">${meme}</div>Haha, BEE rất vui được chia sẻ điều này! 😂 Còn <b class="text-red-300">${beeCtx().chua} acc chưa cày</b> đó nha~`;
-    },500);
+    setTimeout(()=>{const meme=BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)];el.innerHTML=`<div class="bee-meme-box">${meme}</div>Còn <b class="text-red-300">${beeCtx().chua} acc chưa cày</b> đó nha~`;},500);
   };
-
-  window.beeSortUrgent=function(){
-    sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');
-    document.getElementById('bee-message').innerHTML=`<i class="fa-solid fa-sort-up text-yellow-300 mr-1"></i> Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu! Cày thôi nào 💪`;
-  };
-  window.beeSortDefault=function(){
-    sortMode='default';renderUserList();showToast('Về thứ tự mặc định');
-    document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> rồi nhé!`;
-  };
+  window.beeSortUrgent=function(){sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');document.getElementById('bee-message').innerHTML=`Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu! Cày thôi nào 💪`;};
+  window.beeSortDefault=function(){sortMode='default';renderUserList();showToast('Về thứ tự mặc định');document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> rồi nhé!`;};
 
   /* ── SEARCH ── */
   function buildTags(ctx){
-    const id=ctx+'--lv-tags'.replace('--','-');// admin-lv-tags / user-lv-tags
     const cur=ctx==='admin'?aLvFilter:uLvFilter;
     document.getElementById(ctx==='admin'?'admin-lv-tags':'user-lv-tags').innerHTML=LV_TAGS.map(r=>{
       const active=cur.min===r.min&&cur.max===r.max;
@@ -643,41 +737,32 @@ function bootApp(){
     buildTags(ctx);
     if(ctx==='admin')runAdminSearch();else runUserSearch();
   };
-  window.clearSearch=function(ctx){
-    document.getElementById(ctx==='admin'?'admin-search-input':'user-search-input').value='';
-    if(ctx==='admin')runAdminSearch();else runUserSearch();
-  };
+  window.clearSearch=function(ctx){document.getElementById(ctx==='admin'?'admin-search-input':'user-search-input').value='';if(ctx==='admin')runAdminSearch();else runUserSearch();};
   window.runAdminSearch=function(){
     const q=document.getElementById('admin-search-input').value.trim().toLowerCase();
     const {min,max}=aLvFilter;
-    const list=db.accounts.filter(a=>{
-      const lvOk=min===0||(a.lv>=min&&a.lv<=max);
-      return lvOk&&(!q||a.tk.toLowerCase().includes(q));
-    }).slice().reverse();
+    const list=db.accounts.filter(a=>{const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
     document.getElementById('admin-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy acc nào</div>`;
+    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
   };
   window.runUserSearch=function(){
     const q=document.getElementById('user-search-input').value.trim().toLowerCase();
     const {min,max}=uLvFilter;
-    const list=db.accounts.filter(a=>{
-      if(a.uploader!==currentUser.u)return false;
-      const lvOk=min===0||(a.lv>=min&&a.lv<=max);
-      return lvOk&&(!q||a.tk.toLowerCase().includes(q));
-    }).slice().reverse();
+    const list=db.accounts.filter(a=>{if(a.uploader!==currentUser.u)return false;const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
     document.getElementById('user-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy acc nào</div>`;
+    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
   };
 
   /* ── STATUS ── */
   window.updateStatus=function(id,val){
     const a=db.accounts.find(x=>x.id===id);if(!a)return;
+    if(a.status==='ban'){showToast('✕ Acc đã bán, không thể thay đổi');return;}
     a.status=val;sync().then(()=>{showToast('✓ '+stLabel(val));if(currentMode==='user'){renderUserStats();renderUserList();runUserSearch();}});
   };
-  function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':'🔴 Chưa cày'}
-  function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':'s-chua'}
-  function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':'dot-chua'}
-  function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':'🔴 Chưa cày'}
+  function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
+  function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':s==='ban'?'s-ban':'s-chua'}
+  function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':s==='ban'?'dot-ban':'dot-chua'}
+  function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
 
   /* ── POST ── */
   function clampLv(v){return Math.min(50,Math.max(1,Number(v)))}
@@ -698,12 +783,7 @@ function bootApp(){
 
   /* ── BULK ── */
   function parseBulk(raw){
-    return raw.split('\n').map((line,i)=>{
-      const t=line.trim();if(!t)return null;
-      const p=t.split('|');
-      if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,index:i+1};
-      return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:clampLv(p[2]),index:i+1};
-    }).filter(Boolean);
+    return raw.split('\n').map((line,i)=>{const t=line.trim();if(!t)return null;const p=t.split('|');if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,index:i+1};return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:clampLv(p[2]),index:i+1};}).filter(Boolean);
   }
   window.previewBulk=function(who){
     const iid=who==='admin'?'admin-bulk-input':'user-bulk-input',pid=who==='admin'?'admin-bulk-preview':'user-bulk-preview';
@@ -712,10 +792,8 @@ function bootApp(){
     const col=who==='admin'?'text-cyan-400':'text-pink-400';
     document.getElementById(pid).innerHTML=!items.length?'':
       `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
-      items.slice(0,10).map(x=>x.ok
-        ?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono text-xs">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`
-        :`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`
-      ).join('')+(items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
+      items.slice(0,10).map(x=>x.ok?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono text-xs">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`:`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`).join('')+
+      (items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
   };
   window.userBulkPost=function(){
     const items=parseBulk(document.getElementById('user-bulk-input').value).filter(i=>i.ok);
@@ -733,13 +811,14 @@ function bootApp(){
   /* ── EDIT / DEL ── */
   window.editLv=function(id){
     const a=db.accounts.find(x=>x.id===id);if(!a)return;
+    if(a.status==='ban'){showToast('✕ Không sửa acc đã bán');return;}
     const v=prompt(`Level mới cho [${a.tk}] (1-50):`,a.lv);
     if(v===null||v===''||isNaN(v))return;
     a.lv=clampLv(v);sync().then(()=>showToast('✓ LV → '+a.lv));
   };
   window.deleteAcc=function(id){
     if(!confirm('Xác nhận xóa acc?'))return;
-    db.accounts=db.accounts.filter(a=>a.id!==id);
+    db.accounts=db.accounts.filter(a=>a.id!==id);db.revenue=db.revenue.filter(r=>r.accId!==id);
     sync().then(()=>showToast('✕ Đã xoá acc'));
   };
   window.addUser=function(){
@@ -749,7 +828,7 @@ function bootApp(){
   };
   window.deleteUser=function(u){
     if(!confirm('Xóa user này?'))return;
-    db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);
+    db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);db.revenue=db.revenue.filter(r=>r.uploader!==u);
     sync().then(()=>showToast('✕ Đã xoá user'));
   };
   window.toggleUserAccs=function(u){document.getElementById('ua-'+u)?.classList.toggle('hidden')};
@@ -760,16 +839,8 @@ function bootApp(){
   };
 
   /* ── VIEW ── */
-  window.switchUserView=function(v){
-    userViewMode=v;
-    ['all','group'].forEach(m=>document.getElementById('user-view-'+m+'-btn').classList.toggle('active',m===v));
-    renderUserList();
-  };
-  window.switchAdminView=function(v){
-    adminViewMode=v;
-    ['all','group'].forEach(m=>document.getElementById('admin-view-'+m+'-btn').classList.toggle('active',m===v));
-    renderAdminAccList();
-  };
+  window.switchUserView=function(v){userViewMode=v;['all','group'].forEach(m=>document.getElementById('user-view-'+m+'-btn').classList.toggle('active',m===v));renderUserList();};
+  window.switchAdminView=function(v){adminViewMode=v;['all','group'].forEach(m=>document.getElementById('admin-view-'+m+'-btn').classList.toggle('active',m===v));renderAdminAccList();};
   window.switchUserTab=function(tab){
     const isList=tab==='list';
     document.getElementById('utab-list').classList.toggle('hidden',!isList);
@@ -785,23 +856,25 @@ function bootApp(){
     if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có acc nào</p>';
     return grps.map(g=>{
       let list=accs.filter(a=>a.lv>=g.min&&a.lv<=g.max);
-      if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
+      if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
       else list=list.slice().reverse();
       const tot=list.length,chua=list.filter(a=>!a.status||a.status==='chua').length;
-      const dang=list.filter(a=>a.status==='dang').length,xong=list.filter(a=>a.status==='xong').length;
+      const dang=list.filter(a=>a.status==='dang').length,xong=list.filter(a=>a.status==='xong').length,ban=list.filter(a=>a.status==='ban').length;
       if(openGrps[ctx][g.key]===undefined)openGrps[ctx][g.key]=true;
       const open=openGrps[ctx][g.key];
+      const canSell=g.min>=SELL_MIN_LV;
       return `<div class="lv-group ${g.cls} animate-fade">
         <div class="lv-group-hd" onclick="toggleGrp('${ctx}','${g.key}')">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2"><span class="text-lg">${g.icon}</span><span class="grp-label">${g.label}</span></div>
+            <div class="flex items-center gap-2">${canSell?`<span class="text-xs">💰</span>`:''}<span class="text-lg">${g.icon}</span><span class="grp-label">${g.label}</span>${canSell?`<span class="text-[8px] text-green-400 font-bold orb">+8k/acc</span>`:''}</div>
             <div class="grp-meta">
               <span class="gp gp-t">${tot} acc</span>
               ${chua?`<span class="gp gp-c">🔴 ${chua}</span>`:''}
               ${dang?`<span class="gp gp-d">⚡ ${dang}</span>`:''}
               ${xong?`<span class="gp gp-x">✅ ${xong}</span>`:''}
+              ${ban?`<span class="gp gp-b">💰 ${ban}</span>`:''}
             </div>
-            <div class="grp-prog"><div class="grp-prog-fill" style="width:${tot?Math.round(xong/tot*100):0}%;background:${g.fill}"></div></div>
+            <div class="grp-prog"><div class="grp-prog-fill" style="width:${tot?Math.round((xong+ban)/tot*100):0}%;background:${g.fill}"></div></div>
           </div>
           <i class="fa-solid fa-chevron-down lv-chev ${open?'open':''}" id="gc-${ctx}-${g.key}"></i>
         </div>
@@ -812,14 +885,67 @@ function bootApp(){
     }).join('');
   }
 
+  /* ── ACC CARD ── */
+  function accCard(a,isAdmin){
+    const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
+    const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
+    const st=a.status||'chua';
+    const isSold=st==='ban';
+    const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
+    const canSell=isAdmin&&a.lv>=SELL_MIN_LV&&!isSold;
+    const soldPrice=a.soldPrice?fmtMoneyFull(a.soldPrice):'';
+
+    return `<div class="acc-wrap">
+      ${isSold?`<span class="sold-ribbon">💰 ĐÃ BÁN${soldPrice?' · '+soldPrice:''}</span>`:''}
+      ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
+      <div class="acc-card ${urgent?'card-urgent':''} ${isSold?'card-sold':''}" style="border-left:3px solid ${isSold?'rgba(0,255,136,0.5)':col+'35'}">
+        <div class="flex justify-between items-start mb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV ${a.lv}</span>`:`<span class="lv-badge">LV ${a.lv}</span>`}
+            ${a.lv>=SELL_MIN_LV&&!isSold?`<span class="price-tag"><i class="fa-solid fa-tag mr-1"></i>8,000đ</span>`:''}
+            ${a.lv>=SELL_MIN_LV&&isSold?`<span class="price-tag"><i class="fa-solid fa-check mr-1"></i>${soldPrice}</span>`:''}
+            ${a.lv<SELL_MIN_LV?`<span class="price-tag-locked"><i class="fa-solid fa-lock mr-1"></i>LV${SELL_MIN_LV}+</span>`:''}
+            <span class="text-[9px] font-bold orb" style="color:${col}">@${a.uploader}</span>
+            <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
+              <span class="${stDot(st)}"></span>${stTxt(st)}
+            </span>
+          </div>
+          <div class="flex gap-1.5 flex-shrink-0 ml-2">
+            ${canSell?`<button onclick="sellAcc(${a.id})" class="btn-sell px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1"><i class="fa-solid fa-dollar-sign text-[10px]"></i>BÁN</button>`:''}
+            ${isAdmin&&a.lv<SELL_MIN_LV?`<button class="btn-sell-disabled px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1" title="Cần LV${SELL_MIN_LV}+"><i class="fa-solid fa-lock text-[10px]"></i></button>`:''}
+            ${canManage&&!isSold?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
+            ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
+          </div>
+        </div>
+        <div class="space-y-2 mb-3">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Tài khoản: <b class="text-white font-bold">${a.tk}</b></span>
+            <button onclick="copyText('${a.tk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Mật khẩu: <b class="text-white font-bold">${a.mk}</b></span>
+            <button onclick="copyText('${a.mk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
+          </div>
+          ${isSold&&a.soldAt?`<div class="text-[9px] text-green-400 font-bold orb"><i class="fa-solid fa-check-circle mr-1"></i>Bán lúc: ${new Date(a.soldAt).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'})}</div>`:''}
+        </div>
+        ${canManage&&!isSold?`<div class="flex gap-1.5 pt-2" style="border-top:1px solid rgba(255,255,255,0.05)">
+          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='chua'?'s-chua':'opacity-20'}" style="${st!=='chua'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">🔴 Chưa</button>
+          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='dang'?'s-dang':'opacity-20'}" style="${st!=='dang'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">⚡ Đang</button>
+          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='xong'?'s-xong':'opacity-20'}" style="${st!=='xong'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">✅ Xong</button>
+        </div>`:''}
+        ${isSold?`<div class="text-center py-2 text-[9px] font-bold text-green-400 orb" style="border-top:1px solid rgba(0,255,136,0.1)"><i class="fa-solid fa-lock mr-1"></i>ACC ĐÃ BÁN — KHÔNG THỂ THAY ĐỔI</div>`:''}
+      </div>
+    </div>`;
+  }
+
   /* ── RENDER ── */
   function renderUI(){
     if(currentMode==='admin'){
-      renderAdminStats();renderAdminAccList();
+      renderAdminStats();renderAdminAccList();renderAdminRevenuePanel();
       document.getElementById('admin-list-users').innerHTML=renderAdminUsers();
       buildTags('admin');runAdminSearch();
     } else {
-      renderUserStats();renderUserList();
+      renderUserStats();renderUserList();renderUserRevenuePanel();
     }
   }
   function renderAdminAccList(){
@@ -830,50 +956,56 @@ function bootApp(){
     let list=db.accounts.filter(a=>a.uploader===currentUser.u);
     if(userViewMode==='group'){document.getElementById('user-list').innerHTML=renderGrouped(list,'user',false);}
     else{
-      if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
+      if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
       else list=list.slice().reverse();
       document.getElementById('user-list').innerHTML=`<div class="space-y-3">${list.map(a=>accCard(a,false)).join('')}</div>`;
     }
   }
 
-  function accCard(a,isAdmin){
-    const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
-    const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
-    const st=a.status||'chua';
-    const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
-    return `<div class="acc-wrap">
-      ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
-      <div class="acc-card ${urgent?'card-urgent':''}" style="border-left:3px solid ${col}35">
-        <div class="flex justify-between items-start mb-3">
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="lv-badge">LV ${a.lv}</span>
-            <span class="text-[9px] font-bold orb" style="color:${col}">@${a.uploader}</span>
-            <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
-              <span class="${stDot(st)}"></span>${stTxt(st)}
-            </span>
+  /* ── REVENUE PANELS ── */
+  function renderAdminRevenuePanel(){
+    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
+    const sold=db.accounts.filter(a=>a.status==='ban').length;
+    const ready=db.accounts.filter(a=>a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
+    const amtEl=document.getElementById('admin-total-rev');
+    const soldEl=document.getElementById('admin-sold-count');
+    const readyEl=document.getElementById('admin-ready-sell');
+    if(amtEl)amtEl.textContent=fmtMoney(totalRev)+'đ';
+    if(soldEl)soldEl.textContent=sold;
+    if(readyEl)readyEl.textContent=ready;
+    // History
+    const hist=document.getElementById('admin-rev-history');
+    if(hist){
+      const recent=db.revenue.slice().reverse().slice(0,8);
+      hist.innerHTML=recent.length?recent.map(r=>{
+        const t=new Date(r.time);
+        return `<div class="rev-hist-item">
+          <div class="rev-hist-dot"></div>
+          <div class="flex-1 min-w-0">
+            <span class="text-[10px] font-bold text-white">${r.tk}</span>
+            <span class="lv-badge ml-1">LV${r.lv}</span>
+            <span class="text-[9px] text-slate-500 ml-1">@${r.uploader}</span>
           </div>
-          <div class="flex gap-1.5 flex-shrink-0 ml-2">
-            ${canManage?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
-            ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
+          <div class="text-right flex-shrink-0">
+            <div class="text-[11px] font-black text-green-300 orb">+${fmtMoneyFull(r.amount)}</div>
+            <div class="text-[8px] text-slate-600">${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')} ${t.getDate()}/${t.getMonth()+1}</div>
           </div>
-        </div>
-        <div class="space-y-2 mb-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Tài khoản: <b class="text-white font-bold">${a.tk}</b></span>
-            <button onclick="copyText('${a.tk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400 transition-colors"><i class="fa-solid fa-copy"></i></button>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Mật khẩu: <b class="text-white font-bold">${a.mk}</b></span>
-            <button onclick="copyText('${a.mk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400 transition-colors"><i class="fa-solid fa-copy"></i></button>
-          </div>
-        </div>
-        ${canManage?`<div class="flex gap-1.5 pt-2" style="border-top:1px solid rgba(255,255,255,0.05)">
-          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='chua'?'s-chua':'opacity-20'}" style="${st!=='chua'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">🔴 Chưa</button>
-          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='dang'?'s-dang':'opacity-20'}" style="${st!=='dang'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">⚡ Đang</button>
-          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='xong'?'s-xong':'opacity-20'}" style="${st!=='xong'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">✅ Xong</button>
-        </div>`:''}
-      </div>
-    </div>`;
+        </div>`;
+      }).join(''):`<p class="text-[10px] text-slate-600 text-center py-4">Chưa có lịch sử bán</p>`;
+    }
+  }
+  function renderUserRevenuePanel(){
+    if(!currentUser)return;
+    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
+    const total=myRev.reduce((s,r)=>s+r.amount,0);
+    const sold=db.accounts.filter(a=>a.uploader===currentUser.u&&a.status==='ban').length;
+    const ready=db.accounts.filter(a=>a.uploader===currentUser.u&&a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
+    const amtEl=document.getElementById('user-total-rev');
+    const soldEl=document.getElementById('user-sold-count');
+    const readyEl=document.getElementById('user-ready-sell');
+    if(amtEl)amtEl.textContent=fmtMoney(total)+'đ';
+    if(soldEl)soldEl.textContent=sold;
+    if(readyEl)readyEl.textContent=ready;
   }
 
   function renderAdminUsers(){
@@ -882,37 +1014,43 @@ function bootApp(){
     return db.users.slice().reverse().map(u=>{
       const acs=db.accounts.filter(a=>a.uploader===u.u);
       const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
-      const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length;
+      const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length,ban=acs.filter(a=>a.status==='ban').length;
       const pct=Math.round((cnt/maxA)*100),recent=acs.slice().reverse().slice(0,3);
+      const uRev=db.revenue.filter(r=>r.uploader===u.u);
+      const uRevTotal=uRev.reduce((s,r)=>s+r.amount,0);
       return `<div class="glass rounded-2xl overflow-hidden animate-fade" style="border:1px solid rgba(168,85,247,0.1)">
         <div class="p-4">
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm orb" style="background:linear-gradient(135deg,rgba(168,85,247,0.25),rgba(0,242,255,0.12));border:1px solid rgba(168,85,247,0.25)">${u.u.charAt(0).toUpperCase()}</div>
-              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500 orb tracking-wider">Pass: ${u.p}</p></div>
+              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500 orb tracking-wider">Pass: ${u.p}</p>${uRevTotal?`<p class="text-[9px] text-green-400 font-bold orb">💰 ${fmtMoneyFull(uRevTotal)}</p>`:''}</div>
             </div>
             <div class="flex gap-2">
               <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[9px] font-bold orb"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
               <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[9px] font-bold orb">XÓA</button>
             </div>
           </div>
-          <div class="grid grid-cols-4 gap-1.5 mb-3">
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[7px] text-cyan-400 font-bold orb">TỔNG</p><p class="text-xl font-black text-cyan-300">${cnt}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)"><p class="text-[7px] text-red-400 font-bold orb">CHƯA</p><p class="text-xl font-black text-red-300">${chua}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[7px] text-yellow-400 font-bold orb">ĐANG</p><p class="text-xl font-black text-yellow-300">${dang}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.12)"><p class="text-[7px] text-green-400 font-bold orb">XONG</p><p class="text-xl font-black text-green-300">${xong}</p></div>
+          <div class="grid grid-cols-5 gap-1.5 mb-3">
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[6px] text-cyan-400 font-bold orb">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)"><p class="text-[6px] text-red-400 font-bold orb">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[6px] text-yellow-400 font-bold orb">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.12)"><p class="text-[6px] text-green-400 font-bold orb">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
+            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3)"><p class="text-[6px] text-green-300 font-bold orb">BÁN</p><p class="text-lg font-black text-green-300">${ban}</p></div>
           </div>
-          <div class="flex items-center gap-2"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.04)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[8px] text-slate-600 orb">${pct}%</span></div>
+          <div class="flex items-center gap-2 mb-1"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.04)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[8px] text-slate-600 orb">${pct}%</span></div>
         </div>
         <div id="ua-${u.u}" class="hidden px-4 pb-4 pt-3 space-y-2" style="border-top:1px solid rgba(255,255,255,0.04)">
           <p class="text-[8px] font-black uppercase text-slate-600 mb-2 tracking-widest orb">Acc gần nhất</p>
           ${recent.length?recent.map(a=>`<div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="lv-badge">LV${a.lv}</span>
+              ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV${a.lv}</span>`:`<span class="lv-badge">LV${a.lv}</span>`}
               <span class="acc-mini-tag text-[10px]">${a.tk}</span>
               <span class="${stCls(a.status||'chua')} text-[9px] px-2 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span>
             </div>
-            <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-30 hover:opacity-80 flex-shrink-0"><i class="fa-solid fa-trash"></i></button>
+            <div class="flex gap-1">
+              ${a.lv>=SELL_MIN_LV&&(a.status||'chua')!=='ban'?`<button onclick="sellAcc(${a.id})" class="btn-sell px-2 py-1 rounded-lg text-[8px] font-black orb">BÁN</button>`:''}
+              <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-30 hover:opacity-80"><i class="fa-solid fa-trash"></i></button>
+            </div>
           </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
           ${cnt>3?`<p class="text-[8px] text-slate-600 text-center orb">...và ${cnt-3} acc khác</p>`:''}
         </div>
@@ -922,17 +1060,20 @@ function bootApp(){
 
   /* ── STATS ── */
   function renderAdminStats(){
-    const chua=db.accounts.filter(a=>!a.status||a.status==='chua').length;
+    const sold=db.accounts.filter(a=>a.status==='ban').length;
+    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
     document.getElementById('admin-global-stats').innerHTML=
       sBox('Tổng Acc',db.accounts.length,'#00f2ff')+sBox('Users',db.users.length,'#a855f7')+
-      sBox('Chưa cày',chua,'#ef4444')+sBox('Root',db.accounts.filter(a=>a.uploader==='ADMIN').length,'#f97316');
+      sBox('Đã bán',sold,'#00ff88')+sBox('Doanh thu',fmtMoney(totalRev)+'đ','#ffd700');
   }
   function renderUserStats(){
     const my=db.accounts.filter(a=>a.uploader===currentUser.u);
+    const ban=my.filter(a=>a.status==='ban').length;
+    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
+    const rev=myRev.reduce((s,r)=>s+r.amount,0);
     document.getElementById('user-global-stats').innerHTML=
       sBox('Tổng Kho',db.accounts.length,'#00f2ff')+sBox('Của tôi',my.length,'#ff00e5')+
-      sBox('Chưa cày',my.filter(a=>!a.status||a.status==='chua').length,'#ef4444')+
-      sBox('Đã xong',my.filter(a=>a.status==='xong').length,'#00ff88');
+      sBox('Đã bán',ban,'#00ff88')+sBox('Doanh thu',fmtMoney(rev)+'đ','#ffd700');
   }
   function sBox(l,v,c){
     return `<div class="stat-card p-4 rounded-2xl text-center min-w-[78px]">
@@ -944,13 +1085,20 @@ function bootApp(){
   /* ── HELPERS ── */
   window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ COPIED!'))};
   function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
-  function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+  function showToast(m,type){
+    const t=document.getElementById('toast');
+    t.textContent=m;
+    t.className='toast'+(type==='money'?' toast-money':'');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2800);
+  }
   window.switchAdminTab=function(tab){
     ['acc','search','user'].forEach(t=>{
       document.getElementById('admin-tab-'+t).classList.toggle('hidden',t!==tab);
       document.getElementById('tab-'+t+'-btn').classList.toggle('tab-active',t===tab);
     });
     if(tab==='search'){buildTags('admin');runAdminSearch();}
+    if(tab==='acc'){renderAdminAccList();}
   };
   window.switchAdminMode=function(m){
     const is=m==='single';
