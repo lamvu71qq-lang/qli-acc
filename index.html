@@ -38,26 +38,14 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 /* ── TOAST ── */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(110px);background:rgba(4,4,20,0.95);border:1px solid rgba(0,242,255,0.35);color:#00f2ff;padding:11px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;box-shadow:0 4px 30px rgba(0,242,255,0.25);font-family:'Orbitron',sans-serif}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.toast-money{border-color:rgba(0,255,136,0.5)!important;color:#00ff88!important;box-shadow:0 4px 30px rgba(0,255,136,0.3)!important}
-
-/* ── REVENUE NOTIFY POPUP ── */
-.rev-popup{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:10000;backdrop-filter:blur(8px)}
-.rev-popup-box{background:linear-gradient(135deg,rgba(0,30,15,0.98),rgba(0,10,5,0.98));border:2px solid rgba(0,255,136,0.45);border-radius:32px;padding:36px 32px;text-align:center;max-width:320px;width:90%;box-shadow:0 0 80px rgba(0,255,136,0.25),0 0 40px rgba(0,255,136,0.1);animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes popIn{from{opacity:0;transform:scale(0.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.rev-amount{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#00ff88;text-shadow:0 0 30px rgba(0,255,136,0.8),0 0 60px rgba(0,255,136,0.4);letter-spacing:0.04em}
-.rev-coins{font-size:48px;animation:coinSpin 0.6s ease}
-@keyframes coinSpin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-.rev-close-btn{background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-weight:900;font-family:'Orbitron',sans-serif;font-size:11px;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;letter-spacing:0.08em;margin-top:20px;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,255,136,0.35)}
-.rev-close-btn:active{transform:scale(0.96)}
 
 .lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:9px;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 8px rgba(249,115,22,0.35)}
 .lv-badge-gold{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0800;font-weight:900;font-size:9px;padding:2px 10px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 10px rgba(255,170,0,0.5)}
 .btn-delete{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;transition:all 0.2s}
 .btn-edit{background:rgba(0,242,255,0.07);border:1px solid rgba(0,242,255,0.22);color:#00f2ff;transition:all 0.2s}
-.btn-sell{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(0,200,100,0.08));border:1px solid rgba(0,255,136,0.4);color:#00ff88;transition:all 0.2s;font-weight:900;letter-spacing:0.05em}
-.btn-sell:hover{background:linear-gradient(135deg,rgba(0,255,136,0.25),rgba(0,200,100,0.15));box-shadow:0 0 16px rgba(0,255,136,0.25)}
+.btn-sell{background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(139,92,246,0.08));border:1px solid rgba(168,85,247,0.4);color:#c084fc;transition:all 0.2s;font-weight:900;letter-spacing:0.05em}
+.btn-sell:hover{background:linear-gradient(135deg,rgba(168,85,247,0.25),rgba(139,92,246,0.15));box-shadow:0 0 16px rgba(168,85,247,0.25)}
 .btn-sell:active{transform:scale(0.95)}
-.btn-sell-disabled{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.15);cursor:not-allowed}
 
 .mode-toggle{background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px}
 .mode-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
@@ -66,29 +54,28 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .bulk-err{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
 .s-chua{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.32);color:#fca5a5}
 .s-dang{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.32);color:#fde68a}
-.s-xong{background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.28);color:#86efac}
-.s-ban{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(255,215,0,0.08));border:1px solid rgba(0,255,136,0.5);color:#00ff88;box-shadow:0 0 12px rgba(0,255,136,0.15)}
+.s-xong{background:rgba(0,242,255,0.08);border:1px solid rgba(0,242,255,0.28);color:#81e6d9}
+.s-ban{background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(255,255,255,0.03));border:1px solid rgba(168,85,247,0.5);color:#d6bcfa;box-shadow:0 0 12px rgba(168,85,247,0.15)}
 .dot-chua{width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
 .dot-dang{width:6px;height:6px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
-.dot-xong{width:6px;height:6px;border-radius:50%;background:#00ff88;display:inline-block}
-.dot-ban{width:6px;height:6px;border-radius:50%;background:#ffd700;display:inline-block;animation:pg 2s infinite}
+.dot-xong{width:6px;height:6px;border-radius:50%;background:#00f2ff;display:inline-block}
+.dot-ban{width:6px;height:6px;border-radius:50%;background:#a855f7;display:inline-block}
 @keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
 @keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
-@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.6)}50%{box-shadow:0 0 0 5px rgba(0,255,136,0)}}
 
-/* ── REVENUE PANEL ── */
-.rev-panel{background:linear-gradient(135deg,rgba(0,255,136,0.07),rgba(0,200,100,0.03));border:1px solid rgba(0,255,136,0.22);border-radius:22px;padding:16px;position:relative;overflow:hidden;margin-bottom:14px}
-.rev-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,#ffd700,transparent);opacity:0.7}
-.rev-mini{background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;flex:1;text-align:center}
-.rev-big-num{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,0.6);line-height:1}
+/* ── REVENUE PANEL (CHUYỂN THÀNH THỐNG KÊ DANH MỤC) ── */
+.rev-panel{background:linear-gradient(135deg,rgba(168,85,247,0.07),rgba(0,242,255,0.03));border:1px solid rgba(168,85,247,0.22);border-radius:22px;padding:16px;position:relative;overflow:hidden;margin-bottom:14px}
+.rev-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a855f7,#00f2ff,transparent);opacity:0.7}
+.rev-mini{background:rgba(0,0,0,0.35);border:1px solid rgba(168,85,247,0.15);border-radius:14px;padding:10px 14px;flex:1;text-align:center}
+.rev-big-num{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6);line-height:1}
 
 /* ── PRICE TAG ── */
-.price-tag{background:linear-gradient(135deg,rgba(0,255,136,0.12),rgba(255,215,0,0.06));border:1px solid rgba(0,255,136,0.28);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:#00ff88;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
+.price-tag{background:linear-gradient(135deg,rgba(0,242,255,0.12),rgba(168,85,247,0.06));border:1px solid rgba(0,242,255,0.28);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:#00f2ff;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
 .price-tag-locked{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:rgba(255,255,255,0.2);font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
 
 /* ── SOLD RIBBON ── */
-.sold-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(0,255,136,0.4)}
-.card-sold{box-shadow:0 0 0 1.5px rgba(0,255,136,0.4),0 8px 30px rgba(0,255,136,0.1)!important;opacity:0.75}
+.sold-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#a855f7,#718096);color:#ffffff;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(168,85,247,0.4)}
+.card-sold{box-shadow:0 0 0 1.5px rgba(168,85,247,0.4),0 8px 30px rgba(168,85,247,0.1)!important;opacity:0.6}
 
 /* ── BEE PANEL ── */
 .bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.055),rgba(249,115,22,0.03));border:1px solid rgba(250,204,21,0.2);border-radius:26px;overflow:hidden;position:relative}
@@ -100,21 +87,12 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .bee-typing span:nth-child(2){animation-delay:0.2s}
 .bee-typing span:nth-child(3){animation-delay:0.4s}
 @keyframes blink{0%,80%,100%{opacity:0.15;transform:scale(0.8)}40%{opacity:1;transform:scale(1.2)}}
-.bee-urgent-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
-.bee-tip-box{background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.14);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
-.bee-meme-box{background:rgba(168,85,247,0.07);border:1px solid rgba(168,85,247,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-style:italic;color:#c4b5fd;font-weight:600}
-.bee-analyze-box{background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:12px;font-weight:600;line-height:1.8}
+.bee-analyze-box{background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.15);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:12px;font-weight:600;line-height:1.8}
 .bee-chat-wrap{margin-top:12px;display:flex;gap:8px;align-items:center}
 .bee-chat-input{flex:1;padding:10px 15px;border-radius:100px;font-size:13px;font-weight:600;background:rgba(0,0,0,0.5)!important;border:1px solid rgba(250,204,21,0.18)!important;color:white!important;font-family:'Rajdhani',sans-serif}
 .bee-chat-input:focus{border-color:rgba(250,204,21,0.45)!important;box-shadow:0 0 20px rgba(250,204,21,0.08)!important}
 .bee-send-btn{width:40px;height:40px;border-radius:100%;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:14px;color:#1a0a00;flex-shrink:0;font-weight:900;cursor:pointer;transition:all 0.2s;border:none;box-shadow:0 4px 16px rgba(249,115,22,0.35)}
 .bee-send-btn:active{transform:scale(0.9)}
-.bee-send-btn.loading{background:rgba(250,204,21,0.15)!important;color:#facc15!important;pointer-events:none;box-shadow:none}
-
-/* ── RESET TIMER ── */
-.reset-bar-wrap{background:rgba(0,0,0,0.35);border:1px solid rgba(0,242,255,0.12);border-radius:16px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.reset-bar-inner{flex:1;height:4px;border-radius:100px;background:rgba(255,255,255,0.05);overflow:hidden}
-.reset-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 1s linear;box-shadow:0 0 8px rgba(0,242,255,0.3)}
 
 /* ── SEARCH ── */
 .search-wrap{position:relative;margin-bottom:14px}
@@ -133,7 +111,6 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 /* ── LEVEL GROUPS ── */
 .lv-group{border-radius:22px;overflow:hidden;margin-bottom:14px}
 .lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;gap:10px}
-.lv-group-hd:active{opacity:0.85}
 .lv-chev{transition:transform 0.32s cubic-bezier(0.34,1.2,0.64,1);font-size:11px;flex-shrink:0;color:rgba(255,255,255,0.35)}
 .lv-chev.open{transform:rotate(180deg)}
 .lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.25)}
@@ -147,25 +124,13 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .grp-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:5px}
 .gp{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.03em}
 .gp-t{background:rgba(255,255,255,0.06);color:#94a3b8;border:1px solid rgba(255,255,255,0.05)}
-.gp-c{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
-.gp-d{background:rgba(250,204,21,0.1);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
-.gp-x{background:rgba(0,255,136,0.08);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
-.gp-b{background:rgba(0,255,136,0.15);color:#00ff88;border:1px solid rgba(0,255,136,0.35)}
-.grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.05);margin-top:9px;overflow:hidden}
-.grp-prog-fill{height:100%;border-radius:100px;transition:width 0.7s ease}
 
 /* ── ACC CARD ── */
 .acc-wrap{position:relative;padding-top:7px}
 .card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.55),0 8px 30px rgba(239,68,68,0.18)!important}
 .prio-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(239,68,68,0.4)}
-.acc-card{background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:16px 16px 13px;position:relative;overflow:hidden;transition:border-color 0.2s}
+.acc-card{background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:16px 16px 13px;position:relative;overflow:hidden}
 .acc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent)}
-.user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 0.7s ease;box-shadow:0 0 8px rgba(0,242,255,0.25)}
-.acc-mini-tag{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
-
-/* ── REVENUE HISTORY ── */
-.rev-hist-item{background:rgba(0,0,0,0.3);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px}
-.rev-hist-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;flex-shrink:0;box-shadow:0 0 8px rgba(0,255,136,0.6)}
 
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
@@ -175,19 +140,6 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 <body>
 <div id="toast" class="toast"></div>
 
-<!-- REVENUE NOTIFICATION POPUP -->
-<div id="rev-popup" class="rev-popup hidden">
-  <div class="rev-popup-box">
-    <div class="rev-coins">💰</div>
-    <p class="text-[10px] font-bold tracking-widest text-green-400 mt-3 mb-1 orb">DOANH THU ĐÃ VỀ!</p>
-    <div class="rev-amount" id="rev-popup-amount">+8.000đ</div>
-    <p class="text-xs text-slate-400 mt-2 font-bold" id="rev-popup-acc">Acc: <span class="text-white"></span></p>
-    <p class="text-[10px] text-slate-500 mt-1" id="rev-popup-msg"></p>
-    <button class="rev-close-btn" onclick="closeRevPopup()">✓ ĐÃ NHẬN</button>
-  </div>
-</div>
-
-<!-- LOGIN -->
 <div id="login-page" class="flex items-center justify-center min-h-screen p-6">
   <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center" style="border:1px solid rgba(168,85,247,0.18);box-shadow:0 0 80px rgba(168,85,247,0.08),0 0 40px rgba(0,242,255,0.04)">
     <div class="mb-2" style="font-family:'Orbitron',sans-serif">
@@ -200,7 +152,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
         <div style="height:1px;width:36px;background:linear-gradient(90deg,rgba(0,242,255,0.4),transparent)"></div>
       </div>
     </div>
-    <p class="text-[8px] text-slate-700 mb-10 tracking-[0.25em] orb">⚡ AUTO RESET 22:00 DAILY ⚡</p>
+    <p class="text-[8px] text-slate-500 mb-10 tracking-[0.25em] orb">⚡ NO TIMEOUT · PERSISTENT VAULT ⚡</p>
     <div class="space-y-3">
       <input type="text" id="user" placeholder="USERNAME" class="w-full p-4 rounded-2xl text-sm tracking-widest">
       <input type="password" id="pass" placeholder="PASSWORD" class="w-full p-4 rounded-2xl text-sm" onkeydown="if(event.key==='Enter')login()">
@@ -212,7 +164,6 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
   </div>
 </div>
 
-<!-- ADMIN -->
 <div id="admin-page" class="hidden p-4 pt-10 pb-24">
   <div class="max-w-2xl mx-auto">
     <header class="flex justify-between items-center mb-7 px-1">
@@ -224,40 +175,23 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
     </header>
     <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-7"></div>
 
-    <!-- Admin Revenue Panel -->
     <div class="rev-panel mb-6">
       <div class="flex items-center gap-2 mb-3">
-        <span class="text-lg">💰</span>
-        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU HỆ THỐNG</span>
-        <span class="text-[8px] text-slate-500 font-bold ml-auto">Giá: LV30+ = 8,000đ/acc</span>
+        <span class="text-lg">📊</span>
+        <span class="text-[10px] font-black orb tracking-widest text-purple-400">TRẠNG THÁI HỆ THỐNG</span>
       </div>
-      <div class="flex gap-2 mb-3">
+      <div class="flex gap-2">
         <div class="rev-mini">
-          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG DT</p>
-          <div class="rev-big-num" id="admin-total-rev">0đ</div>
+          <p class="text-[8px] font-bold text-purple-400 orb tracking-wider mb-1">ĐÃ XÀI</p>
+          <div class="rev-big-num" style="color:#d6bcfa;text-shadow:0 0 20px rgba(168,85,247,0.6)" id="admin-sold-count">0</div>
         </div>
         <div class="rev-mini">
-          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ĐÃ BÁN</p>
-          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="admin-sold-count">0</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN SÀNG</p>
+          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN SÀNG (LV30+)</p>
           <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="admin-ready-sell">0</div>
         </div>
       </div>
-      <div id="admin-rev-history" class="space-y-2 max-h-40 overflow-y-auto"></div>
     </div>
 
-    <div id="admin-reset-wrap" class="reset-bar-wrap">
-      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
-      <div class="flex-1">
-        <div class="flex justify-between mb-1">
-          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối</span>
-          <span id="admin-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
-        </div>
-        <div class="reset-bar-inner"><div id="admin-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
-      </div>
-    </div>
     <div class="flex gap-1 mb-7 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
       <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3 rounded-xl tab-active">📦 Acc</button>
       <button id="tab-search-btn" onclick="switchAdminTab('search')" class="flex-1 py-3 rounded-xl">🔍 Tìm</button>
@@ -268,7 +202,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
       <div class="glass p-6 rounded-[2rem] mb-6" style="border:1px solid rgba(0,242,255,0.09)">
         <div class="mode-toggle mb-4">
           <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
+          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk Hàng Loạt</button>
         </div>
         <div id="admin-single-mode" class="space-y-3">
           <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
@@ -277,10 +211,16 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
           <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Up Acc Root</button>
         </div>
         <div id="admin-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i>Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></div>
-          <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
+          <div class="flex gap-2">
+            <input type="text" id="admin-bulk-same-mk" placeholder="Nhập MK chung (Bỏ trống nếu nhập riêng lẻ từng dòng)" class="w-full p-3.5 rounded-xl text-xs">
+          </div>
+          <div class="flex items-center gap-2 text-[10px] text-slate-400">
+            <i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i>
+            <span>Cú pháp: <code class="text-cyan-300">tk|mk|lv</code> HOẶC chỉ cần <code class="text-purple-300">tk|lv</code> nếu điền MK chung</span>
+          </div>
+          <textarea id="admin-bulk-input" rows="6" placeholder="player001|pass123|30&#10;player002|35" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
           <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
+          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả (Tự lọc trùng)</button>
         </div>
       </div>
       <div class="view-toggle">
@@ -316,7 +256,6 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
   </div>
 </div>
 
-<!-- USER -->
 <div id="user-page" class="hidden p-4 pt-10 pb-24">
   <div class="max-w-2xl mx-auto">
     <header class="flex justify-between items-center mb-6 px-1">
@@ -328,41 +267,23 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
     </header>
     <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-5"></div>
 
-    <!-- User Revenue Panel -->
     <div class="rev-panel mb-5">
       <div class="flex items-center gap-2 mb-3">
-        <span class="text-lg">💵</span>
-        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU CỦA TÔI</span>
-        <span class="text-[8px] text-slate-500 font-bold ml-auto">LV30+ = 8k/acc</span>
+        <span class="text-lg">📦</span>
+        <span class="text-[10px] font-black orb tracking-widest text-purple-400">KHO ACC CỦA TÔI</span>
       </div>
       <div class="flex gap-2">
         <div class="rev-mini">
-          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG NHẬN</p>
-          <div class="rev-big-num" id="user-total-rev">0đ</div>
+          <p class="text-[8px] font-bold text-purple-400 orb tracking-wider mb-1">ĐÃ XÀI</p>
+          <div class="rev-big-num" style="color:#d6bcfa" id="user-sold-count">0</div>
         </div>
         <div class="rev-mini">
-          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ACC BÁN</p>
-          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="user-sold-count">0</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN LV30+</p>
+          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN SÀNG (LV30+)</p>
           <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="user-ready-sell">0</div>
         </div>
       </div>
     </div>
 
-    <div class="reset-bar-wrap">
-      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
-      <div class="flex-1">
-        <div class="flex justify-between mb-1">
-          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối nay</span>
-          <span id="user-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
-        </div>
-        <div class="reset-bar-inner"><div id="user-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
-      </div>
-    </div>
-
-    <!-- BEE AI -->
     <div class="bee-panel p-5 mb-7">
       <div class="flex gap-3 items-start">
         <div class="bee-avatar">🐝</div>
@@ -377,57 +298,61 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
       </div>
       <div id="bee-actions" class="hidden mt-3 flex gap-2 flex-wrap">
         <button onclick="beeSortUrgent()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.28);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên</button>
-        <button onclick="beeSortDefault()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
-        <button onclick="beeAnalyze()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#86efac"><i class="fa-solid fa-chart-bar mr-1"></i>Phân tích</button>
-        <button onclick="beeMeme()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:#c084fc"><i class="fa-solid fa-face-laugh-squint mr-1"></i>Meme</button>
+        <button onclick="beeSortDefault()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#cbd5e1"><i class="fa-solid fa-list mr-1"></i>Mặc định</button>
+        <button onclick="beeAnalyzeData()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(0,242,255,0.1);border:1px solid rgba(0,242,255,0.25);color:#00f2ff"><i class="fa-solid fa-chart-pie mr-1"></i>Phân tích</button>
       </div>
       <div class="bee-chat-wrap">
-        <input type="text" id="bee-chat-input" class="bee-chat-input" placeholder="Hỏi BEE bất cứ gì... 🐝" onkeydown="if(event.key==='Enter')sendBeeChat()">
-        <button class="bee-send-btn" id="bee-send-btn" onclick="sendBeeChat()"><i class="fa-solid fa-paper-plane"></i></button>
+        <input type="text" id="bee-input" class="bee-chat-input" placeholder="Hỏi Bee AI điều gì đó... (ví dụ: cần làm gì?)" onkeydown="if(event.key==='Enter')askBee()">
+        <button id="bee-send-btn" onclick="askBee()" class="bee-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
 
-    <!-- TABS -->
-    <div class="flex gap-1 mb-6 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
-      <button id="utab-list-btn" onclick="switchUserTab('list')" class="flex-1 py-3.5 rounded-xl tab-active">📦 Kho Acc</button>
-      <button id="utab-search-btn" onclick="switchUserTab('search')" class="flex-1 py-3.5 rounded-xl">🔍 Tìm kiếm</button>
+    <div class="flex gap-1 mb-5 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
+      <button id="user-tab-acc-btn" onclick="switchUserTab('acc')" class="flex-1 py-3 rounded-xl tab-active">📦 Nhận Cày</button>
+      <button id="user-tab-search-btn" onclick="switchUserTab('search')" class="flex-1 py-3 rounded-xl">🔍 Tìm Acc</button>
     </div>
 
-    <div id="utab-list">
-      <div class="glass-strong p-6 rounded-[2.5rem] mb-7" style="border:1px solid rgba(255,0,229,0.08)">
-        <div class="mode-toggle mb-5">
-          <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
+    <div id="user-tab-acc" class="animate-fade">
+      <div class="glass p-5 rounded-[2rem] mb-6" style="border:1px solid rgba(255,0,229,0.09)">
+        <div class="mode-toggle mb-4">
+          <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-square-plus mr-1"></i>Thêm Đơn</button>
+          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-boxes-stacked mr-1"></i>Bulk Thêm</button>
         </div>
+        
         <div id="user-single-mode" class="space-y-3">
-          <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
-          <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
-          <input type="number" id="acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-4 rounded-2xl text-sm">
-          <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb">🎮 ĐĂNG ACC MỚI</button>
+          <input type="text" id="u-acc-tk" placeholder="Tài khoản game muốn cày" class="w-full p-3.5 rounded-xl text-sm">
+          <input type="text" id="u-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
+          <button onclick="userPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Đăng Ký Acc Mới</button>
         </div>
+
         <div id="user-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i>Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></div>
-          <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
-          <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
+          <div class="flex gap-2">
+            <input type="text" id="user-bulk-same-mk" placeholder="Nhập MK chung (Bỏ trống nếu nhập riêng lẻ từng dòng)" class="w-full p-3.5 rounded-xl text-xs">
+          </div>
+          <div class="flex items-center gap-2 text-[10px] text-slate-400">
+            <i class="fa-solid fa-circle-info text-pink-400 text-xs"></i>
+            <span>Định dạng: <code class="text-pink-300">tk|mk</code> HOẶC nhập mỗi dòng 1 <code class="text-pink-300">tk</code> nếu điền MK chung</span>
+          </div>
+          <textarea id="user-bulk-input" rows="5" placeholder="farmer001|pass123&#10;farmer002" class="w-full p-3.5 rounded-xl" oninput="previewBulk('user')"></textarea>
+          <div id="user-bulk-preview" class="space-y-1 max-h-32 overflow-y-auto"></div>
+          <button onclick="userBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb"><i class="fa-solid fa-angles-up mr-2"></i>Up Toàn Bộ (Tự lọc trùng)</button>
         </div>
       </div>
+
       <div class="view-toggle">
-        <button class="view-btn active" id="user-view-all-btn" onclick="switchUserView('all')"><i class="fa-solid fa-list mr-1"></i>Tất cả</button>
-        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Phân loại LV</button>
+        <button class="view-btn active" id="user-view-all-btn" onclick="switchUserView('all')"><i class="fa-solid fa-border-all mr-1"></i>Tất cả</button>
+        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Nhóm theo LV</button>
       </div>
-      <div id="user-list"></div>
+      <div id="user-list-accs"></div>
     </div>
 
-    <div id="utab-search" class="hidden animate-fade">
-      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(255,0,229,0.1)">
-        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 orb"><i class="fa-solid fa-magnifying-glass mr-2 text-pink-400"></i>Tìm kiếm Acc của tôi</p>
+    <div id="user-tab-search" class="hidden animate-fade">
+      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(255,255,255,0.06)">
         <div class="search-wrap">
           <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
-          <input type="text" id="user-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runUserSearch()">
+          <input type="text" id="user-search-input" class="search-inp" placeholder="Tìm tài khoản của bạn..." oninput="runUserSearch()">
           <span class="search-clear" onclick="clearSearch('user')"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <p class="text-[8px] text-slate-500 font-bold mb-2 uppercase tracking-widest orb">Lọc theo Level</p>
         <div class="flex gap-2 flex-wrap" id="user-lv-tags"></div>
       </div>
       <div id="user-search-count" class="search-count"></div>
@@ -437,679 +362,731 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 </div>
 
 <script>
-/* ══════════ CONFIG ══════════ */
-const RESET_HOUR=22;
-const SELL_PRICE=8000;   // giá bán mỗi acc LV30+
-const SELL_MIN_LV=30;    // level tối thiểu để bán
-const LV_GROUPS=[
-  {key:'g1',label:'LV 1–9',min:1,max:9,cls:'grp-1',icon:'🌱',fill:'rgba(100,116,139,0.7)'},
-  {key:'g2',label:'LV 10–19',min:10,max:19,cls:'grp-2',icon:'💧',fill:'rgba(59,130,246,0.7)'},
-  {key:'g3',label:'LV 20–29',min:20,max:29,cls:'grp-3',icon:'⚡',fill:'rgba(0,242,255,0.7)'},
-  {key:'g4',label:'LV 30–39',min:30,max:39,cls:'grp-4',icon:'🔮',fill:'rgba(168,85,247,0.7)'},
-  {key:'g5',label:'LV 40–50',min:40,max:50,cls:'grp-5',icon:'👑',fill:'rgba(250,204,21,0.8)'},
-];
-const LV_TAGS=[
-  {label:'Tất cả',min:0,max:50,bg:'rgba(255,255,255,0.06)',abg:'rgba(255,255,255,0.15)',bd:'rgba(255,255,255,0.1)'},
-  {label:'LV 1–9',min:1,max:9,bg:'rgba(100,116,139,0.08)',abg:'rgba(100,116,139,0.28)',bd:'rgba(100,116,139,0.28)'},
-  {label:'LV 10–19',min:10,max:19,bg:'rgba(59,130,246,0.08)',abg:'rgba(59,130,246,0.28)',bd:'rgba(59,130,246,0.28)'},
-  {label:'LV 20–29',min:20,max:29,bg:'rgba(0,242,255,0.07)',abg:'rgba(0,242,255,0.22)',bd:'rgba(0,242,255,0.28)'},
-  {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.07)',abg:'rgba(168,85,247,0.25)',bd:'rgba(168,85,247,0.28)'},
-  {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.07)',abg:'rgba(250,204,21,0.22)',bd:'rgba(250,204,21,0.28)'},
-];
-const BEE_MEMES=[
-  '😂 Cày acc mà ngủ quên = bị người ta cướp trước lol',
-  '💀 Acc LV50 mà chưa cày = đang để gà kén chủ...',
-  '🤡 "Mai cày cũng được" — ngày hôm sau acc vẫn đó, ý chí thì không',
-  '😭 Reset 22h rồi mà chưa xong? Skill issue bro',
-  '👀 BEE thấy bạn có acc chưa cày kìa... BEE không nói đâu nhé 🙊',
-  '🔥 Cày acc như ăn cơm: phải đều đặn, không thì đói 💀',
-  '😤 "Chỉ còn 1 acc nữa thôi" — 3 tiếng sau vẫn đang cày 🐢',
-  '🧠 Big brain move: đăng acc → cày ngay → chờ Admin bán → tiền về 😎',
-  '😂 Acc LV1 nhìn acc LV50 mà thở dài: "Bao giờ đến lượt tao..."',
-  '💅 BEE làm việc không biết mệt. Còn bạn thì... 🤔',
-  '🏃 Thấy đồng hồ 21:59 mà chưa xong? CHẠY ĐI CON ƠI',
-  '💰 Acc LV30+ được Admin bán = 8k về tay! Cày đi mà giàu! 🤑',
-];
+// ── DATA CORE (DATABASE) ──
+let db = {
+  users: [
+    {u: "admin", p: "admin123", role: "admin"},
+    {u: "farmer1", p: "123", role: "user"},
+    {u: "farmer2", p: "123", role: "user"}
+  ],
+  accounts: [
+    {id: 1, tk: "shadow_lord", mk: "pass1", lv: 32, status: "xong", owner: "farmer1", urgent: true},
+    {id: 2, tk: "neon_cyber", mk: "pass2", lv: 15, status: "dang", owner: "farmer1", urgent: false},
+    {id: 3, tk: "alpha_omega", mk: "pass3", lv: 45, status: "ban", owner: "farmer2", urgent: false},
+    {id: 4, tk: "glitch_hunter", mk: "pass4", lv: 8, status: "chua", owner: "farmer2", urgent: true}
+  ]
+};
 
-function fmtMoney(n){
-  if(n>=1000000)return (n/1000000).toFixed(1).replace('.0','')+'M';
-  if(n>=1000)return (n/1000).toFixed(0)+'k';
-  return n+'';
-}
-function fmtMoneyFull(n){return n.toLocaleString('vi-VN')+'đ'}
-
-/* BEE LOCAL REPLY */
-function beeLocalReply(msg,ctx){
-  msg=msg.toLowerCase();
-  const {total,chua,dang,xong,ban,revTotal,byLv,topChua,user}=ctx;
-  if(/doanh.*(thu|tiền)|tiền|bán|kiếm/.test(msg)){
-    const readySell=byLv.filter(g=>g.minLv>=SELL_MIN_LV).reduce((s,g)=>s+g.count,0);
-    if(!revTotal&&!ban)return `💰 Chưa có doanh thu nào nhé! Cày acc LV${SELL_MIN_LV}+ rồi đợi Admin bán là có tiền ngay!`;
-    return `💰 Bạn đã kiếm được <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban} acc</b> đã bán! ${readySell?`Còn <b class="text-cyan-300">${readySell} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán nữa!`:''}`;
-  }
-  if(/còn.*(bao nhiêu|mấy).*(acc|chưa)|chưa.*(cày|làm)/.test(msg)){
-    if(!chua)return '🎉 Ngon! Hết acc chưa cày rồi, bạn là huyền thoại! 👑';
-    return `🔴 Còn <b class="text-red-300">${chua} acc chưa cày</b>! ${topChua.slice(0,2).map(a=>`<code class="text-pink-300">${a.tk}</code>`).join(', ')} ${chua>2?`và ${chua-2} acc nữa`:''} — cày thôi nào!`;
-  }
-  if(/đang.*(cày|làm)/.test(msg)){
-    if(!dang)return '😴 Không có acc nào đang cày đâu bro!';
-    return `⚡ Đang cày <b class="text-yellow-300">${dang} acc</b>! Giữ đà đó! 💪`;
-  }
-  if(/xong|hoàn.*(thành|tất)|done/.test(msg)){
-    if(!xong)return '😬 Chưa có acc nào xong cả...';
-    return `✅ Đã xong <b class="text-green-300">${xong} acc</b>! Còn ${chua} acc chưa cày.`;
-  }
-  if(/reset|22h|tối|mấy.*(giờ)|còn.*(bao lâu|thời gian)/.test(msg)){
-    const now=new Date(),reset=new Date();
-    reset.setHours(RESET_HOUR,0,0,0);
-    if(now>=reset)reset.setDate(reset.getDate()+1);
-    const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-    return `⏰ Còn <b class="text-cyan-300">${h}h ${m}m</b> đến khi reset 22:00! ${h<2?'⚠️ Ít thời gian, CHẠY ĐI!':h<5?'🏃 Vừa đủ nếu nghiêm túc!':'😎 Còn thoải mái!'}`;
-  }
-  if(/tổng|kho|bao nhiêu.*(acc|tất cả)/.test(msg)){
-    if(!total)return '😅 Kho trống rỗng! Đăng acc mới đi bro~';
-    return `📦 Kho: <b>${total} acc</b> — 🔴 ${chua} chưa · ⚡ ${dang} đang · ✅ ${xong} xong · 💰 ${ban} đã bán`;
-  }
-  if(/meme|hài|vui/.test(msg))return `<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
-  if(/xin chào|hello|hi|chào/.test(msg))return `👋 Chào <b>${user}</b>! Kho: ${total} acc, doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b>!`;
-  const tips=[
-    `💡 Bạn có <b>${chua} acc chưa cày</b>. Acc LV30+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ</b>!`,
-    `💰 Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ ${ban} acc bán. Cày thêm để tăng doanh thu!`,
-    `🐝 Cày đến LV${SELL_MIN_LV}+ rồi báo Admin bán, tiền sẽ về ngay! 🤑`,
-  ];
-  return tips[Math.floor(Math.random()*tips.length)];
+if(!localStorage.getItem("nebula_db_v5_nosell")) {
+  localStorage.setItem("nebula_db_v5_nosell", JSON.stringify(db));
+} else {
+  db = JSON.parse(localStorage.getItem("nebula_db_v5_nosell"));
 }
 
-function beeAnalyzeLocal(ctx){
-  const {total,chua,dang,xong,ban,revTotal,byLv,topChua}=ctx;
-  if(!total)return '😅 Kho trống! Đăng acc mới trước rồi BEE mới phân tích được nhé~';
-  const now=new Date(),reset=new Date();
-  reset.setHours(RESET_HOUR,0,0,0);
-  if(now>=reset)reset.setDate(reset.getDate()+1);
-  const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-  const rate=total?Math.round((xong+ban)/total*100):0;
-  const highLvChua=topChua.filter(a=>a.lv>=SELL_MIN_LV);
-  let html=`<div class="bee-analyze-box">`;
-  html+=`<b class="text-green-300">📊 Báo cáo kho của bạn:</b><br>`;
-  html+=`• Tổng: <b>${total}</b> | Xong: <b class="text-green-300">${xong}</b> | Đang: <b class="text-yellow-300">${dang}</b> | Chưa: <b class="text-red-300">${chua}</b> | Đã bán: <b class="text-green-400">${ban}</b><br>`;
-  html+=`• Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> | Tiến độ: <b>${rate}%</b><br>`;
-  html+=`• Reset sau: <b class="text-cyan-300">${h}h ${m}m</b><br><br>`;
-  if(highLvChua.length){
-    html+=`<b class="text-yellow-300">💰 Acc LV${SELL_MIN_LV}+ chưa bán:</b><br>`;
-    highLvChua.slice(0,3).forEach(a=>html+=`→ <code class="text-pink-300">${a.tk}</code> LV ${a.lv} = <b class="text-green-300">${fmtMoneyFull(SELL_PRICE)}</b><br>`);
-    html+=`<br>`;
-  }
-  if(chua===0&&!highLvChua.length){
-    html+=`<b class="text-green-300">🏆 XUẤT SẮC!</b> Tất cả đã hoàn thành!`;
+function saveDB() {
+  localStorage.setItem("nebula_db_v5_nosell", JSON.stringify(db));
+}
+
+// ── STATE ──
+let currentUser = null;
+let currentAdminTab = "acc";
+let currentAdminMode = "single";
+let currentAdminView = "all";
+let adminSelectedFilterLv = null;
+
+let currentUserTab = "acc";
+let currentUserMode = "single";
+let currentUserView = "all";
+let userSelectedFilterLv = null;
+let userPrioFilter = false;
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.className = "toast show";
+  setTimeout(() => t.classList.remove("show"), 3000);
+}
+
+// ── LOGIN ──
+function login() {
+  const u = document.getElementById("user").value.trim();
+  const p = document.getElementById("pass").value;
+  const userObj = db.users.find(x => x.u === u && x.p === p);
+  
+  if(userObj) {
+    currentUser = userObj;
+    document.getElementById("login-page").classList.add("hidden");
+    document.getElementById("login-error").classList.add("hidden");
+    
+    if(userObj.role === "admin") {
+      document.getElementById("admin-page").classList.remove("hidden");
+      initAdminDashboard();
+    } else {
+      document.getElementById("user-page").classList.remove("hidden");
+      document.getElementById("user-name").innerText = userObj.u.toUpperCase();
+      initUserDashboard();
+    }
+    showToast("⚡ HỆ THỐNG ĐÃ KẾT NỐI!");
   } else {
-    html+=`<b class="text-yellow-300">🎯 Gợi ý:</b> ${highLvChua.length?`Có <b class="text-green-300">${highLvChua.length} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán, báo Admin để nhận tiền!`:`Cày acc lên LV${SELL_MIN_LV}+ để bán với giá <b class="text-green-300">8,000đ/acc</b>!`}`;
+    document.getElementById("login-error").classList.remove("hidden");
   }
-  html+=`</div>`;
-  return html;
 }
 
-/* ══════════ FIREBASE BOOT ══════════ */
-function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
-loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
-  .then(()=>loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
-  .then(bootApp);
+function logout() {
+  currentUser = null;
+  document.getElementById("admin-page").classList.add("hidden");
+  document.getElementById("user-page").classList.add("hidden");
+  document.getElementById("login-page").classList.remove("hidden");
+  document.getElementById("user").value = "";
+  document.getElementById("pass").value = "";
+}
 
-function bootApp(){
-  const cfg={apiKey:"AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",authDomain:"cccc-1e4fe.firebaseapp.com",databaseURL:"https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cccc-1e4fe",storageBucket:"cccc-1e4fe.firebasestorage.app",messagingSenderId:"23606175445",appId:"1:23606175445:web:9cb963552b352cf308e45c"};
-  firebase.initializeApp(cfg);
-  const dbRef=firebase.database().ref('NEBULA_DATA_V5');
-  const ADMIN={u:'gbao',p:'031008'};
-  let db={users:[],accounts:[],revenue:[]};  // revenue: [{id, accId, uploader, tk, lv, amount, time, seen}]
-  let currentMode='',currentUser=null,sortMode='default';
-  let userViewMode='all',adminViewMode='all';
-  let uLvFilter={min:0,max:50},aLvFilter={min:0,max:50};
-  const openGrps={user:{},admin:{}};
-  let resetDone=false;
+// ── BADGES & GROUPS ──
+function getStatusBadge(status) {
+  const badges = {
+    chua: '<span class="s-chua px-2.5 py-1 rounded-lg text-[10px] font-bold inline-flex items-center gap-1.5"><span class="dot-chua"></span>CHƯA CÀY</span>',
+    dang: '<span class="s-dang px-2.5 py-1 rounded-lg text-[10px] font-bold inline-flex items-center gap-1.5"><span class="dot-dang"></span>ĐANG CÀY</span>',
+    xong: '<span class="s-xong px-2.5 py-1 rounded-lg text-[10px] font-bold inline-flex items-center gap-1.5"><span class="dot-xong"></span>HOÀN THÀNH</span>',
+    ban: '<span class="s-ban px-2.5 py-1 rounded-lg text-[10px] font-bold inline-flex items-center gap-1.5"><span class="dot-ban"></span>ĐÃ XÀI</span>'
+  };
+  return badges[status] || status;
+}
 
-  dbRef.on('value',snap=>{
-    const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
-    db.users=toArr(d&&d.users);
-    db.accounts=toArr(d&&d.accounts);
-    db.revenue=toArr(d&&d.revenue);
-    if(currentMode)renderUI();
-    // Check unseen revenue for current user
-    if(currentMode==='user'&&currentUser){checkUnseenRevenue();}
+function getLevelGroupRange(lv) {
+  if (lv <= 10) return {g: 1, label: "LV 1-10 (Sơ Cấp)", style: "grp-1"};
+  if (lv <= 20) return {g: 2, label: "LV 11-20 (Trung Cấp)", style: "grp-2"};
+  if (lv <= 30) return {g: 3, label: "LV 21-30 (Cao Cấp)", style: "grp-3"};
+  if (lv <= 40) return {g: 4, label: "LV 31-40 (Tinh Anh)", style: "grp-4"};
+  return {g: 5, label: "LV 41-50 (Huyền Thoại)", style: "grp-5"};
+}
+
+// ── PREVIEW BULK (KIỂM TRA TRÙNG LẶP TRỰC TIẾP KHI NHẬP) ──
+function previewBulk(type) {
+  const text = document.getElementById(`${type}-bulk-input`).value;
+  const sameMk = document.getElementById(`${type}-bulk-same-mk`).value.trim();
+  const previewDiv = document.getElementById(`${type}-bulk-preview`);
+  previewDiv.innerHTML = "";
+  
+  if(!text.trim()) return;
+  const lines = text.split("\n");
+  let trackingSet = new Set();
+  
+  lines.forEach(line => {
+    if(!line.trim()) return;
+    const parts = line.split("|").map(x => x.trim());
+    let tk = parts[0];
+    
+    // Kiểm tra xem tk này có bị trùng ngay trong văn bản nhập hay cơ sở dữ liệu không
+    let isDuplicate = trackingSet.has(tk) || db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase());
+    trackingSet.add(tk);
+
+    if(isDuplicate) {
+      previewDiv.innerHTML += `<div class="bulk-err text-[10px] font-semibold"><i class="fa-solid fa-clone"></i> Trùng lặp (Sẽ tự xóa): "${tk}"</div>`;
+      return;
+    }
+
+    if(type === 'admin') {
+      let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
+      let lvRaw = sameMk ? (parts.length >= 2 ? parts[1] : "") : (parts.length >= 3 ? parts[2] : "");
+      let lv = parseInt(lvRaw);
+      
+      if(tk && mk && !isNaN(lv) && lv >= 1 && lv <= 50) {
+        previewDiv.innerHTML += `<div class="bulk-ok text-[10px] text-green-400 font-semibold"><i class="fa-solid fa-check"></i> OK: ${tk} | MK: ${mk} | LV: ${lv}</div>`;
+      } else {
+        previewDiv.innerHTML += `<div class="bulk-err text-[10px] font-semibold"><i class="fa-solid fa-xmark"></i> Lỗi cú pháp/Thiếu thông tin</div>`;
+      }
+    } else {
+      let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
+      if(tk && mk) {
+        previewDiv.innerHTML += `<div class="bulk-ok text-[10px] text-pink-400 font-semibold"><i class="fa-solid fa-check"></i> OK: ${tk} | MK: ${mk}</div>`;
+      } else {
+        previewDiv.innerHTML += `<div class="bulk-err text-[10px] font-semibold"><i class="fa-solid fa-xmark"></i> Thiếu Mật khẩu</div>`;
+      }
+    }
   });
-  function sync(){return dbRef.set({users:db.users,accounts:db.accounts,revenue:db.revenue})}
+}
 
-  /* ── SELL ACC (Admin only) ── */
-  window.sellAcc=function(id){
-    const a=db.accounts.find(x=>x.id===id);
-    if(!a)return;
-    if(a.lv<SELL_MIN_LV){showToast('✕ Chỉ bán được acc LV'+SELL_MIN_LV+'+');return;}
-    if(a.status==='ban'){showToast('✕ Acc này đã bán rồi!');return;}
-    if(!confirm(`Bán acc [${a.tk}] LV${a.lv} với giá ${fmtMoneyFull(SELL_PRICE)}?`))return;
-    a.status='ban';
-    a.soldAt=Date.now();
-    a.soldPrice=SELL_PRICE;
-    // Ghi vào revenue
-    const rev={id:Date.now(),accId:a.id,uploader:a.uploader,tk:a.tk,lv:a.lv,amount:SELL_PRICE,time:Date.now(),seen:false};
-    db.revenue.push(rev);
-    sync().then(()=>{
-      showToast('💰 ĐÃ BÁN! +'+fmtMoneyFull(SELL_PRICE)+' → @'+a.uploader,'money');
-      renderUI();
-    });
-  };
+// ── ADMIN SYSTEM ──
+function initAdminDashboard() {
+  renderAdminStats();
+  renderAdminAccs();
+  renderAdminUsers();
+  buildLvTags('admin');
+}
 
-  /* ── CHECK UNSEEN REVENUE (for logged-in user) ── */
-  function checkUnseenRevenue(){
-    if(!currentUser)return;
-    const unseen=db.revenue.filter(r=>r.uploader===currentUser.u&&!r.seen);
-    if(!unseen.length)return;
-    // Mark all as seen
-    unseen.forEach(r=>r.seen=true);
-    sync();
-    // Show popup for first unseen (most recent)
-    const r=unseen[unseen.length-1];
-    showRevPopup(r);
+function renderAdminStats() {
+  const total = db.accounts.length;
+  const xai = db.accounts.filter(x => x.status === 'ban').length;
+  const ready = db.accounts.filter(x => x.status === 'xong' && x.lv >= 30).length;
+
+  document.getElementById("admin-sold-count").innerText = xai;
+  document.getElementById("admin-ready-sell").innerText = ready;
+
+  document.getElementById("admin-global-stats").innerHTML = `
+    <div class="stat-card p-4 rounded-2xl min-w-[130px]">
+      <p class="text-[9px] text-slate-500 font-bold orb">TỔNG KHODATA</p>
+      <p class="text-xl font-black text-white orb mt-1">${total}</p>
+    </div>
+    <div class="stat-card p-4 rounded-2xl min-w-[130px]" style="border-color:rgba(0,242,255,0.15)">
+      <p class="text-[9px] text-cyan-400 font-bold orb">SẴN SÀNG</p>
+      <p class="text-xl font-black text-cyan-400 orb mt-1">${ready}</p>
+    </div>
+    <div class="stat-card p-4 rounded-2xl min-w-[130px]" style="border-color:rgba(168,85,247,0.15)">
+      <p class="text-[9px] text-purple-400 font-bold orb">ĐÃ XÀI</p>
+      <p class="text-xl font-black text-purple-400 orb mt-1">${xai}</p>
+    </div>
+  `;
+}
+
+function switchAdminTab(tab) {
+  currentAdminTab = tab;
+  ["acc", "search", "user"].forEach(t => {
+    document.getElementById(`admin-tab-${t}`).classList.add("hidden");
+    document.getElementById(`tab-${t}-btn`).classList.remove("tab-active");
+  });
+  document.getElementById(`admin-tab-${tab}`).classList.remove("hidden");
+  document.getElementById(`tab-${tab}-btn`).classList.add("tab-active");
+  if(tab === 'search') runAdminSearch();
+}
+
+function switchAdminMode(mode) {
+  currentAdminMode = mode;
+  if(mode === 'single') {
+    document.getElementById("admin-single-mode").classList.remove("hidden");
+    document.getElementById("admin-bulk-mode").classList.add("hidden");
+    document.getElementById("admin-mode-single-btn").classList.add("active");
+    document.getElementById("admin-mode-bulk-btn").classList.remove("active");
+  } else {
+    document.getElementById("admin-single-mode").classList.add("hidden");
+    document.getElementById("admin-bulk-mode").classList.remove("hidden");
+    document.getElementById("admin-mode-single-btn").classList.remove("active");
+    document.getElementById("admin-mode-bulk-btn").classList.add("active");
   }
+}
 
-  function showRevPopup(r){
-    document.getElementById('rev-popup-amount').textContent='+'+fmtMoneyFull(r.amount);
-    document.getElementById('rev-popup-acc').innerHTML=`Acc: <b class="text-white">${r.tk}</b> <span class="lv-badge-gold ml-1">LV ${r.lv}</span>`;
-    document.getElementById('rev-popup-msg').textContent='Admin đã bán acc của bạn! 🎉';
-    document.getElementById('rev-popup').classList.remove('hidden');
+function switchAdminView(view) {
+  currentAdminView = view;
+  if(view === 'all') {
+    document.getElementById("admin-view-all-btn").classList.add("active");
+    document.getElementById("admin-view-group-btn").classList.remove("active");
+  } else {
+    document.getElementById("admin-view-all-btn").classList.remove("active");
+    document.getElementById("admin-view-group-btn").classList.add("active");
   }
-  window.closeRevPopup=function(){document.getElementById('rev-popup').classList.add('hidden');};
+  renderAdminAccs();
+}
 
-  /* ── AUTO RESET 22:00 ── */
-  function checkAutoReset(){
-    const now=new Date();
-    const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
-    if(h===RESET_HOUR&&m===0&&s<30&&!resetDone){
-      resetDone=true;
-      let changed=false;
-      db.accounts.forEach(a=>{
-        if((a.status==='dang'||a.status==='xong')&&a.status!=='ban'){a.status='chua';changed=true;}
+function adminPostAcc() {
+  const tk = document.getElementById("ad-acc-tk").value.trim();
+  const mk = document.getElementById("ad-acc-mk").value.trim();
+  const lv = parseInt(document.getElementById("ad-acc-lv").value);
+
+  if(!tk || !mk || isNaN(lv) || lv < 1 || lv > 50) {
+    showToast("✕ DỮ LIỆU KHÔNG HỢP LỆ");
+    return;
+  }
+  if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) {
+    showToast("✕ TÀI KHOẢN ĐÃ TỒN TẠI (HỆ THỐNG TỰ LỌC)");
+    return;
+  }
+  
+  db.accounts.push({
+    id: Date.now(), tk, mk, lv,
+    status: lv >= 30 ? "xong" : "chua",
+    owner: "hệ thống", urgent: false
+  });
+  
+  saveDB(); initAdminDashboard();
+  document.getElementById("ad-acc-tk").value = "";
+  document.getElementById("ad-acc-mk").value = "";
+  document.getElementById("ad-acc-lv").value = "";
+  showToast("✓ ĐÃ THÊM ACC MỚI");
+}
+
+function adminBulkPost() {
+  const text = document.getElementById("admin-bulk-input").value;
+  const sameMk = document.getElementById("admin-bulk-same-mk").value.trim();
+  if(!text.trim()) return;
+  
+  const lines = text.split("\n");
+  let count = 0;
+
+  lines.forEach(line => {
+    if(!line.trim()) return;
+    const parts = line.split("|").map(x => x.trim());
+    let tk = parts[0];
+    
+    // Cơ chế tự động check xóa bỏ trùng lặp dữ liệu cũ
+    if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) return;
+
+    let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
+    let lvRaw = sameMk ? (parts.length >= 2 ? parts[1] : "") : (parts.length >= 3 ? parts[2] : "");
+    let lv = parseInt(lvRaw);
+
+    if(tk && mk && !isNaN(lv) && lv >= 1 && lv <= 50) {
+      db.accounts.push({
+        id: Date.now() + count, tk, mk, lv,
+        status: lv >= 30 ? "xong" : "chua", owner: "hệ thống", urgent: false
       });
-      if(changed){sync().then(()=>{showToast('🔄 RESET 22:00 — Tất cả về chưa cày!');if(currentMode==='user')beeInit();});}
+      count++;
     }
-    if(h===RESET_HOUR&&m===1)resetDone=false;
-    updateResetTimer();
-  }
-  function updateResetTimer(){
-    const now=new Date(),reset=new Date();
-    reset.setHours(RESET_HOUR,0,0,0);
-    if(now>=reset)reset.setDate(reset.getDate()+1);
-    const total=24*3600*1000,diff=reset-now;
-    const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    const txt=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    const pct=Math.round((1-diff/total)*100);
-    ['admin','user'].forEach(p=>{
-      const t=document.getElementById(p+'-reset-txt'),b=document.getElementById(p+'-reset-fill');
-      if(t)t.textContent=txt;if(b)b.style.width=pct+'%';
-    });
-  }
-  setInterval(checkAutoReset,1000);updateResetTimer();
+  });
 
-  /* ── AUTH ── */
-  window.login=function(){
-    const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();
-    if(u===ADMIN.u&&p===ADMIN.p){currentMode='admin';showPage('admin-page');renderUI();}
-    else{
-      const f=db.users.find(x=>x.u===u&&x.p===p);
-      if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(beeInit,800);}
-      else document.getElementById('login-error').classList.remove('hidden');
+  if(count > 0) {
+    saveDB(); initAdminDashboard();
+    document.getElementById("admin-bulk-input").value = "";
+    document.getElementById("admin-bulk-preview").innerHTML = "";
+    showToast(`✓ ĐÃ UP + BULK SẠCH TRÙNG: ${count} ACCS`);
+  } else {
+    showToast("✕ KHÔNG CÓ ACC MỚI HỢP LỆ HOẶC TẤT CẢ ĐÃ TRÙNG");
+  }
+}
+
+function renderAdminAccs() {
+  const listDiv = document.getElementById("admin-list-accs");
+  listDiv.innerHTML = "";
+
+  if(currentAdminView === 'all') {
+    db.accounts.forEach(acc => { listDiv.innerHTML += buildAccCardHtml(acc, 'admin'); });
+  } else {
+    const groups = {1:[], 2:[], 3:[], 4:[], 5:[]};
+    db.accounts.forEach(acc => { groups[getLevelGroupRange(acc.lv).g].push(acc); });
+
+    for(let gId in groups) {
+      const dummyAcc = {lv: (gId === "1" ? 5 : gId === "2" ? 15 : gId === "3" ? 25 : gId === "4" ? 35 : 45)};
+      const gMeta = getLevelGroupRange(dummyAcc.lv);
+      const totalInGrp = groups[gId].length;
+      if(totalInGrp === 0) continue;
+
+      let groupHtml = `
+        <div class="lv-group ${gMeta.style}">
+          <div class="lv-group-hd" onclick="toggleGroupCollapse(this)">
+            <span class="grp-label">${gMeta.label} (${totalInGrp})</span>
+            <i class="fa-solid fa-chevron-down lv-chev open"></i>
+          </div>
+          <div class="lv-group-body">
+      `;
+      groups[gId].forEach(acc => { groupHtml += buildAccCardHtml(acc, 'admin'); });
+      groupHtml += `</div></div>`;
+      listDiv.innerHTML += groupHtml;
     }
-  };
-  window.logout=function(){location.reload()};
-
-  /* ── BEE ── */
-  function beeCtx(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const chua=my.filter(a=>!a.status||a.status==='chua');
-    const dang=my.filter(a=>a.status==='dang');
-    const xong=my.filter(a=>a.status==='xong');
-    const ban=my.filter(a=>a.status==='ban');
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
-    const byLv=LV_GROUPS.map(g=>({group:g.label,minLv:g.min,count:my.filter(a=>a.lv>=g.min&&a.lv<=g.max).length})).filter(g=>g.count>0);
-    return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,ban:ban.length,revTotal,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
   }
-  function beeInit(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const chua=my.filter(a=>!a.status||a.status==='chua');
-    const dang=my.filter(a=>a.status==='dang');
-    const xong=my.filter(a=>a.status==='xong');
-    const ban=my.filter(a=>a.status==='ban');
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
-    const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions'),dot=document.getElementById('bee-dot');
-    let msg='';
-    if(!my.length){
-      msg=`👋 Xin chào <b>${currentUser.u}</b>! Kho trống. Đăng acc mới để bắt đầu! 🎮`;
-    } else if(ban.length&&revTotal){
-      msg=`💰 Xin chào <b>${currentUser.u}</b>! Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban.length} acc</b> đã bán!`;
-      if(chua.length)msg+=` Còn <b class="text-red-300">${chua.length} acc chưa cày</b>.`;
-      msg+=`<div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Cày acc LV${SELL_MIN_LV}+ để Admin bán thêm, mỗi acc = <b class="text-green-300">8,000đ</b>! 🤑</div>`;
-    } else if(!chua.length){
-      msg=`🎉 Tuyệt vời <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đã có trạng thái.`;
-      msg+=`<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
+}
+
+function toggleGroupCollapse(element) {
+  const body = element.nextElementSibling;
+  const chev = element.querySelector(".lv-chev");
+  body.classList.toggle("collapsed");
+  chev.classList.toggle("open");
+}
+
+function buildAccCardHtml(acc, panelType) {
+  const isUsed = acc.status === "ban";
+  const canMarkUsed = acc.status === "xong";
+  const cardClass = isUsed ? "card-sold" : (acc.urgent ? "card-urgent" : "");
+  
+  let actionBtn = "";
+  if(panelType === 'admin') {
+    if(canMarkUsed) {
+      actionBtn = `<button onclick="markAsUsed(${acc.id})" class="btn-sell px-4 py-1.5 rounded-xl text-xs orb"><i class="fa-solid fa-toggle-on mr-1"></i>ĐÁNH DẤU XÀI</button>`;
+    } else if (isUsed) {
+      actionBtn = `<span class="price-tag-locked"><i class="fa-solid fa-check-double mr-1"></i>ĐÃ XÀI</span>`;
     } else {
-      msg=`👋 Chào <b>${currentUser.u}</b>! <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} acc.`;
-      if(dang.length)msg+=` <span class="text-yellow-300">⚡ ${dang.length} đang.</span>`;
-      if(xong.length)msg+=` <span class="text-green-300">✓ ${xong.length} xong.</span>`;
-      msg+=`<div class="bee-urgent-box mt-2"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay:</b><br>`;
-      chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}${a.lv>=SELL_MIN_LV?` <span class="text-green-400 text-[9px]">💰 +8k</span>`:''}<br>`});
-      if(chua.length>3)msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
-      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Acc LV${SELL_MIN_LV}+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ/acc</b>!</div>`;
+      actionBtn = `
+        <div class="flex gap-1">
+          <button onclick="toggleUrgent(${acc.id})" class="btn-edit px-2.5 py-1.5 rounded-xl text-xs"><i class="fa-solid fa-triangle-exclamation"></i></button>
+          <button onclick="deleteAcc(${acc.id})" class="btn-delete px-2.5 py-1.5 rounded-xl text-xs"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      `;
     }
-    setTimeout(()=>{el.innerHTML=msg;act.classList.remove('hidden');act.style.display='flex';dot.classList.remove('hidden');},1000);
-  }
-
-  window.sendBeeChat=function(){
-    const inp=document.getElementById('bee-chat-input'),btn=document.getElementById('bee-send-btn');
-    const msg=inp.value.trim();if(!msg)return;
-    inp.value='';
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    btn.classList.add('loading');btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
-    setTimeout(()=>{const ctx=beeCtx();el.innerHTML=beeLocalReply(msg,ctx);btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';},600+Math.random()*400);
-  };
-  window.beeAnalyze=function(){
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    setTimeout(()=>{el.innerHTML=beeAnalyzeLocal(beeCtx());},700);
-  };
-  window.beeMeme=function(){
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    setTimeout(()=>{const meme=BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)];el.innerHTML=`<div class="bee-meme-box">${meme}</div>Còn <b class="text-red-300">${beeCtx().chua} acc chưa cày</b> đó nha~`;},500);
-  };
-  window.beeSortUrgent=function(){sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');document.getElementById('bee-message').innerHTML=`Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu! Cày thôi nào 💪`;};
-  window.beeSortDefault=function(){sortMode='default';renderUserList();showToast('Về thứ tự mặc định');document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> rồi nhé!`;};
-
-  /* ── SEARCH ── */
-  function buildTags(ctx){
-    const cur=ctx==='admin'?aLvFilter:uLvFilter;
-    document.getElementById(ctx==='admin'?'admin-lv-tags':'user-lv-tags').innerHTML=LV_TAGS.map(r=>{
-      const active=cur.min===r.min&&cur.max===r.max;
-      return `<span class="lv-tag" onclick="setLvTag('${ctx}',${r.min},${r.max})" style="background:${active?r.abg:r.bg};border:1px solid ${r.bd};color:${active?'white':'rgba(255,255,255,0.4)'}">${r.label}</span>`;
-    }).join('');
-  }
-  window.setLvTag=function(ctx,min,max){
-    if(ctx==='admin')aLvFilter={min,max};else uLvFilter={min,max};
-    buildTags(ctx);
-    if(ctx==='admin')runAdminSearch();else runUserSearch();
-  };
-  window.clearSearch=function(ctx){document.getElementById(ctx==='admin'?'admin-search-input':'user-search-input').value='';if(ctx==='admin')runAdminSearch();else runUserSearch();};
-  window.runAdminSearch=function(){
-    const q=document.getElementById('admin-search-input').value.trim().toLowerCase();
-    const {min,max}=aLvFilter;
-    const list=db.accounts.filter(a=>{const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
-    document.getElementById('admin-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
-  };
-  window.runUserSearch=function(){
-    const q=document.getElementById('user-search-input').value.trim().toLowerCase();
-    const {min,max}=uLvFilter;
-    const list=db.accounts.filter(a=>{if(a.uploader!==currentUser.u)return false;const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
-    document.getElementById('user-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
-  };
-
-  /* ── STATUS ── */
-  window.updateStatus=function(id,val){
-    const a=db.accounts.find(x=>x.id===id);if(!a)return;
-    if(a.status==='ban'){showToast('✕ Acc đã bán, không thể thay đổi');return;}
-    a.status=val;sync().then(()=>{showToast('✓ '+stLabel(val));if(currentMode==='user'){renderUserStats();renderUserList();runUserSearch();}});
-  };
-  function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
-  function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':s==='ban'?'s-ban':'s-chua'}
-  function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':s==='ban'?'dot-ban':'dot-chua'}
-  function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
-
-  /* ── POST ── */
-  function clampLv(v){return Math.min(50,Math.max(1,Number(v)))}
-  window.postAcc=function(){
-    const tk=document.getElementById('acc-tk').value.trim(),mk=document.getElementById('acc-mk').value.trim(),lv=document.getElementById('acc-lv').value;
-    if(!tk||!mk||!lv)return;
-    db.accounts.push({id:Date.now(),uploader:currentUser.u,tk,mk,lv:clampLv(lv),status:'chua'});
-    sync().then(()=>{showToast('✓ Đã đăng acc');renderUI();});
-    ['acc-tk','acc-mk','acc-lv'].forEach(i=>document.getElementById(i).value='');
-  };
-  window.adminPostAcc=function(){
-    const tk=document.getElementById('ad-acc-tk').value.trim(),mk=document.getElementById('ad-acc-mk').value.trim(),lv=document.getElementById('ad-acc-lv').value;
-    if(!tk||!mk||!lv)return;
-    db.accounts.push({id:Date.now(),uploader:'ADMIN',tk,mk,lv:clampLv(lv),status:'chua'});
-    sync().then(()=>showToast('✓ Up acc Root'));
-    ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(i=>document.getElementById(i).value='');
-  };
-
-  /* ── BULK ── */
-  function parseBulk(raw){
-    return raw.split('\n').map((line,i)=>{const t=line.trim();if(!t)return null;const p=t.split('|');if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,index:i+1};return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:clampLv(p[2]),index:i+1};}).filter(Boolean);
-  }
-  window.previewBulk=function(who){
-    const iid=who==='admin'?'admin-bulk-input':'user-bulk-input',pid=who==='admin'?'admin-bulk-preview':'user-bulk-preview';
-    const items=parseBulk(document.getElementById(iid).value);
-    const ok=items.filter(i=>i.ok).length,err=items.filter(i=>!i.ok).length;
-    const col=who==='admin'?'text-cyan-400':'text-pink-400';
-    document.getElementById(pid).innerHTML=!items.length?'':
-      `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
-      items.slice(0,10).map(x=>x.ok?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono text-xs">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`:`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`).join('')+
-      (items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
-  };
-  window.userBulkPost=function(){
-    const items=parseBulk(document.getElementById('user-bulk-input').value).filter(i=>i.ok);
-    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:currentUser.u,tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-    sync().then(()=>{showToast(`✓ Đã đăng ${items.length} acc`);document.getElementById('user-bulk-input').value='';document.getElementById('user-bulk-preview').innerHTML='';renderUI();});
-  };
-  window.adminBulkPost=function(){
-    const items=parseBulk(document.getElementById('admin-bulk-input').value).filter(i=>i.ok);
-    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:'ADMIN',tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-    sync().then(()=>{showToast(`✓ Up ${items.length} acc Root`);document.getElementById('admin-bulk-input').value='';document.getElementById('admin-bulk-preview').innerHTML='';});
-  };
-
-  /* ── EDIT / DEL ── */
-  window.editLv=function(id){
-    const a=db.accounts.find(x=>x.id===id);if(!a)return;
-    if(a.status==='ban'){showToast('✕ Không sửa acc đã bán');return;}
-    const v=prompt(`Level mới cho [${a.tk}] (1-50):`,a.lv);
-    if(v===null||v===''||isNaN(v))return;
-    a.lv=clampLv(v);sync().then(()=>showToast('✓ LV → '+a.lv));
-  };
-  window.deleteAcc=function(id){
-    if(!confirm('Xác nhận xóa acc?'))return;
-    db.accounts=db.accounts.filter(a=>a.id!==id);db.revenue=db.revenue.filter(r=>r.accId!==id);
-    sync().then(()=>showToast('✕ Đã xoá acc'));
-  };
-  window.addUser=function(){
-    const u=document.getElementById('new-u').value.trim(),p=document.getElementById('new-p').value.trim();
-    if(!u||!p)return;db.users.push({u,p});sync().then(()=>showToast('✓ Đã cấp tài khoản'));
-    document.getElementById('new-u').value='';document.getElementById('new-p').value='';
-  };
-  window.deleteUser=function(u){
-    if(!confirm('Xóa user này?'))return;
-    db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);db.revenue=db.revenue.filter(r=>r.uploader!==u);
-    sync().then(()=>showToast('✕ Đã xoá user'));
-  };
-  window.toggleUserAccs=function(u){document.getElementById('ua-'+u)?.classList.toggle('hidden')};
-  window.toggleGrp=function(ctx,key){
-    openGrps[ctx][key]=!openGrps[ctx][key];
-    document.getElementById('gb-'+ctx+'-'+key)?.classList.toggle('collapsed',!openGrps[ctx][key]);
-    document.getElementById('gc-'+ctx+'-'+key)?.classList.toggle('open',openGrps[ctx][key]);
-  };
-
-  /* ── VIEW ── */
-  window.switchUserView=function(v){userViewMode=v;['all','group'].forEach(m=>document.getElementById('user-view-'+m+'-btn').classList.toggle('active',m===v));renderUserList();};
-  window.switchAdminView=function(v){adminViewMode=v;['all','group'].forEach(m=>document.getElementById('admin-view-'+m+'-btn').classList.toggle('active',m===v));renderAdminAccList();};
-  window.switchUserTab=function(tab){
-    const isList=tab==='list';
-    document.getElementById('utab-list').classList.toggle('hidden',!isList);
-    document.getElementById('utab-search').classList.toggle('hidden',isList);
-    document.getElementById('utab-list-btn').classList.toggle('tab-active',isList);
-    document.getElementById('utab-search-btn').classList.toggle('tab-active',!isList);
-    if(!isList){buildTags('user');runUserSearch();}
-  };
-
-  /* ── GROUPED LIST ── */
-  function renderGrouped(accs,ctx,isAdmin){
-    const grps=LV_GROUPS.filter(g=>accs.some(a=>a.lv>=g.min&&a.lv<=g.max));
-    if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có acc nào</p>';
-    return grps.map(g=>{
-      let list=accs.filter(a=>a.lv>=g.min&&a.lv<=g.max);
-      if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
-      else list=list.slice().reverse();
-      const tot=list.length,chua=list.filter(a=>!a.status||a.status==='chua').length;
-      const dang=list.filter(a=>a.status==='dang').length,xong=list.filter(a=>a.status==='xong').length,ban=list.filter(a=>a.status==='ban').length;
-      if(openGrps[ctx][g.key]===undefined)openGrps[ctx][g.key]=true;
-      const open=openGrps[ctx][g.key];
-      const canSell=g.min>=SELL_MIN_LV;
-      return `<div class="lv-group ${g.cls} animate-fade">
-        <div class="lv-group-hd" onclick="toggleGrp('${ctx}','${g.key}')">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2">${canSell?`<span class="text-xs">💰</span>`:''}<span class="text-lg">${g.icon}</span><span class="grp-label">${g.label}</span>${canSell?`<span class="text-[8px] text-green-400 font-bold orb">+8k/acc</span>`:''}</div>
-            <div class="grp-meta">
-              <span class="gp gp-t">${tot} acc</span>
-              ${chua?`<span class="gp gp-c">🔴 ${chua}</span>`:''}
-              ${dang?`<span class="gp gp-d">⚡ ${dang}</span>`:''}
-              ${xong?`<span class="gp gp-x">✅ ${xong}</span>`:''}
-              ${ban?`<span class="gp gp-b">💰 ${ban}</span>`:''}
-            </div>
-            <div class="grp-prog"><div class="grp-prog-fill" style="width:${tot?Math.round((xong+ban)/tot*100):0}%;background:${g.fill}"></div></div>
-          </div>
-          <i class="fa-solid fa-chevron-down lv-chev ${open?'open':''}" id="gc-${ctx}-${g.key}"></i>
+  } else {
+    // User Panel Buttons
+    if(acc.status === 'chua') {
+      actionBtn = `<button onclick="updateStatus(${acc.id}, 'dang')" class="btn-edit px-3 py-1.5 rounded-xl text-xs font-bold">NHẬN CÀY</button>`;
+    } else if (acc.status === 'dang') {
+      actionBtn = `
+        <div class="flex gap-1 items-center">
+          <input type="number" id="lv-up-${acc.id}" value="${acc.lv}" min="1" max="50" class="w-12 text-center p-1 rounded-lg text-xs font-bold border border-slate-700">
+          <button onclick="submitLvUpdate(${acc.id})" class="btn-sell px-2.5 py-1.5 rounded-xl text-xs"><i class="fa-solid fa-check"></i></button>
         </div>
-        <div class="lv-group-body ${open?'':'collapsed'}" id="gb-${ctx}-${g.key}">
-          ${list.map(a=>accCard(a,isAdmin)).join('')}
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  /* ── ACC CARD ── */
-  function accCard(a,isAdmin){
-    const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
-    const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
-    const st=a.status||'chua';
-    const isSold=st==='ban';
-    const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
-    const canSell=isAdmin&&a.lv>=SELL_MIN_LV&&!isSold;
-    const soldPrice=a.soldPrice?fmtMoneyFull(a.soldPrice):'';
-
-    return `<div class="acc-wrap">
-      ${isSold?`<span class="sold-ribbon">💰 ĐÃ BÁN${soldPrice?' · '+soldPrice:''}</span>`:''}
-      ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
-      <div class="acc-card ${urgent?'card-urgent':''} ${isSold?'card-sold':''}" style="border-left:3px solid ${isSold?'rgba(0,255,136,0.5)':col+'35'}">
-        <div class="flex justify-between items-start mb-3">
-          <div class="flex items-center gap-2 flex-wrap">
-            ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV ${a.lv}</span>`:`<span class="lv-badge">LV ${a.lv}</span>`}
-            ${a.lv>=SELL_MIN_LV&&!isSold?`<span class="price-tag"><i class="fa-solid fa-tag mr-1"></i>8,000đ</span>`:''}
-            ${a.lv>=SELL_MIN_LV&&isSold?`<span class="price-tag"><i class="fa-solid fa-check mr-1"></i>${soldPrice}</span>`:''}
-            ${a.lv<SELL_MIN_LV?`<span class="price-tag-locked"><i class="fa-solid fa-lock mr-1"></i>LV${SELL_MIN_LV}+</span>`:''}
-            <span class="text-[9px] font-bold orb" style="color:${col}">@${a.uploader}</span>
-            <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
-              <span class="${stDot(st)}"></span>${stTxt(st)}
-            </span>
-          </div>
-          <div class="flex gap-1.5 flex-shrink-0 ml-2">
-            ${canSell?`<button onclick="sellAcc(${a.id})" class="btn-sell px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1"><i class="fa-solid fa-dollar-sign text-[10px]"></i>BÁN</button>`:''}
-            ${isAdmin&&a.lv<SELL_MIN_LV?`<button class="btn-sell-disabled px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1" title="Cần LV${SELL_MIN_LV}+"><i class="fa-solid fa-lock text-[10px]"></i></button>`:''}
-            ${canManage&&!isSold?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
-            ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
-          </div>
-        </div>
-        <div class="space-y-2 mb-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Tài khoản: <b class="text-white font-bold">${a.tk}</b></span>
-            <button onclick="copyText('${a.tk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Mật khẩu: <b class="text-white font-bold">${a.mk}</b></span>
-            <button onclick="copyText('${a.mk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
-          </div>
-          ${isSold&&a.soldAt?`<div class="text-[9px] text-green-400 font-bold orb"><i class="fa-solid fa-check-circle mr-1"></i>Bán lúc: ${new Date(a.soldAt).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'})}</div>`:''}
-        </div>
-        ${canManage&&!isSold?`<div class="flex gap-1.5 pt-2" style="border-top:1px solid rgba(255,255,255,0.05)">
-          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='chua'?'s-chua':'opacity-20'}" style="${st!=='chua'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">🔴 Chưa</button>
-          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='dang'?'s-dang':'opacity-20'}" style="${st!=='dang'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">⚡ Đang</button>
-          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='xong'?'s-xong':'opacity-20'}" style="${st!=='xong'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">✅ Xong</button>
-        </div>`:''}
-        ${isSold?`<div class="text-center py-2 text-[9px] font-bold text-green-400 orb" style="border-top:1px solid rgba(0,255,136,0.1)"><i class="fa-solid fa-lock mr-1"></i>ACC ĐÃ BÁN — KHÔNG THỂ THAY ĐỔI</div>`:''}
-      </div>
-    </div>`;
-  }
-
-  /* ── RENDER ── */
-  function renderUI(){
-    if(currentMode==='admin'){
-      renderAdminStats();renderAdminAccList();renderAdminRevenuePanel();
-      document.getElementById('admin-list-users').innerHTML=renderAdminUsers();
-      buildTags('admin');runAdminSearch();
+      `;
+    } else if (acc.status === 'xong') {
+      actionBtn = `<span class="price-tag"><i class="fa-solid fa-clock mr-1"></i>SẴN SÀNG</span>`;
     } else {
-      renderUserStats();renderUserList();renderUserRevenuePanel();
-    }
-  }
-  function renderAdminAccList(){
-    const all=db.accounts.slice().reverse();
-    document.getElementById('admin-list-accs').innerHTML=adminViewMode==='group'?renderGrouped(all,'admin',true):`<div class="space-y-3">${all.map(a=>accCard(a,true)).join('')}</div>`;
-  }
-  function renderUserList(){
-    let list=db.accounts.filter(a=>a.uploader===currentUser.u);
-    if(userViewMode==='group'){document.getElementById('user-list').innerHTML=renderGrouped(list,'user',false);}
-    else{
-      if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
-      else list=list.slice().reverse();
-      document.getElementById('user-list').innerHTML=`<div class="space-y-3">${list.map(a=>accCard(a,false)).join('')}</div>`;
+      actionBtn = `<span class="price-tag-locked"><i class="fa-solid fa-ban mr-1"></i>HẾT HẠN</span>`;
     }
   }
 
-  /* ── REVENUE PANELS ── */
-  function renderAdminRevenuePanel(){
-    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
-    const sold=db.accounts.filter(a=>a.status==='ban').length;
-    const ready=db.accounts.filter(a=>a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
-    const amtEl=document.getElementById('admin-total-rev');
-    const soldEl=document.getElementById('admin-sold-count');
-    const readyEl=document.getElementById('admin-ready-sell');
-    if(amtEl)amtEl.textContent=fmtMoney(totalRev)+'đ';
-    if(soldEl)soldEl.textContent=sold;
-    if(readyEl)readyEl.textContent=ready;
-    // History
-    const hist=document.getElementById('admin-rev-history');
-    if(hist){
-      const recent=db.revenue.slice().reverse().slice(0,8);
-      hist.innerHTML=recent.length?recent.map(r=>{
-        const t=new Date(r.time);
-        return `<div class="rev-hist-item">
-          <div class="rev-hist-dot"></div>
-          <div class="flex-1 min-w-0">
-            <span class="text-[10px] font-bold text-white">${r.tk}</span>
-            <span class="lv-badge ml-1">LV${r.lv}</span>
-            <span class="text-[9px] text-slate-500 ml-1">@${r.uploader}</span>
+  return `
+    <div class="acc-wrap animate-fade">
+      ${acc.urgent && !isUsed ? '<div class="prio-ribbon">ƯU TIÊN</div>' : ''}
+      ${isUsed ? '<div class="sold-ribbon">ĐÃ XÀI</div>' : ''}
+      <div class="acc-card ${cardClass}">
+        <div class="flex justify-between items-start gap-4 mb-2">
+          <div class="min-w-0">
+            <h4 class="font-black text-sm tracking-wide text-white truncate">${acc.tk}</h4>
+            <p class="text-[10px] text-slate-500 font-bold mt-0.5"><i class="fa-solid fa-key mr-1 text-[8px]"></i>${acc.mk}</p>
           </div>
           <div class="text-right flex-shrink-0">
-            <div class="text-[11px] font-black text-green-300 orb">+${fmtMoneyFull(r.amount)}</div>
-            <div class="text-[8px] text-slate-600">${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')} ${t.getDate()}/${t.getMonth()+1}</div>
+            <span class="lv-badge-gold">LV ${acc.lv}</span>
+            <p class="text-[8px] text-slate-600 font-bold mt-1 uppercase tracking-widest">${acc.owner}</p>
           </div>
-        </div>`;
-      }).join(''):`<p class="text-[10px] text-slate-600 text-center py-4">Chưa có lịch sử bán</p>`;
+        </div>
+        <div class="flex justify-between items-center mt-3 pt-3" style="border-top:1px solid rgba(255,255,255,0.03)">
+          ${getStatusBadge(acc.status)}
+          ${actionBtn}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function deleteAcc(id) {
+  db.accounts = db.accounts.filter(x => x.id !== id);
+  saveDB(); initAdminDashboard();
+  showToast("✕ ĐÃ XÓA ACC");
+}
+
+function toggleUrgent(id) {
+  const acc = db.accounts.find(x => x.id === id);
+  if(acc) {
+    acc.urgent = !acc.urgent;
+    saveDB(); renderAdminAccs();
+    showToast("✓ ĐÃ ĐỔI TRẠNG THÁI ƯU TIÊN");
+  }
+}
+
+function markAsUsed(id) {
+  const acc = db.accounts.find(x => x.id === id);
+  if(acc) {
+    acc.status = "ban";
+    saveDB(); initAdminDashboard();
+    showToast("✓ ĐÃ CHUYỂN TRẠNG THÁI THÀNH: ĐÃ XÀI");
+  }
+}
+
+function renderAdminUsers() {
+  const uDiv = document.getElementById("admin-list-users");
+  uDiv.innerHTML = "";
+  db.users.filter(x => x.role !== 'admin').forEach(u => {
+    const uAccs = db.accounts.filter(x => x.owner === u.u);
+    uDiv.innerHTML += `
+      <div class="glass p-4 rounded-2xl flex justify-between items-center text-sm">
+        <div>
+          <span class="font-black orb tracking-wider text-pink-400">${u.u.toUpperCase()}</span>
+          <p class="text-[9px] text-slate-500 font-bold mt-1">Pass: ${u.p} · Đang giữ: ${uAccs.length} acc</p>
+        </div>
+        <button onclick="removeUser('${u.u}')" class="w-8 h-8 rounded-lg bg-red-950 text-red-400 border border-red-900 flex items-center justify-center text-xs"><i class="fa-solid fa-user-minus"></i></button>
+      </div>
+    `;
+  });
+}
+
+function addUser() {
+  const u = document.getElementById("new-u").value.trim().toLowerCase();
+  const p = document.getElementById("new-p").value.trim();
+  if(!u || !p) return;
+  if(db.users.some(x => x.u === u)) { showToast("✕ TÊN USER ĐÃ TỒN TẠI"); return; }
+  
+  db.users.push({u, p, role: "user"});
+  saveDB(); renderAdminUsers();
+  document.getElementById("new-u").value = "";
+  document.getElementById("new-p").value = "";
+  showToast("✓ CẤP TÀI KHOẢN THÀNH CÔNG");
+}
+
+function removeUser(username) {
+  db.users = db.users.filter(x => x.u !== username);
+  saveDB(); renderAdminUsers();
+  showToast("✕ ĐÃ THU HỒI TÀI KHOẢN");
+}
+
+// ── SEARCH VÀ FILTER COMPONENT ──
+function buildLvTags(type) {
+  const container = document.getElementById(`${type}-lv-tags`);
+  container.innerHTML = `<span class="lv-tag bg-white text-slate-900 shadow-lg" id="${type}-tag-all" onclick="filterByLv(null, '${type}')">ALL</span>`;
+  
+  const ranges = [{label:"1-10",id:1}, {label:"11-20",id:2}, {label:"21-30",id:3}, {label:"31-40",id:4}, {label:"41-50",id:5}];
+  ranges.forEach(r => {
+    container.innerHTML += `<span class="lv-tag glass text-slate-400" id="${type}-tag-${r.id}" onclick="filterByLv(${r.id}, '${type}')">LV ${r.label}</span>`;
+  });
+}
+
+function filterByLv(grpId, type) {
+  if(type === 'admin') { adminSelectedFilterLv = grpId; runAdminSearch(); } 
+  else { userSelectedFilterLv = grpId; runUserSearch(); }
+  
+  const container = document.getElementById(`${type}-lv-tags`);
+  container.querySelectorAll(".lv-tag").forEach(el => { el.className = "lv-tag glass text-slate-400"; });
+  const activeId = grpId === null ? `${type}-tag-all` : `${type}-tag-${grpId}`;
+  document.getElementById(activeId).className = "lv-tag bg-cyan-500 text-slate-950 font-black shadow-lg";
+}
+
+function runAdminSearch() {
+  const val = document.getElementById("admin-search-input").value.trim().toLowerCase();
+  const resultsDiv = document.getElementById("admin-search-results");
+  resultsDiv.innerHTML = "";
+  
+  let filtered = db.accounts.filter(acc => acc.tk.toLowerCase().includes(val));
+  if(adminSelectedFilterLv !== null) filtered = filtered.filter(acc => getLevelGroupRange(acc.lv).g === adminSelectedFilterLv);
+  
+  document.getElementById("admin-search-count").innerText = `TÌM THẤY ${filtered.length} TÀI KHOẢN`;
+  filtered.forEach(acc => { resultsDiv.innerHTML += buildAccCardHtml(acc, 'admin'); });
+}
+
+function clearSearch(type) {
+  document.getElementById(`${type}-search-input`).value = "";
+  filterByLv(null, type);
+}
+
+// ── FARMER MEMBER SYSTEM ──
+function initUserDashboard() {
+  renderUserStats();
+  renderUserAccs();
+  buildLvTags('user');
+  initBeeAI();
+}
+
+function renderUserStats() {
+  const myAccs = db.accounts.filter(x => x.owner === currentUser.u);
+  const total = myAccs.length;
+  const xaiCount = myAccs.filter(x => x.status === 'ban').length;
+  const readySell = myAccs.filter(x => x.status === 'xong' && x.lv >= 30).length;
+
+  document.getElementById("user-sold-count").innerText = xaiCount;
+  document.getElementById("user-ready-sell").innerText = readySell;
+
+  document.getElementById("user-global-stats").innerHTML = `
+    <div class="stat-card p-4 rounded-2xl min-w-[130px]">
+      <p class="text-[9px] text-slate-500 font-bold orb">TỔNG KHODATA</p>
+      <p class="text-xl font-black text-white orb mt-1">${total}</p>
+    </div>
+    <div class="stat-card p-4 rounded-2xl min-w-[130px]" style="border-color:rgba(250,204,21,0.15)">
+      <p class="text-[9px] text-yellow-400 font-bold orb">ĐANG XỬ LÝ</p>
+      <p class="text-xl font-black text-yellow-400 orb mt-1">${myAccs.filter(x=>x.status==='dang'||x.status==='chua').length}</p>
+    </div>
+  `;
+}
+
+function switchUserTab(tab) {
+  currentUserTab = tab;
+  ["acc", "search"].forEach(t => {
+    document.getElementById(`user-tab-${t}`).classList.add("hidden");
+    document.getElementById(`user-tab-${t}-btn`).classList.remove("tab-active");
+  });
+  document.getElementById(`user-tab-${tab}`).classList.remove("hidden");
+  document.getElementById(`user-tab-${tab}-btn`).classList.add("tab-active");
+  if(tab === 'search') runUserSearch();
+}
+
+function switchUserMode(mode) {
+  currentUserMode = mode;
+  if(mode === 'single') {
+    document.getElementById("user-single-mode").classList.remove("hidden");
+    document.getElementById("user-bulk-mode").classList.add("hidden");
+    document.getElementById("user-mode-single-btn").classList.add("active");
+    document.getElementById("user-mode-bulk-btn").classList.remove("active");
+  } else {
+    document.getElementById("user-single-mode").classList.add("hidden");
+    document.getElementById("user-bulk-mode").classList.remove("hidden");
+    document.getElementById("user-mode-single-btn").classList.remove("active");
+    document.getElementById("user-mode-bulk-btn").classList.add("active");
+  }
+}
+
+function switchUserView(view) {
+  currentUserView = view;
+  if(view === 'all') {
+    document.getElementById("user-view-all-btn").classList.add("active");
+    document.getElementById("user-view-group-btn").classList.remove("active");
+  } else {
+    document.getElementById("user-view-all-btn").classList.remove("active");
+    document.getElementById("user-view-group-btn").classList.add("active");
+  }
+  renderUserAccs();
+}
+
+function userPostAcc() {
+  const tk = document.getElementById("u-acc-tk").value.trim();
+  const mk = document.getElementById("u-acc-mk").value.trim();
+  if(!tk || !mk) { showToast("✕ THIẾU THÔNG TIN"); return; }
+  if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) {
+    showToast("✕ TÀI KHOẢN ĐÃ CÓ TRÊN HỆ THỐNG");
+    return;
+  }
+
+  db.accounts.push({ id: Date.now(), tk, mk, lv: 1, status: "chua", owner: currentUser.u, urgent: false });
+  saveDB(); initUserDashboard();
+  document.getElementById("u-acc-tk").value = "";
+  document.getElementById("u-acc-mk").value = "";
+  showToast("✓ ĐÃ ĐĂNG KÝ ACC THÀNH CÔNG");
+}
+
+function userBulkPost() {
+  const text = document.getElementById("user-bulk-input").value;
+  const sameMk = document.getElementById("user-bulk-same-mk").value.trim();
+  if(!text.trim()) return;
+  
+  const lines = text.split("\n");
+  let count = 0;
+
+  lines.forEach(line => {
+    if(!line.trim()) return;
+    const parts = line.split("|").map(x => x.trim());
+    let tk = parts[0];
+
+    if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) return;
+
+    let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
+    if(tk && mk) {
+      db.accounts.push({
+        id: Date.now() + count, tk, mk, lv: 1,
+        status: "chua", owner: currentUser.u, urgent: false
+      });
+      count++;
+    }
+  });
+
+  if(count > 0) {
+    saveDB(); initUserDashboard();
+    document.getElementById("user-bulk-input").value = "";
+    document.getElementById("user-bulk-preview").innerHTML = "";
+    showToast(`✓ ĐÃ BULK THÀNH CÔNG: ${count} ACCS (ĐÃ LỌC TRÙNG)`);
+  } else {
+    showToast("✕ KHÔNG CÓ KHỚP MỚI");
+  }
+}
+
+function renderUserAccs() {
+  const listDiv = document.getElementById("user-list-accs");
+  listDiv.innerHTML = "";
+  let myAccs = db.accounts.filter(x => x.owner === currentUser.u);
+  
+  if(userPrioFilter) myAccs = myAccs.filter(x => x.urgent && x.status !== 'ban');
+
+  if(currentUserView === 'all') {
+    if(myAccs.length === 0) listDiv.innerHTML = '<p class="search-empty">Trống danh sách</p>';
+    myAccs.forEach(acc => { listDiv.innerHTML += buildAccCardHtml(acc, 'user'); });
+  } else {
+    const groups = {1:[], 2:[], 3:[], 4:[], 5:[]};
+    myAccs.forEach(acc => { groups[getLevelGroupRange(acc.lv).g].push(acc); });
+
+    for(let gId in groups) {
+      if(groups[gId].length === 0) continue;
+      const dummyAcc = {lv: (gId === "1" ? 5 : gId === "2" ? 15 : gId === "3" ? 25 : gId === "4" ? 35 : 45)};
+      const gMeta = getLevelGroupRange(dummyAcc.lv);
+      
+      let groupHtml = `
+        <div class="lv-group ${gMeta.style}">
+          <div class="lv-group-hd" onclick="toggleGroupCollapse(this)">
+            <span class="grp-label">${gMeta.label} (${groups[gId].length})</span>
+            <i class="fa-solid fa-chevron-down lv-chev open"></i>
+          </div>
+          <div class="lv-group-body">
+      `;
+      groups[gId].forEach(acc => { groupHtml += buildAccCardHtml(acc, 'user'); });
+      groupHtml += `</div></div>`;
+      listDiv.innerHTML += groupHtml;
     }
   }
-  function renderUserRevenuePanel(){
-    if(!currentUser)return;
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const total=myRev.reduce((s,r)=>s+r.amount,0);
-    const sold=db.accounts.filter(a=>a.uploader===currentUser.u&&a.status==='ban').length;
-    const ready=db.accounts.filter(a=>a.uploader===currentUser.u&&a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
-    const amtEl=document.getElementById('user-total-rev');
-    const soldEl=document.getElementById('user-sold-count');
-    const readyEl=document.getElementById('user-ready-sell');
-    if(amtEl)amtEl.textContent=fmtMoney(total)+'đ';
-    if(soldEl)soldEl.textContent=sold;
-    if(readyEl)readyEl.textContent=ready;
-  }
+}
 
-  function renderAdminUsers(){
-    if(!db.users.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có user nào</p>';
-    const maxA=Math.max(1,...db.users.map(u=>db.accounts.filter(a=>a.uploader===u.u).length));
-    return db.users.slice().reverse().map(u=>{
-      const acs=db.accounts.filter(a=>a.uploader===u.u);
-      const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
-      const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length,ban=acs.filter(a=>a.status==='ban').length;
-      const pct=Math.round((cnt/maxA)*100),recent=acs.slice().reverse().slice(0,3);
-      const uRev=db.revenue.filter(r=>r.uploader===u.u);
-      const uRevTotal=uRev.reduce((s,r)=>s+r.amount,0);
-      return `<div class="glass rounded-2xl overflow-hidden animate-fade" style="border:1px solid rgba(168,85,247,0.1)">
-        <div class="p-4">
-          <div class="flex justify-between items-start mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm orb" style="background:linear-gradient(135deg,rgba(168,85,247,0.25),rgba(0,242,255,0.12));border:1px solid rgba(168,85,247,0.25)">${u.u.charAt(0).toUpperCase()}</div>
-              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500 orb tracking-wider">Pass: ${u.p}</p>${uRevTotal?`<p class="text-[9px] text-green-400 font-bold orb">💰 ${fmtMoneyFull(uRevTotal)}</p>`:''}</div>
-            </div>
-            <div class="flex gap-2">
-              <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[9px] font-bold orb"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
-              <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[9px] font-bold orb">XÓA</button>
-            </div>
-          </div>
-          <div class="grid grid-cols-5 gap-1.5 mb-3">
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[6px] text-cyan-400 font-bold orb">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)"><p class="text-[6px] text-red-400 font-bold orb">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[6px] text-yellow-400 font-bold orb">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.12)"><p class="text-[6px] text-green-400 font-bold orb">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3)"><p class="text-[6px] text-green-300 font-bold orb">BÁN</p><p class="text-lg font-black text-green-300">${ban}</p></div>
-          </div>
-          <div class="flex items-center gap-2 mb-1"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.04)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[8px] text-slate-600 orb">${pct}%</span></div>
-        </div>
-        <div id="ua-${u.u}" class="hidden px-4 pb-4 pt-3 space-y-2" style="border-top:1px solid rgba(255,255,255,0.04)">
-          <p class="text-[8px] font-black uppercase text-slate-600 mb-2 tracking-widest orb">Acc gần nhất</p>
-          ${recent.length?recent.map(a=>`<div class="flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2 flex-wrap">
-              ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV${a.lv}</span>`:`<span class="lv-badge">LV${a.lv}</span>`}
-              <span class="acc-mini-tag text-[10px]">${a.tk}</span>
-              <span class="${stCls(a.status||'chua')} text-[9px] px-2 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span>
-            </div>
-            <div class="flex gap-1">
-              ${a.lv>=SELL_MIN_LV&&(a.status||'chua')!=='ban'?`<button onclick="sellAcc(${a.id})" class="btn-sell px-2 py-1 rounded-lg text-[8px] font-black orb">BÁN</button>`:''}
-              <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-30 hover:opacity-80"><i class="fa-solid fa-trash"></i></button>
-            </div>
-          </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
-          ${cnt>3?`<p class="text-[8px] text-slate-600 text-center orb">...và ${cnt-3} acc khác</p>`:''}
-        </div>
-      </div>`;
-    }).join('');
+function updateStatus(id, newStatus) {
+  const acc = db.accounts.find(x => x.id === id);
+  if(acc && acc.owner === currentUser.u) {
+    acc.status = newStatus;
+    saveDB(); initUserDashboard();
+    showToast("✓ ĐÃ NHẬN TIẾN TRÌNH CÀY");
   }
+}
 
-  /* ── STATS ── */
-  function renderAdminStats(){
-    const sold=db.accounts.filter(a=>a.status==='ban').length;
-    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
-    document.getElementById('admin-global-stats').innerHTML=
-      sBox('Tổng Acc',db.accounts.length,'#00f2ff')+sBox('Users',db.users.length,'#a855f7')+
-      sBox('Đã bán',sold,'#00ff88')+sBox('Doanh thu',fmtMoney(totalRev)+'đ','#ffd700');
+function submitLvUpdate(id) {
+  const acc = db.accounts.find(x => x.id === id);
+  const newLv = parseInt(document.getElementById(`lv-up-${id}`).value);
+  
+  if(acc && !isNaN(newLv) && newLv >= 1 && newLv <= 50) {
+    acc.lv = newLv;
+    if(newLv >= 30) {
+      acc.status = "xong";
+      showToast("⭐ ACC ĐẠT MỤC TIÊU LV30! SẴN SÀNG SỬ DỤNG");
+    } else {
+      showToast("✓ CẬP NHẬT LEVEL THÀNH CÔNG");
+    }
+    saveDB(); initUserDashboard();
   }
-  function renderUserStats(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const ban=my.filter(a=>a.status==='ban').length;
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const rev=myRev.reduce((s,r)=>s+r.amount,0);
-    document.getElementById('user-global-stats').innerHTML=
-      sBox('Tổng Kho',db.accounts.length,'#00f2ff')+sBox('Của tôi',my.length,'#ff00e5')+
-      sBox('Đã bán',ban,'#00ff88')+sBox('Doanh thu',fmtMoney(rev)+'đ','#ffd700');
-  }
-  function sBox(l,v,c){
-    return `<div class="stat-card p-4 rounded-2xl text-center min-w-[78px]">
-      <p class="text-[8px] font-bold uppercase mb-1 orb tracking-wider" style="color:${c};text-shadow:0 0 10px ${c}55">${l}</p>
-      <p class="text-2xl font-black" style="font-family:'Orbitron',sans-serif">${v}</p>
-    </div>`;
-  }
+}
 
-  /* ── HELPERS ── */
-  window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ COPIED!'))};
-  function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
-  function showToast(m,type){
-    const t=document.getElementById('toast');
-    t.textContent=m;
-    t.className='toast'+(type==='money'?' toast-money':'');
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2800);
-  }
-  window.switchAdminTab=function(tab){
-    ['acc','search','user'].forEach(t=>{
-      document.getElementById('admin-tab-'+t).classList.toggle('hidden',t!==tab);
-      document.getElementById('tab-'+t+'-btn').classList.toggle('tab-active',t===tab);
-    });
-    if(tab==='search'){buildTags('admin');runAdminSearch();}
-    if(tab==='acc'){renderAdminAccList();}
-  };
-  window.switchAdminMode=function(m){
-    const is=m==='single';
-    ['admin-single-mode','admin-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
-    ['admin-mode-single-btn','admin-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
-  };
-  window.switchUserMode=function(m){
-    const is=m==='single';
-    ['user-single-mode','user-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
-    ['user-mode-single-btn','user-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
-  };
+function runUserSearch() {
+  const val = document.getElementById("user-search-input").value.trim().toLowerCase();
+  const resultsDiv = document.getElementById("user-search-results");
+  resultsDiv.innerHTML = "";
+  
+  let filtered = db.accounts.filter(acc => acc.owner === currentUser.u && acc.tk.toLowerCase().includes(val));
+  if(userSelectedFilterLv !== null) filtered = filtered.filter(acc => getLevelGroupRange(acc.lv).g === userSelectedFilterLv);
+  
+  document.getElementById("user-search-count").innerText = `TÌM THẤY ${filtered.length} ACC`;
+  filtered.forEach(acc => { resultsDiv.innerHTML += buildAccCardHtml(acc, 'user'); });
+}
+
+// ── SMART LOCAL BEE AI ENGINE ──
+function initBeeAI() {
+  document.getElementById("bee-dot").classList.remove("hidden");
+  setTimeout(() => {
+    setBeeMessage(`Xin chào, <b>${currentUser.u.toUpperCase()}</b>! Tôi đã đồng bộ kho dữ liệu cá nhân của bạn. Trùng lặp đã được dọn sạch.`);
+    document.getElementById("bee-actions").classList.remove("hidden");
+  }, 800);
+}
+
+function setBeeMessage(htmlContent) { document.getElementById("bee-message").innerHTML = htmlContent; }
+function showBeeTyping() { document.getElementById("bee-message").innerHTML = `<div class="bee-typing"><span></span><span></span><span></span></div>`; }
+
+function beeSortUrgent() {
+  userPrioFilter = true; showBeeTyping();
+  setTimeout(() => {
+    renderUserAccs();
+    const urgentCount = db.accounts.filter(x => x.owner === currentUser.u && x.urgent && x.status !== 'ban').length;
+    setBeeMessage(`⚙️ Đã lọc ra <b>${urgentCount} tài khoản Ưu Tiên</b>. Hãy hoàn thành các acc này trước.`);
+  }, 400);
+}
+
+function beeSortDefault() {
+  userPrioFilter = false; showBeeTyping();
+  setTimeout(() => { renderUserAccs(); setBeeMessage("📋 Hiển thị danh sách mặc định."); }, 300);
+}
+
+function beeAnalyzeData() {
+  showBeeTyping();
+  setTimeout(() => {
+    const myAccs = db.accounts.filter(x => x.owner === currentUser.u);
+    const completed = myAccs.filter(x => x.status === 'xong' || x.status === 'ban').length;
+    const percent = myAccs.length ? Math.round((completed / myAccs.length) * 100) : 0;
+    
+    setBeeMessage(`
+      <div class="bee-analyze-box">
+        📊 <b>BÁO CÁO TIẾN ĐỘ</b><br>
+        • Tỷ lệ hoàn thành: <span class="text-cyan-400 font-bold">${percent}%</span><br>
+        • Còn lại: <span class="text-yellow-400 font-bold">${myAccs.filter(x=>x.status==='dang'||x.status==='chua').length} acc</span>
+      </div>
+    `);
+  }, 500);
+}
+
+function askBee() {
+  const inp = document.getElementById("bee-input");
+  const val = inp.value.trim().toLowerCase();
+  if(!val) return;
+  
+  inp.value = ""; showBeeTyping();
+  setTimeout(() => {
+    if(val.includes("cần làm") || val.includes("nhiệm vụ")) {
+      const urgent = db.accounts.filter(x => x.owner === currentUser.u && x.urgent && x.status !== 'ban').length;
+      if(urgent > 0) setBeeMessage(`🚨 Bạn có <b>${urgent} acc được đánh dấu Ưu tiên</b>! Hãy hoàn thành sớm.`);
+      else setBeeMessage("✅ Không có yêu cầu khẩn cấp nào từ hệ thống admin.");
+    } else {
+      setBeeMessage("🤖 Tôi đã ghi nhận câu hỏi. Bạn có thể sử dụng các bộ lọc nhanh để quản lý danh sách thông minh hơn.");
+    }
+  }, 400);
 }
 </script>
 </body>
