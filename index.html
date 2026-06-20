@@ -1,6 +1,3 @@
-Dưới đây là mã nguồn hoàn chỉnh sau khi đã cập nhật toàn bộ các yêu cầu của bạn. Bạn chỉ cần copy và lưu lại thành file `.html` là chạy được ngay:
-
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -42,7 +39,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(110px);background:rgba(4,4,20,0.95);border:1px solid rgba(0,242,255,0.35);color:#00f2ff;padding:11px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;box-shadow:0 4px 30px rgba(0,242,255,0.25);font-family:'Orbitron',sans-serif}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-.lv-badge-gold{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0800;font-weight:900;font-size:9px;padding:2px 10px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 10px rgba(255,170,0,0.5)}
+.mp-badge-gold{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0800;font-weight:900;font-size:10px;padding:3px 12px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 10px rgba(255,170,0,0.5)}
 .btn-delete{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;transition:all 0.2s}
 .btn-edit{background:rgba(0,242,255,0.07);border:1px solid rgba(0,242,255,0.22);color:#00f2ff;transition:all 0.2s}
 .btn-sell{background:linear-gradient(135deg,rgba(168,85,247,0.15),rgba(139,92,246,0.08));border:1px solid rgba(168,85,247,0.4);color:#c084fc;transition:all 0.2s;font-weight:900;letter-spacing:0.05em}
@@ -70,9 +67,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .rev-mini{background:rgba(0,0,0,0.35);border:1px solid rgba(168,85,247,0.15);border-radius:14px;padding:10px 14px;flex:1;text-align:center}
 .rev-big-num{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6);line-height:1}
 
-.price-tag{background:linear-gradient(135deg,rgba(0,242,255,0.12),rgba(168,85,247,0.06));border:1px solid rgba(0,242,255,0.28);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:#00f2ff;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
 .price-tag-locked{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:rgba(255,255,255,0.2);font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
-
 .sold-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#a855f7,#718096);color:#ffffff;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(168,85,247,0.4)}
 .card-sold{box-shadow:0 0 0 1.5px rgba(168,85,247,0.4),0 8px 30px rgba(168,85,247,0.1)!important;opacity:0.6}
 
@@ -91,7 +86,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .search-icon-abs{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:13px;pointer-events:none}
 .search-inp{width:100%;padding:12px 38px 12px 40px;border-radius:16px;font-size:13px}
 .search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:12px;cursor:pointer;padding:4px}
-.lv-tag{font-size:9px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.18s;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:0.04em}
+.mp-tag{font-size:9px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.18s;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:0.04em}
 .search-empty{text-align:center;padding:40px 0;color:rgba(255,255,255,0.22);font-size:13px}
 .search-count{font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);margin-bottom:12px;padding-left:2px;font-family:'Orbitron',sans-serif;letter-spacing:0.05em}
 
@@ -99,17 +94,17 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 .view-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
 .view-btn.active{background:rgba(255,0,229,0.1);color:#ff00e5;border:1px solid rgba(255,0,229,0.22);text-shadow:0 0 10px rgba(255,0,229,0.5)}
 
-.lv-group{border-radius:22px;overflow:hidden;margin-bottom:14px}
-.lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;gap:10px}
-.lv-chev{transition:transform 0.32s cubic-bezier(0.34,1.2,0.64,1);font-size:11px;flex-shrink:0;color:rgba(255,255,255,0.35)}
-.lv-chev.open{transform:rotate(180deg)}
-.lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.25)}
-.lv-group-body.collapsed{display:none}
-.grp-1{background:linear-gradient(135deg,rgba(100,116,139,0.14),rgba(71,85,105,0.07));border:1px solid rgba(100,116,139,0.2)}.grp-1 .grp-label{color:#94a3b8}
-.grp-2{background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(37,99,235,0.06));border:1px solid rgba(59,130,246,0.22)}.grp-2 .grp-label{color:#60a5fa}
-.grp-3{background:linear-gradient(135deg,rgba(0,242,255,0.1),rgba(6,182,212,0.05));border:1px solid rgba(0,242,255,0.2)}.grp-3 .grp-label{color:#00f2ff;text-shadow:0 0 10px rgba(0,242,255,0.4)}
-.grp-4{background:linear-gradient(135deg,rgba(168,85,247,0.13),rgba(139,92,246,0.06));border:1px solid rgba(168,85,247,0.22)}.grp-4 .grp-label{color:#c084fc;text-shadow:0 0 10px rgba(168,85,247,0.4)}
-.grp-5{background:linear-gradient(135deg,rgba(250,204,21,0.1),rgba(234,179,8,0.05));border:1px solid rgba(250,204,21,0.22)}.grp-5 .grp-label{color:#fde047;text-shadow:0 0 10px rgba(250,204,21,0.4)}
+.mp-group{border-radius:22px;overflow:hidden;margin-bottom:14px}
+.mp-group-hd{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;gap:10px}
+.mp-chev{transition:transform 0.32s cubic-bezier(0.34,1.2,0.64,1);font-size:11px;flex-shrink:0;color:rgba(255,255,255,0.35)}
+.mp-chev.open{transform:rotate(180deg)}
+.mp-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.25)}
+.mp-group-body.collapsed{display:none}
+
+.grp-1{background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(37,99,235,0.06));border:1px solid rgba(59,130,246,0.22)}.grp-1 .grp-label{color:#60a5fa}
+.grp-2{background:linear-gradient(135deg,rgba(0,242,255,0.1),rgba(6,182,212,0.05));border:1px solid rgba(0,242,255,0.2)}.grp-2 .grp-label{color:#00f2ff;text-shadow:0 0 10px rgba(0,242,255,0.4)}
+.grp-3{background:linear-gradient(135deg,rgba(250,204,21,0.1),rgba(234,179,8,0.05));border:1px solid rgba(250,204,21,0.22)}.grp-3 .grp-label{color:#fde047;text-shadow:0 0 10px rgba(250,204,21,0.4)}
+.grp-other{background:linear-gradient(135deg,rgba(148,163,184,0.08),rgba(100,116,139,0.04));border:1px solid rgba(148,163,184,0.15)}.grp-other .grp-label{color:#94a3b8}
 .grp-label{font-weight:900;font-size:13px;letter-spacing:0.06em;font-family:'Orbitron',sans-serif}
 
 .acc-wrap{position:relative;padding-top:7px}
@@ -201,19 +196,19 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
         <div id="admin-single-mode" class="space-y-3">
           <input type="text" id="ad-acc-tk" placeholder="Tài khoản" class="w-full p-3.5 rounded-xl text-sm">
           <input type="text" id="ad-acc-mk" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
-          <input type="number" id="ad-acc-lv" placeholder="Level (1-50)" class="w-full p-3.5 rounded-xl text-sm">
+          <input type="number" id="ad-acc-mp" placeholder="Giá trị đội hình MP (Ví dụ: 25)" class="w-full p-3.5 rounded-xl text-sm">
           <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Up Kho Root</button>
         </div>
         <div id="admin-bulk-mode" class="hidden space-y-3">
           <input type="text" id="admin-bulk-same-mk" placeholder="Nhập MK chung nếu có..." class="w-full p-3.5 rounded-xl text-xs">
-          <textarea id="admin-bulk-input" rows="5" placeholder="tk|mk|lv hoặc tk|lv (nếu dùng mk chung)" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
+          <textarea id="admin-bulk-input" rows="5" placeholder="tk|mk|mp hoặc tk|mp (nếu dùng mk chung)" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
           <div id="admin-bulk-preview" class="space-y-1 max-h-32 overflow-y-auto"></div>
           <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">Up Hàng Loạt (Auto lọc trùng)</button>
         </div>
       </div>
       <div class="view-toggle">
         <button class="view-btn active" id="admin-view-all-btn" onclick="switchAdminView('all')">Tất cả</button>
-        <button class="view-btn" id="admin-view-group-btn" onclick="switchAdminView('group')">Nhóm LV</button>
+        <button class="view-btn" id="admin-view-group-btn" onclick="switchAdminView('group')">Nhóm MP</button>
       </div>
       <div id="admin-list-accs"></div>
     </div>
@@ -225,7 +220,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
           <input type="text" id="admin-search-input" class="search-inp" placeholder="Tìm tài khoản trong kho..." oninput="runAdminSearch()">
           <span class="search-clear" onclick="clearSearch('admin')"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <div class="flex gap-2 flex-wrap" id="admin-lv-tags"></div>
+        <div class="flex gap-2 flex-wrap" id="admin-mp-tags"></div>
       </div>
       <div id="admin-search-count" class="search-count"></div>
       <div id="admin-search-results" class="space-y-3"></div>
@@ -296,11 +291,12 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
         <div id="user-single-mode" class="space-y-3">
           <input type="text" id="u-acc-tk" placeholder="Tài khoản game mới" class="w-full p-3.5 rounded-xl text-sm">
           <input type="text" id="u-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
+          <input type="number" id="u-acc-mp" placeholder="Giá trị MP (Ví dụ: 15)" class="w-full p-3.5 rounded-xl text-sm">
           <button onclick="userPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Đăng Ký Lên Kho Chung</button>
         </div>
         <div id="user-bulk-mode" class="hidden space-y-3">
           <input type="text" id="user-bulk-same-mk" placeholder="Nhập mật khẩu chung..." class="w-full p-3.5 rounded-xl text-xs">
-          <textarea id="user-bulk-input" rows="5" placeholder="tk|mk hoặc tk (nếu xài mk chung)" class="w-full p-3.5 rounded-xl" oninput="previewBulk('user')"></textarea>
+          <textarea id="user-bulk-input" rows="5" placeholder="tk|mk|mp hoặc tk|mp (nếu xài mk chung)" class="w-full p-3.5 rounded-xl" oninput="previewBulk('user')"></textarea>
           <div id="user-bulk-preview" class="space-y-1 max-h-32 overflow-y-auto"></div>
           <button onclick="userBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">Bulk Lên Kho (Tự lọc trùng)</button>
         </div>
@@ -308,7 +304,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
 
       <div class="view-toggle">
         <button class="view-btn active" id="user-view-all-btn" onclick="switchUserView('all')">Tất cả</button>
-        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')">Nhóm LV</button>
+        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')">Nhóm MP</button>
       </div>
       <div id="user-list-accs"></div>
     </div>
@@ -320,7 +316,7 @@ textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
           <input type="text" id="user-search-input" class="search-inp" placeholder="Tìm tài khoản trong kho..." oninput="runUserSearch()">
           <span class="search-clear" onclick="clearSearch('user')"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <div class="flex gap-2 flex-wrap" id="user-lv-tags"></div>
+        <div class="flex gap-2 flex-wrap" id="user-mp-tags"></div>
       </div>
       <div id="user-search-count" class="search-count"></div>
       <div id="user-search-results" class="space-y-3"></div>
@@ -337,10 +333,10 @@ let db = {
     {u: "farmer2", p: "123", role: "user"}
   ],
   accounts: [
-    {id: 1, tk: "shadow_lord", mk: "pass1", lv: 32, status: "xong", owner: "farmer1", urgent: true},
-    {id: 2, tk: "neon_cyber", mk: "pass2", lv: 15, status: "dang", owner: "farmer1", urgent: false},
-    {id: 3, tk: "alpha_omega", mk: "pass3", lv: 45, status: "ban", owner: "farmer2", urgent: false},
-    {id: 4, tk: "glitch_hunter", mk: "pass4", lv: 8, status: "chua", owner: "hệ thống", urgent: true}
+    {id: 1, tk: "shadow_lord", mk: "pass1", mp: 15, status: "xong", owner: "farmer1", urgent: true},
+    {id: 2, tk: "neon_cyber", mk: "pass2", mp: 30, status: "dang", owner: "farmer1", urgent: false},
+    {id: 3, tk: "alpha_omega", mk: "pass3", mp: 75, status: "ban", owner: "farmer2", urgent: false},
+    {id: 4, tk: "glitch_hunter", mk: "pass4", mp: 5, status: "chua", owner: "hệ thống", urgent: true}
   ]
 };
 
@@ -357,12 +353,12 @@ let currentUser = null;
 let currentAdminTab = "acc";
 let currentAdminMode = "single";
 let currentAdminView = "all";
-let adminSelectedFilterLv = null;
+let adminSelectedFilterMp = null;
 
 let currentUserTab = "acc";
 let currentUserMode = "single";
 let currentUserView = "all";
-let userSelectedFilterLv = null;
+let userSelectedFilterMp = null;
 let userPrioFilter = false;
 
 function showToast(msg) {
@@ -381,7 +377,6 @@ function login() {
     currentUser = userObj;
     document.getElementById("login-error").classList.add("hidden");
     
-    // Trigger Hiệu ứng icon nhảy chào mừng
     const welcome = document.getElementById("welcome-screen");
     document.getElementById("welcome-txt").innerText = `CHÀO MỪNG ${u.toUpperCase()}`;
     welcome.classList.add("show");
@@ -399,7 +394,7 @@ function login() {
         initUserDashboard();
       }
       showToast("⚡ HỆ THỐNG LIÊN KẾT THÀNH CÔNG!");
-    }, 2000); // Hiển thị hiệu ứng trong 2 giây
+    }, 2000);
 
   } else {
     document.getElementById("login-error").classList.remove("hidden");
@@ -425,12 +420,12 @@ function getStatusBadge(status) {
   return badges[status] || status;
 }
 
-function getLevelGroupRange(lv) {
-  if (lv <= 10) return {g: 1, label: "LV 1-10 (Sơ Cấp)", style: "grp-1"};
-  if (lv <= 20) return {g: 2, label: "LV 11-20 (Trung Cấp)", style: "grp-2"};
-  if (lv <= 30) return {g: 3, label: "LV 21-30 (Cao Cấp)", style: "grp-3"};
-  if (lv <= 40) return {g: 4, label: "LV 31-40 (Tinh Anh)", style: "grp-4"};
-  return {g: 5, label: "LV 41-50 (Huyền Thoại)", style: "grp-5"};
+// PHÂN CHIA NHÓM ACC THEO MỐC MP MỚI
+function getMpGroupRange(mp) {
+  if (mp >= 10 && mp <= 20) return {g: 1, label: "ACC 10-20M MP", style: "grp-1"};
+  if (mp > 20 && mp <= 40) return {g: 2, label: "ACC 20-40M MP", style: "grp-2"};
+  if (mp >= 50 && mp <= 100) return {g: 3, label: "ACC 50-100M MP", style: "grp-3"};
+  return {g: 4, label: "ACC PHỔ THÔNG / KHÁC", style: "grp-other"};
 }
 
 // PREVIEW BULK
@@ -458,7 +453,7 @@ function previewBulk(type) {
 
 // ADMIN CORE
 function initAdminDashboard() {
-  renderAdminStats(); renderAdminAccs(); renderAdminUsers(); buildLvTags('admin');
+  renderAdminStats(); renderAdminAccs(); renderAdminUsers(); buildMpTags('admin');
 }
 function renderAdminStats() {
   const total = db.accounts.length;
@@ -496,13 +491,13 @@ function switchAdminView(view) {
 function adminPostAcc() {
   const tk = document.getElementById("ad-acc-tk").value.trim();
   const mk = document.getElementById("ad-acc-mk").value.trim();
-  const lv = parseInt(document.getElementById("ad-acc-lv").value);
-  if(!tk || !mk || isNaN(lv)) return;
+  const mp = parseInt(document.getElementById("ad-acc-mp").value);
+  if(!tk || !mk || isNaN(mp)) return;
   if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) { showToast("✕ TÀI KHOẢN ĐÃ TRÙNG"); return; }
   
-  db.accounts.push({ id: Date.now(), tk, mk, lv, status: "chua", owner: "hệ thống", urgent: false });
+  db.accounts.push({ id: Date.now(), tk, mk, mp, status: "chua", owner: "hệ thống", urgent: false });
   saveDB(); initAdminDashboard();
-  document.getElementById("ad-acc-tk").value = ""; document.getElementById("ad-acc-mk").value = ""; document.getElementById("ad-acc-lv").value = "";
+  document.getElementById("ad-acc-tk").value = ""; document.getElementById("ad-acc-mk").value = ""; document.getElementById("ad-acc-mp").value = "";
   showToast("✓ ĐÃ THÊM VÀO KHO ROOT");
 }
 
@@ -519,11 +514,11 @@ function adminBulkPost() {
     if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) return;
 
     let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
-    let lvRaw = sameMk ? (parts.length >= 2 ? parts[1] : "") : (parts.length >= 3 ? parts[2] : "");
-    let lv = parseInt(lvRaw) || 1;
+    let mpRaw = sameMk ? (parts.length >= 2 ? parts[1] : "") : (parts.length >= 3 ? parts[2] : "");
+    let mp = parseInt(mpRaw) || 0;
 
     if(tk && mk) {
-      db.accounts.push({ id: Date.now() + count, tk, mk, lv, status: "chua", owner: "hệ thống", urgent: false });
+      db.accounts.push({ id: Date.now() + count, tk, mk, mp, status: "chua", owner: "hệ thống", urgent: false });
       count++;
     }
   });
@@ -539,12 +534,12 @@ function renderAdminAccs() {
   if(currentAdminView === 'all') {
     db.accounts.forEach(acc => { listDiv.innerHTML += buildAccCardHtml(acc, 'admin'); });
   } else {
-    const groups = {1:[], 2:[], 3:[], 4:[], 5:[]};
-    db.accounts.forEach(acc => { groups[getLevelGroupRange(acc.lv).g].push(acc); });
+    const groups = {1:[], 2:[], 3:[], 4:[]};
+    db.accounts.forEach(acc => { groups[getMpGroupRange(acc.mp).g].push(acc); });
     for(let gId in groups) {
       if(groups[gId].length === 0) continue;
-      const gMeta = getLevelGroupRange(groups[gId][0].lv);
-      let html = `<div class="lv-group ${gMeta.style}"><div class="lv-group-hd" onclick="toggleGroupCollapse(this)"><span class="grp-label">${gMeta.label} (${groups[gId].length})</span><i class="fa-solid fa-chevron-down lv-chev open"></i></div><div class="lv-group-body">`;
+      const gMeta = getMpGroupRange(groups[gId][0].mp);
+      let html = `<div class="mp-group ${gMeta.style}"><div class="mp-group-hd" onclick="toggleGroupCollapse(this)"><span class="grp-label">${gMeta.label} (${groups[gId].length})</span><i class="fa-solid fa-chevron-down mp-chev open"></i></div><div class="mp-group-body">`;
       groups[gId].forEach(acc => { html += buildAccCardHtml(acc, 'admin'); });
       html += `</div></div>`; listDiv.innerHTML += html;
     }
@@ -553,10 +548,9 @@ function renderAdminAccs() {
 
 function toggleGroupCollapse(el) {
   el.nextElementSibling.classList.toggle("collapsed");
-  el.querySelector(".lv-chev").classList.toggle("open");
+  el.querySelector(".mp-chev").classList.toggle("open");
 }
 
-// QUẢN LÝ USER & EDIT THÀNH VIÊN DIRECTLY
 function renderAdminUsers() {
   const uDiv = document.getElementById("admin-list-users"); uDiv.innerHTML = "";
   db.users.filter(x => x.role !== 'admin').forEach((u, index) => {
@@ -591,24 +585,13 @@ function saveEditUser(index, oldUsername) {
   const newP = document.getElementById(`edit-p-${index}`).value.trim();
   
   if(!newU || !newP) { showToast("✕ KHÔNG ĐƯỢC ĐỂ TRỐNG THÔNG TIN"); return; }
-  
-  // Check trùng username với người khác
-  if(newU !== oldUsername && db.users.some(x => x.u === newU)) {
-    showToast("✕ TÊN USERNAME MỚI ĐÃ BỊ TRÙNG");
-    return;
-  }
+  if(newU !== oldUsername && db.users.some(x => x.u === newU)) { showToast("✕ TÊN USERNAME MỚI ĐÃ BỊ TRÙNG"); return; }
   
   const targetUser = db.users.find(x => x.u === oldUsername);
   if(targetUser) {
-    // Đổi chủ sở hữu ở db accounts nếu trùng tên cũ
-    db.accounts.forEach(acc => {
-      if(acc.owner === oldUsername) acc.owner = newU;
-    });
-    
-    targetUser.u = newU;
-    targetUser.p = newP;
-    saveDB();
-    renderAdminUsers();
+    db.accounts.forEach(acc => { if(acc.owner === oldUsername) acc.owner = newU; });
+    targetUser.u = newU; targetUser.p = newP;
+    saveDB(); renderAdminUsers();
     showToast("✓ ĐÃ CHỈNH SỬA THÀNH CÔNG");
   }
 }
@@ -625,17 +608,14 @@ function addUser() {
 
 function removeUser(username) {
   db.accounts.forEach(acc => {
-    if(acc.owner === username) {
-      acc.owner = "hệ thống";
-      if(acc.status === 'dang') acc.status = 'chua';
-    }
+    if(acc.owner === username) { acc.owner = "hệ thống"; if(acc.status === 'dang') acc.status = 'chua'; }
   });
   db.users = db.users.filter(x => x.u !== username);
   saveDB(); initAdminDashboard();
   showToast(`✕ ĐÃ XÓA USER [${username.toUpperCase()}]. DATA ACC ĐÃ TRẢ VỀ HỆ THỐNG.`);
 }
 
-// BUILD CARD HTML (BỎ HOÀN TOÀN BỘ PHẦN HIỂN THỊ GÁN USER)
+// BUILD CARD HTML
 function buildAccCardHtml(acc, panelType) {
   const isUsed = acc.status === "ban";
   const cardClass = isUsed ? "card-sold" : (acc.urgent ? "card-urgent" : "");
@@ -654,7 +634,7 @@ function buildAccCardHtml(acc, panelType) {
       actionBtn = `<button onclick="updateStatus(${acc.id}, 'dang')" class="btn-edit px-3 py-1.5 rounded-xl text-xs font-bold">NHẬN CÀY</button>`;
     } else if (acc.status === 'dang') {
       if(acc.owner === currentUser.u) {
-        actionBtn = `<div class="flex gap-1 items-center"><input type="number" id="lv-up-${acc.id}" value="${acc.lv}" min="1" max="50" class="w-12 text-center p-1 rounded-lg text-xs font-bold border border-slate-700"><button onclick="submitLvUpdate(${acc.id})" class="btn-sell px-2.5 py-1.5 rounded-xl text-xs"><i class="fa-solid fa-check"></i></button></div>`;
+        actionBtn = `<div class="flex gap-1 items-center"><input type="number" id="mp-up-${acc.id}" value="${acc.mp}" min="0" class="w-14 text-center p-1 rounded-lg text-xs font-bold border border-slate-700"><span class="text-[9px] text-slate-400">M</span><button onclick="submitMpUpdate(${acc.id})" class="btn-sell px-2 py-1.5 rounded-xl text-xs"><i class="fa-solid fa-check"></i></button></div>`;
       } else {
         actionBtn = `<span class="price-tag-locked text-[9px] uppercase">ĐANG CÓ NGƯỜI CÀY</span>`;
       }
@@ -676,7 +656,7 @@ function buildAccCardHtml(acc, panelType) {
             <p class="text-[10px] text-slate-500 font-bold mt-0.5"><i class="fa-solid fa-key mr-1"></i>${acc.mk}</p>
           </div>
           <div class="text-right flex-shrink-0">
-            <span class="lv-badge-gold">LV ${acc.lv}</span>
+            <span class="mp-badge-gold">${acc.mp}M MP</span>
           </div>
         </div>
         <div class="flex justify-between items-center mt-3 pt-3" style="border-top:1px solid rgba(255,255,255,0.03)">
@@ -692,33 +672,33 @@ function deleteAcc(id) { db.accounts = db.accounts.filter(x => x.id !== id); sav
 function toggleUrgent(id) { const acc = db.accounts.find(x => x.id === id); if(acc) { acc.urgent = !acc.urgent; saveDB(); renderAdminAccs(); showToast("✓ ĐỔI TRẠNG THÁI ƯU TIÊN"); } }
 function markAsUsed(id) { const acc = db.accounts.find(x => x.id === id); if(acc) { acc.status = "ban"; saveDB(); if(currentUser.role === 'admin') { initAdminDashboard(); } else { initUserDashboard(); } showToast("✓ ĐÃ ĐÁNH DẤU SỬ DỤNG"); } }
 
-// SEARCH ENGINE
-function buildLvTags(type) {
-  const container = document.getElementById(`${type}-lv-tags`);
-  container.innerHTML = `<span class="lv-tag bg-cyan-500 text-slate-950 font-bold shadow-lg" id="${type}-tag-all" onclick="filterByLv(null, '${type}')">ALL KHO</span>`;
-  [{label:"1-10",id:1}, {label:"11-20",id:2}, {label:"21-30",id:3}, {label:"31-40",id:4}, {label:"41-50",id:5}].forEach(r => {
-    container.innerHTML += `<span class="lv-tag glass text-slate-400" id="${type}-tag-${r.id}" onclick="filterByLv(${r.id}, '${type}')">LV ${r.label}</span>`;
+// SEARCH ENGINE (MP VERSION)
+function buildMpTags(type) {
+  const container = document.getElementById(`${type}-mp-tags`);
+  container.innerHTML = `<span class="mp-tag bg-cyan-500 text-slate-950 font-bold shadow-lg" id="${type}-tag-all" onclick="filterByMp(null, '${type}')">ALL KHO</span>`;
+  [{label:"10-20M",id:1}, {label:"20-40M",id:2}, {label:"50-100M",id:3}, {label:"Khác",id:4}].forEach(r => {
+    container.innerHTML += `<span class="mp-tag glass text-slate-400" id="${type}-tag-${r.id}" onclick="filterByMp(${r.id}, '${type}')">${r.label}</span>`;
   });
 }
-function filterByLv(grpId, type) {
-  if(type === 'admin') { adminSelectedFilterLv = grpId; runAdminSearch(); } else { userSelectedFilterLv = grpId; runUserSearch(); }
-  const container = document.getElementById(`${type}-lv-tags`);
-  container.querySelectorAll(".lv-tag").forEach(el => el.className = "lv-tag glass text-slate-400");
-  document.getElementById(grpId === null ? `${type}-tag-all` : `${type}-tag-${grpId}`).className = "lv-tag bg-cyan-500 text-slate-950 font-black shadow-lg";
+function filterByMp(grpId, type) {
+  if(type === 'admin') { adminSelectedFilterMp = grpId; runAdminSearch(); } else { userSelectedFilterMp = grpId; runUserSearch(); }
+  const container = document.getElementById(`${type}-mp-tags`);
+  container.querySelectorAll(".mp-tag").forEach(el => el.className = "mp-tag glass text-slate-400");
+  document.getElementById(grpId === null ? `${type}-tag-all` : `${type}-tag-${grpId}`).className = "mp-tag bg-cyan-500 text-slate-950 font-black shadow-lg";
 }
 function runAdminSearch() {
   const val = document.getElementById("admin-search-input").value.trim().toLowerCase();
   let filtered = db.accounts.filter(acc => acc.tk.toLowerCase().includes(val));
-  if(adminSelectedFilterLv !== null) filtered = filtered.filter(acc => getLevelGroupRange(acc.lv).g === adminSelectedFilterLv);
+  if(adminSelectedFilterMp !== null) filtered = filtered.filter(acc => getMpGroupRange(acc.mp).g === adminSelectedFilterMp);
   document.getElementById("admin-search-count").innerText = `TÌM THẤY ${filtered.length} TÀI KHOẢN`;
   const res = document.getElementById("admin-search-results"); res.innerHTML = "";
   filtered.forEach(acc => res.innerHTML += buildAccCardHtml(acc, 'admin'));
 }
-function clearSearch(type) { document.getElementById(`${type}-search-input`).value = ""; filterByLv(null, type); }
+function clearSearch(type) { document.getElementById(`${type}-search-input`).value = ""; filterByMp(null, type); }
 
 // FARMER CORE
 function initUserDashboard() {
-  renderUserStats(); renderUserAccs(); buildLvTags('user'); initBeeAI();
+  renderUserStats(); renderUserAccs(); buildMpTags('user'); initBeeAI();
 }
 function renderUserStats() {
   const total = db.accounts.length;
@@ -758,12 +738,13 @@ function switchUserView(view) {
 function userPostAcc() {
   const tk = document.getElementById("u-acc-tk").value.trim();
   const mk = document.getElementById("u-acc-mk").value.trim();
+  const mp = parseInt(document.getElementById("u-acc-mp").value) || 0;
   if(!tk || !mk) return;
   if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) { showToast("✕ TÀI KHOẢN ĐÃ CÓ TRÊN KHO CHUNG"); return; }
   
-  db.accounts.push({ id: Date.now(), tk, mk, lv: 1, status: "chua", owner: "hệ thống", urgent: false });
+  db.accounts.push({ id: Date.now(), tk, mk, mp, status: "chua", owner: "hệ thống", urgent: false });
   saveDB(); initUserDashboard();
-  document.getElementById("u-acc-tk").value = ""; document.getElementById("u-acc-mk").value = "";
+  document.getElementById("u-acc-tk").value = ""; document.getElementById("u-acc-mk").value = ""; document.getElementById("u-acc-mp").value = "";
   showToast("✓ ĐÃ ĐẨY ACC LÊN KHO CHUNG");
 }
 
@@ -780,8 +761,11 @@ function userBulkPost() {
     if(db.accounts.some(x => x.tk.toLowerCase() === tk.toLowerCase())) return;
 
     let mk = sameMk ? sameMk : (parts.length >= 2 ? parts[1] : "");
+    let mpRaw = sameMk ? (parts.length >= 2 ? parts[1] : "") : (parts.length >= 3 ? parts[2] : "");
+    let mp = parseInt(mpRaw) || 0;
+
     if(tk && mk) {
-      db.accounts.push({ id: Date.now() + count, tk, mk, lv: 1, status: "chua", owner: "hệ thống", urgent: false });
+      db.accounts.push({ id: Date.now() + count, tk, mk, mp, status: "chua", owner: "hệ thống", urgent: false });
       count++;
     }
   });
@@ -798,12 +782,12 @@ function renderUserAccs() {
     if(data.length === 0) listDiv.innerHTML = '<p class="search-empty">Trống danh sách</p>';
     data.forEach(acc => { listDiv.innerHTML += buildAccCardHtml(acc, 'user'); });
   } else {
-    const groups = {1:[], 2:[], 3:[], 4:[], 5:[]};
-    data.forEach(acc => { groups[getLevelGroupRange(acc.lv).g].push(acc); });
+    const groups = {1:[], 2:[], 3:[], 4:[]};
+    data.forEach(acc => { groups[getMpGroupRange(acc.mp).g].push(acc); });
     for(let gId in groups) {
       if(groups[gId].length === 0) continue;
-      const gMeta = getLevelGroupRange(groups[gId][0].lv);
-      let html = `<div class="lv-group ${gMeta.style}"><div class="lv-group-hd" onclick="toggleGroupCollapse(this)"><span class="grp-label">${gMeta.label} (${groups[gId].length})</span><i class="fa-solid fa-chevron-down lv-chev open"></i></div><div class="lv-group-body">`;
+      const gMeta = getMpGroupRange(groups[gId][0].mp);
+      let html = `<div class="mp-group ${gMeta.style}"><div class="mp-group-hd" onclick="toggleGroupCollapse(this)"><span class="grp-label">${gMeta.label} (${groups[gId].length})</span><i class="fa-solid fa-chevron-down mp-chev open"></i></div><div class="mp-group-body">`;
       groups[gId].forEach(acc => { html += buildAccCardHtml(acc, 'user'); });
       html += `</div></div>`; listDiv.innerHTML += html;
     }
@@ -818,12 +802,12 @@ function updateStatus(id, newStatus) {
   }
 }
 
-function submitLvUpdate(id) {
+function submitMpUpdate(id) {
   const acc = db.accounts.find(x => x.id === id);
-  const newLv = parseInt(document.getElementById(`lv-up-${id}`).value);
-  if(acc && acc.owner === currentUser.u && !isNaN(newLv) && newLv >= 1 && newLv <= 50) {
-    acc.lv = newLv;
-    showToast("✓ ĐÃ CẬP NHẬT LEVEL VÀO KHO");
+  const newMp = parseInt(document.getElementById(`mp-up-${id}`).value);
+  if(acc && acc.owner === currentUser.u && !isNaN(newMp) && newMp >= 0) {
+    acc.mp = newMp;
+    showToast("✓ ĐÃ CẬP NHẬT GIÁ TRỊ MP MỚI");
     saveDB(); initUserDashboard();
   }
 }
@@ -831,7 +815,7 @@ function submitLvUpdate(id) {
 function runUserSearch() {
   const val = document.getElementById("user-search-input").value.trim().toLowerCase();
   let filtered = db.accounts.filter(acc => acc.tk.toLowerCase().includes(val));
-  if(userSelectedFilterLv !== null) filtered = filtered.filter(acc => getLevelGroupRange(acc.lv).g === userSelectedFilterLv);
+  if(userSelectedFilterMp !== null) filtered = filtered.filter(acc => getMpGroupRange(acc.mp).g === userSelectedFilterMp);
   document.getElementById("user-search-count").innerText = `TÌM THẤY ${filtered.length} ACC TRÊN HỆ THỐNG`;
   const res = document.getElementById("user-search-results"); res.innerHTML = "";
   filtered.forEach(acc => res.innerHTML += buildAccCardHtml(acc, 'user'));
@@ -840,10 +824,10 @@ function runUserSearch() {
 // BEE AI
 function initBeeAI() {
   document.getElementById("bee-dot").classList.remove("hidden");
-  document.getElementById("bee-message").innerHTML = `Chào <b>${currentUser.u.toUpperCase()}</b>! Hệ thống kho dữ liệu chung đã mở. Bạn có thể xem toàn bộ acc có trong kho.`;
+  document.getElementById("bee-message").innerHTML = `Chào <b>${currentUser.u.toUpperCase()}</b>! Hệ thống kho dữ liệu chung đã mở. Bạn có thể theo dõi và lọc acc theo chỉ số MP mới.`;
   document.getElementById("bee-actions").classList.remove("hidden");
 }
-function beeSortUrgent() { userPrioFilter = true; renderUserAccs(); document.getElementById("bee-message").innerHTML = "⚙️ Đang hiển thị các tài khoản cần cày gấp được Admin đánh dấu."; }
+function beeSortUrgent() { userPrioFilter = true; renderUserAccs(); document.getElementById("bee-message").innerHTML = "⚙️ Đang hiển thị các tài khoản cần xử lý gấp được Admin đánh dấu."; }
 function beeSortDefault() { userPrioFilter = false; renderUserAccs(); document.getElementById("bee-message").innerHTML = "📋 Đã hiển thị lại toàn bộ kho dữ liệu chung."; }
 function beeAnalyzeData() {
   const total = db.accounts.length;
@@ -853,5 +837,3 @@ function beeAnalyzeData() {
 </script>
 </body>
 </html>
-
-```
