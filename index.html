@@ -2,1115 +2,141 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>⚡ NEBULA VAULT v5</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACC MANAGER</title>
 <style>
-:root{--nb:#00f2ff;--np:#ff00e5;--ny:#facc15;--ng:#00ff88;--npu:#a855f7}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:'Rajdhani',system-ui,sans-serif;min-height:100vh;color:white;overflow-x:hidden;
-  background:#060614;
-  background-image:
-    radial-gradient(ellipse at 15% 0%,rgba(168,85,247,0.18) 0%,transparent 55%),
-    radial-gradient(ellipse at 85% 100%,rgba(0,242,255,0.12) 0%,transparent 55%),
-    radial-gradient(ellipse at 50% 50%,rgba(255,0,229,0.04) 0%,transparent 70%);
+    font-family:Arial;
+    background:#111;
+    color:white;
+    padding:20px;
 }
-.glass{background:rgba(255,255,255,0.035);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.07);box-shadow:0 8px 32px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05)}
-.glass-strong{background:rgba(255,255,255,0.055);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.07)}
-.btn-rainbow{background:linear-gradient(135deg,#ff00e5,#9d00ff,#00f2ff,#00ff88);background-size:300% 300%;animation:gradMove 4s ease infinite;font-weight:900;letter-spacing:0.08em;transition:all 0.2s;box-shadow:0 4px 24px rgba(0,242,255,0.25),0 0 40px rgba(168,85,247,0.15)}
-.btn-rainbow:active{transform:scale(0.97)}
-@keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.orb{font-family:'Orbitron',sans-serif}
-.hidden{display:none!important}
-.tab-active{border-bottom:2px solid var(--nb);color:var(--nb);background:linear-gradient(to bottom,transparent,rgba(0,242,255,0.1));text-shadow:0 0 12px rgba(0,242,255,0.6)}
-input,textarea{background:rgba(0,0,0,0.55)!important;border:1px solid rgba(255,255,255,0.08)!important;color:white!important;outline:none!important;font-family:'Rajdhani',sans-serif;font-weight:600;transition:border-color 0.2s,box-shadow 0.2s}
-input:focus,textarea:focus{border-color:rgba(0,242,255,0.35)!important;box-shadow:0 0 0 3px rgba(0,242,255,0.07),0 0 20px rgba(0,242,255,0.08)!important}
-textarea{resize:vertical;font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
-textarea::placeholder,input::placeholder{color:rgba(255,255,255,0.2)!important}
-.stat-card{background:linear-gradient(135deg,rgba(0,0,0,0.45),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.055);flex-shrink:0;position:relative;overflow:hidden}
-.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)}
-.animate-fade{animation:fadeUp 0.4s cubic-bezier(0.34,1.2,0.64,1) forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── TOAST ── */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(110px);background:rgba(4,4,20,0.95);border:1px solid rgba(0,242,255,0.35);color:#00f2ff;padding:11px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;box-shadow:0 4px 30px rgba(0,242,255,0.25);font-family:'Orbitron',sans-serif}
-.toast.show{transform:translateX(-50%) translateY(0)}
-.toast-money{border-color:rgba(0,255,136,0.5)!important;color:#00ff88!important;box-shadow:0 4px 30px rgba(0,255,136,0.3)!important}
-
-/* ── REVENUE NOTIFY POPUP ── */
-.rev-popup{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:10000;backdrop-filter:blur(8px)}
-.rev-popup-box{background:linear-gradient(135deg,rgba(0,30,15,0.98),rgba(0,10,5,0.98));border:2px solid rgba(0,255,136,0.45);border-radius:32px;padding:36px 32px;text-align:center;max-width:320px;width:90%;box-shadow:0 0 80px rgba(0,255,136,0.25),0 0 40px rgba(0,255,136,0.1);animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes popIn{from{opacity:0;transform:scale(0.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.rev-amount{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#00ff88;text-shadow:0 0 30px rgba(0,255,136,0.8),0 0 60px rgba(0,255,136,0.4);letter-spacing:0.04em}
-.rev-coins{font-size:48px;animation:coinSpin 0.6s ease}
-@keyframes coinSpin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-.rev-close-btn{background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-weight:900;font-family:'Orbitron',sans-serif;font-size:11px;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;letter-spacing:0.08em;margin-top:20px;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,255,136,0.35)}
-.rev-close-btn:active{transform:scale(0.96)}
-
-.lv-badge{background:linear-gradient(135deg,#facc15,#f97316);color:#1a0a00;font-weight:900;font-size:9px;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 8px rgba(249,115,22,0.35)}
-.lv-badge-gold{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0800;font-weight:900;font-size:9px;padding:2px 10px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;box-shadow:0 2px 10px rgba(255,170,0,0.5)}
-.btn-delete{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;transition:all 0.2s}
-.btn-edit{background:rgba(0,242,255,0.07);border:1px solid rgba(0,242,255,0.22);color:#00f2ff;transition:all 0.2s}
-.btn-sell{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(0,200,100,0.08));border:1px solid rgba(0,255,136,0.4);color:#00ff88;transition:all 0.2s;font-weight:900;letter-spacing:0.05em}
-.btn-sell:hover{background:linear-gradient(135deg,rgba(0,255,136,0.25),rgba(0,200,100,0.15));box-shadow:0 0 16px rgba(0,255,136,0.25)}
-.btn-sell:active{transform:scale(0.95)}
-.btn-sell-disabled{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.15);cursor:not-allowed}
-
-.mode-toggle{background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px}
-.mode-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
-.mode-btn.active{background:rgba(0,242,255,0.1);color:#00f2ff;border:1px solid rgba(0,242,255,0.22);text-shadow:0 0 10px rgba(0,242,255,0.5)}
-.bulk-ok{background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-.bulk-err{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);color:#f87171;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;font-size:11px}
-.s-chua{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.32);color:#fca5a5}
-.s-dang{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.32);color:#fde68a}
-.s-xong{background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.28);color:#86efac}
-.s-ban{background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(255,215,0,0.08));border:1px solid rgba(0,255,136,0.5);color:#00ff88;box-shadow:0 0 12px rgba(0,255,136,0.15)}
-.dot-chua{width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;animation:pr 1.5s infinite}
-.dot-dang{width:6px;height:6px;border-radius:50%;background:#facc15;display:inline-block;animation:py 1.5s infinite}
-.dot-xong{width:6px;height:6px;border-radius:50%;background:#00ff88;display:inline-block}
-.dot-ban{width:6px;height:6px;border-radius:50%;background:#ffd700;display:inline-block;animation:pg 2s infinite}
-@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
-@keyframes py{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 5px rgba(250,204,21,0)}}
-@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.6)}50%{box-shadow:0 0 0 5px rgba(0,255,136,0)}}
-
-/* ── REVENUE PANEL ── */
-.rev-panel{background:linear-gradient(135deg,rgba(0,255,136,0.07),rgba(0,200,100,0.03));border:1px solid rgba(0,255,136,0.22);border-radius:22px;padding:16px;position:relative;overflow:hidden;margin-bottom:14px}
-.rev-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,#ffd700,transparent);opacity:0.7}
-.rev-mini{background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;flex:1;text-align:center}
-.rev-big-num{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,0.6);line-height:1}
-
-/* ── PRICE TAG ── */
-.price-tag{background:linear-gradient(135deg,rgba(0,255,136,0.12),rgba(255,215,0,0.06));border:1px solid rgba(0,255,136,0.28);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:#00ff88;font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
-.price-tag-locked{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:4px 10px;font-size:10px;font-weight:900;color:rgba(255,255,255,0.2);font-family:'Orbitron',sans-serif;letter-spacing:0.04em;white-space:nowrap}
-
-/* ── SOLD RIBBON ── */
-.sold-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#00ff88,#00c864);color:#001a0a;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(0,255,136,0.4)}
-.card-sold{box-shadow:0 0 0 1.5px rgba(0,255,136,0.4),0 8px 30px rgba(0,255,136,0.1)!important;opacity:0.75}
-
-/* ── BEE PANEL ── */
-.bee-panel{background:linear-gradient(135deg,rgba(250,204,21,0.055),rgba(249,115,22,0.03));border:1px solid rgba(250,204,21,0.2);border-radius:26px;overflow:hidden;position:relative}
-.bee-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#facc15,#f97316,#a855f7,transparent);opacity:0.8}
-.bee-avatar{width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;box-shadow:0 4px 24px rgba(250,204,21,0.4);animation:beeFloat 3s ease-in-out infinite}
-@keyframes beeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.bee-bubble{background:rgba(0,0,0,0.42);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:13px 15px;font-size:13px;line-height:1.75;color:#e2e8f0;min-height:54px;font-weight:600}
-.bee-typing span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#facc15;animation:blink 1.2s infinite;margin-right:3px}
-.bee-typing span:nth-child(2){animation-delay:0.2s}
-.bee-typing span:nth-child(3){animation-delay:0.4s}
-@keyframes blink{0%,80%,100%{opacity:0.15;transform:scale(0.8)}40%{opacity:1;transform:scale(1.2)}}
-.bee-urgent-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
-.bee-tip-box{background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.14);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-weight:600}
-.bee-meme-box{background:rgba(168,85,247,0.07);border:1px solid rgba(168,85,247,0.18);border-radius:12px;padding:10px 13px;margin-top:10px;font-size:12px;font-style:italic;color:#c4b5fd;font-weight:600}
-.bee-analyze-box{background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:12px;font-weight:600;line-height:1.8}
-.bee-chat-wrap{margin-top:12px;display:flex;gap:8px;align-items:center}
-.bee-chat-input{flex:1;padding:10px 15px;border-radius:100px;font-size:13px;font-weight:600;background:rgba(0,0,0,0.5)!important;border:1px solid rgba(250,204,21,0.18)!important;color:white!important;font-family:'Rajdhani',sans-serif}
-.bee-chat-input:focus{border-color:rgba(250,204,21,0.45)!important;box-shadow:0 0 20px rgba(250,204,21,0.08)!important}
-.bee-send-btn{width:40px;height:40px;border-radius:100%;background:linear-gradient(135deg,#facc15,#f97316);display:flex;align-items:center;justify-content:center;font-size:14px;color:#1a0a00;flex-shrink:0;font-weight:900;cursor:pointer;transition:all 0.2s;border:none;box-shadow:0 4px 16px rgba(249,115,22,0.35)}
-.bee-send-btn:active{transform:scale(0.9)}
-.bee-send-btn.loading{background:rgba(250,204,21,0.15)!important;color:#facc15!important;pointer-events:none;box-shadow:none}
-
-/* ── RESET TIMER ── */
-.reset-bar-wrap{background:rgba(0,0,0,0.35);border:1px solid rgba(0,242,255,0.12);border-radius:16px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.reset-bar-inner{flex:1;height:4px;border-radius:100px;background:rgba(255,255,255,0.05);overflow:hidden}
-.reset-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 1s linear;box-shadow:0 0 8px rgba(0,242,255,0.3)}
-
-/* ── SEARCH ── */
-.search-wrap{position:relative;margin-bottom:14px}
-.search-icon-abs{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:13px;pointer-events:none}
-.search-inp{width:100%;padding:12px 38px 12px 40px;border-radius:16px;font-size:13px}
-.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.22);font-size:12px;cursor:pointer;padding:4px}
-.lv-tag{font-size:9px;font-weight:800;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all 0.18s;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:0.04em}
-.search-empty{text-align:center;padding:40px 0;color:rgba(255,255,255,0.22);font-size:13px}
-.search-count{font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);margin-bottom:12px;padding-left:2px;font-family:'Orbitron',sans-serif;letter-spacing:0.05em}
-
-/* ── VIEW TOGGLE ── */
-.view-toggle{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:14px;display:flex;padding:4px;gap:4px;margin-bottom:16px}
-.view-btn{flex:1;padding:8px;border-radius:10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;color:rgba(255,255,255,0.3);font-family:'Orbitron',sans-serif}
-.view-btn.active{background:rgba(255,0,229,0.1);color:#ff00e5;border:1px solid rgba(255,0,229,0.22);text-shadow:0 0 10px rgba(255,0,229,0.5)}
-
-/* ── LEVEL GROUPS ── */
-.lv-group{border-radius:22px;overflow:hidden;margin-bottom:14px}
-.lv-group-hd{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;gap:10px}
-.lv-group-hd:active{opacity:0.85}
-.lv-chev{transition:transform 0.32s cubic-bezier(0.34,1.2,0.64,1);font-size:11px;flex-shrink:0;color:rgba(255,255,255,0.35)}
-.lv-chev.open{transform:rotate(180deg)}
-.lv-group-body{padding:12px;display:flex;flex-direction:column;gap:10px;background:rgba(0,0,0,0.25)}
-.lv-group-body.collapsed{display:none}
-.grp-1{background:linear-gradient(135deg,rgba(100,116,139,0.14),rgba(71,85,105,0.07));border:1px solid rgba(100,116,139,0.2)}.grp-1 .grp-label{color:#94a3b8}
-.grp-2{background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(37,99,235,0.06));border:1px solid rgba(59,130,246,0.22)}.grp-2 .grp-label{color:#60a5fa}
-.grp-3{background:linear-gradient(135deg,rgba(0,242,255,0.1),rgba(6,182,212,0.05));border:1px solid rgba(0,242,255,0.2)}.grp-3 .grp-label{color:#00f2ff;text-shadow:0 0 10px rgba(0,242,255,0.4)}
-.grp-4{background:linear-gradient(135deg,rgba(168,85,247,0.13),rgba(139,92,246,0.06));border:1px solid rgba(168,85,247,0.22)}.grp-4 .grp-label{color:#c084fc;text-shadow:0 0 10px rgba(168,85,247,0.4)}
-.grp-5{background:linear-gradient(135deg,rgba(250,204,21,0.1),rgba(234,179,8,0.05));border:1px solid rgba(250,204,21,0.22)}.grp-5 .grp-label{color:#fde047;text-shadow:0 0 10px rgba(250,204,21,0.4)}
-.grp-label{font-weight:900;font-size:13px;letter-spacing:0.06em;font-family:'Orbitron',sans-serif}
-.grp-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:5px}
-.gp{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px;font-family:'Orbitron',sans-serif;letter-spacing:0.03em}
-.gp-t{background:rgba(255,255,255,0.06);color:#94a3b8;border:1px solid rgba(255,255,255,0.05)}
-.gp-c{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
-.gp-d{background:rgba(250,204,21,0.1);color:#fde68a;border:1px solid rgba(250,204,21,0.2)}
-.gp-x{background:rgba(0,255,136,0.08);color:#86efac;border:1px solid rgba(0,255,136,0.2)}
-.gp-b{background:rgba(0,255,136,0.15);color:#00ff88;border:1px solid rgba(0,255,136,0.35)}
-.grp-prog{height:3px;border-radius:100px;background:rgba(255,255,255,0.05);margin-top:9px;overflow:hidden}
-.grp-prog-fill{height:100%;border-radius:100px;transition:width 0.7s ease}
-
-/* ── ACC CARD ── */
-.acc-wrap{position:relative;padding-top:7px}
-.card-urgent{box-shadow:0 0 0 1.5px rgba(239,68,68,0.55),0 8px 30px rgba(239,68,68,0.18)!important}
-.prio-ribbon{position:absolute;top:-10px;left:14px;background:linear-gradient(135deg,#ef4444,#dc2626);color:white;font-size:8px;font-weight:900;padding:3px 12px;border-radius:100px;letter-spacing:0.1em;z-index:5;font-family:'Orbitron',sans-serif;box-shadow:0 2px 12px rgba(239,68,68,0.4)}
-.acc-card{background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:16px 16px 13px;position:relative;overflow:hidden;transition:border-color 0.2s}
-.acc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent)}
-.user-acc-bar{height:4px;border-radius:100px;background:linear-gradient(90deg,#00f2ff,#a855f7,#ff00e5);transition:width 0.7s ease;box-shadow:0 0 8px rgba(0,242,255,0.25)}
-.acc-mini-tag{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);padding:3px 8px;border-radius:8px;font-size:10px;font-family:'Courier New',monospace}
-
-/* ── REVENUE HISTORY ── */
-.rev-hist-item{background:rgba(0,0,0,0.3);border:1px solid rgba(0,255,136,0.15);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px}
-.rev-hist-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;flex-shrink:0;box-shadow:0 0 8px rgba(0,255,136,0.6)}
-
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
-::-webkit-scrollbar-thumb{background:rgba(0,242,255,0.25);border-radius:100px}
+input,textarea,button{
+    padding:8px;
+    margin:5px;
+}
+.card{
+    border:1px solid #444;
+    padding:10px;
+    margin:10px 0;
+    border-radius:10px;
+}
+.used{
+    border-color:red;
+}
+.unused{
+    border-color:lime;
+}
 </style>
 </head>
 <body>
-<div id="toast" class="toast"></div>
+<h1>ACC MANAGER</h1>
+<h3>Tổng ACC: <span id="total">0</span></h3>
+<hr>
+<h2>Thêm ACC</h2>
 
-<!-- REVENUE NOTIFICATION POPUP -->
-<div id="rev-popup" class="rev-popup hidden">
-  <div class="rev-popup-box">
-    <div class="rev-coins">💰</div>
-    <p class="text-[10px] font-bold tracking-widest text-green-400 mt-3 mb-1 orb">DOANH THU ĐÃ VỀ!</p>
-    <div class="rev-amount" id="rev-popup-amount">+8.000đ</div>
-    <p class="text-xs text-slate-400 mt-2 font-bold" id="rev-popup-acc">Acc: <span class="text-white"></span></p>
-    <p class="text-[10px] text-slate-500 mt-1" id="rev-popup-msg"></p>
-    <button class="rev-close-btn" onclick="closeRevPopup()">✓ ĐÃ NHẬN</button>
-  </div>
-</div>
+Thêm
 
-<!-- LOGIN -->
-<div id="login-page" class="flex items-center justify-center min-h-screen p-6">
-  <div class="w-full max-w-sm glass-strong p-10 rounded-[3rem] text-center" style="border:1px solid rgba(168,85,247,0.18);box-shadow:0 0 80px rgba(168,85,247,0.08),0 0 40px rgba(0,242,255,0.04)">
-    <div class="mb-2" style="font-family:'Orbitron',sans-serif">
-      <div class="text-5xl font-black mb-1" style="text-shadow:0 0 30px rgba(0,242,255,0.6)">
-        NEBULA<span style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.7)">V5</span>
-      </div>
-      <div class="flex items-center justify-center gap-2 mb-1">
-        <div style="height:1px;width:36px;background:linear-gradient(90deg,transparent,rgba(0,242,255,0.4))"></div>
-        <span class="text-[8px] tracking-[0.4em] text-slate-500 uppercase" style="font-family:'Rajdhani',sans-serif">Cloud Database System</span>
-        <div style="height:1px;width:36px;background:linear-gradient(90deg,rgba(0,242,255,0.4),transparent)"></div>
-      </div>
-    </div>
-    <p class="text-[8px] text-slate-700 mb-10 tracking-[0.25em] orb">⚡ AUTO RESET 22:00 DAILY ⚡</p>
-    <div class="space-y-3">
-      <input type="text" id="user" placeholder="USERNAME" class="w-full p-4 rounded-2xl text-sm tracking-widest">
-      <input type="password" id="pass" placeholder="PASSWORD" class="w-full p-4 rounded-2xl text-sm" onkeydown="if(event.key==='Enter')login()">
-      <button onclick="login()" class="w-full btn-rainbow py-4 rounded-2xl mt-2 uppercase text-sm orb">
-        <i class="fa-solid fa-bolt mr-2"></i>VÀO HỆ THỐNG
-      </button>
-    </div>
-    <p id="login-error" class="hidden mt-4 text-xs text-red-400 font-bold orb">✕ SAI THÔNG TIN</p>
-  </div>
-</div>
+<hr>
+<h2>Import Hàng Loạt</h2>
+<textarea id="bulkUsers"
+rows="8"
+cols="40"
+placeholder="Mỗi dòng 1 acc"></textarea>
+<br>
 
-<!-- ADMIN -->
-<div id="admin-page" class="hidden p-4 pt-10 pb-24">
-  <div class="max-w-2xl mx-auto">
-    <header class="flex justify-between items-center mb-7 px-1">
-      <div>
-        <h2 class="text-2xl font-black orb" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.5)">MASTER <span style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.5)">ADMIN</span></h2>
-        <p class="text-[8px] text-slate-600 tracking-widest">Full Access · All Systems</p>
-      </div>
-      <button onclick="logout()" class="w-11 h-11 glass rounded-xl text-red-400" style="border:1px solid rgba(239,68,68,0.18)"><i class="fa-solid fa-power-off"></i></button>
-    </header>
-    <div id="admin-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-7"></div>
+Import
 
-    <!-- Admin Revenue Panel -->
-    <div class="rev-panel mb-6">
-      <div class="flex items-center gap-2 mb-3">
-        <span class="text-lg">💰</span>
-        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU HỆ THỐNG</span>
-        <span class="text-[8px] text-slate-500 font-bold ml-auto">Giá: LV30+ = 8,000đ/acc</span>
-      </div>
-      <div class="flex gap-2 mb-3">
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG DT</p>
-          <div class="rev-big-num" id="admin-total-rev">0đ</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ĐÃ BÁN</p>
-          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="admin-sold-count">0</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN SÀNG</p>
-          <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="admin-ready-sell">0</div>
-        </div>
-      </div>
-      <div id="admin-rev-history" class="space-y-2 max-h-40 overflow-y-auto"></div>
-    </div>
-
-    <div id="admin-reset-wrap" class="reset-bar-wrap">
-      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
-      <div class="flex-1">
-        <div class="flex justify-between mb-1">
-          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối</span>
-          <span id="admin-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
-        </div>
-        <div class="reset-bar-inner"><div id="admin-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
-      </div>
-    </div>
-    <div class="flex gap-1 mb-7 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
-      <button id="tab-acc-btn" onclick="switchAdminTab('acc')" class="flex-1 py-3 rounded-xl tab-active">📦 Acc</button>
-      <button id="tab-search-btn" onclick="switchAdminTab('search')" class="flex-1 py-3 rounded-xl">🔍 Tìm</button>
-      <button id="tab-user-btn" onclick="switchAdminTab('user')" class="flex-1 py-3 rounded-xl">👥 Users</button>
-    </div>
-
-    <div id="admin-tab-acc" class="animate-fade">
-      <div class="glass p-6 rounded-[2rem] mb-6" style="border:1px solid rgba(0,242,255,0.09)">
-        <div class="mode-toggle mb-4">
-          <button class="mode-btn active" id="admin-mode-single-btn" onclick="switchAdminMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="admin-mode-bulk-btn" onclick="switchAdminMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
-        </div>
-        <div id="admin-single-mode" class="space-y-3">
-          <input type="text" id="ad-acc-tk" placeholder="Tài khoản game" class="w-full p-3.5 rounded-xl text-sm">
-          <input type="text" id="ad-acc-mk" placeholder="Mật khẩu game" class="w-full p-3.5 rounded-xl text-sm">
-          <input type="number" id="ad-acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-3.5 rounded-xl text-sm">
-          <button onclick="adminPostAcc()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">⚡ Up Acc Root</button>
-        </div>
-        <div id="admin-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-cyan-400 text-xs"></i>Mỗi dòng: <code class="text-cyan-300">tài_khoản|mật_khẩu|level</code></div>
-          <textarea id="admin-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-3.5 rounded-xl" oninput="previewBulk('admin')"></textarea>
-          <div id="admin-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="adminBulkPost()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>Up Tất Cả</button>
-        </div>
-      </div>
-      <div class="view-toggle">
-        <button class="view-btn active" id="admin-view-all-btn" onclick="switchAdminView('all')"><i class="fa-solid fa-list mr-1"></i>Tất cả</button>
-        <button class="view-btn" id="admin-view-group-btn" onclick="switchAdminView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Phân loại LV</button>
-      </div>
-      <div id="admin-list-accs"></div>
-    </div>
-
-    <div id="admin-tab-search" class="hidden animate-fade">
-      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(0,242,255,0.09)">
-        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 orb"><i class="fa-solid fa-magnifying-glass mr-2 text-cyan-400"></i>Tìm kiếm Acc</p>
-        <div class="search-wrap">
-          <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
-          <input type="text" id="admin-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runAdminSearch()">
-          <span class="search-clear" onclick="clearSearch('admin')"><i class="fa-solid fa-xmark"></i></span>
-        </div>
-        <p class="text-[8px] text-slate-500 font-bold mb-2 uppercase tracking-widest orb">Lọc theo Level</p>
-        <div class="flex gap-2 flex-wrap" id="admin-lv-tags"></div>
-      </div>
-      <div id="admin-search-count" class="search-count"></div>
-      <div id="admin-search-results" class="space-y-3"></div>
-    </div>
-
-    <div id="admin-tab-user" class="hidden animate-fade">
-      <div class="glass p-6 rounded-[2rem] mb-6 space-y-3" style="border:1px solid rgba(168,85,247,0.12)">
-        <input type="text" id="new-u" placeholder="Tên User" class="w-full p-3.5 rounded-xl text-sm">
-        <input type="text" id="new-p" placeholder="Mật khẩu" class="w-full p-3.5 rounded-xl text-sm">
-        <button onclick="addUser()" class="w-full btn-rainbow py-3.5 rounded-xl text-sm uppercase orb">👤 Cấp Tài Khoản</button>
-      </div>
-      <div id="admin-list-users" class="space-y-3"></div>
-    </div>
-  </div>
-</div>
-
-<!-- USER -->
-<div id="user-page" class="hidden p-4 pt-10 pb-24">
-  <div class="max-w-2xl mx-auto">
-    <header class="flex justify-between items-center mb-6 px-1">
-      <div>
-        <h2 class="text-2xl font-black orb" style="color:#ff00e5;text-shadow:0 0 20px rgba(255,0,229,0.5)"><span id="user-name"></span></h2>
-        <p class="text-[8px] text-slate-600 tracking-widest">Member · Game Farmer 🎮</p>
-      </div>
-      <button onclick="logout()" class="glass px-3 py-2 rounded-xl text-[8px] font-black text-slate-400 orb tracking-widest">THOÁT</button>
-    </header>
-    <div id="user-global-stats" class="flex gap-3 overflow-x-auto pb-3 mb-5"></div>
-
-    <!-- User Revenue Panel -->
-    <div class="rev-panel mb-5">
-      <div class="flex items-center gap-2 mb-3">
-        <span class="text-lg">💵</span>
-        <span class="text-[10px] font-black orb tracking-widest text-green-400">DOANH THU CỦA TÔI</span>
-        <span class="text-[8px] text-slate-500 font-bold ml-auto">LV30+ = 8k/acc</span>
-      </div>
-      <div class="flex gap-2">
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-green-400 orb tracking-wider mb-1">TỔNG NHẬN</p>
-          <div class="rev-big-num" id="user-total-rev">0đ</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-yellow-400 orb tracking-wider mb-1">ACC BÁN</p>
-          <div class="rev-big-num" style="color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.6)" id="user-sold-count">0</div>
-        </div>
-        <div class="rev-mini">
-          <p class="text-[8px] font-bold text-cyan-400 orb tracking-wider mb-1">SẴN LV30+</p>
-          <div class="rev-big-num" style="color:#00f2ff;text-shadow:0 0 20px rgba(0,242,255,0.6)" id="user-ready-sell">0</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reset-bar-wrap">
-      <i class="fa-solid fa-rotate text-cyan-400 text-xs flex-shrink-0"></i>
-      <div class="flex-1">
-        <div class="flex justify-between mb-1">
-          <span class="text-[8px] text-slate-500 uppercase tracking-widest orb">Reset 22:00 tối nay</span>
-          <span id="user-reset-txt" class="text-[9px] text-cyan-400 font-bold orb"></span>
-        </div>
-        <div class="reset-bar-inner"><div id="user-reset-fill" class="reset-bar-fill" style="width:0%"></div></div>
-      </div>
-    </div>
-
-    <!-- BEE AI -->
-    <div class="bee-panel p-5 mb-7">
-      <div class="flex gap-3 items-start">
-        <div class="bee-avatar">🐝</div>
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-2 flex-wrap">
-            <span class="text-sm font-black orb" style="color:#facc15;text-shadow:0 0 12px rgba(250,204,21,0.6)">BEE AI</span>
-            <span class="text-[8px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);color:#fbbf24">Smart Local</span>
-            <span id="bee-dot" class="hidden text-[8px] text-green-400 font-bold orb"><i class="fa-solid fa-circle text-[6px] mr-1"></i>ONLINE</span>
-          </div>
-          <div class="bee-bubble" id="bee-message"><div class="bee-typing"><span></span><span></span><span></span></div></div>
-        </div>
-      </div>
-      <div id="bee-actions" class="hidden mt-3 flex gap-2 flex-wrap">
-        <button onclick="beeSortUrgent()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.28);color:#fca5a5"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Ưu tiên</button>
-        <button onclick="beeSortDefault()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:#94a3b8"><i class="fa-solid fa-clock-rotate-left mr-1"></i>Mặc định</button>
-        <button onclick="beeAnalyze()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#86efac"><i class="fa-solid fa-chart-bar mr-1"></i>Phân tích</button>
-        <button onclick="beeMeme()" class="text-[9px] font-black px-3 py-2 rounded-xl orb" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:#c084fc"><i class="fa-solid fa-face-laugh-squint mr-1"></i>Meme</button>
-      </div>
-      <div class="bee-chat-wrap">
-        <input type="text" id="bee-chat-input" class="bee-chat-input" placeholder="Hỏi BEE bất cứ gì... 🐝" onkeydown="if(event.key==='Enter')sendBeeChat()">
-        <button class="bee-send-btn" id="bee-send-btn" onclick="sendBeeChat()"><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="flex gap-1 mb-6 p-1 glass rounded-2xl text-[8px] font-black uppercase orb">
-      <button id="utab-list-btn" onclick="switchUserTab('list')" class="flex-1 py-3.5 rounded-xl tab-active">📦 Kho Acc</button>
-      <button id="utab-search-btn" onclick="switchUserTab('search')" class="flex-1 py-3.5 rounded-xl">🔍 Tìm kiếm</button>
-    </div>
-
-    <div id="utab-list">
-      <div class="glass-strong p-6 rounded-[2.5rem] mb-7" style="border:1px solid rgba(255,0,229,0.08)">
-        <div class="mode-toggle mb-5">
-          <button class="mode-btn active" id="user-mode-single-btn" onclick="switchUserMode('single')"><i class="fa-solid fa-pen mr-1"></i>Đơn lẻ</button>
-          <button class="mode-btn" id="user-mode-bulk-btn" onclick="switchUserMode('bulk')"><i class="fa-solid fa-layer-group mr-1"></i>Bulk</button>
-        </div>
-        <div id="user-single-mode" class="space-y-3">
-          <input type="text" id="acc-tk" placeholder="Tài khoản" class="w-full p-4 rounded-2xl text-sm">
-          <input type="text" id="acc-mk" placeholder="Mật khẩu" class="w-full p-4 rounded-2xl text-sm">
-          <input type="number" id="acc-lv" placeholder="Level (1–50)" min="1" max="50" class="w-full p-4 rounded-2xl text-sm">
-          <button onclick="postAcc()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb">🎮 ĐĂNG ACC MỚI</button>
-        </div>
-        <div id="user-bulk-mode" class="hidden space-y-3">
-          <div class="flex items-center gap-2 text-[10px] text-slate-400"><i class="fa-solid fa-circle-info text-pink-400 text-xs"></i>Mỗi dòng: <code class="text-pink-300">tài_khoản|mật_khẩu|level</code></div>
-          <textarea id="user-bulk-input" rows="7" placeholder="player001|pass123|30" class="w-full p-4 rounded-2xl" oninput="previewBulk('user')"></textarea>
-          <div id="user-bulk-preview" class="space-y-1 max-h-40 overflow-y-auto"></div>
-          <button onclick="userBulkPost()" class="w-full btn-rainbow py-4 rounded-2xl text-sm uppercase orb"><i class="fa-solid fa-rocket mr-2"></i>ĐĂNG TẤT CẢ</button>
-        </div>
-      </div>
-      <div class="view-toggle">
-        <button class="view-btn active" id="user-view-all-btn" onclick="switchUserView('all')"><i class="fa-solid fa-list mr-1"></i>Tất cả</button>
-        <button class="view-btn" id="user-view-group-btn" onclick="switchUserView('group')"><i class="fa-solid fa-layer-group mr-1"></i>Phân loại LV</button>
-      </div>
-      <div id="user-list"></div>
-    </div>
-
-    <div id="utab-search" class="hidden animate-fade">
-      <div class="glass p-5 rounded-[2rem] mb-5" style="border:1px solid rgba(255,0,229,0.1)">
-        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 orb"><i class="fa-solid fa-magnifying-glass mr-2 text-pink-400"></i>Tìm kiếm Acc của tôi</p>
-        <div class="search-wrap">
-          <i class="fa-solid fa-magnifying-glass search-icon-abs"></i>
-          <input type="text" id="user-search-input" class="search-inp" placeholder="Nhập tên tài khoản..." oninput="runUserSearch()">
-          <span class="search-clear" onclick="clearSearch('user')"><i class="fa-solid fa-xmark"></i></span>
-        </div>
-        <p class="text-[8px] text-slate-500 font-bold mb-2 uppercase tracking-widest orb">Lọc theo Level</p>
-        <div class="flex gap-2 flex-wrap" id="user-lv-tags"></div>
-      </div>
-      <div id="user-search-count" class="search-count"></div>
-      <div id="user-search-results" class="space-y-3"></div>
-    </div>
-  </div>
-</div>
-
+<hr>
+<div id="list"></div>
 <script>
-/* ══════════ CONFIG ══════════ */
-const RESET_HOUR=22;
-const SELL_PRICE=8000;   // giá bán mỗi acc LV30+
-const SELL_MIN_LV=30;    // level tối thiểu để bán
-const LV_GROUPS=[
-  {key:'g1',label:'LV 1–9',min:1,max:9,cls:'grp-1',icon:'🌱',fill:'rgba(100,116,139,0.7)'},
-  {key:'g2',label:'LV 10–19',min:10,max:19,cls:'grp-2',icon:'💧',fill:'rgba(59,130,246,0.7)'},
-  {key:'g3',label:'LV 20–29',min:20,max:29,cls:'grp-3',icon:'⚡',fill:'rgba(0,242,255,0.7)'},
-  {key:'g4',label:'LV 30–39',min:30,max:39,cls:'grp-4',icon:'🔮',fill:'rgba(168,85,247,0.7)'},
-  {key:'g5',label:'LV 40–50',min:40,max:50,cls:'grp-5',icon:'👑',fill:'rgba(250,204,21,0.8)'},
-];
-const LV_TAGS=[
-  {label:'Tất cả',min:0,max:50,bg:'rgba(255,255,255,0.06)',abg:'rgba(255,255,255,0.15)',bd:'rgba(255,255,255,0.1)'},
-  {label:'LV 1–9',min:1,max:9,bg:'rgba(100,116,139,0.08)',abg:'rgba(100,116,139,0.28)',bd:'rgba(100,116,139,0.28)'},
-  {label:'LV 10–19',min:10,max:19,bg:'rgba(59,130,246,0.08)',abg:'rgba(59,130,246,0.28)',bd:'rgba(59,130,246,0.28)'},
-  {label:'LV 20–29',min:20,max:29,bg:'rgba(0,242,255,0.07)',abg:'rgba(0,242,255,0.22)',bd:'rgba(0,242,255,0.28)'},
-  {label:'LV 30–39',min:30,max:39,bg:'rgba(168,85,247,0.07)',abg:'rgba(168,85,247,0.25)',bd:'rgba(168,85,247,0.28)'},
-  {label:'LV 40–50',min:40,max:50,bg:'rgba(250,204,21,0.07)',abg:'rgba(250,204,21,0.22)',bd:'rgba(250,204,21,0.28)'},
-];
-const BEE_MEMES=[
-  '😂 Cày acc mà ngủ quên = bị người ta cướp trước lol',
-  '💀 Acc LV50 mà chưa cày = đang để gà kén chủ...',
-  '🤡 "Mai cày cũng được" — ngày hôm sau acc vẫn đó, ý chí thì không',
-  '😭 Reset 22h rồi mà chưa xong? Skill issue bro',
-  '👀 BEE thấy bạn có acc chưa cày kìa... BEE không nói đâu nhé 🙊',
-  '🔥 Cày acc như ăn cơm: phải đều đặn, không thì đói 💀',
-  '😤 "Chỉ còn 1 acc nữa thôi" — 3 tiếng sau vẫn đang cày 🐢',
-  '🧠 Big brain move: đăng acc → cày ngay → chờ Admin bán → tiền về 😎',
-  '😂 Acc LV1 nhìn acc LV50 mà thở dài: "Bao giờ đến lượt tao..."',
-  '💅 BEE làm việc không biết mệt. Còn bạn thì... 🤔',
-  '🏃 Thấy đồng hồ 21:59 mà chưa xong? CHẠY ĐI CON ƠI',
-  '💰 Acc LV30+ được Admin bán = 8k về tay! Cày đi mà giàu! 🤑',
-];
-
-function fmtMoney(n){
-  if(n>=1000000)return (n/1000000).toFixed(1).replace('.0','')+'M';
-  if(n>=1000)return (n/1000).toFixed(0)+'k';
-  return n+'';
+let accounts =
+JSON.parse(localStorage.getItem("accounts") || "[]");
+function save(){
+    localStorage.setItem(
+        "accounts",
+        JSON.stringify(accounts)
+    );
 }
-function fmtMoneyFull(n){return n.toLocaleString('vi-VN')+'đ'}
-
-/* BEE LOCAL REPLY */
-function beeLocalReply(msg,ctx){
-  msg=msg.toLowerCase();
-  const {total,chua,dang,xong,ban,revTotal,byLv,topChua,user}=ctx;
-  if(/doanh.*(thu|tiền)|tiền|bán|kiếm/.test(msg)){
-    const readySell=byLv.filter(g=>g.minLv>=SELL_MIN_LV).reduce((s,g)=>s+g.count,0);
-    if(!revTotal&&!ban)return `💰 Chưa có doanh thu nào nhé! Cày acc LV${SELL_MIN_LV}+ rồi đợi Admin bán là có tiền ngay!`;
-    return `💰 Bạn đã kiếm được <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban} acc</b> đã bán! ${readySell?`Còn <b class="text-cyan-300">${readySell} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán nữa!`:''}`;
-  }
-  if(/còn.*(bao nhiêu|mấy).*(acc|chưa)|chưa.*(cày|làm)/.test(msg)){
-    if(!chua)return '🎉 Ngon! Hết acc chưa cày rồi, bạn là huyền thoại! 👑';
-    return `🔴 Còn <b class="text-red-300">${chua} acc chưa cày</b>! ${topChua.slice(0,2).map(a=>`<code class="text-pink-300">${a.tk}</code>`).join(', ')} ${chua>2?`và ${chua-2} acc nữa`:''} — cày thôi nào!`;
-  }
-  if(/đang.*(cày|làm)/.test(msg)){
-    if(!dang)return '😴 Không có acc nào đang cày đâu bro!';
-    return `⚡ Đang cày <b class="text-yellow-300">${dang} acc</b>! Giữ đà đó! 💪`;
-  }
-  if(/xong|hoàn.*(thành|tất)|done/.test(msg)){
-    if(!xong)return '😬 Chưa có acc nào xong cả...';
-    return `✅ Đã xong <b class="text-green-300">${xong} acc</b>! Còn ${chua} acc chưa cày.`;
-  }
-  if(/reset|22h|tối|mấy.*(giờ)|còn.*(bao lâu|thời gian)/.test(msg)){
-    const now=new Date(),reset=new Date();
-    reset.setHours(RESET_HOUR,0,0,0);
-    if(now>=reset)reset.setDate(reset.getDate()+1);
-    const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-    return `⏰ Còn <b class="text-cyan-300">${h}h ${m}m</b> đến khi reset 22:00! ${h<2?'⚠️ Ít thời gian, CHẠY ĐI!':h<5?'🏃 Vừa đủ nếu nghiêm túc!':'😎 Còn thoải mái!'}`;
-  }
-  if(/tổng|kho|bao nhiêu.*(acc|tất cả)/.test(msg)){
-    if(!total)return '😅 Kho trống rỗng! Đăng acc mới đi bro~';
-    return `📦 Kho: <b>${total} acc</b> — 🔴 ${chua} chưa · ⚡ ${dang} đang · ✅ ${xong} xong · 💰 ${ban} đã bán`;
-  }
-  if(/meme|hài|vui/.test(msg))return `<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
-  if(/xin chào|hello|hi|chào/.test(msg))return `👋 Chào <b>${user}</b>! Kho: ${total} acc, doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b>!`;
-  const tips=[
-    `💡 Bạn có <b>${chua} acc chưa cày</b>. Acc LV30+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ</b>!`,
-    `💰 Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ ${ban} acc bán. Cày thêm để tăng doanh thu!`,
-    `🐝 Cày đến LV${SELL_MIN_LV}+ rồi báo Admin bán, tiền sẽ về ngay! 🤑`,
-  ];
-  return tips[Math.floor(Math.random()*tips.length)];
-}
-
-function beeAnalyzeLocal(ctx){
-  const {total,chua,dang,xong,ban,revTotal,byLv,topChua}=ctx;
-  if(!total)return '😅 Kho trống! Đăng acc mới trước rồi BEE mới phân tích được nhé~';
-  const now=new Date(),reset=new Date();
-  reset.setHours(RESET_HOUR,0,0,0);
-  if(now>=reset)reset.setDate(reset.getDate()+1);
-  const diff=reset-now,h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
-  const rate=total?Math.round((xong+ban)/total*100):0;
-  const highLvChua=topChua.filter(a=>a.lv>=SELL_MIN_LV);
-  let html=`<div class="bee-analyze-box">`;
-  html+=`<b class="text-green-300">📊 Báo cáo kho của bạn:</b><br>`;
-  html+=`• Tổng: <b>${total}</b> | Xong: <b class="text-green-300">${xong}</b> | Đang: <b class="text-yellow-300">${dang}</b> | Chưa: <b class="text-red-300">${chua}</b> | Đã bán: <b class="text-green-400">${ban}</b><br>`;
-  html+=`• Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> | Tiến độ: <b>${rate}%</b><br>`;
-  html+=`• Reset sau: <b class="text-cyan-300">${h}h ${m}m</b><br><br>`;
-  if(highLvChua.length){
-    html+=`<b class="text-yellow-300">💰 Acc LV${SELL_MIN_LV}+ chưa bán:</b><br>`;
-    highLvChua.slice(0,3).forEach(a=>html+=`→ <code class="text-pink-300">${a.tk}</code> LV ${a.lv} = <b class="text-green-300">${fmtMoneyFull(SELL_PRICE)}</b><br>`);
-    html+=`<br>`;
-  }
-  if(chua===0&&!highLvChua.length){
-    html+=`<b class="text-green-300">🏆 XUẤT SẮC!</b> Tất cả đã hoàn thành!`;
-  } else {
-    html+=`<b class="text-yellow-300">🎯 Gợi ý:</b> ${highLvChua.length?`Có <b class="text-green-300">${highLvChua.length} acc LV${SELL_MIN_LV}+</b> sẵn sàng bán, báo Admin để nhận tiền!`:`Cày acc lên LV${SELL_MIN_LV}+ để bán với giá <b class="text-green-300">8,000đ/acc</b>!`}`;
-  }
-  html+=`</div>`;
-  return html;
-}
-
-/* ══════════ FIREBASE BOOT ══════════ */
-function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
-loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-app-compat.min.js')
-  .then(()=>loadScript('https://cdn.jsdelivr.net/npm/firebase@9.17.1/firebase-database-compat.min.js'))
-  .then(bootApp);
-
-function bootApp(){
-  const cfg={apiKey:"AIzaSyAAU_3tGfOFXThNgeOfzzaZ1JJsIRXvm9I",authDomain:"cccc-1e4fe.firebaseapp.com",databaseURL:"https://cccc-1e4fe-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cccc-1e4fe",storageBucket:"cccc-1e4fe.firebasestorage.app",messagingSenderId:"23606175445",appId:"1:23606175445:web:9cb963552b352cf308e45c"};
-  firebase.initializeApp(cfg);
-  const dbRef=firebase.database().ref('NEBULA_DATA_V5');
-  const ADMIN={u:'gbao',p:'031008'};
-  let db={users:[],accounts:[],revenue:[]};  // revenue: [{id, accId, uploader, tk, lv, amount, time, seen}]
-  let currentMode='',currentUser=null,sortMode='default';
-  let userViewMode='all',adminViewMode='all';
-  let uLvFilter={min:0,max:50},aLvFilter={min:0,max:50};
-  const openGrps={user:{},admin:{}};
-  let resetDone=false;
-
-  dbRef.on('value',snap=>{
-    const d=snap.val(),toArr=v=>v?(Array.isArray(v)?v:Object.values(v)):[];
-    db.users=toArr(d&&d.users);
-    db.accounts=toArr(d&&d.accounts);
-    db.revenue=toArr(d&&d.revenue);
-    if(currentMode)renderUI();
-    // Check unseen revenue for current user
-    if(currentMode==='user'&&currentUser){checkUnseenRevenue();}
-  });
-  function sync(){return dbRef.set({users:db.users,accounts:db.accounts,revenue:db.revenue})}
-
-  /* ── SELL ACC (Admin only) ── */
-  window.sellAcc=function(id){
-    const a=db.accounts.find(x=>x.id===id);
-    if(!a)return;
-    if(a.lv<SELL_MIN_LV){showToast('✕ Chỉ bán được acc LV'+SELL_MIN_LV+'+');return;}
-    if(a.status==='ban'){showToast('✕ Acc này đã bán rồi!');return;}
-    if(!confirm(`Bán acc [${a.tk}] LV${a.lv} với giá ${fmtMoneyFull(SELL_PRICE)}?`))return;
-    a.status='ban';
-    a.soldAt=Date.now();
-    a.soldPrice=SELL_PRICE;
-    // Ghi vào revenue
-    const rev={id:Date.now(),accId:a.id,uploader:a.uploader,tk:a.tk,lv:a.lv,amount:SELL_PRICE,time:Date.now(),seen:false};
-    db.revenue.push(rev);
-    sync().then(()=>{
-      showToast('💰 ĐÃ BÁN! +'+fmtMoneyFull(SELL_PRICE)+' → @'+a.uploader,'money');
-      renderUI();
+function render(){
+    let html = "";
+    accounts.forEach((acc,index)=>{
+        html += `
+        <div class="card ${acc.used?'used':'unused'}">
+        <b>${acc.username}</b><br>
+        Password:
+        ${acc.password}<br>
+        Note:
+        ${acc.note || '-'}<br>
+        Status:
+        ${acc.used ? 'ĐÃ DÙNG' : 'CHƯA DÙNG'}
+        <br><br>
+        <button onclick="toggleUsed(${index})">
+        Đổi trạng thái
+        </button>
+        <button onclick="deleteAcc(${index})">
+        Xóa
+        </button>
+        </div>
+        `;
     });
-  };
-
-  /* ── CHECK UNSEEN REVENUE (for logged-in user) ── */
-  function checkUnseenRevenue(){
-    if(!currentUser)return;
-    const unseen=db.revenue.filter(r=>r.uploader===currentUser.u&&!r.seen);
-    if(!unseen.length)return;
-    // Mark all as seen
-    unseen.forEach(r=>r.seen=true);
-    sync();
-    // Show popup for first unseen (most recent)
-    const r=unseen[unseen.length-1];
-    showRevPopup(r);
-  }
-
-  function showRevPopup(r){
-    document.getElementById('rev-popup-amount').textContent='+'+fmtMoneyFull(r.amount);
-    document.getElementById('rev-popup-acc').innerHTML=`Acc: <b class="text-white">${r.tk}</b> <span class="lv-badge-gold ml-1">LV ${r.lv}</span>`;
-    document.getElementById('rev-popup-msg').textContent='Admin đã bán acc của bạn! 🎉';
-    document.getElementById('rev-popup').classList.remove('hidden');
-  }
-  window.closeRevPopup=function(){document.getElementById('rev-popup').classList.add('hidden');};
-
-  /* ── AUTO RESET 22:00 ── */
-  function checkAutoReset(){
-    const now=new Date();
-    const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
-    if(h===RESET_HOUR&&m===0&&s<30&&!resetDone){
-      resetDone=true;
-      let changed=false;
-      db.accounts.forEach(a=>{
-        if((a.status==='dang'||a.status==='xong')&&a.status!=='ban'){a.status='chua';changed=true;}
-      });
-      if(changed){sync().then(()=>{showToast('🔄 RESET 22:00 — Tất cả về chưa cày!');if(currentMode==='user')beeInit();});}
-    }
-    if(h===RESET_HOUR&&m===1)resetDone=false;
-    updateResetTimer();
-  }
-  function updateResetTimer(){
-    const now=new Date(),reset=new Date();
-    reset.setHours(RESET_HOUR,0,0,0);
-    if(now>=reset)reset.setDate(reset.getDate()+1);
-    const total=24*3600*1000,diff=reset-now;
-    const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    const txt=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    const pct=Math.round((1-diff/total)*100);
-    ['admin','user'].forEach(p=>{
-      const t=document.getElementById(p+'-reset-txt'),b=document.getElementById(p+'-reset-fill');
-      if(t)t.textContent=txt;if(b)b.style.width=pct+'%';
-    });
-  }
-  setInterval(checkAutoReset,1000);updateResetTimer();
-
-  /* ── AUTH ── */
-  window.login=function(){
-    const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();
-    if(u===ADMIN.u&&p===ADMIN.p){currentMode='admin';showPage('admin-page');renderUI();}
-    else{
-      const f=db.users.find(x=>x.u===u&&x.p===p);
-      if(f){currentMode='user';currentUser=f;document.getElementById('user-name').innerText=u;showPage('user-page');renderUI();setTimeout(beeInit,800);}
-      else document.getElementById('login-error').classList.remove('hidden');
-    }
-  };
-  window.logout=function(){location.reload()};
-
-  /* ── BEE ── */
-  function beeCtx(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const chua=my.filter(a=>!a.status||a.status==='chua');
-    const dang=my.filter(a=>a.status==='dang');
-    const xong=my.filter(a=>a.status==='xong');
-    const ban=my.filter(a=>a.status==='ban');
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
-    const byLv=LV_GROUPS.map(g=>({group:g.label,minLv:g.min,count:my.filter(a=>a.lv>=g.min&&a.lv<=g.max).length})).filter(g=>g.count>0);
-    return {user:currentUser.u,total:my.length,chua:chua.length,dang:dang.length,xong:xong.length,ban:ban.length,revTotal,byLv,topChua:chua.slice(0,5).map(a=>({tk:a.tk,lv:a.lv}))};
-  }
-  function beeInit(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const chua=my.filter(a=>!a.status||a.status==='chua');
-    const dang=my.filter(a=>a.status==='dang');
-    const xong=my.filter(a=>a.status==='xong');
-    const ban=my.filter(a=>a.status==='ban');
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const revTotal=myRev.reduce((s,r)=>s+r.amount,0);
-    const el=document.getElementById('bee-message'),act=document.getElementById('bee-actions'),dot=document.getElementById('bee-dot');
-    let msg='';
-    if(!my.length){
-      msg=`👋 Xin chào <b>${currentUser.u}</b>! Kho trống. Đăng acc mới để bắt đầu! 🎮`;
-    } else if(ban.length&&revTotal){
-      msg=`💰 Xin chào <b>${currentUser.u}</b>! Doanh thu: <b class="text-green-300">${fmtMoneyFull(revTotal)}</b> từ <b>${ban.length} acc</b> đã bán!`;
-      if(chua.length)msg+=` Còn <b class="text-red-300">${chua.length} acc chưa cày</b>.`;
-      msg+=`<div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Cày acc LV${SELL_MIN_LV}+ để Admin bán thêm, mỗi acc = <b class="text-green-300">8,000đ</b>! 🤑</div>`;
-    } else if(!chua.length){
-      msg=`🎉 Tuyệt vời <b>${currentUser.u}</b>! Tất cả <b>${my.length} acc</b> đã có trạng thái.`;
-      msg+=`<div class="bee-meme-box">${BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)]}</div>`;
-    } else {
-      msg=`👋 Chào <b>${currentUser.u}</b>! <b class="text-red-300">${chua.length} acc chưa cày</b> / ${my.length} acc.`;
-      if(dang.length)msg+=` <span class="text-yellow-300">⚡ ${dang.length} đang.</span>`;
-      if(xong.length)msg+=` <span class="text-green-300">✓ ${xong.length} xong.</span>`;
-      msg+=`<div class="bee-urgent-box mt-2"><i class="fa-solid fa-fire text-red-400 mr-1"></i><b class="text-red-300">Cày ngay:</b><br>`;
-      chua.slice(0,3).forEach((a,i)=>{msg+=`${i+1}. <code class="text-pink-300">${a.tk}</code> — LV ${a.lv}${a.lv>=SELL_MIN_LV?` <span class="text-green-400 text-[9px]">💰 +8k</span>`:''}<br>`});
-      if(chua.length>3)msg+=`<span class="text-slate-500 text-[10px]">...và ${chua.length-3} acc nữa</span>`;
-      msg+=`</div><div class="bee-tip-box mt-2"><i class="fa-solid fa-coins text-yellow-400 mr-1"></i>Acc LV${SELL_MIN_LV}+ sẽ được Admin bán với giá <b class="text-green-300">8,000đ/acc</b>!</div>`;
-    }
-    setTimeout(()=>{el.innerHTML=msg;act.classList.remove('hidden');act.style.display='flex';dot.classList.remove('hidden');},1000);
-  }
-
-  window.sendBeeChat=function(){
-    const inp=document.getElementById('bee-chat-input'),btn=document.getElementById('bee-send-btn');
-    const msg=inp.value.trim();if(!msg)return;
-    inp.value='';
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    btn.classList.add('loading');btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
-    setTimeout(()=>{const ctx=beeCtx();el.innerHTML=beeLocalReply(msg,ctx);btn.classList.remove('loading');btn.innerHTML='<i class="fa-solid fa-paper-plane"></i>';},600+Math.random()*400);
-  };
-  window.beeAnalyze=function(){
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    setTimeout(()=>{el.innerHTML=beeAnalyzeLocal(beeCtx());},700);
-  };
-  window.beeMeme=function(){
-    const el=document.getElementById('bee-message');
-    el.innerHTML=`<div class="bee-typing"><span></span><span></span><span></span></div>`;
-    setTimeout(()=>{const meme=BEE_MEMES[Math.floor(Math.random()*BEE_MEMES.length)];el.innerHTML=`<div class="bee-meme-box">${meme}</div>Còn <b class="text-red-300">${beeCtx().chua} acc chưa cày</b> đó nha~`;},500);
-  };
-  window.beeSortUrgent=function(){sortMode='urgent';renderUserList();showToast('🐝 Ưu tiên acc chưa cày!');document.getElementById('bee-message').innerHTML=`Đã đẩy <b class="text-red-300">acc chưa cày</b> lên đầu! Cày thôi nào 💪`;};
-  window.beeSortDefault=function(){sortMode='default';renderUserList();showToast('Về thứ tự mặc định');document.getElementById('bee-message').innerHTML=`Đã về <b class="text-cyan-300">thứ tự mặc định</b> rồi nhé!`;};
-
-  /* ── SEARCH ── */
-  function buildTags(ctx){
-    const cur=ctx==='admin'?aLvFilter:uLvFilter;
-    document.getElementById(ctx==='admin'?'admin-lv-tags':'user-lv-tags').innerHTML=LV_TAGS.map(r=>{
-      const active=cur.min===r.min&&cur.max===r.max;
-      return `<span class="lv-tag" onclick="setLvTag('${ctx}',${r.min},${r.max})" style="background:${active?r.abg:r.bg};border:1px solid ${r.bd};color:${active?'white':'rgba(255,255,255,0.4)'}">${r.label}</span>`;
-    }).join('');
-  }
-  window.setLvTag=function(ctx,min,max){
-    if(ctx==='admin')aLvFilter={min,max};else uLvFilter={min,max};
-    buildTags(ctx);
-    if(ctx==='admin')runAdminSearch();else runUserSearch();
-  };
-  window.clearSearch=function(ctx){document.getElementById(ctx==='admin'?'admin-search-input':'user-search-input').value='';if(ctx==='admin')runAdminSearch();else runUserSearch();};
-  window.runAdminSearch=function(){
-    const q=document.getElementById('admin-search-input').value.trim().toLowerCase();
-    const {min,max}=aLvFilter;
-    const list=db.accounts.filter(a=>{const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
-    document.getElementById('admin-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('admin-search-results').innerHTML=list.length?list.map(a=>accCard(a,true)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
-  };
-  window.runUserSearch=function(){
-    const q=document.getElementById('user-search-input').value.trim().toLowerCase();
-    const {min,max}=uLvFilter;
-    const list=db.accounts.filter(a=>{if(a.uploader!==currentUser.u)return false;const lvOk=min===0||(a.lv>=min&&a.lv<=max);return lvOk&&(!q||a.tk.toLowerCase().includes(q));}).slice().reverse();
-    document.getElementById('user-search-count').textContent=list.length?`Tìm thấy ${list.length} acc`:'';
-    document.getElementById('user-search-results').innerHTML=list.length?list.map(a=>accCard(a,false)).join(''):`<div class="search-empty"><i class="fa-solid fa-ghost text-3xl mb-3 block opacity-20"></i>Không tìm thấy</div>`;
-  };
-
-  /* ── STATUS ── */
-  window.updateStatus=function(id,val){
-    const a=db.accounts.find(x=>x.id===id);if(!a)return;
-    if(a.status==='ban'){showToast('✕ Acc đã bán, không thể thay đổi');return;}
-    a.status=val;sync().then(()=>{showToast('✓ '+stLabel(val));if(currentMode==='user'){renderUserStats();renderUserList();runUserSearch();}});
-  };
-  function stLabel(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Hoàn thành':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
-  function stCls(s){return s==='dang'?'s-dang':s==='xong'?'s-xong':s==='ban'?'s-ban':'s-chua'}
-  function stDot(s){return s==='dang'?'dot-dang':s==='xong'?'dot-xong':s==='ban'?'dot-ban':'dot-chua'}
-  function stTxt(s){return s==='dang'?'⚡ Đang cày':s==='xong'?'✅ Xong':s==='ban'?'💰 Đã bán':'🔴 Chưa cày'}
-
-  /* ── POST ── */
-  function clampLv(v){return Math.min(50,Math.max(1,Number(v)))}
-  window.postAcc=function(){
-    const tk=document.getElementById('acc-tk').value.trim(),mk=document.getElementById('acc-mk').value.trim(),lv=document.getElementById('acc-lv').value;
-    if(!tk||!mk||!lv)return;
-    db.accounts.push({id:Date.now(),uploader:currentUser.u,tk,mk,lv:clampLv(lv),status:'chua'});
-    sync().then(()=>{showToast('✓ Đã đăng acc');renderUI();});
-    ['acc-tk','acc-mk','acc-lv'].forEach(i=>document.getElementById(i).value='');
-  };
-  window.adminPostAcc=function(){
-    const tk=document.getElementById('ad-acc-tk').value.trim(),mk=document.getElementById('ad-acc-mk').value.trim(),lv=document.getElementById('ad-acc-lv').value;
-    if(!tk||!mk||!lv)return;
-    db.accounts.push({id:Date.now(),uploader:'ADMIN',tk,mk,lv:clampLv(lv),status:'chua'});
-    sync().then(()=>showToast('✓ Up acc Root'));
-    ['ad-acc-tk','ad-acc-mk','ad-acc-lv'].forEach(i=>document.getElementById(i).value='');
-  };
-
-  /* ── BULK ── */
-  function parseBulk(raw){
-    return raw.split('\n').map((line,i)=>{const t=line.trim();if(!t)return null;const p=t.split('|');if(p.length<3||!p[0]||!p[1]||isNaN(p[2])||p[2]==='')return{ok:false,index:i+1};return{ok:true,tk:p[0].trim(),mk:p[1].trim(),lv:clampLv(p[2]),index:i+1};}).filter(Boolean);
-  }
-  window.previewBulk=function(who){
-    const iid=who==='admin'?'admin-bulk-input':'user-bulk-input',pid=who==='admin'?'admin-bulk-preview':'user-bulk-preview';
-    const items=parseBulk(document.getElementById(iid).value);
-    const ok=items.filter(i=>i.ok).length,err=items.filter(i=>!i.ok).length;
-    const col=who==='admin'?'text-cyan-400':'text-pink-400';
-    document.getElementById(pid).innerHTML=!items.length?'':
-      `<div class="text-[10px] mb-2 font-bold"><span class="${col}">${ok} hợp lệ</span>${err?`<span class="text-red-400 ml-3">${err} lỗi</span>`:''}</div>`+
-      items.slice(0,10).map(x=>x.ok?`<div class="bulk-ok"><i class="fa-solid fa-check text-green-400 text-[9px]"></i><span class="font-mono text-xs">${x.tk}</span><span class="lv-badge ml-auto">LV ${x.lv}</span></div>`:`<div class="bulk-err"><i class="fa-solid fa-xmark text-[9px]"></i>Dòng ${x.index}: Sai định dạng</div>`).join('')+
-      (items.length>10?`<p class="text-[9px] text-slate-500 text-center mt-1">...và ${items.length-10} dòng khác</p>`:'');
-  };
-  window.userBulkPost=function(){
-    const items=parseBulk(document.getElementById('user-bulk-input').value).filter(i=>i.ok);
-    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:currentUser.u,tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-    sync().then(()=>{showToast(`✓ Đã đăng ${items.length} acc`);document.getElementById('user-bulk-input').value='';document.getElementById('user-bulk-preview').innerHTML='';renderUI();});
-  };
-  window.adminBulkPost=function(){
-    const items=parseBulk(document.getElementById('admin-bulk-input').value).filter(i=>i.ok);
-    if(!items.length){showToast('✕ Không có acc hợp lệ');return}
-    const ts=Date.now();items.forEach((x,i)=>db.accounts.push({id:ts+i,uploader:'ADMIN',tk:x.tk,mk:x.mk,lv:x.lv,status:'chua'}));
-    sync().then(()=>{showToast(`✓ Up ${items.length} acc Root`);document.getElementById('admin-bulk-input').value='';document.getElementById('admin-bulk-preview').innerHTML='';});
-  };
-
-  /* ── EDIT / DEL ── */
-  window.editLv=function(id){
-    const a=db.accounts.find(x=>x.id===id);if(!a)return;
-    if(a.status==='ban'){showToast('✕ Không sửa acc đã bán');return;}
-    const v=prompt(`Level mới cho [${a.tk}] (1-50):`,a.lv);
-    if(v===null||v===''||isNaN(v))return;
-    a.lv=clampLv(v);sync().then(()=>showToast('✓ LV → '+a.lv));
-  };
-  window.deleteAcc=function(id){
-    if(!confirm('Xác nhận xóa acc?'))return;
-    db.accounts=db.accounts.filter(a=>a.id!==id);db.revenue=db.revenue.filter(r=>r.accId!==id);
-    sync().then(()=>showToast('✕ Đã xoá acc'));
-  };
-  window.addUser=function(){
-    const u=document.getElementById('new-u').value.trim(),p=document.getElementById('new-p').value.trim();
-    if(!u||!p)return;db.users.push({u,p});sync().then(()=>showToast('✓ Đã cấp tài khoản'));
-    document.getElementById('new-u').value='';document.getElementById('new-p').value='';
-  };
-  window.deleteUser=function(u){
-    if(!confirm('Xóa user này?'))return;
-    db.users=db.users.filter(x=>x.u!==u);db.accounts=db.accounts.filter(x=>x.uploader!==u);db.revenue=db.revenue.filter(r=>r.uploader!==u);
-    sync().then(()=>showToast('✕ Đã xoá user'));
-  };
-  window.toggleUserAccs=function(u){document.getElementById('ua-'+u)?.classList.toggle('hidden')};
-  window.toggleGrp=function(ctx,key){
-    openGrps[ctx][key]=!openGrps[ctx][key];
-    document.getElementById('gb-'+ctx+'-'+key)?.classList.toggle('collapsed',!openGrps[ctx][key]);
-    document.getElementById('gc-'+ctx+'-'+key)?.classList.toggle('open',openGrps[ctx][key]);
-  };
-
-  /* ── VIEW ── */
-  window.switchUserView=function(v){userViewMode=v;['all','group'].forEach(m=>document.getElementById('user-view-'+m+'-btn').classList.toggle('active',m===v));renderUserList();};
-  window.switchAdminView=function(v){adminViewMode=v;['all','group'].forEach(m=>document.getElementById('admin-view-'+m+'-btn').classList.toggle('active',m===v));renderAdminAccList();};
-  window.switchUserTab=function(tab){
-    const isList=tab==='list';
-    document.getElementById('utab-list').classList.toggle('hidden',!isList);
-    document.getElementById('utab-search').classList.toggle('hidden',isList);
-    document.getElementById('utab-list-btn').classList.toggle('tab-active',isList);
-    document.getElementById('utab-search-btn').classList.toggle('tab-active',!isList);
-    if(!isList){buildTags('user');runUserSearch();}
-  };
-
-  /* ── GROUPED LIST ── */
-  function renderGrouped(accs,ctx,isAdmin){
-    const grps=LV_GROUPS.filter(g=>accs.some(a=>a.lv>=g.min&&a.lv<=g.max));
-    if(!grps.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có acc nào</p>';
-    return grps.map(g=>{
-      let list=accs.filter(a=>a.lv>=g.min&&a.lv<=g.max);
-      if(sortMode==='urgent'&&!isAdmin){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
-      else list=list.slice().reverse();
-      const tot=list.length,chua=list.filter(a=>!a.status||a.status==='chua').length;
-      const dang=list.filter(a=>a.status==='dang').length,xong=list.filter(a=>a.status==='xong').length,ban=list.filter(a=>a.status==='ban').length;
-      if(openGrps[ctx][g.key]===undefined)openGrps[ctx][g.key]=true;
-      const open=openGrps[ctx][g.key];
-      const canSell=g.min>=SELL_MIN_LV;
-      return `<div class="lv-group ${g.cls} animate-fade">
-        <div class="lv-group-hd" onclick="toggleGrp('${ctx}','${g.key}')">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2">${canSell?`<span class="text-xs">💰</span>`:''}<span class="text-lg">${g.icon}</span><span class="grp-label">${g.label}</span>${canSell?`<span class="text-[8px] text-green-400 font-bold orb">+8k/acc</span>`:''}</div>
-            <div class="grp-meta">
-              <span class="gp gp-t">${tot} acc</span>
-              ${chua?`<span class="gp gp-c">🔴 ${chua}</span>`:''}
-              ${dang?`<span class="gp gp-d">⚡ ${dang}</span>`:''}
-              ${xong?`<span class="gp gp-x">✅ ${xong}</span>`:''}
-              ${ban?`<span class="gp gp-b">💰 ${ban}</span>`:''}
-            </div>
-            <div class="grp-prog"><div class="grp-prog-fill" style="width:${tot?Math.round((xong+ban)/tot*100):0}%;background:${g.fill}"></div></div>
-          </div>
-          <i class="fa-solid fa-chevron-down lv-chev ${open?'open':''}" id="gc-${ctx}-${g.key}"></i>
-        </div>
-        <div class="lv-group-body ${open?'':'collapsed'}" id="gb-${ctx}-${g.key}">
-          ${list.map(a=>accCard(a,isAdmin)).join('')}
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  /* ── ACC CARD ── */
-  function accCard(a,isAdmin){
-    const col=a.uploader==='ADMIN'?'#f97316':'#a855f7';
-    const canManage=isAdmin||(currentUser&&a.uploader===currentUser.u);
-    const st=a.status||'chua';
-    const isSold=st==='ban';
-    const urgent=!isAdmin&&st==='chua'&&sortMode==='urgent'&&userViewMode!=='group';
-    const canSell=isAdmin&&a.lv>=SELL_MIN_LV&&!isSold;
-    const soldPrice=a.soldPrice?fmtMoneyFull(a.soldPrice):'';
-
-    return `<div class="acc-wrap">
-      ${isSold?`<span class="sold-ribbon">💰 ĐÃ BÁN${soldPrice?' · '+soldPrice:''}</span>`:''}
-      ${urgent?`<span class="prio-ribbon">🔥 ƯU TIÊN CÀY</span>`:''}
-      <div class="acc-card ${urgent?'card-urgent':''} ${isSold?'card-sold':''}" style="border-left:3px solid ${isSold?'rgba(0,255,136,0.5)':col+'35'}">
-        <div class="flex justify-between items-start mb-3">
-          <div class="flex items-center gap-2 flex-wrap">
-            ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV ${a.lv}</span>`:`<span class="lv-badge">LV ${a.lv}</span>`}
-            ${a.lv>=SELL_MIN_LV&&!isSold?`<span class="price-tag"><i class="fa-solid fa-tag mr-1"></i>8,000đ</span>`:''}
-            ${a.lv>=SELL_MIN_LV&&isSold?`<span class="price-tag"><i class="fa-solid fa-check mr-1"></i>${soldPrice}</span>`:''}
-            ${a.lv<SELL_MIN_LV?`<span class="price-tag-locked"><i class="fa-solid fa-lock mr-1"></i>LV${SELL_MIN_LV}+</span>`:''}
-            <span class="text-[9px] font-bold orb" style="color:${col}">@${a.uploader}</span>
-            <span class="${stCls(st)} text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
-              <span class="${stDot(st)}"></span>${stTxt(st)}
-            </span>
-          </div>
-          <div class="flex gap-1.5 flex-shrink-0 ml-2">
-            ${canSell?`<button onclick="sellAcc(${a.id})" class="btn-sell px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1"><i class="fa-solid fa-dollar-sign text-[10px]"></i>BÁN</button>`:''}
-            ${isAdmin&&a.lv<SELL_MIN_LV?`<button class="btn-sell-disabled px-3 h-8 rounded-lg flex items-center justify-center text-[9px] font-black orb gap-1" title="Cần LV${SELL_MIN_LV}+"><i class="fa-solid fa-lock text-[10px]"></i></button>`:''}
-            ${canManage&&!isSold?`<button onclick="editLv(${a.id})" class="btn-edit w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>`:''}
-            ${canManage?`<button onclick="deleteAcc(${a.id})" class="btn-delete w-8 h-8 rounded-lg flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>`:''}
-          </div>
-        </div>
-        <div class="space-y-2 mb-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Tài khoản: <b class="text-white font-bold">${a.tk}</b></span>
-            <button onclick="copyText('${a.tk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] text-slate-500 uppercase tracking-wider">Mật khẩu: <b class="text-white font-bold">${a.mk}</b></span>
-            <button onclick="copyText('${a.mk}')" class="text-slate-600 text-xs ml-2 hover:text-slate-400"><i class="fa-solid fa-copy"></i></button>
-          </div>
-          ${isSold&&a.soldAt?`<div class="text-[9px] text-green-400 font-bold orb"><i class="fa-solid fa-check-circle mr-1"></i>Bán lúc: ${new Date(a.soldAt).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'})}</div>`:''}
-        </div>
-        ${canManage&&!isSold?`<div class="flex gap-1.5 pt-2" style="border-top:1px solid rgba(255,255,255,0.05)">
-          <button onclick="updateStatus(${a.id},'chua')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='chua'?'s-chua':'opacity-20'}" style="${st!=='chua'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">🔴 Chưa</button>
-          <button onclick="updateStatus(${a.id},'dang')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='dang'?'s-dang':'opacity-20'}" style="${st!=='dang'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">⚡ Đang</button>
-          <button onclick="updateStatus(${a.id},'xong')" class="flex-1 text-[9px] font-black py-2 rounded-lg orb transition-all ${st==='xong'?'s-xong':'opacity-20'}" style="${st!=='xong'?'background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.04)':''}">✅ Xong</button>
-        </div>`:''}
-        ${isSold?`<div class="text-center py-2 text-[9px] font-bold text-green-400 orb" style="border-top:1px solid rgba(0,255,136,0.1)"><i class="fa-solid fa-lock mr-1"></i>ACC ĐÃ BÁN — KHÔNG THỂ THAY ĐỔI</div>`:''}
-      </div>
-    </div>`;
-  }
-
-  /* ── RENDER ── */
-  function renderUI(){
-    if(currentMode==='admin'){
-      renderAdminStats();renderAdminAccList();renderAdminRevenuePanel();
-      document.getElementById('admin-list-users').innerHTML=renderAdminUsers();
-      buildTags('admin');runAdminSearch();
-    } else {
-      renderUserStats();renderUserList();renderUserRevenuePanel();
-    }
-  }
-  function renderAdminAccList(){
-    const all=db.accounts.slice().reverse();
-    document.getElementById('admin-list-accs').innerHTML=adminViewMode==='group'?renderGrouped(all,'admin',true):`<div class="space-y-3">${all.map(a=>accCard(a,true)).join('')}</div>`;
-  }
-  function renderUserList(){
-    let list=db.accounts.filter(a=>a.uploader===currentUser.u);
-    if(userViewMode==='group'){document.getElementById('user-list').innerHTML=renderGrouped(list,'user',false);}
-    else{
-      if(sortMode==='urgent'){const ord={chua:0,dang:1,xong:2,ban:3};list=list.slice().sort((a,b)=>(ord[a.status||'chua']??0)-(ord[b.status||'chua']??0));}
-      else list=list.slice().reverse();
-      document.getElementById('user-list').innerHTML=`<div class="space-y-3">${list.map(a=>accCard(a,false)).join('')}</div>`;
-    }
-  }
-
-  /* ── REVENUE PANELS ── */
-  function renderAdminRevenuePanel(){
-    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
-    const sold=db.accounts.filter(a=>a.status==='ban').length;
-    const ready=db.accounts.filter(a=>a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
-    const amtEl=document.getElementById('admin-total-rev');
-    const soldEl=document.getElementById('admin-sold-count');
-    const readyEl=document.getElementById('admin-ready-sell');
-    if(amtEl)amtEl.textContent=fmtMoney(totalRev)+'đ';
-    if(soldEl)soldEl.textContent=sold;
-    if(readyEl)readyEl.textContent=ready;
-    // History
-    const hist=document.getElementById('admin-rev-history');
-    if(hist){
-      const recent=db.revenue.slice().reverse().slice(0,8);
-      hist.innerHTML=recent.length?recent.map(r=>{
-        const t=new Date(r.time);
-        return `<div class="rev-hist-item">
-          <div class="rev-hist-dot"></div>
-          <div class="flex-1 min-w-0">
-            <span class="text-[10px] font-bold text-white">${r.tk}</span>
-            <span class="lv-badge ml-1">LV${r.lv}</span>
-            <span class="text-[9px] text-slate-500 ml-1">@${r.uploader}</span>
-          </div>
-          <div class="text-right flex-shrink-0">
-            <div class="text-[11px] font-black text-green-300 orb">+${fmtMoneyFull(r.amount)}</div>
-            <div class="text-[8px] text-slate-600">${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')} ${t.getDate()}/${t.getMonth()+1}</div>
-          </div>
-        </div>`;
-      }).join(''):`<p class="text-[10px] text-slate-600 text-center py-4">Chưa có lịch sử bán</p>`;
-    }
-  }
-  function renderUserRevenuePanel(){
-    if(!currentUser)return;
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const total=myRev.reduce((s,r)=>s+r.amount,0);
-    const sold=db.accounts.filter(a=>a.uploader===currentUser.u&&a.status==='ban').length;
-    const ready=db.accounts.filter(a=>a.uploader===currentUser.u&&a.lv>=SELL_MIN_LV&&a.status!=='ban').length;
-    const amtEl=document.getElementById('user-total-rev');
-    const soldEl=document.getElementById('user-sold-count');
-    const readyEl=document.getElementById('user-ready-sell');
-    if(amtEl)amtEl.textContent=fmtMoney(total)+'đ';
-    if(soldEl)soldEl.textContent=sold;
-    if(readyEl)readyEl.textContent=ready;
-  }
-
-  function renderAdminUsers(){
-    if(!db.users.length)return '<p class="text-center text-xs text-slate-600 py-10">Chưa có user nào</p>';
-    const maxA=Math.max(1,...db.users.map(u=>db.accounts.filter(a=>a.uploader===u.u).length));
-    return db.users.slice().reverse().map(u=>{
-      const acs=db.accounts.filter(a=>a.uploader===u.u);
-      const cnt=acs.length,chua=acs.filter(a=>!a.status||a.status==='chua').length;
-      const dang=acs.filter(a=>a.status==='dang').length,xong=acs.filter(a=>a.status==='xong').length,ban=acs.filter(a=>a.status==='ban').length;
-      const pct=Math.round((cnt/maxA)*100),recent=acs.slice().reverse().slice(0,3);
-      const uRev=db.revenue.filter(r=>r.uploader===u.u);
-      const uRevTotal=uRev.reduce((s,r)=>s+r.amount,0);
-      return `<div class="glass rounded-2xl overflow-hidden animate-fade" style="border:1px solid rgba(168,85,247,0.1)">
-        <div class="p-4">
-          <div class="flex justify-between items-start mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm orb" style="background:linear-gradient(135deg,rgba(168,85,247,0.25),rgba(0,242,255,0.12));border:1px solid rgba(168,85,247,0.25)">${u.u.charAt(0).toUpperCase()}</div>
-              <div><p class="font-bold text-sm">${u.u}</p><p class="text-[9px] text-slate-500 orb tracking-wider">Pass: ${u.p}</p>${uRevTotal?`<p class="text-[9px] text-green-400 font-bold orb">💰 ${fmtMoneyFull(uRevTotal)}</p>`:''}</div>
-            </div>
-            <div class="flex gap-2">
-              <button onclick="toggleUserAccs('${u.u}')" class="btn-edit px-3 py-1.5 rounded-lg text-[9px] font-bold orb"><i class="fa-solid fa-list mr-1"></i>${cnt}</button>
-              <button onclick="deleteUser('${u.u}')" class="btn-delete px-3 py-1.5 rounded-lg text-[9px] font-bold orb">XÓA</button>
-            </div>
-          </div>
-          <div class="grid grid-cols-5 gap-1.5 mb-3">
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,242,255,0.05);border:1px solid rgba(0,242,255,0.1)"><p class="text-[6px] text-cyan-400 font-bold orb">TỔNG</p><p class="text-lg font-black text-cyan-300">${cnt}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)"><p class="text-[6px] text-red-400 font-bold orb">CHƯA</p><p class="text-lg font-black text-red-300">${chua}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(250,204,21,0.05);border:1px solid rgba(250,204,21,0.1)"><p class="text-[6px] text-yellow-400 font-bold orb">ĐANG</p><p class="text-lg font-black text-yellow-300">${dang}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.12)"><p class="text-[6px] text-green-400 font-bold orb">XONG</p><p class="text-lg font-black text-green-300">${xong}</p></div>
-            <div class="text-center p-2 rounded-xl" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3)"><p class="text-[6px] text-green-300 font-bold orb">BÁN</p><p class="text-lg font-black text-green-300">${ban}</p></div>
-          </div>
-          <div class="flex items-center gap-2 mb-1"><div class="flex-1 h-1.5 rounded-full" style="background:rgba(255,255,255,0.04)"><div class="user-acc-bar" style="width:${pct}%"></div></div><span class="text-[8px] text-slate-600 orb">${pct}%</span></div>
-        </div>
-        <div id="ua-${u.u}" class="hidden px-4 pb-4 pt-3 space-y-2" style="border-top:1px solid rgba(255,255,255,0.04)">
-          <p class="text-[8px] font-black uppercase text-slate-600 mb-2 tracking-widest orb">Acc gần nhất</p>
-          ${recent.length?recent.map(a=>`<div class="flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2 flex-wrap">
-              ${a.lv>=SELL_MIN_LV?`<span class="lv-badge-gold">LV${a.lv}</span>`:`<span class="lv-badge">LV${a.lv}</span>`}
-              <span class="acc-mini-tag text-[10px]">${a.tk}</span>
-              <span class="${stCls(a.status||'chua')} text-[9px] px-2 py-0.5 rounded-full">${stTxt(a.status||'chua')}</span>
-            </div>
-            <div class="flex gap-1">
-              ${a.lv>=SELL_MIN_LV&&(a.status||'chua')!=='ban'?`<button onclick="sellAcc(${a.id})" class="btn-sell px-2 py-1 rounded-lg text-[8px] font-black orb">BÁN</button>`:''}
-              <button onclick="deleteAcc(${a.id})" class="text-red-400 text-[10px] opacity-30 hover:opacity-80"><i class="fa-solid fa-trash"></i></button>
-            </div>
-          </div>`).join(''):'<p class="text-[10px] text-slate-600">Chưa có acc</p>'}
-          ${cnt>3?`<p class="text-[8px] text-slate-600 text-center orb">...và ${cnt-3} acc khác</p>`:''}
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  /* ── STATS ── */
-  function renderAdminStats(){
-    const sold=db.accounts.filter(a=>a.status==='ban').length;
-    const totalRev=db.revenue.reduce((s,r)=>s+r.amount,0);
-    document.getElementById('admin-global-stats').innerHTML=
-      sBox('Tổng Acc',db.accounts.length,'#00f2ff')+sBox('Users',db.users.length,'#a855f7')+
-      sBox('Đã bán',sold,'#00ff88')+sBox('Doanh thu',fmtMoney(totalRev)+'đ','#ffd700');
-  }
-  function renderUserStats(){
-    const my=db.accounts.filter(a=>a.uploader===currentUser.u);
-    const ban=my.filter(a=>a.status==='ban').length;
-    const myRev=db.revenue.filter(r=>r.uploader===currentUser.u);
-    const rev=myRev.reduce((s,r)=>s+r.amount,0);
-    document.getElementById('user-global-stats').innerHTML=
-      sBox('Tổng Kho',db.accounts.length,'#00f2ff')+sBox('Của tôi',my.length,'#ff00e5')+
-      sBox('Đã bán',ban,'#00ff88')+sBox('Doanh thu',fmtMoney(rev)+'đ','#ffd700');
-  }
-  function sBox(l,v,c){
-    return `<div class="stat-card p-4 rounded-2xl text-center min-w-[78px]">
-      <p class="text-[8px] font-bold uppercase mb-1 orb tracking-wider" style="color:${c};text-shadow:0 0 10px ${c}55">${l}</p>
-      <p class="text-2xl font-black" style="font-family:'Orbitron',sans-serif">${v}</p>
-    </div>`;
-  }
-
-  /* ── HELPERS ── */
-  window.copyText=function(t){navigator.clipboard.writeText(t).then(()=>showToast('✓ COPIED!'))};
-  function showPage(id){['login-page','admin-page','user-page'].forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id))}
-  function showToast(m,type){
-    const t=document.getElementById('toast');
-    t.textContent=m;
-    t.className='toast'+(type==='money'?' toast-money':'');
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2800);
-  }
-  window.switchAdminTab=function(tab){
-    ['acc','search','user'].forEach(t=>{
-      document.getElementById('admin-tab-'+t).classList.toggle('hidden',t!==tab);
-      document.getElementById('tab-'+t+'-btn').classList.toggle('tab-active',t===tab);
-    });
-    if(tab==='search'){buildTags('admin');runAdminSearch();}
-    if(tab==='acc'){renderAdminAccList();}
-  };
-  window.switchAdminMode=function(m){
-    const is=m==='single';
-    ['admin-single-mode','admin-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
-    ['admin-mode-single-btn','admin-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
-  };
-  window.switchUserMode=function(m){
-    const is=m==='single';
-    ['user-single-mode','user-bulk-mode'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',is?i!==0:i===0));
-    ['user-mode-single-btn','user-mode-bulk-btn'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',is?i===0:i!==0));
-  };
+    document.getElementById("list").innerHTML = html;
+    document.getElementById("total").innerText =
+    accounts.length;
 }
+function addAcc(){
+    const username =
+    document.getElementById("user").value;
+    const password =
+    document.getElementById("pass").value;
+    const note =
+    document.getElementById("note").value;
+    if(!username || !password){
+        alert("Thiếu thông tin");
+        return;
+    }
+    accounts.push({
+        username,
+        password,
+        note,
+        used:false
+    });
+    save();
+    render();
+}
+function bulkAdd(){
+    const pass =
+    document.getElementById("bulkPass").value;
+    const users =
+    document.getElementById("bulkUsers")
+    .value
+    .split("\n")
+    .filter(x=>x.trim());
+    users.forEach(u=>{
+        accounts.push({
+            username:u.trim(),
+            password:pass,
+            note:"",
+            used:false
+        });
+    });
+    save();
+    render();
+}
+function toggleUsed(i){
+    accounts[i].used =
+    !accounts[i].used;
+    save();
+    render();
+}
+function deleteAcc(i){
+    if(confirm("Xóa ACC?")){
+        accounts.splice(i,1);
+        save();
+        render();
+    }
+}
+render();
 </script>
 </body>
 </html>
